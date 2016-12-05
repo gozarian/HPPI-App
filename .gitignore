@@ -1,0 +1,14 @@
+/node_modules
+/www/css/ionic.app.css
+/www/css/ionic.app.min.css
+/www/lib
+temp/
+*.DS_Store
+*.log
+*.swp
+*.swo
+*.log
+*.keystore
+/platforms
+/plugins
+/resources/
