@@ -1,6 +1,8 @@
 {
   "name": "healthypaws",
   "version": "1.1.1",
+  "repository": "None",
+  "license": "UNLICENSED",
   "description": "healthypaws: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
@@ -28,6 +30,11 @@
       "platform": "ios",
       "version": "",
       "locator": "ios"
+    },
+    {
+      "platform": "android",
+      "version": "",
+      "locator": "android"
     }
   ]
 }

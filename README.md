@@ -25,7 +25,9 @@ Install the following (if needed)
 
 ##Compile & Run
 
-1. Development server: `ionic serve` (choose localhost)
+- Update dependencies `npm install`
+- Restore ionic state `ionic state restore`
+- Start Development server: `ionic serve` (choose localhost)
 
 ##Deployment
 
