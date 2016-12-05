@@ -36,6 +36,8 @@ gulp.task('styles', function(done) {
 
 gulp.task('scripts', ['templates'], function() {
   gulp.src(scripts)
+    .pipe(jscs())
+    .pipe(jscs.reporter())
     .pipe(concat('app.js'))
     .pipe(gulp.dest('./www/js/'));
 });
