@@ -12,3 +12,5 @@ temp/
 /platforms
 /plugins
 /resources/
+/www/js/app.js
+/www/js/templates.js
