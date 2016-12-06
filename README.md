@@ -26,11 +26,42 @@ Install the following (if needed)
 
 ##Compile & Run
 
+###One-time (or after settings / dependencies are updated)
+
 - Update dependencies `npm install`
 - Restore ionic state `ionic state restore` (once or after team changes)
+
+###Primary Development (in Chrome)
+
 - Start Development server: `ionic serve` (choose localhost if asked)
   - iOS `ionic serve --platform ios`
-  - Android `ionic serve --platform android`
+  - Android `ionic run --platform android`
+
+###Running in Simulator
+
+*iOS*
+
+- Run emulate: `ionic emulate ios`
+- Optionally add `-lc` to enable livereload and console output
+
+*Android*
+
+- Prerequisite: Setup and boot whichever AVD you'd like to use by running `android avd`
+- Run emulate: `ionic emulate android`
+
+###Running on Devices
+
+*iOS*
+
+- Prerequisite: Open Xcode Preferences and login to your developer account (must be on development team for this app)
+- Build: `ionic build ios`
+- Open the `.xcodeproj` in `platforms/ios` in Xcode
+- Run it!
+
+*Android*
+
+- Connect a compatible device
+- Run: `ionic run android --device`
 
 ##Deployment
 
