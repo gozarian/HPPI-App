@@ -27,8 +27,10 @@ Install the following (if needed)
 ##Compile & Run
 
 - Update dependencies `npm install`
-- Restore ionic state `ionic state restore`
-- Start Development server: `ionic serve` (choose localhost)
+- Restore ionic state `ionic state restore` (once or after team changes)
+- Start Development server: `ionic serve` (choose localhost if asked)
+  - iOS `ionic serve --platform ios`
+  - Android `ionic serve --platform android`
 
 ##Deployment
 
