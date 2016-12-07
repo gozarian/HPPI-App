@@ -1,5 +1,9 @@
 page-sign-in {
 
+  .scroll-content {
+    overflow: hidden;
+  }
+
   .list-ios .item[no-lines] {
     margin-top: 1rem;
     border: 1px solid grey;
