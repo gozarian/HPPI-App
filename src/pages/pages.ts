@@ -10,6 +10,7 @@ export {BillingPage} from './billing/billing';
 export {FAQPage} from './faq/faq';
 export {MessagesDetailPage} from './messages-detail/messages-detail';
 export {MessagesInboxPage} from './messages-inbox/messages-inbox';
+export {MyClaimsPage} from './my-claims/my-claims';
 export {PasswordPage} from './password/password';
 export {PaymentPage} from './payment/payment';
 export {PersonalInfoPage} from './personal-info/personal-info';

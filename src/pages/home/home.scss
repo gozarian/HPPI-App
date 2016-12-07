@@ -1,3 +1,54 @@
 page-home {
 
+  .scroll-content {
+    overflow: hidden;
+  }
+
+  ion-scroll {
+    height: 250px;
+    white-space: nowrap;
+
+    .scroll-zoom-wrapper {
+      height: 100%;
+    }
+
+    img {
+      height: 100%;
+    }
+
+    ion-card {
+      height: 100%;
+    }
+  }
+
+  .home-pet-grid {
+    height: 100%;
+  }
+
+  ion-grid {
+    padding: 0;
+
+    ion-icon {
+      position: relative;
+      font-size: 6rem;
+
+      ion-badge {
+        position: absolute;
+        top: 0;
+        right: -1rem;
+        padding: 3px 6px;
+      }
+    }
+
+    .button-inner {
+      flex-flow: column;
+      justify-content: space-between;
+      white-space: normal;
+    }
+
+    .button-full {
+      height: 100%;
+      padding: 0;
+    }
+  }
 }

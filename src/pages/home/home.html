@@ -3,10 +3,38 @@
     <button icon-only ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Healthy Paws App</ion-title>
+    <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Happy Paws!</h2>
+<ion-content text-center>
+  <h1>Healthy Paws</h1>
+  <p>Pet Insurance & Foundation</p>
+  <ion-scroll scrollX="true" scrollY="false" zoom="false" maxZoom="false">
+    <ion-grid class="home-pet-grid">
+      <ion-row>
+        <ion-col width-50>
+          <img src="assets/test-imgs/test-pet-1.png">
+        </ion-col>
+        <ion-col width-50>
+          <img src="assets/test-imgs/test-pet-2.png">
+        </ion-col>
+        <ion-col width-50>
+          <img src="assets/test-imgs/test-pet-1.png">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-scroll>
+  <ion-grid>
+    <ion-row wrap>
+      <ion-col width-33 *ngFor="let page of pages">
+        <button ion-button clear full (click)="openPage(page)">
+          <ion-icon name="{{ page.icon }}">
+            <ion-badge *ngIf="page.badge" item-right color="danger">{{ page.badge }}</ion-badge>
+          </ion-icon>
+          <label>{{ page.title }}</label>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

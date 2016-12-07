@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController, Nav } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { HomePage } from '../pages/home/home';
-import { SignInPage, AccountPage, ContactPage, ClaimChoosePage, ClaimBirthdayPage, ClaimPhotoPage, ClaimVerifyPage, ClaimSummaryPage, BillingPage, FAQPage, MessagesDetailPage, MessagesInboxPage, PasswordPage, PaymentPage, PersonalInfoPage, PolicyPage, ReferralPage, ScoopMainPage, ScoopDetailPage } from '../pages/pages';
+import { SignInPage, AccountPage, ContactPage, ClaimChoosePage, ClaimBirthdayPage, ClaimPhotoPage, ClaimVerifyPage, ClaimSummaryPage, BillingPage, FAQPage, MessagesDetailPage, MessagesInboxPage, MyClaimsPage, PasswordPage, PaymentPage, PersonalInfoPage, PolicyPage, ReferralPage, ScoopMainPage, ScoopDetailPage } from '../pages/pages';
 
 
 @Component({
@@ -25,6 +25,7 @@ export class MyApp {
     { title: 'FAQ', component: FAQPage },
     { title: 'Messages, Inbox', component: MessagesInboxPage },
     { title: 'Messages, Detail', component: MessagesDetailPage },
+    { title: 'My Claims', component: MyClaimsPage },
     { title: 'Password', component: PasswordPage },
     { title: 'Payment', component: PaymentPage },
     { title: 'Personal Info', component: PersonalInfoPage },

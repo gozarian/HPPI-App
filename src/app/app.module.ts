@@ -15,6 +15,7 @@ import { BillingPage } from '../pages/billing/billing';
 import { FAQPage } from '../pages/faq/faq';
 import { MessagesDetailPage } from '../pages/messages-detail/messages-detail';
 import { MessagesInboxPage } from '../pages/messages-inbox/messages-inbox';
+import { MyClaimsPage } from '../pages/my-claims/my-claims';
 import { PasswordPage } from '../pages/password/password';
 import { PaymentPage } from '../pages/payment/payment';
 import { PersonalInfoPage } from '../pages/personal-info/personal-info';
@@ -39,6 +40,7 @@ import { ScoopDetailPage } from '../pages/scoop-detail/scoop-detail';
     FAQPage,
     MessagesDetailPage,
     MessagesInboxPage,
+    MyClaimsPage,
     PasswordPage,
     PaymentPage,
     PersonalInfoPage,
@@ -66,6 +68,7 @@ import { ScoopDetailPage } from '../pages/scoop-detail/scoop-detail';
     FAQPage,
     MessagesDetailPage,
     MessagesInboxPage,
+    MyClaimsPage,
     PasswordPage,
     PaymentPage,
     PersonalInfoPage,
