@@ -10,4 +10,43 @@
 </ion-header>
 
 <ion-content>
+  <ion-list>
+    <ion-list-header>
+      Brian Jorgensen
+    </ion-list-header>
+    <ion-item>
+      brian.jorgensen@live.com
+    </ion-item>
+    <ion-item>
+      6806 52nd Ave NE Seattle WA, 98115
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-list-header>
+      <ion-icon name="card"></ion-icon>
+      Your Information
+    </ion-list-header>
+    <button ion-item *ngFor="let item of information" (click)="itemSelected(item)">
+      {{ item.title }}
+    </button>  
+  </ion-list>
+  <ion-list>
+    <ion-list-header>
+      <ion-icon name="contacts"></ion-icon>
+      Your Pet Policies
+    </ion-list-header>
+    <button ion-item *ngFor="let item of policies" (click)="itemSelected(item)">
+      {{ item.title }}
+    </button>  
+  </ion-list>
+  <ion-list>
+    <ion-list-header>
+      <ion-icon name="help-circle"></ion-icon>
+      Support
+    </ion-list-header>
+    <button ion-item *ngFor="let item of support" (click)="itemSelected(item)">
+      {{ item.title }}
+    </button>  
+  </ion-list>
+  <button ion-button>Sign Out</button>
 </ion-content>
