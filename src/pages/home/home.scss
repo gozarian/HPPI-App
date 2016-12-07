@@ -5,7 +5,7 @@ page-home {
   }
 
   ion-scroll {
-    height: 250px;
+    height: 37%;
     white-space: nowrap;
 
     .scroll-zoom-wrapper {
@@ -40,10 +40,15 @@ page-home {
       }
     }
 
+    ion-col {
+      padding: 2px;
+    }
+
     .button-inner {
       flex-flow: column;
       justify-content: space-between;
       white-space: normal;
+      font-size: $font-size-base;
     }
 
     .button-full {

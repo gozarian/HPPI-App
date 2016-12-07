@@ -50,7 +50,9 @@ import { ScoopDetailPage } from '../pages/scoop-detail/scoop-detail';
     ScoopDetailPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      mode: 'ios'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
