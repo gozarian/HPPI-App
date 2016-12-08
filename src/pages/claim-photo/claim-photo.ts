@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+// import { Camera } from 'ionic-native';
 
 @Component({
   selector: 'page-claim-photo',
@@ -8,8 +9,33 @@ import { NavController } from 'ionic-angular';
 })
 export class ClaimPhotoPage {
 
-  constructor(public navCtrl: NavController) {
+  testdocs1 = [
+    { path: 'assets/test-imgs/test-doc.png'
+    },
+    { path: 'assets/test-imgs/test-doc.png'
+    }
+  ]
 
+  testdocs2 = [
+    { path: 'assets/test-imgs/test-doc.png'
+    },
+    { path: 'assets/test-imgs/test-doc.png'
+    },
+    { path: 'assets/test-imgs/test-doc.png'
+    },
+    { path: 'assets/test-imgs/test-doc.png'
+    },
+    { path: 'assets/test-imgs/test-doc.png'
+    }
+  ]
+
+  chosenPet = {};
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    this.chosenPet = {
+      name: navParams.get('name'),
+      img: navParams.get('img')
+    }
   }
-
 }

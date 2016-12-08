@@ -4,10 +4,23 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      Claim, Choose
+      New Claim
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <ion-card-header>
+      Which pet is this claim for?
+    </ion-card-header>
+    <ion-list>
+      <button ion-item *ngFor="let pet of pets" (click)="choosePet(pet)">
+        <ion-avatar item-left>
+          <img src="{{ pet.img }}">
+        </ion-avatar>
+        <h3>{{ pet.name }}</h3>
+      </button>
+    </ion-list>
+  </ion-card>
 </ion-content>

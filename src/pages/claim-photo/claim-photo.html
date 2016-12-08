@@ -10,4 +10,42 @@
 </ion-header>
 
 <ion-content>
+  <ion-avatar>
+    <img src="{{ chosenPet.img }}">
+  </ion-avatar>
+  <h3>Claim for {{ chosenPet.name }}</h3>
+  <ion-item no-lines>
+    <button ion-button clear large>
+      Add a photo of the invoice you recieved from your veterinary hospital
+      <ion-icon name="camera"></ion-icon>
+    </button>
+  </ion-item>
+  <ion-item>
+    <button ion-button clear large>
+      Add another
+      <ion-icon name="camera"></ion-icon>
+    </button>
+  </ion-item>
+  <h3>Test photo grid with < 3 photos</h3>
+  <ion-grid>
+    <ion-row>
+      <ion-col width-50 *ngFor="let testdoc of testdocs1">
+        <img src="{{ testdoc.path }}" >
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <h3>Test photo grid with >= 3 photos</h3>
+  <ion-grid>
+    <ion-row wrap>
+      <ion-col width-33 *ngFor="let testdoc of testdocs2">
+        <img src="{{ testdoc.path }}" >
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list no-lines>
+    <button ion-item>
+      <ion-icon name="clipboard"></ion-icon>
+      Submit
+    </button> 
+  </ion-list>
 </ion-content>

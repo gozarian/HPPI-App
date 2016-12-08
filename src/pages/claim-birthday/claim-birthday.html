@@ -10,4 +10,18 @@
 </ion-header>
 
 <ion-content>
+  <ion-avatar>
+    <img src="{{ chosenPet.img }}">
+  </ion-avatar>
+  <h3>Claim for {{ chosenPet.name }}</h3>
+  <ion-item>
+    <ion-label clear color="primary">When did Jackson join your family?</ion-label>
+    <ion-datetime displayFormat="MMMM D YYYY" pickerFormat="DD MMMM YYYY" [(ngModel)]="myDate"></ion-datetime>
+  </ion-item>
+  <ion-list no-lines>
+    <button ion-item (click)="addPhoto(chosenPet)">
+      <ion-icon name="tennisball"></ion-icon>
+      Next
+    </button> 
+  </ion-list>
 </ion-content>
