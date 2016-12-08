@@ -10,4 +10,21 @@
 </ion-header>
 
 <ion-content>
+  <p><span>Thank you</span>for submitting a claim with Healthy Paws Pet Insurance</p>
+
+  <section>
+    <h2 color="danger">Attention</h2>
+    <p>Our records indicate that we need {{ chosenPet.name }}'s medical records to begin processing this claim. Please ask your veterinary hospital to send us a copy of {{ chosenPet.name }}'s complete medical history with doctor's exam notes and any laboratory results.</p>
+    <p>They can submit records by email to:</p>
+    <a href="mailto:claims@healthypawspetinsurance.com">claims@healthypawspetinsurance.com</a>
+    <p>or Fax to 1-888-228-4129</p>
+  </section>
+
+  <section>
+    <p>Once we review your claim documentation, we will send you a confirmation email. If you do not receive a confirmation within 48 hourse of submitting your claim, please feel free to contact us at <a href="tel:18004534054">1-800-452-4054</a>.</p>
+  </section>
+
+  <ion-item text-center no-lines>
+    <button ion-button clear (click)=goHome()>Home</button>
+  </ion-item>
 </ion-content>

@@ -16,6 +16,6 @@
   <h3>Claim for {{ chosenPet.name }}</h3>
   <p>I certify the information provided is accurate to the best of my knowledge. I authorize any veterinarian to provide additional information about {{ chosenPet.name }} to Healthy Paws Pet Insurance.</p>
   <p>I understand that missing information or delays in delivering Jackson's medical records may delay the processing of my claims.</p>
-  <button ion-button outline>Disagree</button>
-  <button ion-button>Agree</button>
+  <button ion-button outline (click)="agree(chosenPet)">Disagree</button>
+  <button ion-button (click)="agree(chosenPet)">Agree</button>
 </ion-content>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams, MenuController } from 'ionic-angular';
+import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-claim-summary',
@@ -8,8 +9,20 @@ import { NavController } from 'ionic-angular';
 })
 export class ClaimSummaryPage {
 
-  constructor(public navCtrl: NavController) {
+  chosenPet = {};
 
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController) {
+
+    this.chosenPet = {
+      name: navParams.get('name'),
+      img: navParams.get('img')
+    }
+
+  }
+
+  goHome() {
+    this.menu.close();
+    this.navCtrl.setRoot(HomePage);
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NavController, NavParams } from 'ionic-angular';
+import { ClaimSummaryPage } from '../claim-summary/claim-summary';
 
 @Component({
   selector: 'page-claim-verify',
@@ -16,7 +17,10 @@ export class ClaimVerifyPage {
       name: navParams.get('name'),
       img: navParams.get('img')
     }
+  }
 
+  agree(pet) {
+    this.navCtrl.push(ClaimSummaryPage, pet);
   }
 
 }
