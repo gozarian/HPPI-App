@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NavController, NavParams } from 'ionic-angular';
+import { ClaimVerifyPage } from '../claim-verify/claim-verify';
 // import { Camera } from 'ionic-native';
 
 @Component({
@@ -37,5 +38,9 @@ export class ClaimPhotoPage {
       name: navParams.get('name'),
       img: navParams.get('img')
     }
+  }
+
+  submitClaim(pet) {
+    this.navCtrl.push(ClaimVerifyPage, pet);
   }
 }

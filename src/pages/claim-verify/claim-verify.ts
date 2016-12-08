@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
   selector: 'page-claim-verify',
@@ -8,7 +8,14 @@ import { NavController } from 'ionic-angular';
 })
 export class ClaimVerifyPage {
 
-  constructor(public navCtrl: NavController) {
+  chosenPet = {};
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    this.chosenPet = {
+      name: navParams.get('name'),
+      img: navParams.get('img')
+    }
 
   }
 
