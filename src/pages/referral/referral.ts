@@ -8,8 +8,11 @@ import { NavController } from 'ionic-angular';
 })
 export class ReferralPage {
 
+  share: string;
+
   constructor(public navCtrl: NavController) {
 
+    this.share="email";
   }
 
 }
