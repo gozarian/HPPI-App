@@ -2,11 +2,11 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController, Nav } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { HomePage } from '../pages/home/home';
-import { SignInPage, AccountPage, ContactPage, ClaimChoosePage, ClaimBirthdayPage, ClaimPhotoPage, ClaimVerifyPage, ClaimSummaryPage, BillingPage, FAQPage, MessagesDetailPage, MessagesInboxPage, MyClaimsPage, PasswordPage, PaymentPage, PersonalInfoPage, PolicyPage, ReferralPage, ScoopMainPage, ScoopDetailPage, SplashPage } from '../pages/pages';
 import { Session } from '../providers/session';
 import { HpApi } from '../providers/hp-api';
 import { Environment } from '../providers/environment';
 import { Storage } from '@ionic/storage';
+import { SignInPage, AccountPage, ContactPage, ClaimChoosePage, ClaimBirthdayPage, ClaimPhotoPage, ClaimVerifyPage, ClaimSummaryPage, BillingPage, FAQPage, MessagesInboxPage, MyClaimsPage, PasswordPage, PaymentPage, PersonalInfoPage, PolicyPage, ReferralPage, ScoopMainPage, ScoopDetailPage, SplashPage } from '../pages/pages';
 
 @Component({
   templateUrl: 'app.html',
@@ -32,8 +32,7 @@ export class MyApp {
     { title: 'New Claim, Summary', component: ClaimSummaryPage },
     { title: 'Billing', component: BillingPage },
     { title: 'FAQ', component: FAQPage },
-    { title: 'Messages, Inbox', component: MessagesInboxPage },
-    { title: 'Messages, Detail', component: MessagesDetailPage },
+    { title: 'Messages', component: MessagesInboxPage },
     { title: 'My Claims', component: MyClaimsPage },
     { title: 'Password', component: PasswordPage },
     { title: 'Payment', component: PaymentPage },

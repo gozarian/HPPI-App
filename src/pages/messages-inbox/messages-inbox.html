@@ -3,6 +3,11 @@
     <button icon-only ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+    <ion-buttons right>
+      <button icon-only ion-button (click)="goHome()">
+        <ion-icon ios="ios-home" md="md-home"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>
       Messages, Inbox
     </ion-title>
@@ -10,4 +15,11 @@
 </ion-header>
 
 <ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let message of messages" (click)="openMessage(message)">
+      <h2>{{ message.title }}</h2>
+      <p *ngIf="message.content">{{ message.content }}</p>
+      <ion-note item-right>{{ message.date }}</ion-note>
+    </button>
+  </ion-list>
 </ion-content>

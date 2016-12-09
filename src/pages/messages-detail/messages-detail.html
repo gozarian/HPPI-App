@@ -1,13 +1,13 @@
 <ion-header>
   <ion-navbar>
-    <button icon-only ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
     <ion-title>
       Messages, Detail
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+  <ion-note>{{ message.date }}</ion-note>
+  <h2>{{ message.title }}</h2>
+  <div [innerHtml]="message.content"></div>
 </ion-content>

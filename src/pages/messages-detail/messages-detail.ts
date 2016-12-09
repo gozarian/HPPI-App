@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
   selector: 'page-messages-detail',
@@ -8,8 +8,15 @@ import { NavController } from 'ionic-angular';
 })
 export class MessagesDetailPage {
 
-  constructor(public navCtrl: NavController) {
+  message = {};
 
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    this.message = {
+      title: navParams.get('title'),
+      content: navParams.get('content'),
+      date: navParams.get('date')
+    }
   }
 
 }

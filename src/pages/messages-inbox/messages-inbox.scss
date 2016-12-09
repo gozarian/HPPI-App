@@ -1,3 +1,10 @@
 page-messages-inbox {
 
+  ion-label {
+
+    h2 {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
 }
