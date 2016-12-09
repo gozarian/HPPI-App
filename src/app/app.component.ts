@@ -6,7 +6,7 @@ import { Session } from '../providers/session';
 import { HpApi } from '../providers/hp-api';
 import { Environment } from '../providers/environment';
 import { Storage } from '@ionic/storage';
-import { SignInPage, AccountPage, ContactPage, ClaimChoosePage, ClaimBirthdayPage, ClaimPhotoPage, ClaimVerifyPage, ClaimSummaryPage, BillingPage, FAQPage, MessagesInboxPage, MyClaimsPage, PasswordPage, PaymentPage, PersonalInfoPage, PolicyPage, ReferralPage, ScoopMainPage, ScoopDetailPage, SplashPage } from '../pages/pages';
+import { SignInPage, AccountPage, ChangePasswordPage, ContactPage, ClaimChoosePage, ClaimBirthdayPage, ClaimPhotoPage, ClaimVerifyPage, ClaimSummaryPage, BillingPage, FAQPage, MessagesInboxPage, MyClaimsPage, PaymentPage, PersonalInfoPage, PolicyPage, ReferralPage, ScoopMainPage, ScoopDetailPage, SplashPage } from '../pages/pages';
 
 @Component({
   templateUrl: 'app.html',
@@ -24,6 +24,7 @@ export class MyApp {
   pages = [
     { title: 'Sign In', component: SignInPage },
     { title: 'Account', component: AccountPage },
+    { title: 'Change Password', component: ChangePasswordPage },
     { title: 'Contact', component: ContactPage },
     { title: 'New Claim, Choose', component: ClaimChoosePage },
     { title: 'New Claim, B-day', component: ClaimBirthdayPage },
@@ -34,7 +35,6 @@ export class MyApp {
     { title: 'FAQ', component: FAQPage },
     { title: 'Messages', component: MessagesInboxPage },
     { title: 'My Claims', component: MyClaimsPage },
-    { title: 'Password', component: PasswordPage },
     { title: 'Payment', component: PaymentPage },
     { title: 'Personal Info', component: PersonalInfoPage },
     { title: 'Policy', component: PolicyPage },

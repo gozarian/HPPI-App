@@ -5,6 +5,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SignInPage } from '../pages/sign-in/sign-in';
 import { AccountPage } from '../pages/account/account';
+import { ChangePasswordPage } from '../pages/change-password/change-password';
 import { ContactPage } from '../pages/contact/contact';
 import { ClaimChoosePage } from '../pages/claim-choose/claim-choose';
 import { ClaimBirthdayPage } from '../pages/claim-birthday/claim-birthday';
@@ -18,7 +19,6 @@ import { MessagesDetailPage } from '../pages/messages-detail/messages-detail';
 import { MessagesInboxPage } from '../pages/messages-inbox/messages-inbox';
 import { MyClaimsPage } from '../pages/my-claims/my-claims';
 import { MyClaimsDetailPage } from '../pages/my-claims-detail/my-claims-detail';
-import { PasswordPage } from '../pages/password/password';
 import { PaymentPage } from '../pages/payment/payment';
 import { PersonalInfoPage } from '../pages/personal-info/personal-info';
 import { PolicyPage } from '../pages/policy/policy';
@@ -33,6 +33,7 @@ import { SplashPage } from '../pages/splash/splash';
     HomePage,
     SignInPage,
     AccountPage,
+    ChangePasswordPage,
     ContactPage,
     ClaimChoosePage,
     ClaimBirthdayPage,
@@ -46,7 +47,6 @@ import { SplashPage } from '../pages/splash/splash';
     MessagesInboxPage,
     MyClaimsPage,
     MyClaimsDetailPage,
-    PasswordPage,
     PaymentPage,
     PersonalInfoPage,
     PolicyPage,
@@ -66,6 +66,7 @@ import { SplashPage } from '../pages/splash/splash';
     HomePage,
     SignInPage,
     AccountPage,
+    ChangePasswordPage,
     ContactPage,
     ClaimChoosePage,
     ClaimBirthdayPage,
@@ -79,7 +80,6 @@ import { SplashPage } from '../pages/splash/splash';
     MessagesInboxPage,
     MyClaimsPage,
     MyClaimsDetailPage,
-    PasswordPage,
     PaymentPage,
     PersonalInfoPage,
     PolicyPage,

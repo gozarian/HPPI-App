@@ -1,5 +1,6 @@
 export {SignInPage} from './sign-in/sign-in';
 export {AccountPage} from './account/account';
+export {ChangePasswordPage} from './change-password/change-password';
 export {ContactPage} from './contact/contact';
 export {ClaimChoosePage} from './claim-choose/claim-choose';
 export {ClaimBirthdayPage} from './claim-birthday/claim-birthday';
@@ -11,7 +12,6 @@ export {FAQPage} from './faq/faq';
 export {MessagesDetailPage} from './messages-detail/messages-detail';
 export {MessagesInboxPage} from './messages-inbox/messages-inbox';
 export {MyClaimsPage} from './my-claims/my-claims';
-export {PasswordPage} from './password/password';
 export {PaymentPage} from './payment/payment';
 export {PersonalInfoPage} from './personal-info/personal-info';
 export {PolicyPage} from './policy/policy';

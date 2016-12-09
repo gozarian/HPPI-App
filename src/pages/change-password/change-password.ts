@@ -3,10 +3,10 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 @Component({
-  selector: 'page-password',
-  templateUrl: 'password.html'
+  selector: 'page-change-password',
+  templateUrl: 'change-password.html'
 })
-export class PasswordPage {
+export class ChangePasswordPage {
 
   constructor(public navCtrl: NavController) {
 
