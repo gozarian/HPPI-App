@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      My Claims, Detail
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-note>{{ claim.date }}</ion-note>
+  <h2>{{ claim.number }}</h2>
+  <h3>{{ claim.petName }}</h3>
+  <div [innerHtml]="claim.status"></div>
+</ion-content>

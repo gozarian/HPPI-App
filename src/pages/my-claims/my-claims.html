@@ -3,6 +3,11 @@
     <button icon-only ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+    <ion-buttons right>
+      <button icon-only ion-button (click)="goHome()">
+        <ion-icon ios="ios-home" md="md-home"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>
       My Claims
     </ion-title>
@@ -10,4 +15,15 @@
 </ion-header>
 
 <ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let claim of claims" (click)="openClaim(claim)">
+      <ion-avatar item-left>
+        <img src="{{ claim.petPicture }}">
+      </ion-avatar>
+      <h2>Claim # {{ claim.number }}</h2>
+      <p>For: {{ claim.petName }}</p>
+      <p class="claim-status">{{ claim.status }}</p>
+      <ion-note item-right>{{ claim.date }}</ion-note>
+    </button>
+  </ion-list>
 </ion-content>
