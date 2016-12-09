@@ -9,5 +9,76 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-input type="number" placeholder="Card #"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <span>Exp</span>
+        <div class="ccExpWrapper">
+          <span class="ccExpPlaceholder" *ngIf="showMonth == false">mm</span>
+          <span class="ccExpMM">
+            <ion-datetime displayFormat="MM" pickerFormat="MM" [(ngModel)]="ccExpMM" (ionChange)="monthChange($event)"></ion-datetime>
+          </span>
+        </div>
+        <span>/</span>
+        <div class="ccExpWrapper">
+          <span class="ccExpPlaceholder" *ngIf="showYear == false">yyyy</span>
+          <span class="ccExpYY">
+            <ion-datetime displayFormat="YYYY" pickerFormat="YYYY" [(ngModel)]="ccExpYY" (ionChange)="yearChange($event)"></ion-datetime>
+          </span>
+        </div>
+      </ion-col>
+      <ion-col>
+        <span>CVV</span>
+        <ion-input class="ccCVV" type="number"></ion-input>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        Billing Address:
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Name"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Street Address"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Unit/Apt"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="City"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item no-lines>
+          <ion-select [(ngModel)]="state">
+            <ion-option *ngFor="let state of states">{{ state["alpha-2"] }}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-input type="number" placeholder="Zip Code"></ion-input>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <button ion-button>Save</button>
 </ion-content>

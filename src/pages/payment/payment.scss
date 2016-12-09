@@ -1,3 +1,36 @@
-page-password {
+page-payment {
 
+  ion-label {
+    height: auto;
+  }
+
+  ion-input {
+    display: inline-block;
+    border: 1px solid grey;
+  }
+
+  .input-ios .text-input {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  .ccExpWrapper {
+    display: inline-block;
+    position: relative;
+    border: 1px solid grey;
+  }
+
+  .ccExpPlaceholder {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    transform: translateY(-50%);
+  }
+
+  .ccCVV {
+    width: 40%;
+  }
 }
