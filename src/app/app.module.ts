@@ -23,6 +23,7 @@ import { PaymentPage } from '../pages/payment/payment';
 import { PersonalInfoPage } from '../pages/personal-info/personal-info';
 import { PolicyPage } from '../pages/policy/policy';
 import { ReferralPage } from '../pages/referral/referral';
+import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { ScoopMainPage } from '../pages/scoop-main/scoop-main';
 import { ScoopDetailPage } from '../pages/scoop-detail/scoop-detail';
 import { SplashPage } from '../pages/splash/splash';
@@ -51,6 +52,7 @@ import { SplashPage } from '../pages/splash/splash';
     PersonalInfoPage,
     PolicyPage,
     ReferralPage,
+    ResetPasswordPage,
     ScoopMainPage,
     ScoopDetailPage,
     SplashPage
@@ -84,6 +86,7 @@ import { SplashPage } from '../pages/splash/splash';
     PersonalInfoPage,
     PolicyPage,
     ReferralPage,
+    ResetPasswordPage,
     ScoopMainPage,
     ScoopDetailPage,
     SplashPage

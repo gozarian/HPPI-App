@@ -16,6 +16,7 @@ export {PaymentPage} from './payment/payment';
 export {PersonalInfoPage} from './personal-info/personal-info';
 export {PolicyPage} from './policy/policy';
 export {ReferralPage} from './referral/referral';
+export {ResetPasswordPage} from './reset-password/reset-password';
 export {ScoopMainPage} from './scoop-main/scoop-main';
 export {ScoopDetailPage} from './scoop-detail/scoop-detail';
 export {SplashPage} from './splash/splash';
