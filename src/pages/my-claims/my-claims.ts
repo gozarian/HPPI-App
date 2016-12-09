@@ -13,14 +13,14 @@ export class MyClaimsPage {
   claims = [
     {
       petName: 'Jackson',
-      petPicture: 'assets/test-imgs/test-pet-1.png',
+      petImage: 'assets/test-imgs/test-pet-1.png',
       number: 11123,
       date: '3/16/15',
       status: 'In Progress'
     },
     {
       petName: 'Jackson',
-      petPicture: 'assets/test-imgs/test-pet-1.png',
+      petImage: 'assets/test-imgs/test-pet-1.png',
       number: 10113,
       date: '1/19/15',
       status: 'Your Action Needed'

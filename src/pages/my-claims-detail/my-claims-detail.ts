@@ -14,7 +14,7 @@ export class MyClaimsDetailPage {
 
     this.claim = {
       petName: navParams.get('petName'),
-      petPicture: navParams.get('petPicture'),
+      petImage: navParams.get('petImage'),
       number: navParams.get('number'),
       date: navParams.get('date'),
       status: navParams.get('status')

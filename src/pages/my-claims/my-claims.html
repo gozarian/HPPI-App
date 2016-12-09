@@ -18,7 +18,7 @@
   <ion-list>
     <button ion-item *ngFor="let claim of claims" (click)="openClaim(claim)">
       <ion-avatar item-left>
-        <img src="{{ claim.petPicture }}">
+        <img src="{{ claim.petImage }}">
       </ion-avatar>
       <h2>Claim # {{ claim.number }}</h2>
       <p>For: {{ claim.petName }}</p>

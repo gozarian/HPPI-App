@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import { PersonalInfoPage } from '../personal-info/personal-info';
 import { BillingPage } from '../billing/billing';
 import { PaymentPage } from '../payment/payment';
-import { PasswordPage } from '../password/password';
+import { ChangePasswordPage } from '../change-password/change-password';
 import { PolicyPage } from '../policy/policy';
 import { FAQPage } from '../faq/faq';
 import { ContactPage } from '../contact/contact';
@@ -28,7 +28,7 @@ export class AccountPage {
       notification: false
     },
     { title: 'Change Password',
-      component: PasswordPage,
+      component: ChangePasswordPage,
       notification: false
     }
   ];

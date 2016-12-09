@@ -10,4 +10,46 @@
 </ion-header>
 
 <ion-content>
+  <ion-avatar>
+    <img src="{{ policy.petImage }}">
+  </ion-avatar>
+  <h3>{{ policy.petName }}</h3>
+  <ion-list no-lines>
+    <ion-item>
+      <p>
+        <span class="policy-label">Pet Policy #:</span>
+        <span class="policy-value">{{ policy.number }}</span>
+      </p>
+    </ion-item>
+    <ion-item>
+      <p>
+        <span class="policy-label">Pet Protected Since:</span>
+        <span class="policy-value">{{ policy.startDate }}</span>
+      </p>
+    </ion-item>
+    <ion-item>
+      <p>
+        <span class="policy-label">Reimbursement:</span>
+        <span class="policy-value">{{ policy.reimbursement }}%</span>
+      </p>
+    </ion-item>
+    <ion-item>
+      <p>
+        <span class="policy-label">Annual Deductible:</span>
+        <span class="policy-value">${{ policy.deductible }}</span>
+      </p>
+    </ion-item>
+    <ion-item>
+      <p>
+        <span class="policy-label">Monthly Premium:</span>
+        <span class="policy-value">${{ policy.premium }}</span>
+      </p>
+    </ion-item>
+  </ion-list>
+  <ion-list no-lines>
+    <button ion-item (click)="newClaim()">
+      <ion-icon name="plus"></ion-icon>
+      File a New Claim
+    </button>
+  </ion-list>
 </ion-content>
