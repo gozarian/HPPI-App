@@ -1,3 +1,26 @@
 page-faq {
 
+  .label-ios {
+    display: flex;
+    justify-content: space-between;
+
+    ion-icon {
+      align-self: center;
+    }
+  }
+
+  .button-inner {
+    white-space: normal;
+  }
+
+  .item-ios {
+
+    .item-button {
+      height: auto;
+    }
+  }
+}
+
+page-faq-content {
+
 }

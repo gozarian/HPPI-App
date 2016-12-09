@@ -13,6 +13,7 @@ import { ClaimVerifyPage } from '../pages/claim-verify/claim-verify';
 import { ClaimSummaryPage } from '../pages/claim-summary/claim-summary';
 import { BillingPage } from '../pages/billing/billing';
 import { FAQPage } from '../pages/faq/faq';
+import { FAQContentPage } from '../pages/faq/faq-content';
 import { MessagesDetailPage } from '../pages/messages-detail/messages-detail';
 import { MessagesInboxPage } from '../pages/messages-inbox/messages-inbox';
 import { MyClaimsPage } from '../pages/my-claims/my-claims';
@@ -39,6 +40,7 @@ import { SplashPage } from '../pages/splash/splash';
     ClaimSummaryPage,
     BillingPage,
     FAQPage,
+    FAQContentPage,
     MessagesDetailPage,
     MessagesInboxPage,
     MyClaimsPage,
@@ -70,6 +72,7 @@ import { SplashPage } from '../pages/splash/splash';
     ClaimSummaryPage,
     BillingPage,
     FAQPage,
+    FAQContentPage,
     MessagesDetailPage,
     MessagesInboxPage,
     MyClaimsPage,
