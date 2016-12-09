@@ -18,3 +18,4 @@ export {PolicyPage} from './policy/policy';
 export {ReferralPage} from './referral/referral';
 export {ScoopMainPage} from './scoop-main/scoop-main';
 export {ScoopDetailPage} from './scoop-detail/scoop-detail';
+export {SplashPage} from './splash/splash';

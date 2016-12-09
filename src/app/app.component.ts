@@ -2,14 +2,23 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController, Nav } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { HomePage } from '../pages/home/home';
-import { SignInPage, AccountPage, ContactPage, ClaimChoosePage, ClaimBirthdayPage, ClaimPhotoPage, ClaimVerifyPage, ClaimSummaryPage, BillingPage, FAQPage, MessagesDetailPage, MessagesInboxPage, MyClaimsPage, PasswordPage, PaymentPage, PersonalInfoPage, PolicyPage, ReferralPage, ScoopMainPage, ScoopDetailPage } from '../pages/pages';
-
+import { SignInPage, AccountPage, ContactPage, ClaimChoosePage, ClaimBirthdayPage, ClaimPhotoPage, ClaimVerifyPage, ClaimSummaryPage, BillingPage, FAQPage, MessagesDetailPage, MessagesInboxPage, MyClaimsPage, PasswordPage, PaymentPage, PersonalInfoPage, PolicyPage, ReferralPage, ScoopMainPage, ScoopDetailPage, SplashPage } from '../pages/pages';
+import { Session } from '../providers/session';
+import { HpApi } from '../providers/hp-api';
+import { Environment } from '../providers/environment';
+import { Storage } from '@ionic/storage';
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [
+    Session,
+    Storage,
+    HpApi,
+    Environment
+  ]
 })
 export class MyApp {
-  public rootPage: any = HomePage;
+  public rootPage: any = SplashPage;
   @ViewChild(Nav) nav: Nav;
 
   pages = [
@@ -37,13 +46,16 @@ export class MyApp {
 
   constructor(
     platform: Platform,
-    public menu: MenuController
+    public menu: MenuController,
+    session: Session
   ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
+
+      this.rootPage = SignInPage;
     });
   }
 

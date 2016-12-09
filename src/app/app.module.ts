@@ -23,6 +23,7 @@ import { PolicyPage } from '../pages/policy/policy';
 import { ReferralPage } from '../pages/referral/referral';
 import { ScoopMainPage } from '../pages/scoop-main/scoop-main';
 import { ScoopDetailPage } from '../pages/scoop-detail/scoop-detail';
+import { SplashPage } from '../pages/splash/splash';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ScoopDetailPage } from '../pages/scoop-detail/scoop-detail';
     PolicyPage,
     ReferralPage,
     ScoopMainPage,
-    ScoopDetailPage
+    ScoopDetailPage,
+    SplashPage
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -77,8 +79,11 @@ import { ScoopDetailPage } from '../pages/scoop-detail/scoop-detail';
     PolicyPage,
     ReferralPage,
     ScoopMainPage,
-    ScoopDetailPage
+    ScoopDetailPage,
+    SplashPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
+  ]
 })
 export class AppModule {}
