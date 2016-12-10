@@ -28,7 +28,7 @@
     </ion-list-header>
     <button ion-item *ngFor="let item of information" (click)="itemSelected(item)">
       {{ item.title }}
-    </button>  
+    </button>
   </ion-list>
   <ion-list>
     <ion-list-header>
@@ -37,7 +37,7 @@
     </ion-list-header>
     <button ion-item *ngFor="let item of policies" (click)="itemSelected(item)">
       {{ item.title }}
-    </button>  
+    </button>
   </ion-list>
   <ion-list>
     <ion-list-header>
@@ -46,7 +46,7 @@
     </ion-list-header>
     <button ion-item *ngFor="let item of support" (click)="itemSelected(item)">
       {{ item.title }}
-    </button>  
+    </button>
   </ion-list>
-  <button ion-button>Sign Out</button>
+  <button ion-button (click)="logout()">Sign Out</button>
 </ion-content>

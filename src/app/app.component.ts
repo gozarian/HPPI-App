@@ -55,7 +55,13 @@ export class MyApp {
       StatusBar.styleDefault();
       Splashscreen.hide();
 
-      this.rootPage = SignInPage;
+      session.restore().subscribe(() => {
+        this.rootPage = HomePage;
+      },
+      () => {
+        this.rootPage = SignInPage;
+      })
+
     });
   }
 

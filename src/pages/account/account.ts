@@ -7,6 +7,8 @@ import { ChangePasswordPage } from '../change-password/change-password';
 import { PolicyPage } from '../policy/policy';
 import { FAQPage } from '../faq/faq';
 import { ContactPage } from '../contact/contact';
+import { SignInPage } from '../sign-in/sign-in';
+import { Session } from '../../providers/session';
 
 @Component({
   selector: 'page-account',
@@ -55,11 +57,16 @@ export class AccountPage {
     }
   ];
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private session: Session) {
 
   }
 
   itemSelected(item) {
     this.navCtrl.setRoot(item.component);
+  }
+
+  logout() {
+    this.session.destroy();
+    this.navCtrl.setRoot(SignInPage);
   }
 }
