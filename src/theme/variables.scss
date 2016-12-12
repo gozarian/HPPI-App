@@ -10,7 +10,7 @@
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
 
-$font-size-base: 14px;
+$font-size-base: 16px;
 $button-md-font-size: $font-size-base;
 
 
@@ -24,12 +24,99 @@ $button-md-font-size: $font-size-base;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #39A354,
-  secondary:  #32db64,
-  danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #48494A
+  primary:    (
+    base:     #39A354, // Green
+    contrast: #6BB675
+  ),
+  accent:    (
+    base:     #FB6517, // Orange
+    contrast: #DF7444
+  ),
+  warning:    (
+    base:     #F31923, // Red
+    contrast: #FEB7A4
+  ),
+  base:    (
+    base:     #F7F8F2, // White base
+    contrast: #FFFFFF
+  ),
+  greyscale:    (
+    base:     #5C5C5C,
+    contrast: #393A39
+  ),
+  border:     #A2A2A2 // Light grey
 );
+
+
+
+
+// Type Scale
+// --------------------------------------------------
+
+$type-scale: (        // Minor Second
+  -4: 0.772rem,       // ~12px
+  -3: 0.823rem,       // ~13px
+  -2: 0.878rem,       // ~14px
+  -1: 0.937rem,       // ~15px
+  0: $font-size-base, // 16px
+  1: 1.067rem,        // ~17px
+  2: 1.138rem,        // ~18px
+  3: 1.215rem,        // ~19px
+  4: 1.296rem         // ~20px
+);
+
+// Helper function
+// Use: `font-size: type-scale(-2);`
+@function type-scale($level) {
+  @return map-get($type-scale, $level);
+}
+
+
+
+
+// Baseline Grid
+// --------------------------------------------------
+
+$base-line-height: $font-size-base * 1.375; // 22px
+
+$line-height: (
+  0: $base-line-height,
+  1: $base-line-height * 2
+);
+
+// Helper function
+// Use: `line-height: line-height(2);`
+@function line-height($level) {
+  @return map-get($line-height, $level);
+}
+
+
+
+
+// Font Families
+// --------------------------------------------------
+$font-family-base: "Open Sans", sans-serif;
+$font-family-alt: "Kite One", sans-serif;
+
+
+
+
+// Font Weights
+// --------------------------------------------------
+$weight: (
+  light: 300,
+  regular: 400,
+  semibold: 600,
+  bold: 700,
+);
+
+// Helper function
+// Use: `font-weight: weight(bold);`
+@function weight($level) {
+  @return map-get($weight, $level);
+}
+
+
 
 
 // App iOS Variables
