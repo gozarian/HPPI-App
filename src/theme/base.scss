@@ -1,0 +1,41 @@
+body {
+  font-family: $font-family-base;
+  font-weight: weight(regular);
+  line-height: line-height(0);
+}
+
+p {
+  color: color($colors, greyscale, contrast);
+}
+
+strong {
+  font-weight: weight(bold);
+}
+
+.list-ios {
+  .item-input[no-lines] {
+    color: color($colors, greyscale, contrast);
+    border: 1px solid color($colors, border);
+  }
+}
+
+input::placeholder {
+  font-size: type-scale(-1);
+  font-style: italic;
+}
+
+
+
+// Temporary Toolbar Styles (for Development only)
+// --------------------------------------------------
+
+.menu-inner .toolbar-ios {
+
+  .toolbar-title-ios {
+    color: white
+  }
+
+  .bar-button-default-ios {
+    color: white;
+  }
+}

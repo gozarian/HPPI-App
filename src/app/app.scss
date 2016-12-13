@@ -15,16 +15,5 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-body {
-  font-family: $font-family-base;
-  font-weight: weight(regular);
-  line-height: line-height(0);
-}
-
-p {
-  color: color($colors, greyscale, contrast);
-}
-
-strong {
-  font-weight: weight(bold);
-}
+@import "../theme/base";
+@import "../theme/buttons";
