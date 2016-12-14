@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-modal-close</title>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home-Modal" transform="translate(-287.000000, -54.000000)" fill="#FFFFFF">
+            <path d="M297.365364,62.7897783 L304.579557,55.5755853 L303.003971,54 L295.789778,61.2141931 L288.575585,54 L287,55.5755853 L294.214193,62.7897783 L287,70.0039714 L288.575585,71.5795567 L295.789778,64.3653636 L303.003971,71.5795567 L304.579557,70.0039714 L297.365364,62.7897783 Z" id="icon-modal-close"></path>
+        </g>
+    </g>
+</svg>

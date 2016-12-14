@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { MenuController, NavController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { MenuController, NavController, ModalController, Content } from 'ionic-angular';
+import { NewFeaturesPage } from './new-features-modal';
 import { ClaimChoosePage } from '../claim-choose/claim-choose';
 import { MyClaimsPage } from '../my-claims/my-claims';
 import { MessagesInboxPage } from '../messages-inbox/messages-inbox';
@@ -12,6 +13,12 @@ import { ReferralPage } from '../referral/referral';
   templateUrl: 'home.html'
 })
 export class HomePage {
+
+  @ViewChild(Content) content: Content;
+
+  scrollToTop() {
+    this.content.scrollToTop();
+  }
 
   pages = [
     { title: 'New Claim',
@@ -85,7 +92,8 @@ export class HomePage {
 
   constructor(
     public menuCtrl: MenuController,
-    public nav: NavController
+    public nav: NavController,
+    public modalCtrl: ModalController
   ) {}
 
   openMenu() {
@@ -102,5 +110,11 @@ export class HomePage {
 
   openPage(page) {
     this.nav.setRoot(page.component);
+  }
+
+  showNewFeatures() {
+    this.scrollToTop();
+    let newFeatures = this.modalCtrl.create(NewFeaturesPage);
+    newFeatures.present();
   }
 }

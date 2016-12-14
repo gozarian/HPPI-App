@@ -1,0 +1,180 @@
+page-new-features {
+
+  // Modal Title and Close Button
+  // --------------------------------------------------
+
+  .toolbar-ios {
+
+    ion-title {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+
+  .toolbar-title {
+    padding-top: $base-line-height;
+    font-size: 3rem;
+    font-weight: weight(bold);
+    color: color($colors, base, contrast);
+  }
+
+  .toolbar-background {
+    background: transparent;
+    border-bottom-width: 0;
+  }
+
+  .bar-buttons-ios {
+    padding-right: $base-line-height / 2;
+  }
+
+  .bar-button-ios[icon-only] {
+    padding-top: 1rem;
+  }
+
+
+
+  // New Feature Grid
+  // --------------------------------------------------
+
+  .content {
+    background: $modal-background-color;
+
+    .scroll-content {
+      display: flex;
+      justify-content: flex-end;
+      overflow-y: hidden;
+    }
+
+    .new-features-grid {
+      justify-content: flex-end;
+
+      ion-col {
+        flex-flow: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2px;
+        margin-top: $base-line-height;
+        white-space: normal;
+        font-size: type-scale(-2);
+
+        &.referral-text {
+          display: flex;
+          margin-top: $base-line-height / 2;
+        }
+
+        &.justify-end {
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+
+
+
+      // New Feature Icons
+      // ------------------------------------------
+
+      ion-icon {
+        position: relative;
+        height: 55px;
+        width: 75px;
+        margin: 0 auto;
+        font-size: 6rem;
+      }
+
+      .new-feature-icon {
+        align-items: center;
+        margin: 0 auto;
+        padding-top: 8px;
+        width: 100px;
+        text-align: center;
+        background-color: color($colors, base, contrast);
+        border-radius: 10px;
+
+        label {
+          display: block;
+        }
+      }
+
+
+
+      // Feature Descriptions and Arrows
+      // ------------------------------------------
+
+      p {
+        position: relative;
+        margin: 0;
+        font-size: type-scale(2);
+        color: color($colors, base, contrast);
+
+        &[class^="new-feature"] {
+
+          &:after {
+            position: absolute;
+            content: "";
+            display: block;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: left center;
+          }
+        }
+
+        &.new-feature-account {
+          bottom: -$base-line-height;
+          left: 14px;
+          width: 125px;
+          padding-bottom: 100px;
+
+          &:after {
+            height: 100px;
+            width: 60px;
+            background-image: url('/assets/misc/arrow-account.svg');
+          }
+        }
+
+        &.new-feature-scoop {
+          bottom: -$base-line-height;
+          max-width: 100px;
+          padding-bottom: 40px;
+
+          &:after {
+            height: 38px;
+            width: 10px;
+            background-image: url('/assets/misc/arrow-scoop.svg');
+          }
+        }
+
+        &.new-feature-messages {
+          max-width: 100px;
+          padding-bottom: 40px;
+
+          &:after {
+            right: 15px;
+            bottom: 10px;
+            height: 38px;
+            width: 12px;
+            background-image: url('/assets/misc/arrow-messages.svg');
+          }
+        }
+
+        &.new-feature-referral {
+          display: inline-block;
+          right: 110px;
+          width: 140px;
+
+          span {
+            display: block;
+          }
+
+          &:after {
+            display: inline-block;
+            right: -38px;
+            top: -5px;
+            height: 26px;
+            width: 33px;
+            background-image: url('/assets/misc/arrow-referral.svg');
+          }
+        }
+      }
+    }
+  }
+}

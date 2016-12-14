@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      New Features
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon class="ion-icon-modal-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="new-features-grid">
+    <ion-row wrap>
+      <ion-col width-33 class="justify-end">
+        <p class="new-feature-account">Manage your account, FAQs, and more</p>
+      </ion-col>
+      <ion-col width-33 class="justify-end">
+        <p class="new-feature-scoop">The latest pet news &amp; health tips</p>
+      </ion-col>
+      <ion-col width-33 class="justify-end">
+        <p class="new-feature-messages">New Message Center!</p>
+        <div class="new-feature-icon">
+          <ion-icon class="ion-icon-messages"></ion-icon>
+          <label>Messages</label>
+        </div>
+      </ion-col>
+      <ion-col width-33>
+        <div class="new-feature-icon">
+          <ion-icon class="ion-icon-account"></ion-icon>
+          <label>My Account</label>
+        </div>
+      </ion-col>
+      <ion-col width-33>
+        <div class="new-feature-icon">
+          <ion-icon class="ion-icon-scoop"></ion-icon>
+          <label>The Scoop</label>
+        </div>
+      </ion-col>
+      <ion-col width-33>
+        <div class="new-feature-icon">
+          <ion-icon class="ion-icon-referral"></ion-icon>
+          <label>Refer A Friend</label>
+        </div>
+      </ion-col>
+      <ion-col offset-66 class="referral-text">
+        <p class="new-feature-referral">Tell a friend and<span>get rewarded!</span></p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

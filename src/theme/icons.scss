@@ -30,3 +30,7 @@
 .ion-icon-referral {
   @include hp-icons;
 }
+
+.ion-icon-modal-close {
+  @include hp-icons(url('/assets/icon/icon-modal-close.svg'));
+}
