@@ -16,35 +16,72 @@ export class HomePage {
   pages = [
     { title: 'New Claim',
       component: ClaimChoosePage,
-      icon: 'md-clipboard',
+      icon: 'ion-icon-new-claim',
       badge: false
     },
     { title: 'View My Claims',
       component: MyClaimsPage,
-      icon: 'md-document',
+      icon: 'ion-icon-view-claims',
       badge: false
     },
     { title: 'Messages',
       component: MessagesInboxPage,
-      icon: 'md-mail',
+      icon: 'ion-icon-messages',
       badge: 6
     },
     { title: 'My Account',
       component: AccountPage,
-      icon: 'md-contact',
+      icon: 'ion-icon-account',
       badge: false
     },
     { title: 'The Scoop',
       component: ScoopMainPage,
-      icon: 'md-book',
+      icon: 'ion-icon-scoop',
       badge: false
     },
     { title: 'Refer A Friend',
       component: ReferralPage,
-      icon: 'ios-call',
+      icon: 'ion-icon-referral',
       badge: false
     }
   ];
+
+  pets = [
+    {
+      name: "Samson",
+      image: "/assets/test-imgs/test-doodle.jpg",
+      type: "dog"
+    },
+    {
+      name: "Pupils",
+      image: "/assets/test-imgs/test-cat.jpg",
+      type: "cat"
+    },
+    {
+      name: "Crazy Long Name for a Pet",
+      image: "/assets/test-imgs/test-doodle.jpg",
+      type: "dog"
+    },
+    {
+      name: "Bagel",
+      image: "/assets/test-imgs/test-doodle-bagel.jpg",
+      type: "dog"
+    },
+    {
+      name: "Kitty",
+      image: "/assets/test-imgs/test-cat.jpg",
+      type: "cat"
+    },
+    {
+      name: "Sleepy",
+      image: "/assets/test-imgs/test-doodle.jpg",
+      type: "dog"
+    }
+  ];
+
+  user = {
+    name: "peter"
+  };
 
   constructor(
     public menuCtrl: MenuController,

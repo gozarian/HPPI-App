@@ -1,59 +1,180 @@
 page-home {
 
-  .scroll-content {
-    overflow: hidden;
+  // Logo Layout
+  // --------------------------------------------------
+
+  .home-logo {
+    height: $base-line-height * 1.8;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    img {
+      height: 100%;
+      margin: 0 auto;
+    }
   }
 
+
+
+  // Select a Pet
+  // --------------------------------------------------
+
   ion-scroll {
-    height: 37%;
+    height: 220px;
     white-space: nowrap;
+
+    .scroll-content {
+      background-image: linear-gradient(to top, transparent 0%, transparent 13%, color($colors, primary, base) 13%, color($colors, primary, base) 100%);
+    }
 
     .scroll-zoom-wrapper {
       height: 100%;
     }
 
-    img {
+    .home-pet-grid {
       height: 100%;
+      padding: 0;
     }
 
-    ion-card {
-      height: 100%;
+    ion-col {
+      min-width: 160px;
+      padding: 0;
+    }
+
+    figure {
+      position: relative;
+      top: -2px;
+      height: 212px;
+      margin: 0;
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 10px;
+        width: 100%;
+        box-shadow: inset 0 10px 5px -5px rgba(0, 0, 0, 0.2);
+      }
+
+      .img-wrapper {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 195px;
+        height: 195px;
+        margin: 0 auto;
+        background-size: cover;
+        background-position: center;
+        border-radius: 50%;
+        border: 7px solid color($colors, primary, contrast);
+        transform: translateX(-50%);
+      }
+
+      figcaption {
+        position: absolute;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        max-width: 120px;
+        margin: 0 auto;
+        padding-top: $base-line-height / 2;
+        padding-bottom: $base-line-height / 2;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        color: color($colors, base, contrast);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
   }
 
-  .home-pet-grid {
-    height: 100%;
-  }
 
-  ion-grid {
+
+  // Navigation Grid
+  // --------------------------------------------------
+
+  .home-nav-grid {
     padding: 0;
+
+    ion-row {
+      height: 100%;
+    }
+
+    ion-col {
+      padding: 0;
+      margin-top: $base-line-height;
+    }
 
     ion-icon {
       position: relative;
+      height: 55px;
+      width: 75px;
       font-size: 6rem;
 
       ion-badge {
         position: absolute;
         top: 0;
         right: -1rem;
-        padding: 3px 6px;
+        padding: 4px 7px;
+        font-size: type-scale(0);
+        color: color($colors, base, contrast);
+        background-color: color($colors, accent, base);
+        border-radius: 13px;
+        box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.5);
       }
-    }
-
-    ion-col {
-      padding: 2px;
     }
 
     .button-inner {
       flex-flow: column;
       justify-content: space-between;
       white-space: normal;
-      font-size: $font-size-base;
+      font-size: type-scale(-2);
     }
 
     .button-full {
       height: 100%;
       padding: 0;
+    }
+  }
+
+
+
+  // Home Messages
+  // --------------------------------------------------
+
+  .home-notify {
+    margin-top: $base-line-height;
+    margin-bottom: 0;
+    padding: type-scale(0) 0;
+    font-size: type-scale(-2);
+    font-weight: weight(bold);
+    background-color: color($colors, base, base);
+    border-top: 1px solid color($colors, border);
+
+    &.error {
+      display: flex;
+      justify-content: center;
+      color: color($colors, warning, base);
+
+      &:before {
+        content: "";
+        height: 21px;
+        width: 21px;
+        margin-right: 5px;
+        background-image: url('/assets/icon/error-exclamation.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+      }
+    }
+
+    &.success {
+      color: color($colors, primary, base);
+      text-transform: capitalize;
     }
   }
 }

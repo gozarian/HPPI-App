@@ -8,28 +8,40 @@
 </ion-header>
 
 <ion-content text-center>
-  <h1>Healthy Paws</h1>
-  <p>Pet Insurance & Foundation</p>
+  <figure class="home-logo">
+    <img src="/assets/logos/logo.png">
+  </figure>
   <ion-scroll scrollX="true" scrollY="false" zoom="false" maxZoom="false">
     <ion-grid class="home-pet-grid">
       <ion-row>
-        <ion-col width-50>
-          <img src="assets/test-imgs/test-pet-1.png">
-        </ion-col>
-        <ion-col width-50>
-          <img src="assets/test-imgs/test-pet-2.png">
-        </ion-col>
-        <ion-col width-50>
-          <img src="assets/test-imgs/test-pet-1.png">
+        <ion-col
+          *ngFor="let pet of pets; let i = index;"
+          [style.z-index]="pets.length - i">
+          <figure>
+            <div
+              class="img-wrapper"
+              [style.background-image]="'url(' + pet.image + ')'">
+            </div>
+            <figcaption
+              *ngIf="pet.type == 'dog'"
+              style="background-image: url('/assets/test-imgs/pet-label-bkgrd.svg')">
+              {{ pet.name }}
+            </figcaption>
+            <figcaption
+              *ngIf="pet.type == 'cat'"
+              style="background-image: url('/assets/test-imgs/pet-label-bkgrd.svg')">
+              {{ pet.name }}
+            </figcaption>
+          </figure>
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-scroll>
-  <ion-grid>
+  <ion-grid class="home-nav-grid">
     <ion-row wrap>
       <ion-col width-33 *ngFor="let page of pages">
         <button ion-button clear full (click)="openPage(page)">
-          <ion-icon name="{{ page.icon }}">
+          <ion-icon [class]="page.icon">
             <ion-badge *ngIf="page.badge" item-right color="danger">{{ page.badge }}</ion-badge>
           </ion-icon>
           <label>{{ page.title }}</label>
@@ -37,4 +49,6 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <p class="home-notify error">Your account has been suspended</p>
+  <p class="home-notify success">Welcome {{ user.name }}!</p>
 </ion-content>
