@@ -1,27 +1,37 @@
-<ion-header>
-  <ion-navbar>
-    <button icon-only ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>
-      Claim, Birthday
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content>
-  <ion-avatar>
-    <img src="{{ chosenPet.img }}">
-  </ion-avatar>
-  <h3>Claim for {{ chosenPet.name }}</h3>
-  <ion-item>
-    <ion-label clear color="primary">When did Jackson join your family?</ion-label>
-    <ion-datetime displayFormat="MMMM D YYYY" pickerFormat="DD MMMM YYYY" [(ngModel)]="myDate"></ion-datetime>
-  </ion-item>
-  <ion-list no-lines>
-    <button ion-item (click)="addPhoto(chosenPet)">
-      <ion-icon name="tennisball"></ion-icon>
-      Next
-    </button> 
+  <ion-header class="primary-header">
+    <ion-navbar>
+      <button icon-only ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>
+        New Claim
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  <section class="choose-date-header">
+    <figure>
+      <div
+        class="img-wrapper"
+        [style.background-image]="'url(' + chosenPet.img + ')'">
+      </div>
+    </figure>
+    <h3>Claim for {{ chosenPet.name }}</h3>
+  </section>
+  <ion-list class="choose-date">
+    <ion-item class="date-item">
+      <ion-label clear color="primary">When did {{ chosenPet.name }} join your family?</ion-label>
+      <ion-datetime
+        displayFormat="MMMM D YYYY"
+        pickerFormat="DD MMMM YYYY"
+        [(ngModel)]="myDate">
+      </ion-datetime>
+    </ion-item>
+    <ion-item no-lines class="bottom-next">
+      <button ion-item (click)="addPhoto(chosenPet)">
+        <ion-icon class="ion-icon-ball"></ion-icon>
+        Next
+      </button>
+    </ion-item>
   </ion-list>
 </ion-content>

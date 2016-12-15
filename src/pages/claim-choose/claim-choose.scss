@@ -37,6 +37,11 @@ page-claim-choose {
     .item-inner {
       border-bottom: 0;
     }
+
+    h4 {
+      font-size: type-scale(1);
+      line-height: 25px;
+    }
   }
 
   figure {
