@@ -97,7 +97,7 @@ export class HomePage {
   ) {}
 
   openMenu() {
-   this.menuCtrl.open();
+    this.menuCtrl.open();
   }
 
   closeMenu() {

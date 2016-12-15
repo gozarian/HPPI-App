@@ -1,5 +1,16 @@
 page-claim-photo {
 
+  // Background and layout
+  // --------------------------------------------------
+
+  .content-ios {
+    background-color: color($colors, base, base);
+  }
+
+  ion-header {
+    position: relative;
+  }
+
   ion-label {
     text-align: center;
   }
