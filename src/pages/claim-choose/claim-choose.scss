@@ -1,6 +1,54 @@
 page-claim-choose {
 
+  .content-ios {
+    background-color: color($colors, base, base);
+  }
+
   ion-header {
     position: relative;
+  }
+
+
+
+  // Header
+  // --------------------------------------------------
+
+  h3 {
+    margin: $base-line-height * 1.5 auto $base-line-height;
+    font-size: type-scale(-1);
+    font-weight: weight(bold);
+    color: color($colors, primary, base);
+    text-align: center;
+  }
+
+
+
+  // Pet List
+  // --------------------------------------------------
+
+  .label-ios {
+    display: flex;
+    align-items: center;
+  }
+
+  .list-ios .item-block {
+    border-color: #E2E2E2;
+
+    .item-inner {
+      border-bottom: 0;
+    }
+  }
+
+  figure {
+    margin: 0 1.3rem 0 0;
+  }
+
+  .img-wrapper {
+    height: 85px;
+    width: 85px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    border: 4px solid color($colors, primary, base);
   }
 }

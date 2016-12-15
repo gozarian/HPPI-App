@@ -37,6 +37,24 @@ img {
   border-bottom-width: 0;
 }
 
+// List border changes
+// --------------------------------------------------
+
+.hp-list {
+
+  & > .item-block:first-child {
+    border-color: #E2E2E2;
+  }
+
+  & > .item-block:last-child {
+    border-color: #E2E2E2;
+  }
+
+  .item-ios {
+    border-bottom: 1px solid #E2E2E2;
+  }
+}
+
 
 
 // Ionic 2 Modal Full Screen on Tablets

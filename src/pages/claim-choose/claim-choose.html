@@ -9,17 +9,18 @@
       </ion-title>
     </ion-navbar>
   </ion-header>
-  <ion-card>
-    <ion-card-header>
-      Which pet is this claim for?
-    </ion-card-header>
-    <ion-list>
+  <section>
+    <h3>Which pet is this claim for?</h3>
+    <ion-list class="hp-list">
       <button ion-item *ngFor="let pet of pets" (click)="choosePet(pet)">
-        <ion-avatar item-left>
-          <img src="{{ pet.img }}">
-        </ion-avatar>
-        <h3>{{ pet.name }}</h3>
+        <figure>
+          <div
+            class="img-wrapper"
+            [style.background-image]="'url(' + pet.img + ')'">
+          </div>
+        </figure>
+        <h4>{{ pet.name }}</h4>
       </button>
     </ion-list>
-  </ion-card>
+  </section>
 </ion-content>
