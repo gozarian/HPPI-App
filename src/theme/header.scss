@@ -2,3 +2,43 @@
   color: $color;
   background-color: $bkgrdcolor;
 }
+
+.primary-header {
+
+  .bar-button-default-ios {
+    color: color($colors, base, contrast);
+  }
+
+  .toolbar-background {
+    @include header;
+  }
+
+  .toolbar-title-ios {
+    font-size: 2.1rem;
+    font-weight: weight(bold);
+    color: color($colors, base, contrast);
+  }
+}
+
+.back-home-header {
+
+  .back-button {
+
+    .button-inner {
+      position: relative;
+
+      &:after {
+        @include hp-icons(url('/assets/icon/icon-home.svg'));
+        position: absolute;
+        left: $base-line-height;
+        content: "";
+        width: 21px;
+        height: 23.5px;
+      }
+    }
+  }
+
+  .back-button-text-ios {
+    visibility: hidden;
+  }
+}

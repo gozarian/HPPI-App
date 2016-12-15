@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="21px" height="24px" viewBox="0 0 21 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-home</title>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Symbols" transform="translate(-32.000000, -29.000000)" fill="#FFFFFF">
+            <path d="M37.5115957,43.4936523 L37.5003052,43.4936523 L37.5003052,50.4936523 L47.5003052,50.4936523 L47.5003052,43.4936523 L47.4903352,43.4936523 C47.3963231,43.1894563 46.3242983,40.0138541 42.5410377,40.0138541 C38.713026,40.0138541 37.5888256,43.2561015 37.5115957,43.4936523 Z M32,39.473999 L42.5044556,29 L53.0343427,39.5144272 L51.4875488,39.4891357 L51.4974976,52.4822388 L33.5142212,52.4827271 L33.5101929,39.4926758 L32,39.473999 Z" id="icon-home"></path>
+        </g>
+    </g>
+</svg>

@@ -1,20 +1,14 @@
-<ion-header>
-  <ion-navbar>
-    <button icon-only ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-buttons right>
-      <button icon-only ion-button (click)="goHome()">
-        <ion-icon ios="ios-home" md="md-home"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-title>
-      My Claims
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content>
+  <ion-header class="primary-header back-home-header">
+    <ion-navbar>
+      <button icon-only ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>
+        My Claims
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
   <ion-list>
     <button ion-item *ngFor="let claim of claims" (click)="openClaim(claim)">
       <ion-avatar item-left>

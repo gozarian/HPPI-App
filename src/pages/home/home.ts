@@ -92,7 +92,7 @@ export class HomePage {
 
   constructor(
     public menuCtrl: MenuController,
-    public nav: NavController,
+    public navCtrl: NavController,
     public modalCtrl: ModalController
   ) {}
 
@@ -109,7 +109,7 @@ export class HomePage {
   }
 
   openPage(page) {
-    this.nav.setRoot(page.component);
+    this.navCtrl.push(page);
   }
 
   showNewFeatures() {

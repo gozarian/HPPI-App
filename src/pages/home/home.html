@@ -1,15 +1,14 @@
-<ion-header>
-  <ion-navbar>
-    <button icon-only ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <figure class="home-logo">
-      <img src="/assets/logos/logo.png">
-    </figure>
-  </ion-navbar>
-</ion-header>
-
 <ion-content text-center>
+  <ion-header>
+    <ion-navbar>
+      <button icon-only ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <figure class="home-logo">
+        <img src="/assets/logos/logo.png">
+      </figure>
+    </ion-navbar>
+  </ion-header>
   <ion-scroll scrollX="true" scrollY="false" zoom="false" maxZoom="false">
     <ion-grid class="home-pet-grid">
       <ion-row>
@@ -39,7 +38,7 @@
   <ion-grid class="home-nav-grid">
     <ion-row wrap>
       <ion-col width-33 *ngFor="let page of pages">
-        <button ion-button clear full (click)="openPage(page)">
+        <button ion-button clear full (click)="openPage(page.component)">
           <ion-icon [class]="page.icon">
             <ion-badge *ngIf="page.badge" item-right color="danger">{{ page.badge }}</ion-badge>
           </ion-icon>

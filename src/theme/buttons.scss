@@ -16,3 +16,17 @@
   color: $color;
   background-color: transparent;
 }
+
+
+
+// Development Burger Menu Layout
+// --------------------------------------------------
+
+ion-navbar {
+  position:relative;
+
+  .bar-button-menutoggle {
+    position: absolute;
+    right: 5px;
+  }
+}

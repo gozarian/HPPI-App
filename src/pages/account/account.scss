@@ -1,16 +1,10 @@
 page-account {
 
-  .toolbar-background {
-    @include header;
+  ion-header {
+    position: relative;
   }
 
   .bar-button-menutoggle {
-    color: color($colors, base, contrast);
-  }
-
-  .toolbar-title-ios {
-    font-size: 2.1rem;
-    font-weight: weight(bold);
     color: color($colors, base, contrast);
   }
 
