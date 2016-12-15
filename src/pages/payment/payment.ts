@@ -10,6 +10,11 @@ export class PaymentPage {
 
   showMonth: boolean = false;
   showYear: boolean = false;
+  card: {
+    month: '',
+    year: '',
+    state: ''
+  };
 
   states = [
     {"name":"Alabama","alpha-2":"AL"},
@@ -24,7 +29,7 @@ export class PaymentPage {
     {"name":"West Virginia","alpha-2":"WV"},
     {"name":"Wisconsin","alpha-2":"WI"},
     {"name":"Wyoming","alpha-2":"WY"}
-  ]
+  ];
 
   constructor(public navCtrl: NavController) {
   }

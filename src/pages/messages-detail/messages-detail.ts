@@ -8,7 +8,11 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class MessagesDetailPage {
 
-  message = {};
+  message = {
+    date: Date(),
+    title: '',
+    content: ''
+  };
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 

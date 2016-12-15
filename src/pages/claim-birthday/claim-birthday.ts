@@ -8,8 +8,12 @@ import { ClaimPhotoPage } from '../claim-photo/claim-photo'
   templateUrl: 'claim-birthday.html'
 })
 export class ClaimBirthdayPage {
+  public myDate;
 
-  chosenPet = {};
+  chosenPet = {
+    name: '',
+    img: ''
+  };
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 

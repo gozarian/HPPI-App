@@ -30,7 +30,10 @@ export class ClaimPhotoPage {
     }
   ]
 
-  chosenPet = {};
+  chosenPet = {
+    img: '',
+    name: ''
+  };
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 

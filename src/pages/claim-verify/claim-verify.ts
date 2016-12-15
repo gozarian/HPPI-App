@@ -9,7 +9,10 @@ import { ClaimSummaryPage } from '../claim-summary/claim-summary';
 })
 export class ClaimVerifyPage {
 
-  chosenPet = {};
+  chosenPet = {
+    img: '',
+    name: ''
+  };
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 

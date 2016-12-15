@@ -8,7 +8,13 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class MyClaimsDetailPage {
 
-  claim = {};
+  claim = {
+    date: Date(),
+    number: '',
+    petName: '',
+    petImage: '',
+    status: ''
+  };
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
