@@ -10,43 +10,39 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <section class="user-profile">
+    <h3>Brian Jorgensen</h3>
+    <p>brian.jorgensen@live.com</p>
+    <p>6806 52nd Ave NE Seattle WA, 98115</p>
+  </section>
+  <ion-list class="account-links">
     <ion-list-header>
-      Brian Jorgensen
-    </ion-list-header>
-    <ion-item>
-      brian.jorgensen@live.com
-    </ion-item>
-    <ion-item>
-      6806 52nd Ave NE Seattle WA, 98115
-    </ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-list-header>
-      <ion-icon name="card"></ion-icon>
+      <ion-icon class="ion-icon-personal-info"></ion-icon>
       Your Information
     </ion-list-header>
     <button ion-item *ngFor="let item of information" (click)="itemSelected(item)">
       {{ item.title }}
     </button>
   </ion-list>
-  <ion-list>
+  <ion-list class="account-links">
     <ion-list-header>
-      <ion-icon name="contacts"></ion-icon>
+      <ion-icon class="ion-icon-pet-policies"></ion-icon>
       Your Pet Policies
     </ion-list-header>
     <button ion-item *ngFor="let item of policies" (click)="itemSelected(item)">
       {{ item.title }}
     </button>
   </ion-list>
-  <ion-list>
+  <ion-list class="account-links">
     <ion-list-header>
-      <ion-icon name="help-circle"></ion-icon>
+      <ion-icon class="ion-icon-support"></ion-icon>
       Support
     </ion-list-header>
     <button ion-item *ngFor="let item of support" (click)="itemSelected(item)">
       {{ item.title }}
     </button>
   </ion-list>
-  <button ion-button (click)="logout()">Sign Out</button>
+  <div text-center class="logout">
+    <button ion-button (click)="logout()">Sign Out</button>
+  </div>
 </ion-content>

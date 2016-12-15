@@ -1,0 +1,4 @@
+@mixin header($color: color($colors, base, contrast), $bkgrdcolor: color($colors, primary, base)) {
+  color: $color;
+  background-color: $bkgrdcolor;
+}

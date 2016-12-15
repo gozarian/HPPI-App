@@ -3,14 +3,13 @@
     <button icon-only ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <figure class="home-logo">
+      <img src="/assets/logos/logo.png">
+    </figure>
   </ion-navbar>
 </ion-header>
 
 <ion-content text-center>
-  <figure class="home-logo">
-    <img src="/assets/logos/logo.png">
-  </figure>
   <ion-scroll scrollX="true" scrollY="false" zoom="false" maxZoom="false">
     <ion-grid class="home-pet-grid">
       <ion-row>
@@ -49,8 +48,8 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <p class="home-notify error">Your account has been suspended</p>
   <p class="home-notify success">Welcome {{ user.name }}!</p>
+  <p class="home-notify error">Your account has been suspended</p>
   <button ion-button (click)="showNewFeatures()" style="color: white;">
     <ion-icon name="color-wand"></ion-icon>
     Test New Features Modal

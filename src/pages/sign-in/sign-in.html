@@ -3,33 +3,32 @@
     <button icon-only ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>
-      Sign In
-    </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <figure>
-    <img src="/assets/logos/logo.png">
-  </figure>
+  <div>
+    <figure class="sign-in-logo">
+      <img src="/assets/logos/logo.png">
+    </figure>
 
-  <section padding class="sign-in-form">
-    <ion-list >
+    <section padding class="sign-in-form">
+      <ion-list >
 
-      <ion-item no-lines>
-        <ion-input type="email" placeholder="Enter your email address" [(ngModel)]="email"></ion-input>
-      </ion-item>
+        <ion-item no-lines>
+          <ion-input type="email" placeholder="Enter your email address" [(ngModel)]="email"></ion-input>
+        </ion-item>
 
-      <ion-item no-lines>
-        <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
-      </ion-item>
+        <ion-item no-lines>
+          <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+        </ion-item>
 
-      <p class="error" ng-show="errorMessage">{{ errorMessage }}</p>
-    </ion-list>
+        <p class="error" ng-show="errorMessage">{{ errorMessage }}</p>
+      </ion-list>
 
-    <button ion-button (click)="login()">Sign In</button>
-    <button ion-button clear>Forgot Password?</button>
-  </section>
+      <button ion-button (click)="login()">Sign In</button>
+      <button ion-button clear>Forgot Password?</button>
+    </section>
+  </div>
   <p class="learn-more">Not a Healthy Paws Customer? <a ion-button clear>Learn More</a></p>
 </ion-content>

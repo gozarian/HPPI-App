@@ -1,3 +1,112 @@
 page-account {
 
+  .toolbar-background {
+    @include header;
+  }
+
+  .bar-button-menutoggle {
+    color: color($colors, base, contrast);
+  }
+
+  .toolbar-title-ios {
+    font-size: 2.1rem;
+    font-weight: weight(bold);
+    color: color($colors, base, contrast);
+  }
+
+
+
+  // User Profile
+  // --------------------------------------------------
+
+  .user-profile {
+    padding-top: $base-line-height / 2;
+    padding-bottom: 6px;
+    color: color($colors, greyscale, base);
+    text-align: center;
+    background-color: color($colors, base, base);
+
+    h3 {
+      margin: 0;
+      font-size: type-scale(0);
+      font-weight: weight(bold);
+    }
+
+    p {
+      margin-top: 6px;
+      margin-bottom: 0;
+      font-size: type-scale(-1);
+    }
+  }
+
+
+
+  // User Profile
+  // --------------------------------------------------
+
+  .account-links {
+    margin-bottom: 1rem;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    ion-list-header {
+      font-weight: weight(bold);
+      font-size: type-scale(-1);
+      letter-spacing: 0;
+      text-transform: capitalize;
+      background-color: color($colors, base, base);
+
+      ion-icon {
+        height: 20px;
+        width: 25px;
+      }
+
+      &.item-ios {
+        padding-left: 1rem;
+        color: color($colors, primary, base);
+      }
+
+      .label-ios {
+        margin-top: 0;
+        padding-top: type-scale(0);
+      }
+    }
+
+    ion-label {
+      display: flex;
+      font-size: type-scale(0);
+    }
+
+    .item-ios {
+      padding-left: $base-line-height;
+      border-bottom: 1px solid #E2E2E2;
+      color: color($colors, greyscale, contrast);
+
+      &:last-child {
+        border-bottom: 1px solid #E2E2E2;
+      }
+
+      .item-inner {
+        border-bottom: 0;
+      }
+    }
+  }
+
+
+
+  // User Profile
+  // --------------------------------------------------
+
+  .logout {
+    background-color: color($colors, base, base);
+
+    button {
+      @include button;
+      margin-top: $base-line-height;
+      margin-bottom: $base-line-height;
+    }
+  }
 }
+

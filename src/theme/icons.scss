@@ -31,6 +31,18 @@
   @include hp-icons;
 }
 
+.ion-icon-personal-info {
+  @include hp-icons;
+}
+
+.ion-icon-pet-policies {
+  @include hp-icons;
+}
+
+.ion-icon-support {
+  @include hp-icons;
+}
+
 .ion-icon-modal-close {
   @include hp-icons(url('/assets/icon/icon-modal-close.svg'));
 }

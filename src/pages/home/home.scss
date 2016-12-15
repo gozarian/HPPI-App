@@ -1,5 +1,18 @@
 page-home {
 
+  // Development Burger Menu Layout
+  // --------------------------------------------------
+
+  ion-navbar {
+    position:relative;
+
+    .bar-button-menutoggle {
+      position: absolute;
+    }
+  }
+
+
+
   // Logo Layout
   // --------------------------------------------------
 
