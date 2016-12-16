@@ -20,6 +20,22 @@ export class Environment {
     return this.getValue('faq_url');
   }
 
+  public scoopUrl(): string {
+    return this.getValue('scoop_url');
+  }
+
+  public learnMoreUrl(): string {
+    return this.getValue('learn_more_url');
+  }
+
+  public oopsUrl(): string {
+    return this.getValue('oops_url');
+  }
+
+  public referralUrl(): string {
+    return this.getValue('referral_url');
+  }
+
   private getValue(key: string): any {
     var values = ENV.development;
 
