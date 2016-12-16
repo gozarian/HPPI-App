@@ -1,56 +1,62 @@
+<ion-header>
+  <ion-navbar>
+    <button icon-only ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <figure class="home-logo">
+      <img src="assets/logos/logo.png">
+    </figure>
+  </ion-navbar>
+</ion-header>
 <ion-content text-center>
-  <ion-header>
-    <ion-navbar>
-      <button icon-only ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <figure class="home-logo">
-        <img src="assets/logos/logo.png">
-      </figure>
-    </ion-navbar>
-  </ion-header>
-  <ion-scroll scrollX="true" scrollY="false" zoom="false" maxZoom="false">
-    <ion-grid class="home-pet-grid">
-      <ion-row>
-        <ion-col
-          *ngFor="let pet of pets; let i = index;"
-          [style.z-index]="pets.length - i">
-          <figure>
-            <div
-              class="img-wrapper"
-              [style.background-image]="'url(' + pet.image + ')'">
-            </div>
-            <figcaption
-              *ngIf="pet.type == 'dog'"
-              style="background-image: url('assets/test-imgs/pet-label-bkgrd.svg')">
-              {{ pet.name }}
-            </figcaption>
-            <figcaption
-              *ngIf="pet.type == 'cat'"
-              style="background-image: url('assets/test-imgs/pet-label-bkgrd.svg')">
-              {{ pet.name }}
-            </figcaption>
-          </figure>
+  <div class="layout-wrapper">
+    <ion-scroll scrollX="true" scrollY="false" zoom="false" maxZoom="false">
+      <ion-grid class="home-pet-grid">
+        <ion-row>
+          <ion-col
+            *ngFor="let pet of pets; let i = index;"
+            [style.z-index]="pets.length - i">
+            <figure>
+              <div
+                class="img-wrapper"
+                [style.background-image]="'url(' + pet.image + ')'">
+              </div>
+              <figcaption
+                *ngIf="pet.type == 'dog'"
+                style="background-image: url('assets/test-imgs/pet-label-bkgrd.svg')">
+                {{ pet.name }}
+              </figcaption>
+              <figcaption
+                *ngIf="pet.type == 'cat'"
+                style="background-image: url('assets/test-imgs/pet-label-bkgrd.svg')">
+                {{ pet.name }}
+              </figcaption>
+            </figure>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-scroll>
+    <ion-grid class="home-nav-grid">
+      <ion-row wrap class="nav-icons">
+        <ion-col width-33 *ngFor="let page of pages">
+          <button ion-button clear full (click)="openPage(page.component)">
+            <ion-icon [class]="page.icon">
+              <ion-badge *ngIf="page.badge" item-right color="danger">{{ page.badge }}</ion-badge>
+            </ion-icon>
+            <label>{{ page.title }}</label>
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="nav-notifications">
+        <ion-col>
+          <p class="home-notify success">Welcome {{ user.name }}!</p>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="accountError == true">
+        <ion-col>
+          <p class="home-notify error">Your account has been suspended</p>
         </ion-col>
       </ion-row>
     </ion-grid>
-  </ion-scroll>
-  <ion-grid class="home-nav-grid">
-    <ion-row wrap>
-      <ion-col width-33 *ngFor="let page of pages">
-        <button ion-button clear full (click)="openPage(page.component)">
-          <ion-icon [class]="page.icon">
-            <ion-badge *ngIf="page.badge" item-right color="danger">{{ page.badge }}</ion-badge>
-          </ion-icon>
-          <label>{{ page.title }}</label>
-        </button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <p class="home-notify success">Welcome {{ user.name }}!</p>
-  <p class="home-notify error">Your account has been suspended</p>
-  <button ion-button (click)="showNewFeatures()" style="color: white;">
-    <ion-icon name="color-wand"></ion-icon>
-    Test New Features Modal
-  </button>
+  </div>
 </ion-content>

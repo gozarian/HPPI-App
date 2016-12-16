@@ -1,5 +1,11 @@
 page-home {
 
+  .layout-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
   // Logo Layout
   // --------------------------------------------------
 
@@ -24,7 +30,7 @@ page-home {
   // --------------------------------------------------
 
   ion-scroll {
-    height: 220px;
+    min-height: 220px;
     white-space: nowrap;
 
     .scroll-content {
@@ -103,14 +109,15 @@ page-home {
 
   .home-nav-grid {
     padding: 0;
+    justify-content: space-between;
+    flex: 1;
 
-    ion-row {
-      height: 100%;
+    .nav-icons {
+      min-height: 200px;
     }
 
     ion-col {
-      padding: 0;
-      margin-top: $base-line-height;
+      padding: $base-line-height 0 0;
     }
 
     ion-icon {
@@ -141,7 +148,8 @@ page-home {
 
     .button-full {
       height: 100%;
-      padding: 0;
+      padding: 0.2rem 0;
+      margin: 0;
     }
   }
 
@@ -181,4 +189,5 @@ page-home {
       text-transform: capitalize;
     }
   }
+
 }

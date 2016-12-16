@@ -20,6 +20,8 @@ export class HomePage {
     this.content.scrollToTop();
   }
 
+  accountError: boolean = false;
+
   pages = [
     { title: 'New Claim',
       component: ClaimChoosePage,
@@ -87,7 +89,7 @@ export class HomePage {
   ];
 
   user = {
-    name: "peter"
+    name: "user"
   };
 
   constructor(
