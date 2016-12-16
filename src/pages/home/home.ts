@@ -56,32 +56,32 @@ export class HomePage {
   pets = [
     {
       name: "Samson",
-      image: "/assets/test-imgs/test-doodle.jpg",
+      image: "assets/test-imgs/test-doodle.jpg",
       type: "dog"
     },
     {
       name: "Pupils",
-      image: "/assets/test-imgs/test-cat.jpg",
+      image: "assets/test-imgs/test-cat.jpg",
       type: "cat"
     },
     {
       name: "Crazy Long Name for a Pet",
-      image: "/assets/test-imgs/test-doodle.jpg",
+      image: "assets/test-imgs/test-doodle.jpg",
       type: "dog"
     },
     {
       name: "Bagel",
-      image: "/assets/test-imgs/test-doodle-bagel.jpg",
+      image: "assets/test-imgs/test-doodle-bagel.jpg",
       type: "dog"
     },
     {
       name: "Kitty",
-      image: "/assets/test-imgs/test-cat.jpg",
+      image: "assets/test-imgs/test-cat.jpg",
       type: "cat"
     },
     {
       name: "Sleepy",
-      image: "/assets/test-imgs/test-doodle.jpg",
+      image: "assets/test-imgs/test-doodle.jpg",
       type: "dog"
     }
   ];

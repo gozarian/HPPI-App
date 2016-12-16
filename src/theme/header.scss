@@ -29,7 +29,7 @@
       position: relative;
 
       &:after {
-        @include hp-icons(url('/assets/icon/icon-home.svg'));
+        @include hp-icons(url('../assets/icon/icon-home.svg'));
         position: absolute;
         left: $base-line-height;
         content: "";
