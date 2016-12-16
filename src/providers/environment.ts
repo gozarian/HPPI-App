@@ -4,16 +4,20 @@ import { ENV } from '../app/env';
 @Injectable()
 export class Environment {
 
-  public apiBaseUrl() : string {
+  public apiBaseUrl(): string {
     return this.getValue('api_base_url');
   }
 
-  public apiAppName() : string {
+  public apiAppName(): string {
     return this.getValue('api_app_name');
   }
 
-  public apiAppKey() : string {
+  public apiAppKey(): string {
     return this.getValue('api_app_key');
+  }
+
+  public faqsUrl(): string {
+    return this.getValue('faq_url');
   }
 
   private getValue(key: string): any {
