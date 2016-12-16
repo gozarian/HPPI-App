@@ -32,7 +32,7 @@ $colors: (
     base:     #39A354, // Green
     contrast: #6BB675
   ),
-  accent:    (
+  accent:     (
     base:     #FB6517, // Orange
     contrast: #DF7444
   ),
@@ -40,15 +40,18 @@ $colors: (
     base:     #F31923, // Red
     contrast: #FEB7A4
   ),
-  base:    (
+  base:       (
     base:     #F7F8F2, // White base
     contrast: #FFFFFF
   ),
-  greyscale:    (
+  greyscale:  (
     base:     #5C5C5C,
     contrast: #393A39
   ),
-  border:     #A2A2A2 // Light grey
+  border:     (
+    base:     #A2A2A2, // Light Grey
+    contrast: #E2E2E2  // Lighter Grey
+  )
 );
 
 
@@ -100,6 +103,9 @@ $line-height: (
 // Font Families
 // --------------------------------------------------
 $font-family-base: "Open Sans", sans-serif;
+$font-family-md-base: "Open Sans", sans-serif;
+$font-family-ios-base: "Open Sans", sans-serif;
+$font-family-wp-base: "Open Sans", sans-serif;
 $font-family-alt: "Kite One", sans-serif;
 
 

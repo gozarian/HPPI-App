@@ -15,15 +15,112 @@ page-claim-photo {
     text-align: center;
   }
 
-  .button-inner {
-    flex-flow: column;
-    white-space: normal;
-    max-width: 75%;
-    margin: 0 auto;
+  .bottom-next {
+    margin-top: 0;
   }
 
-  .button-ios {
-    height: auto;
-    margin: 0 auto;
+
+  // Photo Selection
+  // --------------------------------------------------
+
+  .select-photos {
+    padding: 1.7rem;
+
+    &.item-block {
+
+      .item-inner {
+        padding: 0;
+      }
+    }
+
+    .label-ios {
+      margin: 0;
+      padding: 0;
+    }
+
+    .button-inner {
+      flex-flow: column;
+      white-space: normal;
+      margin: 0 auto;
+      font-size: type-scale(0);
+      font-weight: weight(bold);
+      line-height: line-height(0);
+
+      p {
+        color: color($colors, accent, contrast);
+      }
+    }
+
+    .button-ios {
+      height: auto;
+      margin: 0 auto;
+      padding: 1rem 4rem;
+    }
+
+    .ion-icon-camera {
+      height: 19px;
+      width: 31px;
+      margin-top: $base-line-height / 2;
+    }
+
+    ion-grid {
+
+      .width-33 {
+        flex-basis: 33.3333%;
+        max-width: 33.3333%;
+
+        .claim-photo-wrapper {
+
+          span {
+            height: 24px;
+            width: 24px;
+          }
+
+          .photo-number {
+
+            p {
+              font-size: 1.7rem;
+            }
+          }
+        }
+      }
+
+      .claim-photo-wrapper {
+        position: relative;
+        border: 2px solid color($colors, border, base);
+
+        span {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 35px;
+          width: 35px;
+
+          &.photo-number {
+            left: 0;
+            top: 0;
+            background-color: color($colors, primary, base);
+
+            p {
+              font-size: 2.4rem;
+              font-weight: weight(bold);
+              line-height: 1;
+              color: color($colors, base, contrast);
+            }
+          }
+
+          &.photo-delete {
+            right: 0;
+            top: 0;
+
+            ion-icon {
+              height: 17.5px;
+              width: 17.5px;
+            }
+          }
+        }
+      }
+    }
   }
 }

@@ -32,7 +32,7 @@ page-claim-choose {
   }
 
   .list-ios .item-block {
-    border-color: #E2E2E2;
+    border-color: color($colors, base, contrast);
 
     .item-inner {
       border-bottom: 0;

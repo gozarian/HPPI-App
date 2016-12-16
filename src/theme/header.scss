@@ -43,3 +43,28 @@
     visibility: hidden;
   }
 }
+
+.claim-header {
+
+  figure {
+    margin: 0;
+  }
+
+  .img-wrapper {
+    height: 135px;
+    width: 135px;
+    margin: $base-line-height auto;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    border: 4px solid color($colors, primary, base);
+  }
+
+  h3 {
+    margin: 1.2rem auto;
+    font-size: type-scale(1);
+    font-weight: weight(bold);
+    color: color($colors, greyscale, base);
+    text-align: center;
+  }
+}

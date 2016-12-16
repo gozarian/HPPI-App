@@ -165,7 +165,7 @@ page-home {
     font-size: type-scale(-2);
     font-weight: weight(bold);
     background-color: color($colors, base, base);
-    border-top: 1px solid color($colors, border);
+    border-top: 1px solid color($colors, border, contrast);
 
     &.error {
       display: flex;

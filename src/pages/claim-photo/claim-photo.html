@@ -1,50 +1,60 @@
+<ion-header class="primary-header">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      New Claim
+    </ion-title>
+  </ion-navbar>
+</ion-header>
 <ion-content>
-  <ion-header class="primary-header">
-    <ion-navbar>
-      <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title>
-        New Claim
-      </ion-title>
-    </ion-navbar>
-  </ion-header>
-  <ion-avatar>
-    <img src="{{ chosenPet.img }}">
-  </ion-avatar>
-  <h3>Claim for {{ chosenPet.name }}</h3>
-  <ion-item no-lines>
-    <button ion-button clear large>
-      Add a photo of the invoice you recieved from your veterinary hospital
-      <ion-icon name="camera"></ion-icon>
+  <section class="claim-header">
+    <figure>
+      <div
+        class="img-wrapper"
+        [style.background-image]="'url(' + chosenPet.img + ')'">
+      </div>
+    </figure>
+    <h3>Claim for {{ chosenPet.name }}</h3>
+  </section>
+
+
+  <!-- For dev only -->
+  <ion-item no-lines style="background-color: #f7f8f2;">
+    <ion-label>{{ photoTotal }}<span *ngIf="photoTotal == null">0</span> Photo<span *ngIf="photoTotal > 1 || photoTotal == (null || 0)">s</span></ion-label>
+    <ion-range min="0" max="10" step="1" snaps="true" [(ngModel)]="photoTotal"></ion-range>
+  </ion-item>
+
+
+  <ion-item no-lines class="select-photos">
+    <ion-grid>
+      <ion-row wrap>
+        <ion-col
+          [ngClass]="{'width-33': photoTotal > 2}"
+          *ngFor="let photo of photoArray(photoTotal).fill(1); let i = index;">
+          <div class="claim-photo-wrapper">
+            <img src="{{ testdoc }}">
+            <span class="photo-number">
+              <p>{{ i }}</p>
+            </span>
+            <span class="photo-delete" (click)="deletePhoto()">
+              <ion-icon class="ion-icon-delete-photo"></ion-icon>
+            </span>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <button ion-button clear large (click)="addPhoto()">
+      <p *ngIf="photoTotal == null || photoTotal == 0">Add a photo of the invoice you recieved from your veterinary hospital</p>
+      <p *ngIf="photoTotal > 0">Add another</p>
+      <ion-icon class="ion-icon-camera"></ion-icon>
     </button>
   </ion-item>
-  <ion-item>
-    <button ion-button clear large>
-      Add another
-      <ion-icon name="camera"></ion-icon>
-    </button>
-  </ion-item>
-  <h3>Test photo grid with < 3 photos</h3>
-  <ion-grid>
-    <ion-row>
-      <ion-col width-50 *ngFor="let testdoc of testdocs1">
-        <img src="{{ testdoc.path }}" >
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <h3>Test photo grid with >= 3 photos</h3>
-  <ion-grid>
-    <ion-row wrap>
-      <ion-col width-33 *ngFor="let testdoc of testdocs2">
-        <img src="{{ testdoc.path }}" >
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <ion-list no-lines>
+  <ion-item no-lines class="bottom-next">
     <button ion-item (click)="submitClaim(chosenPet)">
-      <ion-icon name="clipboard"></ion-icon>
+      <ion-icon class="ion-icon-clipboard"></ion-icon>
       Submit Claim
     </button> 
-  </ion-list>
+  </ion-item>
 </ion-content>

@@ -114,6 +114,10 @@ export class HomePage {
     this.navCtrl.push(page);
   }
 
+  openAccount() {
+    this.navCtrl.push(AccountPage);
+  }
+
   showNewFeatures() {
     this.scrollToTop();
     let newFeatures = this.modalCtrl.create(NewFeaturesPage);

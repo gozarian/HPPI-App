@@ -50,3 +50,15 @@
 .ion-icon-modal-close {
   @include hp-icons(url('../assets/icon/icon-modal-close.svg'));
 }
+
+.ion-icon-clipboard {
+  @include hp-icons;
+}
+
+.ion-icon-delete-photo {
+  @include hp-icons(url('../assets/icon/icon-delete.svg'));
+}
+
+.ion-icon-camera {
+  @include hp-icons(url('../assets/icon/icon-camera.svg'));
+}

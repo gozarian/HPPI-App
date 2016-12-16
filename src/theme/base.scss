@@ -6,6 +6,7 @@ body {
   font-family: $font-family-base;
   font-weight: weight(regular);
   line-height: line-height(0);
+  background-color: color($colors, base, base);
 }
 
 p {
@@ -43,15 +44,15 @@ img {
 .hp-list {
 
   & > .item-block:first-child {
-    border-color: #E2E2E2;
+    border-color: color($colors, border, contrast);
   }
 
   & > .item-block:last-child {
-    border-color: #E2E2E2;
+    border-color: color($colors, border, contrast);
   }
 
   .item-ios {
-    border-bottom: 1px solid #E2E2E2;
+    border-bottom: 1px solid color($colors, border, contrast);
   }
 }
 

@@ -19,6 +19,34 @@
 
 
 
+.bottom-next {
+  margin: $base-line-height * 2 0 0;
+  padding: 0;
+  min-height: 75px;
+
+  &.item[no-lines] {
+    background-color: color($colors, base, contrast);
+    border-top: 1px solid color($colors, border, contrast);
+  }
+
+  .label-ios {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    width: 100%;
+    font-size: type-scale(1);
+    color: color($colors, greyscale, contrast);
+
+    .icon {
+      margin-right: 5px;
+      height: 25px;
+      width: 32px;
+    }
+  }
+}
+
+
 // Development Burger Menu Layout
 // --------------------------------------------------
 

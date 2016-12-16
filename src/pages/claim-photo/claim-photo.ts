@@ -9,26 +9,10 @@ import { ClaimVerifyPage } from '../claim-verify/claim-verify';
   templateUrl: 'claim-photo.html'
 })
 export class ClaimPhotoPage {
+  public photoTotal: number = 0;
 
-  testdocs1 = [
-    { path: 'assets/test-imgs/test-doc.png'
-    },
-    { path: 'assets/test-imgs/test-doc.png'
-    }
-  ]
-
-  testdocs2 = [
-    { path: 'assets/test-imgs/test-doc.png'
-    },
-    { path: 'assets/test-imgs/test-doc.png'
-    },
-    { path: 'assets/test-imgs/test-doc.png'
-    },
-    { path: 'assets/test-imgs/test-doc.png'
-    },
-    { path: 'assets/test-imgs/test-doc.png'
-    }
-  ]
+  testdoc = 'assets/test-imgs/test-doc.png';
+  photoArray = Array;
 
   chosenPet = {
     img: '',
@@ -45,5 +29,16 @@ export class ClaimPhotoPage {
 
   submitClaim(pet) {
     this.navCtrl.push(ClaimVerifyPage, pet);
+  }
+
+  addPhoto() {
+
+    if (this.photoTotal < 11) {
+      this.photoTotal++;
+    }
+  }
+
+  deletePhoto() {
+    this.photoTotal--;
   }
 }
