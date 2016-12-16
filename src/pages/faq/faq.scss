@@ -1,5 +1,11 @@
 page-faq {
 
+  iframe {
+    border-width: 0;
+    height: 100%;
+    width: 100%;
+  }
+
   .label-ios {
     display: flex;
     justify-content: space-between;
