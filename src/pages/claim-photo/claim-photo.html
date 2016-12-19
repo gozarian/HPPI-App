@@ -27,34 +27,36 @@
   </ion-item>
 
 
-  <ion-item no-lines class="select-photos">
-    <ion-grid>
-      <ion-row wrap>
-        <ion-col
-          [ngClass]="{'width-33': photoTotal > 2}"
-          *ngFor="let photo of photoArray(photoTotal).fill(1); let i = index;">
-          <div class="claim-photo-wrapper">
-            <img src="{{ testdoc }}">
-            <span class="photo-number">
-              <p>{{ i }}</p>
-            </span>
-            <span class="photo-delete" (click)="deletePhoto()">
-              <ion-icon class="ion-icon-delete-photo"></ion-icon>
-            </span>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    <button ion-button clear large (click)="addPhoto()">
-      <p *ngIf="photoTotal == null || photoTotal == 0">Add a photo of the invoice you recieved from your veterinary hospital</p>
-      <p *ngIf="photoTotal > 0">Add another</p>
-      <ion-icon class="ion-icon-camera"></ion-icon>
-    </button>
-  </ion-item>
-  <ion-item no-lines class="bottom-next">
-    <button ion-item (click)="submitClaim(chosenPet)">
-      <ion-icon class="ion-icon-clipboard"></ion-icon>
-      Submit Claim
-    </button> 
-  </ion-item>
+  <div class="select-photos-wrapper">
+    <div class="select-photos">
+      <ion-grid>
+        <ion-row wrap>
+          <ion-col
+            [ngClass]="{'width-33': photoTotal > 2}"
+            *ngFor="let photo of photoArray(photoTotal).fill(1); let i = index;">
+            <div class="claim-photo-wrapper"
+              [style.background-image]="'url(' + testdoc + ')'">
+              <span class="photo-number">
+                <p>{{ i + 1 }}</p>
+              </span>
+              <span class="photo-delete" (click)="deletePhoto()">
+                <ion-icon class="ion-icon-delete-photo"></ion-icon>
+              </span>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <button ion-button clear large (click)="addPhoto()">
+        <p *ngIf="photoTotal == null || photoTotal == 0">Add a photo of the invoice you recieved from your veterinary hospital</p>
+        <p *ngIf="photoTotal > 0">Add another</p>
+        <ion-icon class="ion-icon-camera"></ion-icon>
+      </button>
+    </div>
+    <ion-item no-lines class="bottom-next">
+      <button ion-item (click)="submitClaim(chosenPet)">
+        <ion-icon class="ion-icon-clipboard"></ion-icon>
+        Submit Claim
+      </button> 
+    </ion-item>
+  </div>
 </ion-content>

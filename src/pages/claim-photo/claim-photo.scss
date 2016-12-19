@@ -7,6 +7,11 @@ page-claim-photo {
     background-color: color($colors, base, base);
   }
 
+  .scroll-content {
+    display: flex;
+    flex-direction: column;
+  }
+
   ion-header {
     position: relative;
   }
@@ -19,19 +24,22 @@ page-claim-photo {
     margin-top: 0;
   }
 
+  .select-photos-wrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 0;
+    background-color: color($colors, base, contrast);
+  }
+
 
   // Photo Selection
   // --------------------------------------------------
 
   .select-photos {
     padding: 1.7rem;
-
-    &.item-block {
-
-      .item-inner {
-        padding: 0;
-      }
-    }
+    background-color: color($colors, base, contrast);
 
     .label-ios {
       margin: 0;
@@ -47,20 +55,26 @@ page-claim-photo {
       line-height: line-height(0);
 
       p {
+        max-width: 220px;
         color: color($colors, accent, contrast);
       }
     }
 
     .button-ios {
+      display: block;
       height: auto;
       margin: 0 auto;
       padding: 1rem 4rem;
+
+      p {
+        margin: 0;
+      }
     }
 
     .ion-icon-camera {
       height: 19px;
       width: 31px;
-      margin-top: $base-line-height / 2;
+      margin-top: $base-line-height / 4;
     }
 
     ion-grid {
@@ -70,6 +84,8 @@ page-claim-photo {
         max-width: 33.3333%;
 
         .claim-photo-wrapper {
+          height: 82px;
+          width: 82px;
 
           span {
             height: 24px;
@@ -87,6 +103,12 @@ page-claim-photo {
 
       .claim-photo-wrapper {
         position: relative;
+        height: 120px;
+        width: 120px;
+        margin: 0 auto;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
         border: 2px solid color($colors, border, base);
 
         span {
