@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { ClaimSummaryPage } from '../claim-summary/claim-summary';
 
 @Component({
@@ -14,12 +14,19 @@ export class ClaimVerifyPage {
     name: ''
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public viewCtrl: ViewController) {
 
     this.chosenPet = {
       name: navParams.get('name'),
       img: navParams.get('img')
     }
+  }
+
+  ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('Uploads');
   }
 
   agree(pet) {

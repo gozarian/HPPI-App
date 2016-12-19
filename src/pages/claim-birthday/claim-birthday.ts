@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { ClaimPhotoPage } from '../claim-photo/claim-photo'
 
 @Component({
@@ -15,12 +15,19 @@ export class ClaimBirthdayPage {
     img: ''
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public viewCtrl: ViewController) {
 
     this.chosenPet = {
       name: navParams.get('name'),
       img: navParams.get('img')
     }
+  }
+
+  ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('Choose Pet');
   }
 
   addPhoto(pet) {

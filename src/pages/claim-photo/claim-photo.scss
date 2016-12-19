@@ -66,9 +66,18 @@ page-claim-photo {
       margin: 0 auto;
       padding: 1rem 4rem;
 
+      &.activated {
+        background-color: transparent;
+        color: inherit;
+      }
+
       p {
         margin: 0;
       }
+    }
+
+    .button-clear-ios.activated {
+      opacity: 1;
     }
 
     .ion-icon-camera {

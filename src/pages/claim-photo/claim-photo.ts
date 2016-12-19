@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { ClaimVerifyPage } from '../claim-verify/claim-verify';
 // import { Camera } from 'ionic-native';
 
@@ -19,12 +19,19 @@ export class ClaimPhotoPage {
     name: ''
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public viewCtrl: ViewController) {
 
     this.chosenPet = {
       name: navParams.get('name'),
       img: navParams.get('img')
     }
+  }
+
+  ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('Choose Date');
   }
 
   submitClaim(pet) {

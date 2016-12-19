@@ -19,9 +19,17 @@
     line-height: 28px;
     color: color($colors, base, contrast);
   }
+
+  .back-button-text {
+    font-size: type-scale(-4);
+  }
 }
 
 .back-home-header {
+
+  .back-button-icon-ios {
+    height: 100%;
+  }
 
   .back-button {
 

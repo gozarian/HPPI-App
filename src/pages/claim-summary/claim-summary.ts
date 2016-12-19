@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController, NavParams, MenuController } from 'ionic-angular';
+import { NavController, NavParams, MenuController, ViewController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 
 @Component({
@@ -14,7 +14,7 @@ export class ClaimSummaryPage {
     name: ''
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, public viewCtrl: ViewController) {
 
     this.chosenPet = {
       name: navParams.get('name'),
@@ -23,9 +23,12 @@ export class ClaimSummaryPage {
 
   }
 
+  ionViewWillEnter() {
+    this.viewCtrl.showBackButton(false);
+  }
+
   goHome() {
     this.menu.close();
     this.navCtrl.setRoot(HomePage);
   }
-
 }

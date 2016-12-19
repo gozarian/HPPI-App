@@ -34,6 +34,18 @@ img {
   max-width: 100%;
 }
 
+button {
+
+  &.item-ios.activated {
+    background-color: transparent;
+  }
+
+  &.button-ios.activated {
+    background-color: color($colors, accent, base);
+    color: color($colors, base, contrast);
+  }
+}
+
 .toolbar-background-ios {
   border-bottom-width: 0;
 }
@@ -45,10 +57,12 @@ img {
 
   & > .item-block:first-child {
     border-color: color($colors, border, contrast);
+    border-width: 1px;
   }
 
   & > .item-block:last-child {
     border-color: color($colors, border, contrast);
+    border-width: 1px;
   }
 
   .item-ios {

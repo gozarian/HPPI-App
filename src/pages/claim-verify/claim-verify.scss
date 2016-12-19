@@ -1,3 +1,28 @@
 page-claim-verify {
 
+  .claim-verify {
+    padding: 0 $base-line-height $base-line-height;
+    font-size: type-scale(-1);
+    line-height: 24px;
+    color: color($colors, greyscale, contrast);
+  }
+
+  .button {
+    @include button($lrpadding: 36px);
+  }
+
+  .button-outline {
+    padding-left: 28px;
+    padding-right: 28px;
+    color: color($colors, accent, base);
+    background-color: transparent;
+    border-color: color($colors, accent, base);
+  }
+
+  .buttons-verify {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
 }
