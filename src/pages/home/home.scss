@@ -122,6 +122,12 @@ page-home {
 
     ion-col {
       padding: $base-line-height 0 0;
+
+      .button-ios.activated {
+        color: color($colors, primary, base);
+        background-color: color($colors, base, base);
+        opacity: 1;
+      }
     }
 
     ion-icon {

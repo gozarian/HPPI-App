@@ -1,5 +1,8 @@
 page-claim-summary {
 
+  // Header
+  // --------------------------------------------------
+
   .back-home {
     margin: 0;
     padding: 0 5px;
@@ -24,6 +27,9 @@ page-claim-summary {
 
 
 
+  // Summary Message Header
+  // --------------------------------------------------
+
   p {
     font-size: type-scale(-1);
     line-height: 24px;
@@ -45,6 +51,9 @@ page-claim-summary {
   }
 
 
+
+  // Summary Message Warning
+  // --------------------------------------------------
 
   .medical-records-warning {
     padding: 1rem $base-line-height;
@@ -88,6 +97,9 @@ page-claim-summary {
   }
 
 
+
+  // Summary Buttons
+  // --------------------------------------------------
 
   .claim-confirmation-home {
     margin-bottom: $base-line-height;

@@ -5,6 +5,10 @@
 
 .primary-header {
 
+  .back-button-icon-ios {
+    height: 100%;
+  }
+
   .bar-button-default-ios {
     color: color($colors, base, contrast);
   }

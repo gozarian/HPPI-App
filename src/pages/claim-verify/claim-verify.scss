@@ -1,11 +1,19 @@
 page-claim-verify {
 
+  // Verify Text
+  // --------------------------------------------------
+
   .claim-verify {
     padding: 0 $base-line-height $base-line-height;
     font-size: type-scale(-1);
     line-height: 24px;
     color: color($colors, greyscale, contrast);
   }
+
+
+
+  // Agreement Buttons
+  // --------------------------------------------------
 
   .button {
     @include button($lrpadding: 36px);
@@ -23,6 +31,18 @@ page-claim-verify {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    justify-content: space-around;
+
+    button {
+      border: 2px solid color($colors, accent, base);
+
+      &:last-child {
+
+        &.button-ios.activated {
+          background-color: transparent;
+          color: color($colors, accent, base);
+        }
+      }
+    }
   }
 }
