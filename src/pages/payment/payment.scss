@@ -132,11 +132,20 @@ page-payment {
   }
 
   .submit-payment {
+    display: flex;
+    justify-content: space-between;
     margin-top: $base-line-height / 2;
     text-align: center;
 
     button {
       @include button;
+      flex-basis: 45%;
+
+      &[outline] {
+        color: color($colors, accent, base);
+        background-color: transparent;
+        border: 2px solid color($colors, accent, base);
+      }
     }
   }
 }

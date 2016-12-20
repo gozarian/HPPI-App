@@ -14,7 +14,7 @@ export class BillingPage {
   }
 
   toPayment() {
-    this.navCtrl.setRoot(PaymentPage);
+    this.navCtrl.push(PaymentPage);
   }
 
 }
