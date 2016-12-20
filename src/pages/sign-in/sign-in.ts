@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 
 import { Session } from '../../providers/session';
 import { HomePage } from '../home/home';
+import { ResetPasswordPage } from '../reset-password/reset-password';
 
 @Component({
   selector: 'page-sign-in',
@@ -24,6 +25,10 @@ export class SignInPage {
     error => {
       this.errorMessage = error.message;
     });
+  }
+
+  resetPassword() {
+    this.navCtrl.push(ResetPasswordPage);
   }
 
 }
