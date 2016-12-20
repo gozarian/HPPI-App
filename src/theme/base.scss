@@ -25,6 +25,7 @@ strong {
 }
 
 input::placeholder {
+  padding-left: .2rem;
   font-size: type-scale(-1);
   font-style: italic;
   font-weight: weight(regular);

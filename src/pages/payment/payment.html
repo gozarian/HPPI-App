@@ -19,13 +19,13 @@
     <ion-row class="ccDetails">
       <ion-col>
         <span class="payment-label">Exp</span>
-        <ion-input type="number" placeholder="mm"></ion-input>
+        <ion-input type="text" placeholder="mm" maxlength="2"></ion-input>
         <span class="ccExpSlash">/</span>
-        <ion-input type="number" placeholder="yyyy"></ion-input>
+        <ion-input type="text" placeholder="yyyy" maxlength="4"></ion-input>
       </ion-col>
       <ion-col text-right>
         <span class="payment-label">CVV</span>
-        <ion-input class="ccCVV" type="number"></ion-input>
+        <ion-input class="ccCVV" type="text" maxlength="4"></ion-input>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -58,11 +58,7 @@
     </ion-row>
     <ion-row>
       <ion-col class="select-state">
-        <ion-item no-lines>
-          <ion-select [(ngModel)]="card.state" placeholder="ST">
-            <ion-option *ngFor="let state of states">{{ state["alpha-2"] }}</ion-option>
-          </ion-select>
-        </ion-item>
+        <ion-input type="text" placeholder="ST" maxlength="2"></ion-input>
       </ion-col>
       <ion-col class="select-zip">
         <ion-input type="number" placeholder="Zip Code"></ion-input>

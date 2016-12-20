@@ -10,6 +10,10 @@ page-payment {
   ion-grid {
     padding: 0;
 
+    ion-row {
+      max-height: 44px;
+    }
+
     ion-col {
       padding: 0;
     }
@@ -27,6 +31,7 @@ page-payment {
   ion-input {
     display: inline-block;
     border: 1px solid color($colors, border, base);
+    max-height: 44px;
   }
 
   .payment-label {
@@ -38,7 +43,7 @@ page-payment {
   .input-ios .text-input {
     width: 100%;
     margin: 0;
-    padding: 1rem;
+    padding: .8rem;
     font-weight: weight(bold);
     color: color($colors, greyscale, base);
   }
@@ -73,7 +78,7 @@ page-payment {
     }
 
     .ccCVV {
-      max-width: 60px;
+      max-width: 70px;
     }
   }
 
@@ -100,28 +105,8 @@ page-payment {
       max-width: 80px;
     }
 
-    ion-select {
-      max-width: 100%;
-      min-width: 100%;
-      height: 44px;
-      padding: 1rem;
-      font-weight: weight(bold);
-      color: color($colors, greyscale, base);
-      border: 1px solid color($colors, border, base);
-
-      .select-placeholder {
-        font-size: type-scale(-1);
-        font-style: italic;
-        font-weight: weight(regular);
-        color: color($colors, border, base);
-      }
-    }
-
-    .select-icon {
-      visibility: hidden;
-    }
-
     .select-zip {
+      margin-left: 7px;
 
       ion-input {
         flex: 0;

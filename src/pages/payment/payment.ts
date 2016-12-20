@@ -15,6 +15,9 @@ export class PaymentPage {
     year: '',
     state: ''
   };
+  stateOptions = {
+    title: 'Select Month'
+  };
 
   states = [
     {"name":"Alabama","alpha-2":"AL"},
