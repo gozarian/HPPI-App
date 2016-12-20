@@ -10,7 +10,7 @@ export class PaymentPage {
 
   showMonth: boolean = false;
   showYear: boolean = false;
-  card: {
+  card: Object = {
     month: '',
     year: '',
     state: ''

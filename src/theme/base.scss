@@ -27,6 +27,8 @@ strong {
 input::placeholder {
   font-size: type-scale(-1);
   font-style: italic;
+  font-weight: weight(regular);
+  color: color($colors, border, base);
 }
 
 img {

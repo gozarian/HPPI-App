@@ -1,36 +1,142 @@
 page-payment {
 
+  // Layout
+  // --------------------------------------------------
+
+  .scroll-content {
+    padding: $base-line-height;
+  }
+
+  ion-grid {
+    padding: 0;
+
+    ion-col {
+      padding: 0;
+    }
+  }
+
+
+
+  // Inputs
+  // --------------------------------------------------
+
   ion-label {
     height: auto;
   }
 
   ion-input {
     display: inline-block;
-    border: 1px solid grey;
+    border: 1px solid color($colors, border, base);
+  }
+
+  .payment-label {
+    font-size: type-scale(-1);
+    font-weight: weight(bold);
+    color: color($colors, primary, base);
   }
 
   .input-ios .text-input {
     width: 100%;
-    padding-right: 0;
+    margin: 0;
+    padding: 1rem;
+    font-weight: weight(bold);
+    color: color($colors, greyscale, base);
   }
 
-  .ccExpWrapper {
-    display: inline-block;
-    position: relative;
-    border: 1px solid grey;
+
+
+  // Credit Card
+  // --------------------------------------------------
+
+  .ccNumber {
+    margin-bottom: 7px;
   }
 
-  .ccExpPlaceholder {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    bottom: 0;
+  .ccDetails {
+    justify-content: space-between;
+    margin-bottom: 3.2rem;
+
+    ion-col:first-child {
+      flex: 0 0 60%;
+      max-width: 60%;
+    }
+
+    ion-input {
+
+      &[placeholder="mm"] {
+        max-width: 50px;
+      }
+
+      &[placeholder="yyyy"] {
+        max-width: 60px;
+      }
+    }
+
+    .ccCVV {
+      max-width: 60px;
+    }
+  }
+
+  .ccExpSlash {
+    color: color($colors, border, base);
+  }
+
+
+
+  // Credit Card
+  // --------------------------------------------------
+
+  .billing-info {
+
+    ion-row {
+      margin-bottom: 7px;
+    }
+
+    .item-ios {
+      padding-left: 0;
+    }
+
+    .select-state {
+      max-width: 80px;
+    }
+
+    ion-select {
+      max-width: 100%;
+      min-width: 100%;
+      height: 44px;
+      padding: 1rem;
+      font-weight: weight(bold);
+      color: color($colors, greyscale, base);
+      border: 1px solid color($colors, border, base);
+
+      .select-placeholder {
+        font-size: type-scale(-1);
+        font-style: italic;
+        font-weight: weight(regular);
+        color: color($colors, border, base);
+      }
+    }
+
+    .select-icon {
+      visibility: hidden;
+    }
+
+    .select-zip {
+
+      ion-input {
+        flex: 0;
+        width: auto;
+        min-width: 90px;
+      }
+    }
+  }
+
+  .submit-payment {
+    margin-top: $base-line-height / 2;
     text-align: center;
-    transform: translateY(-50%);
-  }
 
-  .ccCVV {
-    width: 40%;
+    button {
+      @include button;
+    }
   }
 }

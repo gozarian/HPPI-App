@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="primary-header">
   <ion-navbar>
     <button icon-only ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -9,41 +9,31 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-grid>
-    <ion-row>
+    <ion-row class="ccNumber">
       <ion-col>
         <ion-input type="number" placeholder="Card #"></ion-input>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row class="ccDetails">
       <ion-col>
-        <span>Exp</span>
-        <div class="ccExpWrapper">
-          <span class="ccExpPlaceholder" *ngIf="showMonth == false">mm</span>
-          <span class="ccExpMM">
-            <ion-datetime displayFormat="MM" pickerFormat="MM" [(ngModel)]="card.month" (ionChange)="monthChange($event)"></ion-datetime>
-          </span>
-        </div>
-        <span>/</span>
-        <div class="ccExpWrapper">
-          <span class="ccExpPlaceholder" *ngIf="showYear == false">yyyy</span>
-          <span class="ccExpYY">
-            <ion-datetime displayFormat="YYYY" pickerFormat="YYYY" [(ngModel)]="card.year" (ionChange)="yearChange($event)"></ion-datetime>
-          </span>
-        </div>
+        <span class="payment-label">Exp</span>
+        <ion-input type="number" placeholder="mm"></ion-input>
+        <span class="ccExpSlash">/</span>
+        <ion-input type="number" placeholder="yyyy"></ion-input>
       </ion-col>
-      <ion-col>
-        <span>CVV</span>
+      <ion-col text-right>
+        <span class="payment-label">CVV</span>
         <ion-input class="ccCVV" type="number"></ion-input>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  <ion-grid>
+  <ion-grid class="billing-info">
     <ion-row>
       <ion-col>
-        Billing Address:
+        <span class="payment-label">Billing Address:</span>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -67,18 +57,19 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
+      <ion-col class="select-state">
         <ion-item no-lines>
-          <ion-select [(ngModel)]="card.state">
+          <ion-select [(ngModel)]="card.state" placeholder="ST">
             <ion-option *ngFor="let state of states">{{ state["alpha-2"] }}</ion-option>
           </ion-select>
         </ion-item>
       </ion-col>
-      <ion-col>
+      <ion-col class="select-zip">
         <ion-input type="number" placeholder="Zip Code"></ion-input>
       </ion-col>
     </ion-row>
   </ion-grid>
-
-  <button ion-button>Save</button>
+  <div class="submit-payment">
+    <button ion-button>Save</button>
+  </div>
 </ion-content>
