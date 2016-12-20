@@ -1,3 +1,75 @@
 page-personal-info {
 
+  h3 {
+    font-weight: weight(bold);
+    font-size: type-scale(-1);
+    color: color($colors, primary, base);
+  }
+
+  p {
+    font-weight: weight(bold);
+    color: color($colors, greyscale, base);
+  }
+
+
+
+  // Header
+  // --------------------------------------------------
+
+  .personal-info-header {
+    margin: $base-line-height 1rem 0;
+    text-align: center;
+    border-bottom: 1px solid color($colors, border, contrast);
+
+    h3 {
+      margin-top: 0;
+    }
+
+    p {
+      font-size: type-scale(2);
+    }
+  }
+
+
+
+  // Details
+  // --------------------------------------------------
+
+  .personal-info-details {
+    padding: $base-line-height;
+
+    section:first-child {
+
+      h3 {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .personal-info-address {
+
+    p {
+      font-weight: weight(regular);
+      margin: 0;
+    }
+  }
+
+
+
+  // Details
+  // --------------------------------------------------
+
+  .personal-info-notify {
+    padding: 1rem;
+    background-color: color($colors, base, base);
+
+    h3 {
+      margin-top: 0;
+    }
+
+    p {
+      margin-bottom: 0;
+      font-weight: weight(regular);
+    }
+  }
 }

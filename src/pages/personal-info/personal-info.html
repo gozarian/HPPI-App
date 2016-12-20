@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="primary-header">
   <ion-navbar>
     <button icon-only ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -9,27 +9,29 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-list>
-    <ion-item>
-      <h3>Pet Parent</h3>
-      <p>{{ user.name }}</p>
-    </ion-item>
-    <ion-item>
+<ion-content>
+  <section class="personal-info-header">
+    <h3>Pet Parent</h3>
+    <p>{{ user.name }}</p>
+  </section>
+  <div class="personal-info-details">
+    <section>
       <h3>Contact Number</h3>
       <p>{{ user.phone }}</p>
-    </ion-item>
-    <ion-item>
+    </section>
+    <section>
       <h3>Email Address</h3>
       <p>{{ user.email }}</p>
-    </ion-item>
-    <ion-item>
+    </section>
+    <section class="personal-info-address">
       <h3>Mailing Address</h3>
       <p>{{ user.streetAddress }}</p>
       <p *ngIf="user.aptUnit">{{ user.aptUnit }}</p>
       <p>{{ user.city }} {{ user.state }}, {{ user.zip }}</p>
-    </ion-item>
-  </ion-list>
-  <h3>Wrong address or contact info?</h3>
-  <p>Please go online to make updates in your account settings. Billing address can be updated in the billing section.</p>
+    </section>
+  </div>
+  <section class="personal-info-notify">
+    <h3>Wrong address or contact info?</h3>
+    <p>Please go online to make updates in your account settings. Billing address can be updated in the billing section.</p>
+  </section>
 </ion-content>
