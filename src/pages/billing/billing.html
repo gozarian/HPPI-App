@@ -1,74 +1,70 @@
-<ion-header>
+<ion-header class="primary-header">
   <ion-navbar>
     <button icon-only ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      Policy & Billing
+      Policy &amp; Billing
     </ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content>
-  <p class="policy-warning">Your last payment failed and was not received.</p>
-  <ion-grid>
-    <ion-row>
-      <ion-col width-50>
-        <h3>Policy Holder:</h3>
-        Brian Jorgensen
-      </ion-col>
-      <ion-col width-50>
-        <h3>Premium Total:</h3>
-        $550.65 Monthly
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col width-50>
-        <h3>Billing Date:</h3>
-        31st Monthly
-      </ion-col>
-      <ion-col width-50>
-        <ion-row>
-          <ion-col>
-            <h3>Status:</h3>
-            <span>Suspended</span>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <h3>Amount Due:</h3>
-            <span>$984.47</span>
-          </ion-col>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <h3>Payment Method:</h3>
-      </ion-col>
-      <ion-col>
-        <span>Card</span>: <span>****</span><span>8675</span>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <h3>Billing Address:</h3>
-        <div>
-          <span class="billing-address">6806 Westminister Ave NE,</span>
-        </div>
-        <div>
-          <span class="billing-city">Elensburg</span>
-          <span class="billing-state">WA</span>
-          <span class="billing-zip">98115</span>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <button ion-button>Retry Card</button>
-  <ion-list no-lines>
-    <ion-item>
+  <div class="content-wrapper">
+    <p class="policy-warning">Your last payment failed and was not received.</p>
+    <ion-grid class="policy-details">
+      <ion-row wrap>
+        <ion-col width-50>
+          <h3>Policy Holder:</h3>
+          User with a long, long name
+        </ion-col>
+        <ion-col width-50>
+          <h3>Premium Total:</h3>
+          $10550.65 Monthly
+        </ion-col>
+        <div class="hr"></div>
+      </ion-row>
+      <ion-row class="policy-status">
+        <ion-col width-50>
+          <h3>Billing Date:</h3>
+          <span class="weight-regular">31st Monthly</span>
+        </ion-col>
+        <ion-col width-50>
+          <h3>Status:</h3>
+          <span>Suspended</span>
+          <h3 class="policy-amount-due">Amount Due:</h3>
+          <span>$84.47</span>
+        </ion-col>
+      </ion-row>
+      <ion-row class="policy-payment">
+        <ion-col>
+          <h3>Payment Method:</h3>
+        </ion-col>
+        <ion-col class="policy-card">
+          <h3><span>Card</span>: <span>****</span><span>8675</span></h3>
+        </ion-col>
+      </ion-row>
+      <ion-row class="policy-address">
+        <ion-col>
+          <h3>Billing Address:</h3>
+          <div>
+            <span class="billing-address">6806 Westminister Ave NE,</span>
+          </div>
+          <div>
+            <span class="billing-city">Elensburg</span>
+            <span class="billing-state">WA</span><span>,</span>
+            <span class="billing-zip">98115</span>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div class="submit-card-information">
+      <button ion-button>Retry Card</button>
+    </div>
+  </div>
+  <ion-list>
+    <ion-item class="bottom-next" no-lines>
       <button ion-item (click)="toPayment()">
-        <ion-icon name="card"></ion-icon>
+        <ion-icon class="ion-icon-card"></ion-icon>
         Edit Payment Method
       </button>
     </ion-item>

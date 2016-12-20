@@ -75,11 +75,11 @@ page-account {
 
     .item-ios {
       padding-left: $base-line-height;
-      border-bottom: 1px solid color($colors, base, contrast);
+      border-bottom: 1px solid color($colors, border, contrast);
       color: color($colors, greyscale, contrast);
 
       &:last-child {
-        border-bottom: 1px solid color($colors, base, contrast);
+        border-bottom: 1px solid color($colors, border, contrast);
       }
 
       .item-inner {

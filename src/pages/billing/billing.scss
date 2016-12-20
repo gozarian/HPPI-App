@@ -1,3 +1,157 @@
 page-billing {
 
+  // Header & Layout
+  // --------------------------------------------------
+
+  .toolbar-ios {
+
+    ion-title {
+      padding-left: 70px;
+      padding-right: 70px;
+    }
+  }
+
+  .scroll-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: color($colors, base, base);
+  }
+
+
+
+  // Warning
+  // --------------------------------------------------
+
+  .policy-warning {
+    margin: 0;
+    padding: 3px;
+    font-size: type-scale(-3);
+    font-weight: weight(semibold);
+    color: #B20000;
+    text-align: center;
+    background-color: color($colors, warning, contrast);
+  }
+
+
+
+  // Policy Details
+  // --------------------------------------------------
+
+  .policy-details {
+    flex: 1;
+    padding: 0;
+    background-color: color($colors, base, base);
+
+    ion-row {
+      padding: 5px;
+
+      &:first-child {
+        padding-top: 0;
+        padding-bottom: 0;
+        background-color: color($colors, base, contrast);
+      }
+
+      .hr {
+        flex-basis: 100%;
+        height: 1px;
+        margin: $base-line-height / 1.5 10px 0;
+        border-bottom: 1px solid color($colors, border, contrast);
+      }
+    }
+
+    ion-col {
+      font-size: type-scale(-1);
+      font-weight: weight(bold);
+      color: color($colors, greyscale, base);
+    }
+
+    h3 {
+      margin-top: 1.4rem;
+      font-size: type-scale(-1);
+      font-weight: weight(bold);
+      color: color($colors, primary, base);
+    }
+
+    .weight-regular {
+      font-weight: weight(regular);
+    }
+
+    .policy-status {
+      padding-top: 0;
+      background-color: color($colors, base, contrast);
+
+      ion-col:last-child {
+
+        h3 {
+          display: inline-block;
+        }
+
+        span {
+          color: #CF423F;
+        }
+      }
+    }
+
+    .policy-amount-due {
+      margin-top: 0;
+      margin-bottom: .6rem;
+    }
+
+    .policy-payment {
+      padding-top: 0;
+      padding-bottom: 0;
+      background-color: color($colors, base, base);
+    }
+
+    .policy-card {
+
+      h3 {
+        color: color($colors, greyscale, base);
+      }
+    }
+
+    .policy-address {
+      padding-top: 0;
+      padding-bottom: 0;
+      background-color: color($colors, base, base);
+
+      ion-col {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
+      h3 {
+        margin-top: 0;
+      }
+
+      span {
+        font-weight: weight(regular);
+      }
+    }
+  }
+
+
+
+  // Bottom Buttons
+  // --------------------------------------------------
+
+  .submit-card-information {
+    height: 78px;
+    padding: $base-line-height / 3 0 $base-line-height / 2;
+    text-align: center;
+    background-color: color($colors, base, base);
+
+    button {
+      @include button;
+    }
+  }
+
+  .list-ios {
+    margin-bottom: 0;
+  }
+
+  .bottom-next {
+    margin-top: 0;
+  }
 }

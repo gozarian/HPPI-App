@@ -62,7 +62,7 @@ export class AccountPage {
   }
 
   itemSelected(item) {
-    this.navCtrl.setRoot(item.component);
+    this.navCtrl.push(item.component);
   }
 
   logout() {

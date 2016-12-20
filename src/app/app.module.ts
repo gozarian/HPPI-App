@@ -59,6 +59,7 @@ import { SplashPage } from '../pages/splash/splash';
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
+      backButtonText: '',
       mode: 'ios'
     })
   ],

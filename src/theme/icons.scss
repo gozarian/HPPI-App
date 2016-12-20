@@ -47,6 +47,10 @@
   @include hp-icons;
 }
 
+.ion-icon-card {
+  @include hp-icons;
+}
+
 .ion-icon-home {
   @include hp-icons(url('../assets/icon/icon-home.svg'));
 }
