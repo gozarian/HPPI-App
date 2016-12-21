@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController, Keyboard } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
 @Component({
   selector: 'page-payment',
@@ -34,7 +34,7 @@ export class PaymentPage {
     {"name":"Wyoming","alpha-2":"WY"}
   ];
 
-  constructor(public navCtrl: NavController, public keyboard: Keyboard) {
+  constructor(public navCtrl: NavController) {
   }
 
   monthChange(value){
