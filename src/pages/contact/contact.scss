@@ -1,3 +1,69 @@
 page-contact {
 
+  // Logo Image
+  // --------------------------------------------------
+
+  figure {
+    margin: 1.6rem 0 $base-line-height;
+
+    img {
+      max-width: 160px;
+      margin: 0 auto;
+    }
+  }
+
+
+
+  // Text
+  // --------------------------------------------------
+
+  .item-block {
+    align-items: flex-start;
+
+    .label-ios, p {
+      margin-top: 3px;
+      font-size: type-scale(0);
+      font-weight: weight(regular);
+      color: color($colors, greyscale, base);
+    }
+
+    a {
+      text-decoration: none;
+      font-size: type-scale(-3);
+      font-weight: weight(bold);
+      color: color($colors, accent, contrast);
+
+      &.phone-link {
+        font-size: type-scale(0);
+      }
+    }
+  }
+
+
+
+  // Icons
+  // --------------------------------------------------
+
+  ion-icon[class^="ion-icon"] {
+    width: auto;
+  }
+
+  .item-ios ion-icon[item-left] {
+    margin-top: 0;
+  }
+
+  .social-links {
+
+    .label-ios {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  ion-icon.ion-icon-twitter,
+  ion-icon.ion-icon-facebook {
+    margin-left: $base-line-height;
+    width: 25px;
+    height: 16px;
+  }
 }

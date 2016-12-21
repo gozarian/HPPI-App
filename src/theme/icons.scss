@@ -74,3 +74,36 @@
 .ion-icon-camera {
   @include hp-icons(url('../assets/icon/icon-camera.svg'));
 }
+
+
+
+// Contact Icons
+// --------------------------------------------------
+
+.ion-icon-mail {
+  @include hp-icons;
+}
+
+.ion-icon-phone {
+  @include hp-icons;
+}
+
+.ion-icon-print {
+  @include hp-icons;
+}
+
+.ion-icon-messages {
+  @include hp-icons;
+}
+
+.ion-icon-facebook {
+  @include hp-icons;
+}
+
+.ion-icon-twitter {
+  @include hp-icons;
+}
+
+.ion-icon-stamp {
+  @include hp-icons;
+}
