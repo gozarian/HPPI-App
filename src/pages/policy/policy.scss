@@ -1,3 +1,53 @@
 page-policy {
 
+  // Pet Policy Details
+  // --------------------------------------------------
+
+  .pet-policy-details {
+    margin-bottom: 0;
+    padding: $base-line-height / 2 $base-line-height;
+    background-color: color($colors, base, base);
+
+    .item-ios {
+      min-height: 38px;
+      padding-left: 0;
+      background-color: transparent;
+    }
+
+    .label-ios {
+      margin-right: 0;
+      margin-top: 0;
+      margin-bottom: 8px;
+
+      p {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .policy-label {
+        font-size: type-scale(0);
+        color: color($colors, greyscale, base);
+      }
+
+      .policy-value {
+        width: 100px;
+        font-size: type-scale(1);
+        font-weight: weight(bold);
+        color: color($colors, greyscale, base);
+      }
+    }
+  }
+
+
+
+  // New Claim Button
+  // --------------------------------------------------
+
+  .policy-new-claim {
+    margin-bottom: 0;
+  }
+
+  .bottom-next {
+    margin-top: 0;
+  }
 }

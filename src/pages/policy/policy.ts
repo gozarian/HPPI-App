@@ -12,6 +12,7 @@ export class PolicyPage {
   policy = {
     petImage: 'assets/test-imgs/test-pet-1.png',
     petName: 'Jackson',
+    petType: 'dog',
     number: '193900',
     startDate: '1/31/2014',
     reimbursement: '80',

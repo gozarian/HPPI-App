@@ -3,6 +3,8 @@
   background-color: $bkgrdcolor;
 }
 
+
+
 .primary-header {
 
   .back-button-icon-ios {
@@ -28,6 +30,8 @@
     font-size: type-scale(-4);
   }
 }
+
+
 
 .back-home-header {
 
@@ -56,6 +60,8 @@
   }
 }
 
+
+
 .claim-header {
 
   figure {
@@ -78,5 +84,48 @@
     font-weight: weight(bold);
     color: color($colors, greyscale, base);
     text-align: center;
+  }
+}
+
+
+
+.policy-header {
+  position: relative;
+  background-image: linear-gradient(to bottom, transparent 0%, transparent 93%, color($colors, base, base) 93%, color($colors, base, base) 100%);
+
+  figure {
+    margin: 0;
+    padding: $base-line-height $base-line-height $base-line-height / 2;
+  }
+
+  .img-wrapper {
+    height: 205px;
+    width: 205px;
+    margin: 0 auto;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    border: 7px solid color($colors, primary, base);
+  }
+
+  h3 {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    max-width: 120px;
+    margin: 0 auto;
+    padding-top: $base-line-height / 2;
+    padding-bottom: $base-line-height / 2;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: type-scale(2);
+    color: color($colors, base, contrast);
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }

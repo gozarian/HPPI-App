@@ -1,19 +1,28 @@
+<ion-header class="primary-header">
+  <ion-navbar>
+    <button icon-only ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{ policy.petName }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
 <ion-content>
-  <ion-header class="primary-header">
-    <ion-navbar>
-      <button icon-only ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title>
-        {{ policy.petName }}
-      </ion-title>
-    </ion-navbar>
-  </ion-header>
-  <ion-avatar>
-    <img src="{{ policy.petImage }}">
-  </ion-avatar>
-  <h3>{{ policy.petName }}</h3>
-  <ion-list no-lines>
+  <section class="policy-header">
+    <figure>
+      <div
+        class="img-wrapper"
+        [style.background-image]="'url(' + policy.petImage + ')'">
+      </div>
+    </figure>
+    <h3
+      *ngIf="policy.petType == 'dog'"
+      style="background-image: url('assets/test-imgs/pet-label-bkgrd.svg')">
+      {{ policy.petName }}
+    </h3>
+  </section>
+  <ion-list no-lines class="pet-policy-details">
     <ion-item>
       <p>
         <span class="policy-label">Pet Policy #:</span>
@@ -45,10 +54,12 @@
       </p>
     </ion-item>
   </ion-list>
-  <ion-list no-lines>
-    <button ion-item (click)="newClaim()">
-      <ion-icon name="plus"></ion-icon>
-      File a New Claim
-    </button>
+  <ion-list no-lines class="policy-new-claim">
+    <ion-item no-lines class="bottom-next">
+      <button ion-item (click)="newClaim()">
+        <ion-icon class="ion-icon-clipboard-plus"></ion-icon>
+        File a New Claim
+      </button>
+    </ion-item>
   </ion-list>
 </ion-content>

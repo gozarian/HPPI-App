@@ -63,6 +63,10 @@
   @include hp-icons;
 }
 
+.ion-icon-clipboard-plus {
+  @include hp-icons;
+}
+
 .ion-icon-delete-photo {
   @include hp-icons(url('../assets/icon/icon-delete.svg'));
 }
