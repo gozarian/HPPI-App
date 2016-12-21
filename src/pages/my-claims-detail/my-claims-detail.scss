@@ -26,7 +26,7 @@
 
   ion-note {
     font-size: type-scale(-2);
-    color: color($colors, greyscale, contrast);
+    color: color($colors, greyscale, base);
 
     span {
       font-weight: weight(bold);
