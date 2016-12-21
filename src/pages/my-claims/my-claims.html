@@ -9,7 +9,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-list class="hp-list">
+  <ion-list *ngIf="claims.length > 0" class="hp-list">
     <button ion-item *ngFor="let claim of claims" (click)="openClaim(claim)">
       <figure class="claim-pet-avatar">
         <div
@@ -25,4 +25,5 @@
       <ion-note item-right>{{ claim.date }}</ion-note>
     </button>
   </ion-list>
+  <h3 class="no-claims" *ngIf="claims.length == 0">You don't have any claims.</h3>
 </ion-content>

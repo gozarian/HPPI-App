@@ -13,6 +13,21 @@ page-my-claims {
 
 
 
+  // No Claims
+  // --------------------------------------------------
+
+  .no-claims {
+    margin-top: 0;
+    padding: $base-line-height;
+    font-size: type-scale(0);
+    font-weight: weight(bold);
+    color: color($colors, greyscale, base);
+    text-align: center;
+    background-color: color($colors, base, contrast);
+  }
+
+
+
   // List Layout
   // --------------------------------------------------
 
