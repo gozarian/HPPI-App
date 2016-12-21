@@ -49,10 +49,12 @@
 // --------------------------------------------------
 
 ion-navbar {
-  position:relative;
+  position: relative;
 
   .bar-button-menutoggle {
     position: absolute;
     right: 5px;
+    top: 50%;
+    transform: translateY(-25%);
   }
 }

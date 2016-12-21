@@ -1,4 +1,15 @@
+.ios ion-nav page-home.ion-page > ion-header > .toolbar.statusbar-padding:first-child {
+  height: calc(53px + 20px);
+  min-height: calc(53px + 20px);
+}
+
+
+
 page-home {
+
+  ion-content.scroll-content {
+    margin-top: 72px !important;
+  }
 
   .content-ios {
     background-color: color($colors, base, base);
@@ -17,9 +28,23 @@ page-home {
     padding: 5px;
 
     .toolbar-content-ios {
+      height: 100%;
       padding-top: 5px;
       padding-bottom: 5px;
+      background-color: color($colors, base, contrast);
+      box-shadow: 0 -10px 5px -10px rgba(0, 0, 0, 0.2);
     }
+  }
+
+  .toolbar-ios {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    min-height: 53px;
+  }
+
+  .toolbar-background-ios {
+    background-color: color($colors, primary, base);
   }
 
   ion-header {
@@ -27,7 +52,7 @@ page-home {
   }
 
   .home-logo {
-    height: $base-line-height * 1.8;
+    height: 40px;
     margin-top: 0;
     margin-bottom: 0px;
 
@@ -179,7 +204,7 @@ page-home {
   // --------------------------------------------------
 
   .home-notify {
-    margin-top: $base-line-height;
+    margin-top: 0;
     margin-bottom: 0;
     padding: type-scale(0) 0;
     font-size: type-scale(-2);

@@ -7,6 +7,11 @@
 
 .primary-header {
 
+  .toolbar {
+    align-items: flex-end;
+    padding-bottom: 5px;
+  }
+
   .back-button-icon-ios {
     height: 100%;
   }
@@ -95,7 +100,7 @@
 
   figure {
     margin: 0;
-    padding: $base-line-height $base-line-height $base-line-height / 2;
+    padding: $base-line-height / 1.5 $base-line-height $base-line-height / 2;
   }
 
   .img-wrapper {
