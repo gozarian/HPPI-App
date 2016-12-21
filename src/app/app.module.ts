@@ -59,9 +59,13 @@ import { SplashPage } from '../pages/splash/splash';
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
-      swipeBackEnabled: false,
       backButtonText: '',
-      mode: 'ios'
+      mode: 'ios',
+      platforms: {
+        ios: {
+          statusbarPadding: true
+        }
+      }
     })
   ],
   bootstrap: [IonicApp],

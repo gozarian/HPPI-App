@@ -1,5 +1,9 @@
 page-account {
 
+  .content-ios {
+    background-color: color($colors, base, base);
+  }
+
   ion-header {
     position: relative;
   }

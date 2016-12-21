@@ -1,5 +1,12 @@
 page-policy {
 
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
   // Pet Policy Details
   // --------------------------------------------------
 

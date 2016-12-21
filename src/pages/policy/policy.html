@@ -9,57 +9,61 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <section class="policy-header">
-    <figure>
-      <div
-        class="img-wrapper"
-        [style.background-image]="'url(' + policy.petImage + ')'">
-      </div>
-    </figure>
-    <h3
-      *ngIf="policy.petType == 'dog'"
-      style="background-image: url('assets/test-imgs/pet-label-bkgrd.svg')">
-      {{ policy.petName }}
-    </h3>
-  </section>
-  <ion-list no-lines class="pet-policy-details">
-    <ion-item>
-      <p>
-        <span class="policy-label">Pet Policy #:</span>
-        <span class="policy-value">{{ policy.number }}</span>
-      </p>
-    </ion-item>
-    <ion-item>
-      <p>
-        <span class="policy-label">Pet Protected Since:</span>
-        <span class="policy-value">{{ policy.startDate }}</span>
-      </p>
-    </ion-item>
-    <ion-item>
-      <p>
-        <span class="policy-label">Reimbursement:</span>
-        <span class="policy-value">{{ policy.reimbursement }}%</span>
-      </p>
-    </ion-item>
-    <ion-item>
-      <p>
-        <span class="policy-label">Annual Deductible:</span>
-        <span class="policy-value">${{ policy.deductible }}</span>
-      </p>
-    </ion-item>
-    <ion-item>
-      <p>
-        <span class="policy-label">Monthly Premium:</span>
-        <span class="policy-value">${{ policy.premium }}</span>
-      </p>
-    </ion-item>
-  </ion-list>
-  <ion-list no-lines class="policy-new-claim">
-    <ion-item no-lines class="bottom-next">
-      <button ion-item (click)="newClaim()">
-        <ion-icon class="ion-icon-clipboard-plus"></ion-icon>
-        File a New Claim
-      </button>
-    </ion-item>
-  </ion-list>
+  <div class="content-wrapper">
+    <div>
+      <section class="policy-header">
+        <figure>
+          <div
+            class="img-wrapper"
+            [style.background-image]="'url(' + policy.petImage + ')'">
+          </div>
+        </figure>
+        <h3
+          *ngIf="policy.petType == 'dog'"
+          style="background-image: url('assets/test-imgs/pet-label-bkgrd.svg')">
+          {{ policy.petName }}
+        </h3>
+      </section>
+      <ion-list no-lines class="pet-policy-details">
+        <ion-item>
+          <p>
+            <span class="policy-label">Pet Policy #:</span>
+            <span class="policy-value">{{ policy.number }}</span>
+          </p>
+        </ion-item>
+        <ion-item>
+          <p>
+            <span class="policy-label">Pet Protected Since:</span>
+            <span class="policy-value">{{ policy.startDate }}</span>
+          </p>
+        </ion-item>
+        <ion-item>
+          <p>
+            <span class="policy-label">Reimbursement:</span>
+            <span class="policy-value">{{ policy.reimbursement }}%</span>
+          </p>
+        </ion-item>
+        <ion-item>
+          <p>
+            <span class="policy-label">Annual Deductible:</span>
+            <span class="policy-value">${{ policy.deductible }}</span>
+          </p>
+        </ion-item>
+        <ion-item>
+          <p>
+            <span class="policy-label">Monthly Premium:</span>
+            <span class="policy-value">${{ policy.premium }}</span>
+          </p>
+        </ion-item>
+      </ion-list>
+    </div>
+    <ion-list no-lines class="policy-new-claim">
+      <ion-item no-lines class="bottom-next">
+        <button ion-item (click)="newClaim()">
+          <ion-icon class="ion-icon-clipboard-plus"></ion-icon>
+          File a New Claim
+        </button>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>

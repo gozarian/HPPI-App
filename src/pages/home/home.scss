@@ -1,5 +1,9 @@
 page-home {
 
+  .content-ios {
+    background-color: color($colors, base, base);
+  }
+
   .layout-wrapper {
     display: flex;
     flex-direction: column;
@@ -11,6 +15,11 @@ page-home {
 
   ion-navbar {
     padding: 5px;
+
+    .toolbar-content-ios {
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
   }
 
   ion-header {
@@ -19,8 +28,8 @@ page-home {
 
   .home-logo {
     height: $base-line-height * 1.8;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 0;
+    margin-bottom: 0px;
 
     img {
       height: 100%;
@@ -38,7 +47,7 @@ page-home {
     white-space: nowrap;
 
     .scroll-content {
-      background-image: linear-gradient(to top, transparent 0%, transparent 13%, color($colors, primary, base) 13%, color($colors, primary, base) 100%);
+      background-image: linear-gradient(to top, color($colors, base, contrast) 0%, color($colors, base, contrast) 13%, color($colors, primary, base) 13%, color($colors, primary, base) 100%);
     }
 
     .scroll-zoom-wrapper {
@@ -115,6 +124,7 @@ page-home {
     padding: 0;
     justify-content: space-between;
     flex: 1;
+    background-color: color($colors, base, contrast);
 
     .nav-icons {
       min-height: 200px;
