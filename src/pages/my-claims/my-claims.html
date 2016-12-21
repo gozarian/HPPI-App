@@ -1,22 +1,27 @@
+<ion-header class="primary-header back-home-header">
+  <ion-navbar>
+    <button icon-only ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      My Claims
+    </ion-title>
+  </ion-navbar>
+</ion-header>
 <ion-content>
-  <ion-header class="primary-header back-home-header">
-    <ion-navbar>
-      <button icon-only ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title>
-        My Claims
-      </ion-title>
-    </ion-navbar>
-  </ion-header>
-  <ion-list>
+  <ion-list class="hp-list">
     <button ion-item *ngFor="let claim of claims" (click)="openClaim(claim)">
-      <ion-avatar item-left>
-        <img src="{{ claim.petImage }}">
-      </ion-avatar>
-      <h2>Claim # {{ claim.number }}</h2>
-      <p>For: {{ claim.petName }}</p>
-      <p class="claim-status">{{ claim.status }}</p>
+      <figure class="claim-pet-avatar">
+        <div
+          class="img-wrapper"
+          [style.background-image]="'url(' + claim.petImage + ')'">
+        </div>
+      </figure>
+      <section class="claim-pet-details">
+        <h2>Claim # {{ claim.number }}</h2>
+        <p>For: {{ claim.petName }}</p>
+        <p class="claim-status" [class.warning]="claim.status == 'warning'">{{ claim.statusMessage }}</p>
+      </section>
       <ion-note item-right>{{ claim.date }}</ion-note>
     </button>
   </ion-list>

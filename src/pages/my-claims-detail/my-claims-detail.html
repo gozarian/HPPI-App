@@ -1,14 +1,25 @@
-<ion-header>
+<ion-header class="primary-header">
   <ion-navbar>
     <ion-title>
-      My Claims, Detail
+      Claim #{{ claim.number }}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-note>{{ claim.date }}</ion-note>
-  <h2>{{ claim.number }}</h2>
-  <h3>{{ claim.petName }}</h3>
-  <div [innerHtml]="claim.status"></div>
+<ion-content>
+
+  <section class="claim-header">
+    <figure>
+      <div
+        class="img-wrapper"
+        [style.background-image]="'url(' + claim.petImage + ')'">
+      </div>
+    </figure>
+    <h3>Claim for {{ claim.petName }}</h3>
+  </section>
+
+  <div class="claim-detail">
+    <ion-note><span>Date:</span> {{ claim.date }}</ion-note>
+    <div class="status" [innerHtml]="claim.status"></div>
+  </div>
 </ion-content>

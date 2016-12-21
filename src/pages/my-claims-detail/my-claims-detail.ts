@@ -23,7 +23,7 @@ export class MyClaimsDetailPage {
       petImage: navParams.get('petImage'),
       number: navParams.get('number'),
       date: navParams.get('date'),
-      status: navParams.get('status')
+      status: navParams.get('statusMessage')
     }
   }
 

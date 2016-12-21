@@ -16,14 +16,16 @@ export class MyClaimsPage {
       petImage: 'assets/test-imgs/test-pet-1.png',
       number: 11123,
       date: '3/16/15',
-      status: 'In Progress'
+      status: 'progress',
+      statusMessage: 'In Progress'
     },
     {
       petName: 'Jackson',
       petImage: 'assets/test-imgs/test-pet-1.png',
       number: 10113,
       date: '1/19/15',
-      status: 'Your Action Needed'
+      status: 'warning',
+      statusMessage: 'Your Action Needed'
     }
   ]
 
