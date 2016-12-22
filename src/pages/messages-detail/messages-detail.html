@@ -1,12 +1,12 @@
-<ion-header>
+<ion-header class="primary-header">
   <ion-navbar>
     <ion-title>
-      Messages, Detail
+      {{ message.title }}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-note>{{ message.date }}</ion-note>
   <h2>{{ message.title }}</h2>
   <div [innerHtml]="message.content"></div>
