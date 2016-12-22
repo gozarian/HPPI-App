@@ -62,9 +62,6 @@ import { SplashPage } from '../pages/splash/splash';
       platforms: {
         ios: {
           statusbarPadding: true,
-        },
-        android: {
-          statusbarPadding: false,
         }
       }
     })
