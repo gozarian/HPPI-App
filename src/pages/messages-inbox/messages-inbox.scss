@@ -1,14 +1,100 @@
 page-messages-inbox {
 
+  // Background and layout
+  // --------------------------------------------------
+
+  .content-ios {
+    background-color: color($colors, base, base);
+  }
+
   ion-header {
     position: relative;
   }
 
-  ion-label {
 
-    h2 {
-      overflow: hidden;
-      text-overflow: ellipsis;
+
+  // No messages
+  // --------------------------------------------------
+
+  .no-messages {
+    margin-top: 0;
+    padding: $base-line-height;
+    font-size: type-scale(0);
+    font-weight: weight(bold);
+    color: color($colors, greyscale, base);
+    text-align: center;
+    background-color: color($colors, base, contrast);
+  }
+
+
+  // Unread
+  // --------------------------------------------------
+
+  .notify {
+    height: 1rem;
+    width: 1rem;
+    margin: 4px 6px 0;
+    border-radius: 50%;
+
+    &.unread {
+      background-color: color($colors, primary, base);
+    }
+  }
+
+
+  // Labels
+  // --------------------------------------------------
+
+  .list-ios {
+
+    .item-block {
+      padding-left: 0;
+
+      .item-inner {
+        position: relative;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        background-size: 12px 12px;
+        border-bottom-width: 0;
+      }
+
+      ion-note {
+        position: absolute;
+        top: 5px;
+        right: 14px;
+        margin-right: 0;
+        font-size: type-scale(-2);
+        color: color($colors, greyscale, contrast);
+      }
+    }
+
+    .label-ios {
+      display: flex;
+      margin-right: 45px;
+      margin-top: 0;
+      margin-bottom: 0;
+
+      .message-details {
+        overflow: hidden;
+        flex: 1;
+        margin: 0;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      h2 {
+        margin-bottom: 1rem;
+        font-size: type-scale(0);
+        font-weight: weight(bold);
+        color: color($colors, greyscale, base);
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      p {
+        font-size: type-scale(0);
+        color: color($colors, greyscale, contrast);
+      }
     }
   }
 }

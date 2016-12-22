@@ -27,7 +27,7 @@ export class MyClaimsPage {
       status: 'warning',
       statusMessage: 'Your Action Needed'
     }
-  ]
+  ];
 
   constructor(public navCtrl: NavController) {
 
