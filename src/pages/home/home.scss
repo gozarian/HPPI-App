@@ -29,7 +29,7 @@ page-home {
 
     .toolbar-content-ios {
       height: 100%;
-      padding-top: 5px;
+      padding-top: 6.5px;
       padding-bottom: 5px;
       background-color: color($colors, base, contrast);
       box-shadow: 0 -10px 5px -10px rgba(0, 0, 0, 0.2);
@@ -52,7 +52,7 @@ page-home {
   }
 
   .home-logo {
-    height: 40px;
+    height: 38px;
     margin-top: 0;
     margin-bottom: 0px;
 
@@ -124,7 +124,7 @@ page-home {
         right: 0;
         left: 0;
         bottom: 0;
-        max-width: 120px;
+        max-width: 110px;
         margin: 0 auto;
         padding-top: $base-line-height / 2;
         padding-bottom: $base-line-height / 2;

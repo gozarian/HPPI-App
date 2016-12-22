@@ -8,27 +8,27 @@
 }
 
 .ion-icon-new-claim {
-  @include hp-icons;
+  @include hp-icons(url('../assets/icon/icon-new-claim.png'));
 }
 
 .ion-icon-view-claims {
-  @include hp-icons;
+  @include hp-icons(url('../assets/icon/icon-view-claims.png'));
 }
 
 .ion-icon-messages {
-  @include hp-icons;
+  @include hp-icons(url('../assets/icon/icon-messages.png'));
 }
 
 .ion-icon-account {
-  @include hp-icons;
+  @include hp-icons(url('../assets/icon/icon-account.png'));
 }
 
 .ion-icon-scoop {
-  @include hp-icons;
+  @include hp-icons(url('../assets/icon/icon-scoop.jpg'));
 }
 
 .ion-icon-referral {
-  @include hp-icons;
+  @include hp-icons(url('../assets/icon/icon-referral.jpg'));
 }
 
 .ion-icon-personal-info {
@@ -48,7 +48,7 @@
 }
 
 .ion-icon-card {
-  @include hp-icons;
+  @include hp-icons(url('../assets/icon/icon-card.png'));
 }
 
 .ion-icon-home {
@@ -81,29 +81,29 @@
 // --------------------------------------------------
 
 .ion-icon-mail {
-  @include hp-icons;
+  @include hp-icons(url('../assets/icon/icon-mail.png'));
 }
 
 .ion-icon-phone {
-  @include hp-icons;
+  @include hp-icons(url('../assets/icon/icon-phone.png'));
 }
 
 .ion-icon-print {
-  @include hp-icons;
+  @include hp-icons(url('../assets/icon/icon-fax.png'));
 }
 
-.ion-icon-messages {
-  @include hp-icons;
+.ion-icon-chat {
+  @include hp-icons(url('../assets/icon/icon-chat.png'));
 }
 
 .ion-icon-facebook {
-  @include hp-icons;
+  @include hp-icons(url('../assets/icon/icon-facebook.png'));
 }
 
 .ion-icon-twitter {
-  @include hp-icons;
+  @include hp-icons(url('../assets/icon/icon-twitter.png'));
 }
 
 .ion-icon-stamp {
-  @include hp-icons;
+  @include hp-icons(url('../assets/icon/icon-stamp.png'));
 }
