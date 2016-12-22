@@ -1,5 +1,11 @@
 page-scoop-main {
 
+  iframe {
+    border-width: 0;
+    height: 100%;
+    width: 100%;
+  }
+
   ion-header {
     position: relative;
   }

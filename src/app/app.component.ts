@@ -6,7 +6,7 @@ import { Session } from '../providers/session';
 import { HpApi } from '../providers/hp-api';
 import { Environment } from '../providers/environment';
 import { Storage } from '@ionic/storage';
-import { SignInPage, AccountPage, ChangePasswordPage, ContactPage, ClaimChoosePage, ClaimBirthdayPage, ClaimPhotoPage, ClaimVerifyPage, ClaimSummaryPage, BillingPage, FAQPage, MessagesInboxPage, MyClaimsPage, PaymentPage, PersonalInfoPage, PolicyPage, ReferralPage, ResetPasswordPage, ScoopMainPage, ScoopDetailPage, SplashPage } from '../pages/pages';
+import { SignInPage, AccountPage, ChangePasswordPage, ContactPage, ClaimChoosePage, ClaimBirthdayPage, ClaimPhotoPage, ClaimVerifyPage, ClaimSummaryPage, BillingPage, FAQPage, MessagesInboxPage, MyClaimsPage, PaymentPage, PersonalInfoPage, PolicyPage, ReferralPage, ResetPasswordPage, ScoopMainPage, SplashPage } from '../pages/pages';
 
 @Component({
   templateUrl: 'app.html',
@@ -40,8 +40,7 @@ export class MyApp {
     { title: 'Policy', component: PolicyPage },
     { title: 'Referral', component: ReferralPage },
     { title: 'Reset Password', component: ResetPasswordPage },
-    { title: 'Scoop, Main', component: ScoopMainPage },
-    { title: 'Scoop, Detail', component: ScoopDetailPage }
+    { title: 'Scoop, Main', component: ScoopMainPage }
   ];
 
   constructor(

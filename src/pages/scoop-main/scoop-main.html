@@ -1,16 +1,13 @@
+<ion-header class="primary-header back-home-header">
+  <ion-navbar>
+    <button icon-only ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      The Scoop
+    </ion-title>
+  </ion-navbar>
+</ion-header>
 <ion-content>
-  <ion-header class="primary-header back-home-header">
-    <ion-navbar>
-      <button icon-only ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title>
-        Scoop, Main
-      </ion-title>
-    </ion-navbar>
-  </ion-header>
-  <h2>Your Guide to Pet Lifestyle and Culture</h2>
-  <p>...</p>
-  <h3>This will be an in app web view</h3>
-  <p>Maybe using the <a href="https://ionicframework.com/docs/v2/native/inappbrowser/">Cordova plugin</a>.</p>
+  <iframe [src]="scoopUrl"></iframe>
 </ion-content>

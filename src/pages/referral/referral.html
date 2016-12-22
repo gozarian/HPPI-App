@@ -1,63 +1,13 @@
+<ion-header class="primary-header back-home-header">
+  <ion-navbar>
+    <button icon-only ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Refer A Friend
+    </ion-title>
+  </ion-navbar>
+</ion-header>
 <ion-content>
-  <ion-header class="primary-header back-home-header">
-    <ion-navbar>
-      <button icon-only ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title>
-        Referral
-      </ion-title>
-    </ion-navbar>
-  </ion-header>
-  <p><span>Get #35</span> for every friend that joins!</p>
-  <p>Plus your friends will get our <span>Friends and Family</span> Discount.</p>
-  <div padding>
-    <ion-segment [(ngModel)]="share">
-      <ion-segment-button value="email">
-        Email
-      </ion-segment-button>
-      <ion-segment-button value="facebook">
-        Facebook
-      </ion-segment-button>
-      <ion-segment-button value="twitter">
-        Twitter
-      </ion-segment-button>
-    </ion-segment>
-  </div>
-  <div [ngSwitch]="share">
-    <div *ngSwitchCase="'email'">
-      <ion-list>
-        <ion-item>
-          <ion-label>From:</ion-label>
-          <ion-input type="email" placeholder="Your Email"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>To:</ion-label>
-          <ion-textarea placeholder="Add more friends"></ion-textarea>
-        </ion-item>
-        <ion-item>
-          <ion-textarea value="I want to share the Healthy Paws Friends & Family Discount with you!"></ion-textarea>
-        </ion-item>
-      </ion-list>
-      <button ion-button>
-        <ion-icon name="fastforward"></ion-icon>
-        Send Email
-      </button>
-    </div>
-    <ion-list *ngSwitchCase="'facebook'">
-      <button ion-item>Share on Facebook</button>
-    </ion-list>
-    <ion-list *ngSwitchCase="'twitter'">
-      <button ion-item>Share on Twitter</button>
-    </ion-list>
-  </div>
-  <ul>
-    <li><a href="">How It Works</a> |</li>
-    <li><a href="">My Stats</a> |</li>
-    <li><a href="">Powered By Extole</a></li>
-  </ul>
-  <div>
-    <p>*Please see our <a href="">Terms and Conditions</a> for definition of successful referral. Tango Card is not a sponsor of the rewards or otherwise affiliated with Healthy Paws Pet Insurance LLC.</p>
-    <p>©2015 Healthy Paws Pet Insurance LLC, All Rights Reserved. <a href="">Terms and Conditions</a> | <a href="">Privacy Policy</a></p>
-  </div>
+  <iframe [src]="referralUrl"></iframe>
 </ion-content>

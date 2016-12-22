@@ -25,7 +25,6 @@ import { PolicyPage } from '../pages/policy/policy';
 import { ReferralPage } from '../pages/referral/referral';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { ScoopMainPage } from '../pages/scoop-main/scoop-main';
-import { ScoopDetailPage } from '../pages/scoop-detail/scoop-detail';
 import { SplashPage } from '../pages/splash/splash';
 
 @NgModule({
@@ -54,7 +53,6 @@ import { SplashPage } from '../pages/splash/splash';
     ReferralPage,
     ResetPasswordPage,
     ScoopMainPage,
-    ScoopDetailPage,
     SplashPage
   ],
   imports: [
@@ -64,6 +62,9 @@ import { SplashPage } from '../pages/splash/splash';
       platforms: {
         ios: {
           statusbarPadding: true,
+        },
+        android: {
+          statusbarPadding: false,
         }
       }
     })
@@ -94,7 +95,6 @@ import { SplashPage } from '../pages/splash/splash';
     ReferralPage,
     ResetPasswordPage,
     ScoopMainPage,
-    ScoopDetailPage,
     SplashPage
   ],
   providers: [

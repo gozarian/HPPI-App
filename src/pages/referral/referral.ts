@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { NavController } from 'ionic-angular';
+import { Environment } from '../../providers/environment';
 
 @Component({
   selector: 'page-referral',
@@ -8,11 +9,10 @@ import { NavController } from 'ionic-angular';
 })
 export class ReferralPage {
 
-  share: string;
+  referralUrl: SafeResourceUrl;
 
-  constructor(public navCtrl: NavController) {
-
-    this.share="email";
+  constructor(public navCtrl: NavController, private sanitizer: DomSanitizer, private environment: Environment) {
+    this.referralUrl = sanitizer.bypassSecurityTrustResourceUrl(environment.referralUrl());
   }
 
 }
