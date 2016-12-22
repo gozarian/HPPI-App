@@ -39,9 +39,9 @@ export class ClaimPhotoPage {
   addPhoto() {
     Camera.getPicture({
       destinationType: Camera.DestinationType.FILE_URI,
-      sourceType: Camera.PictureSourceType.CAMERA
+      sourceType: Camera.PictureSourceType.CAMERA,
+      correctOrientation: true
     }).then((imageData) => {
-    //  let base64Image = 'data:image/jpeg;base64,' + imageData;
      this.photos.push(imageData);
     }, (err) => {
 
