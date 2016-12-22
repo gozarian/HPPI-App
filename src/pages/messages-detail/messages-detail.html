@@ -6,8 +6,8 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-note>{{ message.date }}</ion-note>
+<ion-content class="message-detail">
+  <ion-note><span>Date: </span>{{ message.date }}</ion-note>
   <h2>{{ message.title }}</h2>
-  <div [innerHtml]="message.content"></div>
+  <div class="message-text" [innerHtml]="message.content"></div>
 </ion-content>

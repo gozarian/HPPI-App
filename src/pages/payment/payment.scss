@@ -118,13 +118,12 @@ page-payment {
 
   .submit-payment {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-top: $base-line-height / 2;
     text-align: center;
 
     button {
       @include button;
-      flex-basis: 45%;
 
       &[outline] {
         color: color($colors, accent, base);
