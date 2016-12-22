@@ -38,11 +38,11 @@ export class ClaimPhotoPage {
 
   addPhoto() {
     Camera.getPicture({
-      destinationType: Camera.DestinationType.DATA_URL,
+      destinationType: Camera.DestinationType.FILE_URI,
       sourceType: Camera.PictureSourceType.CAMERA
     }).then((imageData) => {
-     let base64Image = 'data:image/jpeg;base64,' + imageData;
-     this.photos.push(base64Image);
+    //  let base64Image = 'data:image/jpeg;base64,' + imageData;
+     this.photos.push(imageData);
     }, (err) => {
 
     });
