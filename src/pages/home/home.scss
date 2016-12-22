@@ -1,9 +1,15 @@
+// Padding adjustments for header
+// --------------------------------------------------
+
 .ios ion-nav page-home.ion-page > ion-header > .toolbar.statusbar-padding:first-child {
-  height: calc(53px + 20px);
-  min-height: calc(53px + 20px);
+  height: calc(50px + 20px);
+  min-height: calc(50px + 20px);
 }
 
 
+
+// Home Page
+// --------------------------------------------------
 
 page-home {
 
@@ -37,10 +43,11 @@ page-home {
   }
 
   .toolbar-ios {
+    padding-top: 0;
     padding-left: 0;
     padding-right: 0;
     padding-bottom: 0;
-    min-height: 53px;
+    min-height: 50px;
   }
 
   .toolbar-background-ios {
