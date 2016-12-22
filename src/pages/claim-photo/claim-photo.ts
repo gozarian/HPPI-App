@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Camera } from 'ionic-native';
 
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { ClaimVerifyPage } from '../claim-verify/claim-verify';
@@ -9,10 +10,7 @@ import { ClaimVerifyPage } from '../claim-verify/claim-verify';
   templateUrl: 'claim-photo.html'
 })
 export class ClaimPhotoPage {
-  public photoTotal: number = 0;
-
-  testdoc = 'assets/test-imgs/test-doc.png';
-  photoArray = Array;
+  public photos: Array<string> = [];
 
   chosenPet = {
     img: '',
@@ -39,13 +37,18 @@ export class ClaimPhotoPage {
   }
 
   addPhoto() {
+    Camera.getPicture({
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.CAMERA
+    }).then((imageData) => {
+     let base64Image = 'data:image/jpeg;base64,' + imageData;
+     this.photos.push(base64Image);
+    }, (err) => {
 
-    if (this.photoTotal < 11) {
-      this.photoTotal++;
-    }
+    });
   }
 
-  deletePhoto() {
-    this.photoTotal--;
+  deletePhoto(index: number) {
+    this.photos.splice(index, 1);
   }
 }
