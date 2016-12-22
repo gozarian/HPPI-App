@@ -14,7 +14,7 @@
       <div class="notify" [class.unread]="message.unread == true"></div>
       <section class="message-details">
         <h2>{{ message.title }}</h2>
-        <p *ngIf="message.content">{{ message.content }}</p>
+        <p *ngIf="message.content"><span>{{ message.content | slice:0:50 }}</span><span *ngIf="message.content.length > 50">...</span></p>
       </section>
       <ion-note item-right>{{ message.date }}</ion-note>
     </button>

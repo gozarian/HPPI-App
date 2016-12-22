@@ -94,6 +94,7 @@ page-messages-inbox {
       p {
         font-size: type-scale(0);
         color: color($colors, greyscale, contrast);
+        white-space: normal;
       }
     }
   }
