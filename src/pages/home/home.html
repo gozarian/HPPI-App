@@ -15,24 +15,27 @@
         <ion-row>
           <ion-col
             *ngFor="let policy of policies; let i = index;"
-            (click)="openPolicy(policy)"
             [style.z-index]="policies.length - i">
-            <figure>
-              <div
-                class="img-wrapper"
-                [style.background-image]="'url(' + policy.petImage + ')'">
-              </div>
-              <figcaption
-                *ngIf="policy.petType == 'dog'"
-                style="background-image: url('assets/misc/dog_banner.png')">
-                {{ policy.petName }}
-              </figcaption>
-              <figcaption
-                *ngIf="policy.petType == 'cat'"
-                style="background-image: url('assets/misc/cat_banner.png')">
-                {{ policy.petName }}
-              </figcaption>
-            </figure>
+            <button
+              (click)="openPolicy(policy)"
+              class="select-button">
+              <figure>
+                <div
+                  class="img-wrapper"
+                  [style.background-image]="'url(' + policy.petImage + ')'">
+                </div>
+                <figcaption
+                  *ngIf="policy.petType == 'dog'"
+                  style="background-image: url('assets/misc/dog_banner.png')">
+                  {{ policy.petName }}
+                </figcaption>
+                <figcaption
+                  *ngIf="policy.petType == 'cat'"
+                  style="background-image: url('assets/misc/cat_banner.png')">
+                  {{ policy.petName }}
+                </figcaption>
+              </figure>
+            </button>
           </ion-col>
         </ion-row>
       </ion-grid>
