@@ -9,20 +9,14 @@ import { ClaimSummaryPage } from '../claim-summary/claim-summary';
 })
 export class ClaimVerifyPage {
 
-  chosenPet = {
-    img: '',
-    name: ''
-  };
+  chosenPet;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController) {
 
-    this.chosenPet = {
-      name: navParams.get('name'),
-      img: navParams.get('img')
-    }
+    this.chosenPet = navParams.data;
   }
 
   ionViewWillEnter() {

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { Platform, MenuController, Nav } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { HomePage } from '../pages/home/home';
@@ -7,6 +7,8 @@ import { HpApi } from '../providers/hp-api';
 import { Environment } from '../providers/environment';
 import { Storage } from '@ionic/storage';
 import { SignInPage, AccountPage, ChangePasswordPage, ContactPage, ClaimChoosePage, ClaimBirthdayPage, ClaimPhotoPage, ClaimVerifyPage, ClaimSummaryPage, BillingPage, FAQPage, MessagesInboxPage, MyClaimsPage, PaymentPage, PersonalInfoPage, PolicyPage, ReferralPage, ResetPasswordPage, ScoopMainPage, SplashPage } from '../pages/pages';
+import { Policy } from '../models/policy';
+import { PolicyService } from '../services/policy.service';
 
 @Component({
   templateUrl: 'app.html',
@@ -14,12 +16,14 @@ import { SignInPage, AccountPage, ChangePasswordPage, ContactPage, ClaimChoosePa
     Session,
     Storage,
     HpApi,
-    Environment
+    Environment,
+    PolicyService
   ]
 })
-export class MyApp {
+export class MyApp implements OnInit {
   public rootPage: any = SplashPage;
   @ViewChild(Nav) nav: Nav;
+  policies: Policy[];
 
   pages = [
     { title: 'Sign In', component: SignInPage },
@@ -46,6 +50,7 @@ export class MyApp {
   constructor(
     platform: Platform,
     public menu: MenuController,
+    private policyService: PolicyService,
     session: Session
   ) {
     platform.ready().then(() => {
@@ -62,6 +67,14 @@ export class MyApp {
       })
 
     });
+  }
+
+  getPolicies(): void {
+    this.policyService.getPolicies().then(policies => this.policies = policies);
+  }
+
+  ngOnInit(): void {
+    this.getPolicies();
   }
 
   openPage(page) {

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { MenuController, NavController, ModalController, Content } from 'ionic-angular';
 import { NewFeaturesPage } from './new-features-modal';
 import { ClaimChoosePage } from '../claim-choose/claim-choose';
@@ -7,14 +7,19 @@ import { MessagesInboxPage } from '../messages-inbox/messages-inbox';
 import { AccountPage } from '../account/account';
 import { ScoopMainPage } from '../scoop-main/scoop-main';
 import { ReferralPage } from '../referral/referral';
+import { PolicyPage } from '../policy/policy';
+import { Policy } from '../../models/policy';
+import { PolicyService } from '../../services/policy.service';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  providers: [PolicyService]
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
   @ViewChild(Content) content: Content;
+  policies: Policy[];
 
   scrollToTop() {
     this.content.scrollToTop();
@@ -55,39 +60,6 @@ export class HomePage {
     }
   ];
 
-  pets = [
-    {
-      name: "Samson",
-      image: "assets/test-imgs/test-doodle.jpg",
-      type: "dog"
-    },
-    {
-      name: "Pupils",
-      image: "assets/test-imgs/test-cat.jpg",
-      type: "cat"
-    },
-    {
-      name: "Crazy Long Name for a Pet",
-      image: "assets/test-imgs/test-doodle.jpg",
-      type: "dog"
-    },
-    {
-      name: "Bagel",
-      image: "assets/test-imgs/test-doodle-bagel.jpg",
-      type: "dog"
-    },
-    {
-      name: "Kitty",
-      image: "assets/test-imgs/test-cat.jpg",
-      type: "cat"
-    },
-    {
-      name: "Sleepy",
-      image: "assets/test-imgs/test-doodle.jpg",
-      type: "dog"
-    }
-  ];
-
   user = {
     name: "user"
   };
@@ -95,8 +67,17 @@ export class HomePage {
   constructor(
     public menuCtrl: MenuController,
     public navCtrl: NavController,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    private policyService: PolicyService
   ) {}
+
+  getPolicies(): void {
+    this.policyService.getPolicies().then(policies => this.policies = policies);
+  }
+
+  ngOnInit(): void {
+    this.getPolicies();
+  }
 
   openMenu() {
     this.menuCtrl.open();
@@ -115,7 +96,11 @@ export class HomePage {
   }
 
   openAccount() {
-    this.navCtrl.push(AccountPage);
+    this.navCtrl.push(AccountPage, this.policies);
+  }
+
+  openPolicy(policy) {
+    this.navCtrl.push(PolicyPage, policy);
   }
 
   showNewFeatures() {

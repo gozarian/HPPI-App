@@ -9,17 +9,11 @@ import { HomePage } from '../home/home';
 })
 export class ClaimSummaryPage {
 
-  chosenPet = {
-    img: '',
-    name: ''
-  };
+  chosenPet;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, public viewCtrl: ViewController) {
 
-    this.chosenPet = {
-      name: navParams.get('name'),
-      img: navParams.get('img')
-    }
+    this.chosenPet = navParams.data;
 
   }
 

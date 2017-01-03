@@ -12,14 +12,14 @@
   <section>
     <h3>Which pet is this claim for?</h3>
     <ion-list class="hp-list">
-      <button ion-item *ngFor="let pet of pets" (click)="choosePet(pet)">
+      <button ion-item *ngFor="let policy of policies" (click)="choosePet(policy)">
         <figure>
           <div
             class="img-wrapper"
-            [style.background-image]="'url(' + pet.img + ')'">
+            [style.background-image]="'url(' + policy.petImage + ')'">
           </div>
         </figure>
-        <h4>{{ pet.name }}</h4>
+        <h4>{{ policy.petName }}</h4>
       </button>
     </ion-list>
   </section>

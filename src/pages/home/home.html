@@ -14,22 +14,23 @@
       <ion-grid class="home-pet-grid">
         <ion-row>
           <ion-col
-            *ngFor="let pet of pets; let i = index;"
-            [style.z-index]="pets.length - i">
+            *ngFor="let policy of policies; let i = index;"
+            (click)="openPolicy(policy)"
+            [style.z-index]="policies.length - i">
             <figure>
               <div
                 class="img-wrapper"
-                [style.background-image]="'url(' + pet.image + ')'">
+                [style.background-image]="'url(' + policy.petImage + ')'">
               </div>
               <figcaption
-                *ngIf="pet.type == 'dog'"
+                *ngIf="policy.petType == 'dog'"
                 style="background-image: url('assets/misc/dog_banner.png')">
-                {{ pet.name }}
+                {{ policy.petName }}
               </figcaption>
               <figcaption
-                *ngIf="pet.type == 'cat'"
+                *ngIf="policy.petType == 'cat'"
                 style="background-image: url('assets/misc/cat_banner.png')">
-                {{ pet.name }}
+                {{ policy.petName }}
               </figcaption>
             </figure>
           </ion-col>

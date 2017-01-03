@@ -12,20 +12,14 @@ import { ClaimVerifyPage } from '../claim-verify/claim-verify';
 export class ClaimPhotoPage {
   public photos: Array<string> = [];
 
-  chosenPet = {
-    img: '',
-    name: ''
-  };
+  chosenPet;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController) {
 
-    this.chosenPet = {
-      name: navParams.get('name'),
-      img: navParams.get('img')
-    }
+    this.chosenPet = navParams.data;
   }
 
   ionViewWillEnter() {

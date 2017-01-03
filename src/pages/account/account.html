@@ -28,8 +28,8 @@
       <ion-icon class="ion-icon-pet-policies"></ion-icon>
       Your Pet Policies
     </ion-list-header>
-    <button ion-item *ngFor="let item of policies" (click)="itemSelected(item)">
-      {{ item.title }}
+    <button ion-item *ngFor="let policy of policies" (click)="openPolicy(policy)">
+      {{ policy.petName }}
     </button>
   </ion-list>
   <ion-list class="account-links">

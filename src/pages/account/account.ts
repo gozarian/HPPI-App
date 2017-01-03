@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { PersonalInfoPage } from '../personal-info/personal-info';
 import { BillingPage } from '../billing/billing';
@@ -9,12 +9,17 @@ import { FAQPage } from '../faq/faq';
 import { ContactPage } from '../contact/contact';
 import { SignInPage } from '../sign-in/sign-in';
 import { Session } from '../../providers/session';
+import { Policy } from '../../models/policy';
+import { PolicyService } from '../../services/policy.service';
 
 @Component({
   selector: 'page-account',
-  templateUrl: 'account.html'
+  templateUrl: 'account.html',
+  providers: [PolicyService]
 })
-export class AccountPage {
+export class AccountPage implements OnInit {
+
+  policies: Policy[];
 
   information = [
     { title: 'Personal Info',
@@ -35,17 +40,6 @@ export class AccountPage {
     }
   ];
 
-  policies = [
-    { title: 'Jackson\'s Policy',
-      component: PolicyPage,
-      notification: false
-    },
-    { title: 'Vincent\'s Policy',
-      component: PolicyPage,
-      notification: false
-    }
-  ];
-
   support = [
     { title: 'Help & FAQ\s',
       component: FAQPage,
@@ -57,8 +51,21 @@ export class AccountPage {
     }
   ];
 
-  constructor(public navCtrl: NavController, private session: Session) {
+  constructor(
+    public navCtrl: NavController, 
+    private policyService: PolicyService,
+    private session: Session) {}
 
+  getPolicies(): void {
+    this.policyService.getPolicies().then(policies => this.policies = policies);
+  }
+
+  ngOnInit(): void {
+    this.getPolicies();
+  }
+
+  openPolicy(policy) {
+    this.navCtrl.push(PolicyPage, policy);
   }
 
   itemSelected(item) {

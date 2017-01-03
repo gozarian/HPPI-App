@@ -1,4 +1,6 @@
-<ion-header class="primary-header">
+<ion-header
+  class="primary-header"
+  [class.back-home-header]="previousPage.name == 'HomePage'">
   <ion-navbar>
     <button icon-only ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -20,7 +22,12 @@
         </figure>
         <h3
           *ngIf="policy.petType == 'dog'"
-          style="background-image: url('assets/test-imgs/pet-label-bkgrd.svg')">
+          style="background-image: url('assets/misc/dog_banner.png')">
+          {{ policy.petName }}
+        </h3>
+        <h3
+          *ngIf="policy.petType == 'cat'"
+          style="background-image: url('assets/misc/cat_banner.png')">
           {{ policy.petName }}
         </h3>
       </section>
@@ -28,7 +35,7 @@
         <ion-item>
           <p>
             <span class="policy-label">Pet Policy #:</span>
-            <span class="policy-value">{{ policy.number }}</span>
+            <span class="policy-value">{{ policy.policyNumber }}</span>
           </p>
         </ion-item>
         <ion-item>

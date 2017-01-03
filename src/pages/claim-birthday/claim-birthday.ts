@@ -10,20 +10,14 @@ import { ClaimPhotoPage } from '../claim-photo/claim-photo'
 export class ClaimBirthdayPage {
   public myDate;
 
-  chosenPet = {
-    name: '',
-    img: ''
-  };
+  chosenPet;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController) {
 
-    this.chosenPet = {
-      name: navParams.get('name'),
-      img: navParams.get('img')
-    }
+    this.chosenPet = navParams.data;
   }
 
   ionViewWillEnter() {

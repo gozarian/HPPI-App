@@ -14,14 +14,14 @@
     <figure>
       <div
         class="img-wrapper"
-        [style.background-image]="'url(' + chosenPet.img + ')'">
+        [style.background-image]="'url(' + chosenPet.petImage + ')'">
       </div>
     </figure>
-    <h3>Claim for {{ chosenPet.name }}</h3>
+    <h3>Claim for {{ chosenPet.petName }}</h3>
   </section>
   <section class="claim-verify">
-    <p>I certify the information provided is accurate to the best of my knowledge. I authorize any veterinarian to provide additional information about {{ chosenPet.name }} to Healthy Paws Pet Insurance.</p>
-    <p><strong>I understand that missing information or delays in delivering Jackson's medical records may delay the processing of my claims.</strong></p>
+    <p>I certify the information provided is accurate to the best of my knowledge. I authorize any veterinarian to provide additional information about {{ chosenPet.petName }} to Healthy Paws Pet Insurance.</p>
+    <p><strong>I understand that missing information or delays in delivering {{ chosenPet.petName }}'s medical records may delay the processing of my claims.</strong></p>
     <div class="buttons-verify">
       <button ion-button outline (click)="agree(chosenPet)">Disagree</button>
       <button ion-button (click)="agree(chosenPet)">Agree</button>
