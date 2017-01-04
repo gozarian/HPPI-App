@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { PersonalInfoPage } from '../personal-info/personal-info';
 import { BillingPage } from '../billing/billing';
 import { PaymentPage } from '../payment/payment';
+import { ReimbursementPage } from '../reimbursement/reimbursement';
 import { ChangePasswordPage } from '../change-password/change-password';
 import { PolicyPage } from '../policy/policy';
 import { FAQPage } from '../faq/faq';
@@ -30,8 +31,12 @@ export class AccountPage implements OnInit {
       component: BillingPage,
       notification: true
     },
-    { title: 'Edit Payment Method',
+    { title: 'Update Billing Info',
       component: PaymentPage,
+      notification: false
+    },
+    { title: 'Change Reimbursement Info',
+      component: ReimbursementPage,
       notification: false
     },
     { title: 'Change Password',

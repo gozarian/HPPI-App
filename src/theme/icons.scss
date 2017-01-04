@@ -35,12 +35,8 @@
   @include hp-icons;
 }
 
-.ion-icon-pet-policies {
-  @include hp-icons;
-}
-
 .ion-icon-support {
-  @include hp-icons;
+  @include hp-icons(url('../assets/icon/icon-support.png'));
 }
 
 .ion-icon-ball {
@@ -49,6 +45,14 @@
 
 .ion-icon-card {
   @include hp-icons(url('../assets/icon/icon-card.png'));
+}
+
+.ion-icon-notify {
+  @include hp-icons(url('../assets/icon/icon-notify.svg'));
+}
+
+.ion-icon-pet-policies {
+  @include hp-icons(url('../assets/icon/icon-pet-policies.png'));
 }
 
 .ion-icon-home {

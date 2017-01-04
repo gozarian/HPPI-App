@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="21px" height="21px" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Notify</title>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Symbols" transform="translate(-101.000000, -374.000000)" fill="#CB4642">
+            <path d="M111.5,395 C117.29899,395 122,390.29899 122,384.5 C122,378.70101 117.29899,374 111.5,374 C105.70101,374 101,378.70101 101,384.5 C101,390.29899 105.70101,395 111.5,395 Z M111.5,390 C112.328427,390 113,389.328427 113,388.5 C113,387.671573 112.328427,387 111.5,387 C110.671573,387 110,387.671573 110,388.5 C110,389.328427 110.671573,390 111.5,390 Z M110.538971,386.005594 L110.064147,379.446634 L113.011428,379.478762 L112.524888,385.968851 L110.538971,386.005594 Z" id="notify"></path>
+        </g>
+    </g>
+</svg>

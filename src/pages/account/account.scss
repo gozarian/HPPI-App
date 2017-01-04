@@ -59,6 +59,7 @@ page-account {
       ion-icon {
         height: 20px;
         width: 25px;
+        margin-right: 8px;
       }
 
       &.item-ios {
@@ -75,6 +76,12 @@ page-account {
     ion-label {
       display: flex;
       font-size: type-scale(0);
+
+      ion-icon.ion-icon-notify {
+        height: 21px;
+        width: 21px;
+        margin-left: 6px;
+      }
     }
 
     .item-ios {

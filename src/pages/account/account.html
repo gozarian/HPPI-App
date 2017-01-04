@@ -16,11 +16,12 @@
   </section>
   <ion-list class="account-links">
     <ion-list-header>
-      <ion-icon class="ion-icon-personal-info"></ion-icon>
+      <ion-icon class="ion-icon-card"></ion-icon>
       Your Information
     </ion-list-header>
     <button ion-item *ngFor="let item of information" (click)="itemSelected(item)">
       {{ item.title }}
+      <ion-icon *ngIf="item.notification" class="ion-icon-notify"></ion-icon>
     </button>
   </ion-list>
   <ion-list class="account-links">
@@ -29,7 +30,7 @@
       Your Pet Policies
     </ion-list-header>
     <button ion-item *ngFor="let policy of policies" (click)="openPolicy(policy)">
-      {{ policy.petName }}
+      {{ policy.petName }}'s Policy
     </button>
   </ion-list>
   <ion-list class="account-links">
