@@ -89,6 +89,10 @@ page-home {
     .home-pet-grid {
       height: 100%;
       padding: 0;
+
+      ion-row {
+        height: 100%;
+      }
     }
 
     ion-col {
@@ -104,7 +108,7 @@ page-home {
       position: relative;
       display: block;
       top: -2px;
-      height: 212px;
+      height: 215px;
       width: 100%;
       margin: 0;
       padding: 0;
@@ -140,19 +144,24 @@ page-home {
         border-radius: 50%;
         border: 7px solid color($colors, primary, contrast);
         transform: translateX(-50%);
+
+        &.single-pet {
+          top: -8px;
+          width: 205px;
+          height: 205px;
+        }
       }
 
       figcaption {
         position: absolute;
         right: 0;
         left: 0;
-        bottom: 4px;
+        bottom: 0;
         max-width: 110px;
         margin: 0 auto;
-        padding-top: $base-line-height / 2;
-        padding-bottom: $base-line-height / 2;
-        padding-left: 1rem;
-        padding-right: 1rem;
+        padding: 0;
+        font-size: type-scale(0);
+        line-height: 44px;
         color: color($colors, base, contrast);
         background-repeat: no-repeat;
         background-size: contain;
@@ -176,6 +185,10 @@ page-home {
 
     .nav-icons {
       min-height: 200px;
+
+      label {
+        color: color($colors, greyscale, contrast);
+      }
     }
 
     ion-col {
@@ -225,6 +238,13 @@ page-home {
 
   // Home Messages
   // --------------------------------------------------
+
+  .nav-notifications {
+
+    ion-col {
+      padding-top: $base-line-height / 1.5;
+    }
+  }
 
   .home-notify {
     margin-top: 0;

@@ -22,6 +22,7 @@
               <figure>
                 <div
                   class="img-wrapper"
+                  [class.single-pet]="policies.length < 2"
                   [style.background-image]="'url(' + policy.petImage + ')'">
                 </div>
                 <figcaption
