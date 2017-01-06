@@ -12,6 +12,7 @@ import { ReimbursementPage } from '../reimbursement/reimbursement';
 export class DepositPage {
   public photos: Array<string> = [];
   public checkDetails: boolean = false;
+  submitted = false;
   depositForm: boolean = false;
 
   directDeposit;
@@ -21,6 +22,8 @@ export class DepositPage {
     '',
     ''
   );
+
+  onSubmit() { this.submitted = true; }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
 

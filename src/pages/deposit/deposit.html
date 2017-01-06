@@ -14,7 +14,7 @@
   <section class="scan-check">
     <h2>Enter your account information.</h2>
     <button ion-button clear large
-      *ngIf="photos == 0"
+      *ngIf="photos.length == 0"
       (click)="addPhoto()">
       <p>Scan your check</p>
       <ion-icon class="ion-icon-camera"></ion-icon>
@@ -33,7 +33,7 @@
       <h2>Or, enter <span (click)="checkDetails = !checkDetails">account information</span> below.</h2>
       <img src="assets/test-imgs/direct-deposit-tip.png" alt="Check Details" [hidden]="!checkDetails">
     </div>
-    <form novalidate (ngSubmit)="onSubmit()" #depositForm="ngForm">
+    <form (ngSubmit)="onSubmit()" #depositForm="ngForm">
       <ion-grid>
         <ion-row class="routing">
           <ion-col>
