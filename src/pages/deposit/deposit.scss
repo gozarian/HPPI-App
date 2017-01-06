@@ -1,3 +1,222 @@
 page-deposit {
 
+  .back-button-text {
+    display: inline-block;
+    max-width: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .toolbar-ios ion-title {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+
+  // Warning
+  // --------------------------------------------------
+
+  .policy-warning {
+    margin: 0;
+    padding: 3px;
+    font-size: type-scale(-3);
+    font-weight: weight(semibold);
+    color: #B20000;
+    text-align: center;
+    background-color: color($colors, warning, contrast);
+  }
+
+
+
+  // Scan Check
+  // --------------------------------------------------
+
+  .scan-check {
+
+    h2 {
+      font-size: type-scale(-1);
+      font-weight: weight(bold);
+      color: color($colors, primary, base);
+      text-align: center;
+    }
+
+
+    // Add Photo Button
+
+    .button-inner {
+      flex-flow: column;
+      white-space: normal;
+      margin: 0 auto;
+      font-size: type-scale(0);
+      font-weight: weight(bold);
+      line-height: line-height(0);
+
+      p {
+        max-width: 220px;
+        color: color($colors, accent, contrast);
+      }
+    }
+
+    .button-ios {
+      display: block;
+      height: auto;
+      margin: 0 auto $base-line-height;
+      padding: 1rem 4rem;
+
+      &.activated {
+        background-color: transparent;
+        color: inherit;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .button-clear-ios.activated {
+      opacity: 1;
+    }
+
+    .ion-icon-camera {
+      height: 19px;
+      width: 31px;
+      margin-top: $base-line-height / 2;
+    }
+
+
+    // Check Photo
+
+    .check-photo-wrapper {
+      position: relative;
+      height: 80px;
+      width: 120px;
+      margin: $base-line-height auto 0;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      border: 2px solid color($colors, border, base);
+
+      span {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 35px;
+        width: 35px;
+
+        &.photo-delete {
+          right: 0;
+          top: 0;
+
+          ion-icon {
+            height: 17.5px;
+            width: 17.5px;
+          }
+        }
+      }
+    }
+  }
+
+
+
+  // Enter Account Details
+  // --------------------------------------------------
+
+  .enter-details {
+
+    .header-wrapper {
+      padding: $font-size-base $font-size-base 0.5rem;
+      background-color: color($colors, base, base);
+
+      h2 {
+        text-align: center;
+      }
+    }
+
+    form {
+      padding: 0 $font-size-base $font-size-base;
+      background-color: color($colors, base, base);
+    }
+
+    ion-grid {
+      padding: 0;
+
+      ion-col {
+        padding-left: 0;
+      }
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: type-scale(-1);
+      font-weight: weight(bold);
+      color: color($colors, accent, contrast);
+
+      span {
+        border-bottom: 1px solid color($colors, accent, contrast);
+      }
+    }
+
+    h3 {
+      margin-top: $base-line-height / 4;
+      font-size: type-scale(-2);
+      font-weight: weight(bold);
+      color: color($colors, primary, base);
+    }
+
+    .routing {
+
+      ion-col {
+        display: flex;
+      }
+
+      h3 {
+        align-self: center;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+
+    .input-ios {
+      position: relative;
+      padding-right: 35px;
+      background-color: color($colors, base, contrast);
+
+      &:after {
+        content: "";
+        position: absolute;
+        right: 0;
+        height: 100%;
+        width: 30px;
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+    }
+
+    .ng-valid[required], .ng-valid.required  {
+      &:after {
+        background-image: url('../assets/misc/green-check.svg');
+      }
+    }
+    .ng-invalid:not(form)  {
+      &:after {
+        background-image: url('../assets/misc/red-x.svg');
+      }
+    }
+
+    button {
+      display: block;
+      margin: $base-line-height auto;
+      padding-left: $base-line-height * 2;
+      padding-right: $base-line-height * 2;
+      font-weight: weight(bold);
+      color: color($colors, base, contrast);
+      background-color: color($colors, accent, base);
+
+      &[disabled] {
+        opacity: 1;
+        color: transparentize(color($colors, base, contrast), 0.7);
+      }
+    }
+  }
 }

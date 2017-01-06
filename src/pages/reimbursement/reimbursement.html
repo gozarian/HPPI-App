@@ -25,7 +25,7 @@
       </ion-list>
     </section>
     <section class="mail-check" *ngIf="reimbursement == 'check'">
-      <div>
+      <div class="mail-check-wrapper">
         <h2>Any reimbursements will be mailed to:</h2>
 
         <p>{{ testUser.street }},</p>
@@ -102,21 +102,33 @@
     </section>
 
     <section class="direct-deposit" *ngIf="reimbursement == 'deposit'">
-      <p>Reimbursements will be deposited directly to your bank account.</p>
-      <h2>Account Type:</h2>
-      <button
-        class="custom-select"
-        [class.selected]="accountSelected"
-        (click)="selectAccountType()"
-        >{{ accountType }}</button>
-      <h2>Phone Number:</h2>
-      <ion-input type="tel" placeholder="800-453-4054"></ion-input>
+      <div class="deposit-select" *ngIf="!directDepositInfo">
+        <p>Reimbursements will be deposited directly to your bank account.</p>
+        <h2>Account Type:</h2>
+        <button
+          class="custom-select"
+          [class.selected]="accountSelected"
+          (click)="selectAccountType()"
+          >{{ accountType }}</button>
+        <h2>Phone Number:</h2>
+        <ion-input type="tel" placeholder="800-453-4054"></ion-input>
+      </div>
+      <div class="deposit-summary" *ngIf="directDepositInfo">
+        <p>Your check will be automatically deposited to your bank account without the use of paper checks.</p>
+        <h2>Account Type:</h2>
+        <p class="summary-value">Checking</p>
+        <h2>Phone Number:</h2>
+        <p class="summary-value">425-111-1111</p>
+        <h2>Account Number:</h2>
+        <p class="summary-value">**************1111</p>
+      </div>
     </section>
   </div>
 
   <ion-item no-lines class="bottom-next" *ngIf="reimbursement == 'deposit'">
     <button ion-item (click)="depositDetails()">
-      Next
+      <span *ngIf="directDepositInfo">Update Account Information</span>
+      <span *ngIf="!directDepositInfo">Next</span>
     </button>
   </ion-item>
 </ion-content>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController, AlertController, PickerController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, PickerController } from 'ionic-angular';
 import { Address } from '../../models/address';
 import { HomePage } from '../home/home';
 import { DepositPage } from '../deposit/deposit';
@@ -16,6 +16,8 @@ export class ReimbursementPage {
   accountSelected = false;
   accountType = 'Choose Account Type';
 
+  directDepositInfo: boolean = true;
+
   testUser = {
     name: 'Brian Jorgensen',
     street: '6806 Westminister Ave NE',
@@ -23,10 +25,10 @@ export class ReimbursementPage {
     city: 'Elensburg',
     state: 'WA',
     zip: '98117'
-  }
+  };
 
   model = new Address(
-    this.testUser.name,
+    '',
     '',
     '',
     '',
@@ -43,7 +45,7 @@ export class ReimbursementPage {
     }
   ];
 
-  constructor(public navCtrl: NavController, private alertCtrl: AlertController, private pickerCtrl: PickerController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private pickerCtrl: PickerController) {
 
     this.reimbursement = "deposit";
   }
