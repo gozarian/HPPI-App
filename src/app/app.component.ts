@@ -6,7 +6,7 @@ import { Session } from '../providers/session';
 import { HpApi } from '../providers/hp-api';
 import { Environment } from '../providers/environment';
 import { Storage } from '@ionic/storage';
-import { SignInPage, AccountPage, ChangePasswordPage, ContactPage, ClaimChoosePage, ClaimBirthdayPage, ClaimPhotoPage, ClaimVerifyPage, ClaimSummaryPage, BillingPage, FAQPage, MessagesInboxPage, MyClaimsPage, PaymentPage, PersonalInfoPage, PolicyPage, ReferralPage, ReimbursementPage, ResetPasswordPage, ScoopMainPage, SplashPage } from '../pages/pages';
+import { SignInPage, AccountPage, ChangePasswordPage, ContactPage, ClaimChoosePage, ClaimBirthdayPage, ClaimPhotoPage, ClaimVerifyPage, ClaimSummaryPage, BillingPage, DepositPage, FAQPage, MessagesInboxPage, MyClaimsPage, PaymentPage, PersonalInfoPage, PolicyPage, ReferralPage, ReimbursementPage, ResetPasswordPage, ScoopMainPage, SplashPage } from '../pages/pages';
 import { Policy } from '../models/policy';
 import { PolicyService } from '../services/policy.service';
 
@@ -36,6 +36,7 @@ export class MyApp implements OnInit {
     { title: 'New Claim, Verify', component: ClaimVerifyPage },
     { title: 'New Claim, Summary', component: ClaimSummaryPage },
     { title: 'Billing', component: BillingPage },
+    { title: 'Deposit', component: DepositPage },
     { title: 'FAQ', component: FAQPage },
     { title: 'Messages', component: MessagesInboxPage },
     { title: 'My Claims', component: MyClaimsPage },

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, PickerController } from 'ionic-angular';
 import { Address } from '../../models/address';
 import { HomePage } from '../home/home';
+import { DepositPage } from '../deposit/deposit';
 
 @Component({
   selector: 'page-reimbursement',
@@ -105,6 +106,10 @@ export class ReimbursementPage {
     };
     picker.addColumn(column);
     picker.present();
+  }
+
+  depositDetails() {
+    this.navCtrl.push(DepositPage);
   }
 
   goHome() {

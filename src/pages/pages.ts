@@ -8,6 +8,7 @@ export {ClaimPhotoPage} from './claim-photo/claim-photo';
 export {ClaimVerifyPage} from './claim-verify/claim-verify';
 export {ClaimSummaryPage} from './claim-summary/claim-summary';
 export {BillingPage} from './billing/billing';
+export {DepositPage} from './deposit/deposit';
 export {FAQPage} from './faq/faq';
 export {MessagesDetailPage} from './messages-detail/messages-detail';
 export {MessagesInboxPage} from './messages-inbox/messages-inbox';
