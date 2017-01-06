@@ -47,8 +47,21 @@ page-sign-in {
     .list-ios {
       margin: 0;
 
-      .item-input[no-lines]:last-of-type {
-        margin-top: $base-line-height / 2;
+      .item-input[no-lines] {
+        padding-left: 0;
+        border-width: 0;
+
+        &.item-block {
+          min-height: auto;
+        }
+
+        &:last-of-type {
+          margin-top: $base-line-height / 2;
+        }
+
+        .item-inner {
+          padding-right: 0;
+        }
       }
     }
 

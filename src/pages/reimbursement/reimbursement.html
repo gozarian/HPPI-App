@@ -10,4 +10,113 @@
 </ion-header>
 
 <ion-content>
+  <div class="reimbursement-wrapper">
+    <section class="reimbursement-select">
+      <h2>Select your reimbursement type.</h2>
+      <ion-list radio-group [(ngModel)]="reimbursement">
+        <ion-item>
+          <ion-label>Mail Check</ion-label>
+          <ion-radio value="check"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Direct Deposit</ion-label>
+          <ion-radio value="deposit" checked></ion-radio>
+        </ion-item>
+      </ion-list>
+    </section>
+    <section class="mail-check" *ngIf="reimbursement == 'check'">
+      <div>
+        <h2>Any reimbursements will be mailed to:</h2>
+
+        <p>{{ testUser.street }},</p>
+        <p *ngIf="testUser.unit">{{ testUser.unit }}</p>
+        <p>{{ testUser.city }} {{ testUser.state }}, {{ testUser.zip }}</p>
+        <p class="mail-check-notify">If you need to update your physical address please do so in your online Customer Center.</p>
+        <button ion-button
+          (click)="updateAddress()"
+          *ngIf="addressForm !== true">
+          Update Mailing Address</button>
+      </div>
+      <section *ngIf="addressForm" class="address-form">
+        <h2>Mailing Address:</h2>
+        <form (ngSubmit)="onSubmit()" #addressForm="ngForm">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-input
+                  type="text"
+                  placeholder="Street Address"
+                  [(ngModel)]="model.street"
+                  name="street"
+                  required></ion-input>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-input
+                  type="text"
+                  placeholder="Unit/Apt"
+                  [(ngModel)]="model.unit"
+                  name="unit"></ion-input>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-input
+                  type="text"
+                  placeholder="City"
+                  [(ngModel)]="model.city"
+                  name="city"
+                  required></ion-input>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="select-state">
+                <ion-input
+                  type="text"
+                  placeholder="ST"
+                  maxlength="2"
+                  [(ngModel)]="model.state"
+                  name="state"
+                  required></ion-input>
+              </ion-col>
+              <ion-col class="select-zip">
+                <ion-input
+                  type="number"
+                  placeholder="Zip Code"
+                  [(ngModel)]="model.zip"
+                  name="zip"
+                  required></ion-input>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </form>
+        <button ion-button
+          type="submit"
+          (click)="confirmChange()"
+          [disabled]="!addressForm.form.valid">
+          Save Change
+        </button>
+      </section>
+      <button ion-button clear (click)="goHome()" *ngIf="!addressForm">Home</button>
+    </section>
+
+    <section class="direct-deposit" *ngIf="reimbursement == 'deposit'">
+      <p>Reimbursements will be deposited directly to your bank account.</p>
+      <h2>Account Type:</h2>
+      <button
+        class="custom-select"
+        [class.selected]="accountSelected"
+        (click)="selectAccountType()"
+        >{{ accountType }}</button>
+      <h2>Phone Number:</h2>
+      <ion-input type="tel" placeholder="800-453-4054"></ion-input>
+    </section>
+  </div>
+
+  <ion-item no-lines class="bottom-next" *ngIf="reimbursement == 'deposit'">
+    <button ion-item (click)="depositDetails()">
+      Next
+    </button>
+  </ion-item>
 </ion-content>

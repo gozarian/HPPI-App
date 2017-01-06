@@ -17,21 +17,6 @@ strong {
   font-weight: weight(bold);
 }
 
-.list-ios {
-  .item-input[no-lines] {
-    color: color($colors, greyscale, contrast);
-    border: 1px solid color($colors, border);
-  }
-}
-
-input::placeholder {
-  padding-left: .2rem;
-  font-size: type-scale(-1);
-  font-style: italic;
-  font-weight: weight(regular);
-  color: color($colors, border, base);
-}
-
 img {
   display: block;
   max-width: 100%;
@@ -53,6 +38,44 @@ button {
   border-bottom-width: 0;
 }
 
+.list-ios {
+  .item-input[no-lines] {
+    color: color($colors, greyscale, contrast);
+    border: 1px solid color($colors, border);
+  }
+}
+
+
+
+// Inputs
+// --------------------------------------------------
+
+input::placeholder {
+  padding-left: .2rem;
+  font-size: type-scale(-1);
+  font-style: italic;
+  font-weight: weight(regular);
+  color: color($colors, border, base);
+}
+
+ion-input {
+  border: 1px solid color($colors, border, base);
+  max-height: 40px;
+}
+
+.input-ios {
+
+  .text-input {
+    width: 100%;
+    margin: 0;
+    padding: .8rem;
+    font-weight: weight(bold);
+    color: color($colors, greyscale, base);
+  }
+}
+
+
+
 // List border changes
 // --------------------------------------------------
 
@@ -73,6 +96,27 @@ button {
   }
 }
 
+
+
+// Alert Styles
+// --------------------------------------------------
+
+.hp-alerts {
+
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: color($colors, primary, base);
+
+    &:first-child {
+      margin-top: 5px;
+    }
+  }
+}
+
+.hp-picker {
+
+}
 
 
 // Ionic 2 Modal Full Screen on Tablets

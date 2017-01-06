@@ -15,8 +15,7 @@
 
 <ion-content>
   <section class="claim-thank-you claim-header">
-    <h3>Thank You</h3>
-    <p>for submitting a claim with Healthy Paws Pet Insurance</p>
+    <h3>Thank you for submitting!</h3>
   </section>
 
   <section class="medical-records-warning">
@@ -31,6 +30,12 @@
 
   <section class="claim-confirmation">
     <p>Once we review your claim documentation, we will send you a confirmation email. If you do not receive a confirmation within 48 hourse of submitting your claim, please feel free to contact us at <a href="tel:18004534054">1-800-452-4054</a>.</p>
+  </section>
+
+  <section class="claim-reimbursement claim-header">
+    <h3>Current Reimbursement Type:</h3>
+    <p>{{ user.reimbursementType }}</p>
+    <button ion-button (click)="toReimbursement()">Change Reimbursement Type</button>
   </section>
 
   <ion-item text-center no-lines class="claim-confirmation-home">

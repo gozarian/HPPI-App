@@ -1,3 +1,249 @@
 page-reimbursement {
 
+  .toolbar-ios ion-title {
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+
+  .scroll-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .bottom-next {
+    margin-top: 0;
+  }
+
+
+
+  // Reimbursement Selection
+  // --------------------------------------------------
+
+  .reimbursement-select {
+
+    h2 {
+      font-size: type-scale(-1);
+      font-weight: weight(bold);
+      color: color($colors, primary, base);
+      text-align: center;
+    }
+
+    .list-ios {
+
+      & > .item-block {
+        border-width: 0;
+
+        .item-inner {
+          border-width: 0;
+        }
+      }
+    }
+
+    .item-radio {
+      font-size: type-scale(1);
+      color: color($colors, greyscale, contrast);
+
+      &.item-radio-checked {
+
+        ion-label {
+          color: color($colors, greyscale, contrast);
+        }
+      }
+
+      .input-wrapper {
+        order: 2;
+      }
+
+      .radio-ios {
+        order: 1;
+
+        .radio-icon {
+          height: 21px;
+          width: 21px;
+          border-radius: 50%;
+          border: 1px solid color($colors, border, contrast);
+
+          &.radio-checked {
+            background-color: color($colors, primary, base);
+            border-color: color($colors, primary, base);
+
+            .radio-inner {
+              top: 3px;
+              height: 11px;
+              border-color: color($colors, base, contrast);
+              border-bottom-width: 1px;
+              border-right-width: 1px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+
+  // Mail Selection
+  // --------------------------------------------------
+
+  .mail-check {
+
+    div {
+      padding: $font-size-base;
+      background-color: color($colors, base, base);
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: type-scale(-2);
+      font-weight: weight(bold);
+      color: color($colors, primary, base);
+    }
+
+    p {
+      margin: 0;
+      font-weight: weight(regular);
+      color: color($colors, greyscale, base);
+
+      &.mail-check-notify {
+        margin-top: $base-line-height;
+      }
+    }
+
+    button {
+      display: block;
+      margin: $base-line-height auto 0;
+      font-weight: weight(bold);
+      color: color($colors, base, contrast);
+      background-color: color($colors, accent, base);
+
+      &.button-disabled {
+        opacity: 0.5;
+      }
+
+      &[clear] {
+        @include link($color: color($colors, accent, contrast));
+        margin-bottom: $base-line-height;
+
+        &.button-ios.activated {
+          background-color: transparent;
+          color: color($colors, accent, contrast);
+          opacity: 1;
+        }
+
+        .button-inner {
+          font-size: type-scale(2);
+        }
+      }
+    }
+  }
+
+
+
+  // Address Change
+  // --------------------------------------------------
+
+  .address-form {
+    padding: $font-size-base;
+
+    ion-grid {
+      padding: 0;
+    }
+
+    ion-col {
+      padding: 0;
+    }
+
+    ion-row {
+      margin-bottom: 7px;
+    }
+
+    .item-ios {
+      padding-left: 0;
+    }
+
+    .select-state {
+      max-width: 80px;
+    }
+
+    .select-zip {
+      margin-left: 7px;
+
+      ion-input {
+        flex: 0;
+        width: auto;
+        max-width: 90px;
+      }
+    }
+
+    .button-ios {
+      padding: 0 3em;
+    }
+  }
+
+  .alert-message {
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+
+
+  .direct-deposit {
+    padding: $font-size-base;
+    background-color: color($colors, base, base);
+
+    p {
+      color: color($colors, greyscale, base);
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    h2 {
+      margin-top: $base-line-height / 1.5;
+      font-size: type-scale(-2);
+      font-weight: weight(bold);
+      color: color($colors, primary, base);
+    }
+
+    ion-input {
+      background-color: color($colors, base, contrast);
+    }
+
+    .custom-select {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      padding: 12px 1rem;
+      font-size: type-scale(-1);
+      font-style: italic;
+      font-weight: weight(regular);
+      color: color($colors, border, base);
+      text-align: left;
+      background-color: color($colors, base, contrast);
+      border: 1px solid color($colors, border, base);
+
+      &.selected {
+        font-weight: weight(bold);
+        font-style: normal;
+        color: color($colors, greyscale, base);
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 38px;
+        background-image: url('../assets/misc/down-arrow.svg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        border-left: 1px solid color($colors, border, base);
+      }
+    }
+  }
 }

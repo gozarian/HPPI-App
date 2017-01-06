@@ -41,6 +41,7 @@ page-claim-summary {
 
     h3 {
       margin-bottom: $base-line-height / 3;
+      color: color($colors, primary, base);
     }
 
     p {
@@ -56,7 +57,7 @@ page-claim-summary {
   // --------------------------------------------------
 
   .medical-records-warning {
-    padding: 1rem $base-line-height;
+    padding: 1rem $base-line-height / 1.5;
 
     h2 {
       margin-top: 0;
@@ -83,7 +84,7 @@ page-claim-summary {
 
 
   .claim-confirmation {
-    padding: 1rem $base-line-height;
+    padding: 1rem $base-line-height / 1.5;
 
     a {
       font-weight: weight(bold);
@@ -98,24 +99,55 @@ page-claim-summary {
 
 
 
+  // Reimbursement
+  // --------------------------------------------------
+
+  .claim-reimbursement {
+    padding: $base-line-height / 1.5;
+    background-color: color($colors, base, base);
+
+    h3 {
+      margin-top: 0;
+      margin-bottom: $base-line-height / 3;
+      font-size: type-scale(-1);
+      color: color($colors, primary, base);
+      text-align: left;
+    }
+
+    p {
+      margin-top: 0;
+      font-weight: weight(bold);
+    }
+
+    button {
+      display: block;
+      margin: 0 auto;
+      font-weight: weight(bold);
+      color: color($colors, base, contrast);
+      background-color: color($colors, accent, base);
+    }
+  }
+
+
+
   // Summary Buttons
   // --------------------------------------------------
 
   .claim-confirmation-home {
-    margin-bottom: $base-line-height;
-  }
+    margin-bottom: $base-line-height / 4;
 
-  button[clear] {
-    @include link($color: color($colors, accent, contrast));
+    button[clear] {
+      @include link($color: color($colors, accent, contrast));
 
-    &.button-ios.activated {
-      background-color: transparent;
-      color: color($colors, accent, contrast);
-      opacity: 1;
-    }
+      &.button-ios.activated {
+        background-color: transparent;
+        color: color($colors, accent, contrast);
+        opacity: 1;
+      }
 
-    .button-inner {
-      font-size: type-scale(2);
+      .button-inner {
+        font-size: type-scale(2);
+      }
     }
   }
 }
