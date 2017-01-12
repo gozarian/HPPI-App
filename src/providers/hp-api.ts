@@ -23,11 +23,31 @@ export class HpApi {
       .catch(this.handleError);
   }
 
+  // Messages
+  public getMessageCounts(email: string, password: string): Observable<Response> {
+    return this.post('Messages/MessagesCountsByAccount/', email, password)
+      .map(this.validateResponse)
+      .catch(this.handleError);
+  }
+
   public getMessages(email: string, password: string): Observable<Response> {
     return this.post('Messages/GetMessageByAccount/', email, password)
       .map(this.validateResponse)
       .catch(this.handleError);
   }
+
+  public markMessageRead(email: string, password: string, messageId:string): Observable<Response> {
+    return this.post('Messages/MarkMessageRead/', email, password, {id:messageId})
+      .map(this.validateResponse)
+      .catch(this.handleError);
+  }
+
+  public deleteMessage(email: string, password: string, messageId:string): Observable<Response> {
+    return this.post('Messages/MarkMessageRead/', email, password, {id:messageId})
+      .map(this.validateResponse)
+      .catch(this.handleError);
+  }
+
 
   private post(action, email, password, parameters = {}): Observable<Response> {
     let auth = {
@@ -81,19 +101,6 @@ export class HpApi {
   private isPrimitive(arg) {
     var type = typeof arg;
     return arg == null || (type != "object" && type != "function");
-  }
-
-  // Mappers
-
-  private mapAccount(response: Response): Account {
-    let item = response.json().Item;
-    let account = <Account>({
-      account_id: item.AccountId,
-      status: item.Status,
-      account_no: item.AccountNo
-    });
-
-    return account;
   }
 
 }

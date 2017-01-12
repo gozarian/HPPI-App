@@ -1,6 +1,14 @@
 export interface Message {
+  id: string;
+  account_id:string;
   title: string;
   content: string;
   unread: boolean;
-  date: string;
+  time_ago: string;
+  date_created: string;
+}
+
+export interface MessageCounts {
+  total: number;
+  unread: number;
 }

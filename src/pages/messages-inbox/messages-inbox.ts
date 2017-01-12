@@ -25,7 +25,6 @@ export class MessagesInboxPage implements OnInit {
     );
   }
 
-
   ngOnInit(): void {
     this.getMessages();
   }

@@ -10,11 +10,12 @@ import { ReferralPage } from '../referral/referral';
 import { PolicyPage } from '../policy/policy';
 import { Policy } from '../../models/policy';
 import { PolicyProvider } from '../../providers/policy.provider';
+import { MessageProvider } from '../../providers/message.provider';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  providers: [PolicyProvider]
+  providers: [PolicyProvider, MessageProvider]
 })
 export class HomePage implements OnInit {
 
@@ -26,6 +27,9 @@ export class HomePage implements OnInit {
   }
 
   accountError: boolean = false;
+
+  // For updating the unread message badge
+  messagePageIndex = 2;
 
   pages = [
     { title: 'New Claim',
@@ -41,7 +45,7 @@ export class HomePage implements OnInit {
     { title: 'Messages',
       component: MessagesInboxPage,
       icon: 'ion-icon-messages',
-      badge: 6
+      badge: 0
     },
     { title: 'My Account',
       component: AccountPage,
@@ -68,15 +72,26 @@ export class HomePage implements OnInit {
     public menuCtrl: MenuController,
     public navCtrl: NavController,
     public modalCtrl: ModalController,
-    private policyProvider: PolicyProvider
+    private policyProvider: PolicyProvider,
+    private messageProvider: MessageProvider
   ) {}
+
+  ngOnInit(): void {
+    this.getUnreadMessageCount();
+    this.getPolicies();
+  }
 
   getPolicies(): void {
     this.policyProvider.getPolicies().then(policies => this.policies = policies);
   }
 
-  ngOnInit(): void {
-    this.getPolicies();
+  getUnreadMessageCount(): void {
+    this.messageProvider.getMessageCounts()
+    .subscribe((counts) => {
+      if (counts.unread > 0) {
+        this.pages[this.messagePageIndex].badge = counts.unread;
+      }
+    });
   }
 
   openMenu() {
