@@ -29,6 +29,10 @@ import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { ScoopMainPage } from '../pages/scoop-main/scoop-main';
 import { SplashPage } from '../pages/splash/splash';
 
+import { Session } from '../providers/session'
+import { HpApi } from '../providers/hp-api'
+import { MessageProvider } from '../providers/message.provider'
+
 @NgModule({
   declarations: [
     MyApp,
@@ -104,7 +108,10 @@ import { SplashPage } from '../pages/splash/splash';
     SplashPage
   ],
   providers: [
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    { provide: MessageProvider, useClass: MessageProvider },
+    { provide: Session, useClass: Session },
+    { provide: HpApi, useClass: HpApi },
   ]
 })
 export class AppModule {}

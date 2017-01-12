@@ -3,8 +3,8 @@ import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/first';
 
-import { HpApi } from '../providers/hp-api';
-import { Session } from '../providers/session';
+import { HpApi } from './hp-api';
+import { Session } from './session';
 import { Message } from '../models/message';
 
 import { MESSAGES } from '../mock-messages';
@@ -20,9 +20,11 @@ export class MessageProvider {
   public getMessages(): Observable<Message[]> {
 
     return this.session.getStoredCredentials()
-    .flatMap(function(email, password) {
-      return this.hpApi.getMessages(email, password);
-    })
+    .flatMap(
+      (email, password) => {
+        return this.hpApi.getMessages(email, password);
+      }
+    )
     .map(this.mapMessages);
   }
 
