@@ -21,8 +21,8 @@ export class MessageProvider {
 
     return this.session.getStoredCredentials()
     .flatMap(
-      (email, password) => {
-        return this.hpApi.getMessages(email, password);
+      (credentials) => {
+        return this.hpApi.getMessages(credentials.email, credentials.password);
       }
     )
     .map(this.mapMessages);
@@ -30,19 +30,21 @@ export class MessageProvider {
 
   private mapMessages(response: Response): Message[] {
     let items = response.json().Items;
-    return items.map(function(item) {
-      let message = <Message>({
-        id:item.id,
-        account_id: item.AccountId,
-        title: item.title,
-        content: item.body,
-        unread: item.unread,
-        date: item.CreatedDate,
-        time_ago: item.time_ago,
-      });
+    return items.map(
+      (item) => {
+        let message = <Message>({
+          id:item.id,
+          account_id: item.AccountId,
+          title: item.title,
+          content: item.body,
+          unread: item.unread,
+          date: item.CreatedDate,
+          time_ago: item.time_ago,
+        });
 
-      return message;
-    });
+        return message;
+      }
+    );
   }
 
 }
