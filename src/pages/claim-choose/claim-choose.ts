@@ -3,13 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ClaimBirthdayPage } from '../claim-birthday/claim-birthday'
 import { Policy } from '../../models/policy';
-import { PolicyService } from '../../services/policy.service';
+import { PolicyProvider } from '../../providers/policy.provider';
 
 @Component({
   selector: 'page-claim-choose',
   templateUrl: 'claim-choose.html',
-  providers: [PolicyService]
-
+  providers: [PolicyProvider]
 })
 export class ClaimChoosePage implements OnInit {
 
@@ -18,11 +17,11 @@ export class ClaimChoosePage implements OnInit {
 
   constructor(
     public navCtrl: NavController,
-    private policyService: PolicyService
+    private policyProvider: PolicyProvider
   ) {}
 
   getPolicies(): void {
-    this.policyService.getPolicies().then(policies => this.policies = policies);
+    this.policyProvider.getPolicies().then(policies => this.policies = policies);
   }
 
   ngOnInit(): void {

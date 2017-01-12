@@ -9,12 +9,12 @@ import { ScoopMainPage } from '../scoop-main/scoop-main';
 import { ReferralPage } from '../referral/referral';
 import { PolicyPage } from '../policy/policy';
 import { Policy } from '../../models/policy';
-import { PolicyService } from '../../services/policy.service';
+import { PolicyProvider } from '../../providers/policy.provider';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  providers: [PolicyService]
+  providers: [PolicyProvider]
 })
 export class HomePage implements OnInit {
 
@@ -68,11 +68,11 @@ export class HomePage implements OnInit {
     public menuCtrl: MenuController,
     public navCtrl: NavController,
     public modalCtrl: ModalController,
-    private policyService: PolicyService
+    private policyProvider: PolicyProvider
   ) {}
 
   getPolicies(): void {
-    this.policyService.getPolicies().then(policies => this.policies = policies);
+    this.policyProvider.getPolicies().then(policies => this.policies = policies);
   }
 
   ngOnInit(): void {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Observable } from 'rxjs/Observable';
+import { Response } from '@angular/http';
 import 'rxjs/add/operator/first';
 
 import { Account } from '../models/account';
@@ -32,7 +33,8 @@ export class Session {
   }
 
   public new(email: string, password: string): Observable<Account> {
-    let login = this.api.login(email, password);
+    let login = this.api.login(email, password)
+    .map(this.mapAccount);
 
     login.subscribe((account: Account) => {
       this.account = account;
@@ -49,6 +51,17 @@ export class Session {
     this.clearStoredCredentials();
   }
 
+  private mapAccount(response: Response): Account {
+    let item = response.json().Item;
+    let account = <Account>({
+      account_id: item.AccountId,
+      status: item.Status,
+      account_no: item.AccountNo
+    });
+
+    return account;
+  }
+
   private setStoredCredentials(email: string, password: string) {
     this.storage.set(CREDENTIALS_KEY, { email: email, password: password });
   }
@@ -57,7 +70,7 @@ export class Session {
     this.storage.remove(CREDENTIALS_KEY);
   }
 
-  private getStoredCredentials(): any {
+  public getStoredCredentials(): any {
     return Observable.fromPromise(this.storage.get(CREDENTIALS_KEY));
   }
 

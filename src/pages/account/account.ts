@@ -11,12 +11,12 @@ import { ContactPage } from '../contact/contact';
 import { SignInPage } from '../sign-in/sign-in';
 import { Session } from '../../providers/session';
 import { Policy } from '../../models/policy';
-import { PolicyService } from '../../services/policy.service';
+import { PolicyProvider } from '../../providers/policy.provider';
 
 @Component({
   selector: 'page-account',
   templateUrl: 'account.html',
-  providers: [PolicyService]
+  providers: [PolicyProvider]
 })
 export class AccountPage implements OnInit {
 
@@ -57,12 +57,12 @@ export class AccountPage implements OnInit {
   ];
 
   constructor(
-    public navCtrl: NavController, 
-    private policyService: PolicyService,
+    public navCtrl: NavController,
+    private policyProvider: PolicyProvider,
     private session: Session) {}
 
   getPolicies(): void {
-    this.policyService.getPolicies().then(policies => this.policies = policies);
+    this.policyProvider.getPolicies().then(policies => this.policies = policies);
   }
 
   ngOnInit(): void {

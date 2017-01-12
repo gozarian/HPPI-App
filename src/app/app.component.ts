@@ -8,7 +8,8 @@ import { Environment } from '../providers/environment';
 import { Storage } from '@ionic/storage';
 import { SignInPage, AccountPage, ChangePasswordPage, ContactPage, ClaimChoosePage, ClaimBirthdayPage, ClaimPhotoPage, ClaimVerifyPage, ClaimSummaryPage, BillingPage, DepositPage, FAQPage, MessagesInboxPage, MyClaimsPage, PaymentPage, PersonalInfoPage, PolicyPage, ReferralPage, ReimbursementPage, ResetPasswordPage, ScoopMainPage, SplashPage } from '../pages/pages';
 import { Policy } from '../models/policy';
-import { PolicyService } from '../services/policy.service';
+import { PolicyProvider } from '../providers/policy.provider';
+import { MessageProvider } from '../providers/message.provider';
 
 @Component({
   templateUrl: 'app.html',
@@ -17,7 +18,8 @@ import { PolicyService } from '../services/policy.service';
     Storage,
     HpApi,
     Environment,
-    PolicyService
+    PolicyProvider,
+    MessageProvider
   ]
 })
 export class MyApp implements OnInit {
@@ -52,7 +54,7 @@ export class MyApp implements OnInit {
   constructor(
     platform: Platform,
     public menu: MenuController,
-    private policyService: PolicyService,
+    private policyProvider: PolicyProvider,
     session: Session
   ) {
     platform.ready().then(() => {
@@ -72,7 +74,7 @@ export class MyApp implements OnInit {
   }
 
   getPolicies(): void {
-    this.policyService.getPolicies().then(policies => this.policies = policies);
+    this.policyProvider.getPolicies().then(policies => this.policies = policies);
   }
 
   ngOnInit(): void {

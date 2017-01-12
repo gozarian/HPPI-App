@@ -3,7 +3,7 @@ import { Policy } from '../models/policy';
 import { POLICIES } from '../mock-policies';
 
 @Injectable()
-export class PolicyService {
+export class PolicyProvider {
   getPolicies(): Promise<Policy[]> {
     return Promise.resolve(POLICIES);
   }

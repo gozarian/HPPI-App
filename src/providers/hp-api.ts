@@ -17,10 +17,15 @@ export class HpApi {
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
   }
 
-  public login(email: string, password: string): Observable<Account> {
+  public login(email: string, password: string): Observable<Response> {
     return this.post('Accounts/GetAccountInfo/', email, password)
       .map(this.validateResponse)
-      .map(this.mapAccount)
+      .catch(this.handleError);
+  }
+
+  public getMessages(email: string, password: string): Observable<Response> {
+    return this.post('Messages/GetMessageByAccount/', email, password)
+      .map(this.validateResponse)
       .catch(this.handleError);
   }
 

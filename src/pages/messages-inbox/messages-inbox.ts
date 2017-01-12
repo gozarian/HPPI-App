@@ -1,44 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { MessagesDetailPage } from '../messages-detail/messages-detail';
+import { MessageProvider } from '../../providers/message.provider';
+import { Message } from '../../models/message';
 
 @Component({
   selector: 'page-messages-inbox',
-  templateUrl: 'messages-inbox.html'
+  templateUrl: 'messages-inbox.html',
+  providers: [MessageProvider]
 })
-export class MessagesInboxPage {
+export class MessagesInboxPage implements OnInit {
 
-  messages = [
-    {
-      title: 'Happy Birthday to Jackson!',
-      content: 'Congratulations to Jackson on turning 3 this year! Enjoy a special day with your pup.',
-      date: '12/26/16',
-      unread: true
-    },
-    {
-      title: 'Your Action Needed',
-      content: 'Claim #110113 needs your immediate attention',
-      date: '8/20/16',
-      unread: true
-    },
-    {
-      title: 'Upcoming Payment Expiration',
-      content: 'This is a notification that your payment method will expire soon.',
-      date: '6/2/16',
-      unread: false
-    },
-    {
-      title: 'Your Claim Was Processed',
-      content: 'Claim #110113 needs your immediate attention before it will be processed',
-      date: '1/2/16',
-      unread: false
-    }
-  ];
+  messages: Message[] = [];
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public navCtrl: NavController,
+    private messageProvider: MessageProvider) {}
 
+  getMessages(): void {
+    this.messageProvider.getMessages().subscribe(
+      messages => this.messages = messages
+    );
+  }
+
+  ngOnInit(): void {
+    this.getMessages();
   }
 
   goHome() {
