@@ -9,7 +9,7 @@ export const MESSAGES: Message[] = [
     date_created: '12/26/16',
     unread: true,
     action: MessageAction.none,
-    ctaText: ""
+    cta_text: ""
   },
   {
     id:"2",
@@ -20,7 +20,7 @@ export const MESSAGES: Message[] = [
     date_created: '8/20/16',
     unread: true,
     action: MessageAction.none,
-    ctaText: ""
+    cta_text: ""
   },
   {
     id:"3",
@@ -31,7 +31,7 @@ export const MESSAGES: Message[] = [
     date_created: '6/2/16',
     unread: false,
     action: MessageAction.none,
-    ctaText: ""
+    cta_text: ""
   },
   {
     id:"4",
@@ -42,7 +42,7 @@ export const MESSAGES: Message[] = [
     date_created: '1/2/17',
     unread: false,
     action: MessageAction.none,
-    ctaText: ""
+    cta_text: ""
   },
   {
     id:"5",
@@ -53,6 +53,6 @@ export const MESSAGES: Message[] = [
     date_created: '1/2/17',
     unread: true,
     action: MessageAction.none,
-    ctaText: ""
+    cta_text: ""
   }
 ];

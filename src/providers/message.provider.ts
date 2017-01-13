@@ -7,8 +7,6 @@ import { HpApi } from './hp-api';
 import { Session } from './session';
 import { Message, MessageAction, MessageCounts } from '../models/message';
 
-import { MESSAGES } from '../mock-messages';
-
 @Injectable()
 export class MessageProvider {
 
@@ -83,10 +81,13 @@ export class MessageProvider {
           unread: item.unread,
           time_ago: item.time_ago,
           date_created: item.CreatedDate,
-          action: action,
-          ctaText: item.CTAText
+          cta_text: item.CTAText
         });
 
+        if (action != MessageAction.none) {
+          message.action = action;
+        }
+        
         return message;
       }
     );

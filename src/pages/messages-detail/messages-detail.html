@@ -7,7 +7,12 @@
 </ion-header>
 
 <ion-content class="message-detail">
-  <ion-note><span>Date: </span>{{ message.date }}</ion-note>
+  <ion-note><span>Date: </span>{{ message.date_created | date:"MM/dd/yy" }}</ion-note>
   <h2>{{ message.title }}</h2>
   <div class="message-text" [innerHtml]="message.content"></div>
+  <button ion-button *ngIf="message.action" (click)="messageAction(message)">{{ message.cta_text }}</button>
 </ion-content>
+
+<ion-footer class="primary-footer">
+  <button ion-button (click)="deleteMessage(message)">Delete Message</button>
+</ion-footer>

@@ -7,7 +7,7 @@ export interface Message {
   time_ago: string;
   date_created: string;
   action: MessageAction;
-  ctaText: string;
+  cta_text: string;
 }
 
 export interface MessageCounts {

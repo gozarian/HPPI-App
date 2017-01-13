@@ -34,9 +34,19 @@ export class MessagesDetailPage implements OnInit {
     if (this.message.unread) {
       this.messageProvider.markMessageRead(this.message)
       .subscribe(() => {
-        debugger;
         this.message.unread = false;
       });
     }
+  }
+
+  messageAction(message:Message) {
+
+  }
+
+  deleteMessage(message:Message) {
+    this.messageProvider.deleteMessage(message)
+    .subscribe(() => {
+      this.navCtrl.pop();
+    })
   }
 }

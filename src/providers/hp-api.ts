@@ -43,11 +43,10 @@ export class HpApi {
   }
 
   public deleteMessage(email: string, password: string, messageId:string): Observable<Response> {
-    return this.post('Messages/MarkMessageRead/', email, password, {id:messageId})
+    return this.post('Messages/DeleteMessage/', email, password, {id:messageId})
       .map(this.validateResponse)
       .catch(this.handleError);
   }
-
 
   private post(action, email, password, parameters = {}): Observable<Response> {
     let auth = {
