@@ -5,7 +5,7 @@ import 'rxjs/add/operator/first';
 
 import { HpApi } from './hp-api';
 import { Session } from './session';
-import { Message, MessageCounts } from '../models/message';
+import { Message, MessageAction, MessageCounts } from '../models/message';
 
 import { MESSAGES } from '../mock-messages';
 
@@ -73,6 +73,8 @@ export class MessageProvider {
     let items = response.json().Items;
     return items.map(
       (item) => {
+        let action = actionForType(item.MessageType, item.MessageSubType);
+
         let message = <Message>({
           id:item.id,
           account_id: item.AccountId,
@@ -81,11 +83,24 @@ export class MessageProvider {
           unread: item.unread,
           time_ago: item.time_ago,
           date_created: item.CreatedDate,
+          action: action,
+          ctaText: item.CTAText
         });
 
         return message;
       }
     );
   }
+}
 
+function actionForType(type: String, subType: String) : MessageAction {
+  if (type == "claim" && subType == "Waiting for Info") {
+    return MessageAction.claims;
+  }
+  else if (type == "billing") {
+    return MessageAction.payment;
+  }
+  else {
+    return MessageAction.none;
+  }
 }

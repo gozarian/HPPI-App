@@ -1,4 +1,4 @@
-import { Message } from './models/message';
+import { Message, MessageAction } from './models/message';
 export const MESSAGES: Message[] = [
   {
     id:"1",
@@ -7,7 +7,9 @@ export const MESSAGES: Message[] = [
     content: 'Congratulations to Jackson on turning 3 this year! Enjoy a special day with your pup.',
     time_ago: '12/26/16',
     date_created: '12/26/16',
-    unread: true
+    unread: true,
+    action: MessageAction.none,
+    ctaText: ""
   },
   {
     id:"2",
@@ -16,7 +18,9 @@ export const MESSAGES: Message[] = [
     content: 'Claim #110113 needs your immediate attention',
     time_ago: '8/20/16',
     date_created: '8/20/16',
-    unread: true
+    unread: true,
+    action: MessageAction.none,
+    ctaText: ""
   },
   {
     id:"3",
@@ -25,7 +29,9 @@ export const MESSAGES: Message[] = [
     content: 'This is a notification that your payment method will expire soon.',
     time_ago: '6/2/16',
     date_created: '6/2/16',
-    unread: false
+    unread: false,
+    action: MessageAction.none,
+    ctaText: ""
   },
   {
     id:"4",
@@ -34,7 +40,9 @@ export const MESSAGES: Message[] = [
     content: 'Claim #110113 needs your immediate attention before it will be processed',
     time_ago: '1/2/17',
     date_created: '1/2/17',
-    unread: false
+    unread: false,
+    action: MessageAction.none,
+    ctaText: ""
   },
   {
     id:"5",
@@ -43,6 +51,8 @@ export const MESSAGES: Message[] = [
     content: 'Claim #110113 needs your immediate attention before it will be processed',
     time_ago: '1/2/17',
     date_created: '1/2/17',
-    unread: true
+    unread: true,
+    action: MessageAction.none,
+    ctaText: ""
   }
 ];
