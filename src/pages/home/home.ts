@@ -1,5 +1,5 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { MenuController, NavController, ModalController, Content } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { MenuController, NavController, ModalController, Content, ViewController } from 'ionic-angular';
 import { NewFeaturesPage } from './new-features-modal';
 import { ClaimChoosePage } from '../claim-choose/claim-choose';
 import { MyClaimsPage } from '../my-claims/my-claims';
@@ -17,7 +17,7 @@ import { MessageProvider } from '../../providers/message.provider';
   templateUrl: 'home.html',
   providers: [PolicyProvider, MessageProvider]
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
   @ViewChild(Content) content: Content;
   policies: Policy[];
@@ -71,14 +71,15 @@ export class HomePage implements OnInit {
   constructor(
     public menuCtrl: MenuController,
     public navCtrl: NavController,
+    public viewCtrl: ViewController,
     public modalCtrl: ModalController,
     private policyProvider: PolicyProvider,
     private messageProvider: MessageProvider
-  ) {}
-
-  ngOnInit(): void {
-    this.getUnreadMessageCount();
-    this.getPolicies();
+  ) {
+    viewCtrl.willEnter.subscribe(() => {
+      this.getUnreadMessageCount();
+      this.getPolicies();
+    })
   }
 
   getPolicies(): void {

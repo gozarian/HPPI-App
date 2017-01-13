@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, ViewController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { MessagesDetailPage } from '../messages-detail/messages-detail';
 import { MessageProvider } from '../../providers/message.provider';
@@ -11,22 +11,23 @@ import { Message } from '../../models/message';
   templateUrl: 'messages-inbox.html',
   providers: [MessageProvider]
 })
-export class MessagesInboxPage implements OnInit {
+export class MessagesInboxPage {
 
   messages: Message[] = [];
 
   constructor(
     public navCtrl: NavController,
-    private messageProvider: MessageProvider) {}
+    public viewCtrl: ViewController,
+    private messageProvider: MessageProvider) {
+      viewCtrl.willEnter.subscribe(() => {
+        this.getMessages();
+      });
+    }
 
   getMessages(): void {
     this.messageProvider.getMessages().subscribe(
       messages => this.messages = messages
     );
-  }
-
-  ngOnInit(): void {
-    this.getMessages();
   }
 
   goHome() {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { NavController, NavParams } from 'ionic-angular';
 import { MessageProvider } from '../../providers/message.provider';
-import { Message } from '../../models/message';
+import { Message, MessageAction } from '../../models/message';
 
 @Component({
   selector: 'page-messages-detail',
@@ -40,7 +40,12 @@ export class MessagesDetailPage implements OnInit {
   }
 
   messageAction(message:Message) {
-
+    if (message.action == MessageAction.payment) {
+      // TODO: Payment action
+    }
+    else if (message.action == MessageAction.claims) {
+      // TODO: Claims action
+    }
   }
 
   deleteMessage(message:Message) {

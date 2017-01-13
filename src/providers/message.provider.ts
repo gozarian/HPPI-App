@@ -87,7 +87,7 @@ export class MessageProvider {
         if (action != MessageAction.none) {
           message.action = action;
         }
-        
+
         return message;
       }
     );
