@@ -62,7 +62,11 @@ export class AccountPage implements OnInit {
     private session: Session) {}
 
   getPolicies(): void {
-    this.policyProvider.getPolicies().then(policies => this.policies = policies);
+    this.policyProvider.getPolicies().subscribe(
+      (policies) => {
+        this.policies = policies
+      }
+    );
   }
 
   ngOnInit(): void {

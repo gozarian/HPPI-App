@@ -23,6 +23,20 @@ export class HpApi {
       .catch(this.handleError);
   }
 
+  // Policies
+  public getPolicies(email: string, password: string): Observable<Response> {
+    return this.post('Pets/GetPetsByAccount/', email, password)
+      .map(this.validateResponse)
+      .catch(this.handleError);
+  }
+
+  // Claims
+  public getClaims(email: string, password: string): Observable<Response> {
+    return this.post('Claims/GetClaimsByAccount/', email, password)
+      .map(this.validateResponse)
+      .catch(this.handleError);
+  }
+
   // Messages
   public getMessageCounts(email: string, password: string): Observable<Response> {
     return this.post('Messages/MessagesCountsByAccount/', email, password)
@@ -47,6 +61,7 @@ export class HpApi {
       .map(this.validateResponse)
       .catch(this.handleError);
   }
+
 
   private post(action, email, password, parameters = {}): Observable<Response> {
     let auth = {
