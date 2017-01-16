@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/share';
 
-import { Account } from '../models/account';
+// import { Account } from '../models/account';
 import { Environment } from '../providers/environment';
 
 @Injectable()
