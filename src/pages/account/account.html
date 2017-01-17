@@ -9,10 +9,10 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <section class="user-profile">
-    <h3>Brian Jorgensen</h3>
-    <p>brian.jorgensen@live.com</p>
-    <p>6806 52nd Ave NE Seattle WA, 98115</p>
+  <section *ngIf="account != null" class="user-profile">
+    <h3>{{ display_name }}</h3>
+    <p>{{ display_email }}</p>
+    <p>{{ display_address }}</p>
   </section>
   <ion-list class="account-links">
     <ion-list-header>

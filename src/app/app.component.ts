@@ -7,9 +7,11 @@ import { HpApi } from '../providers/hp-api';
 import { Environment } from '../providers/environment';
 import { Storage } from '@ionic/storage';
 import { SignInPage, AccountPage, ChangePasswordPage, ContactPage, ClaimChoosePage, ClaimBirthdayPage, ClaimPhotoPage, ClaimVerifyPage, ClaimSummaryPage, BillingPage, DepositPage, FAQPage, MessagesInboxPage, MyClaimsPage, PaymentPage, PersonalInfoPage, PolicyPage, ReferralPage, ReimbursementPage, ResetPasswordPage, ScoopMainPage, SplashPage } from '../pages/pages';
-import { Policy } from '../models/policy';
+import { AccountProvider } from '../providers/account.provider';
 import { PolicyProvider } from '../providers/policy.provider';
 import { MessageProvider } from '../providers/message.provider';
+
+import { Policy } from '../models/policy';
 
 @Component({
   templateUrl: 'app.html',
@@ -18,6 +20,7 @@ import { MessageProvider } from '../providers/message.provider';
     Storage,
     HpApi,
     Environment,
+    AccountProvider,
     PolicyProvider,
     MessageProvider
   ]

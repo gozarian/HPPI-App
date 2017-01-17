@@ -31,6 +31,7 @@ import { SplashPage } from '../pages/splash/splash';
 
 import { Session } from '../providers/session'
 import { HpApi } from '../providers/hp-api'
+import { AccountProvider } from '../providers/account.provider'
 import { MessageProvider } from '../providers/message.provider'
 
 @NgModule({
@@ -108,10 +109,11 @@ import { MessageProvider } from '../providers/message.provider'
     SplashPage
   ],
   providers: [
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
-    { provide: MessageProvider, useClass: MessageProvider },
-    { provide: Session, useClass: Session },
     { provide: HpApi, useClass: HpApi },
+    { provide: Session, useClass: Session },
+    { provide: AccountProvider, useClass: AccountProvider },
+    { provide: MessageProvider, useClass: MessageProvider },
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
   ]
 })
 export class AppModule {}

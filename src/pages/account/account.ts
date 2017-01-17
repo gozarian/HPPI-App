@@ -24,6 +24,11 @@ import { Account } from '../../models/account';
 })
 export class AccountPage implements OnInit {
 
+  account: Account;
+  display_name:string;
+  display_email:string;
+  display_address:string;
+
   policies: Policy[];
 
   information = [
@@ -62,8 +67,24 @@ export class AccountPage implements OnInit {
 
   constructor(
     public navCtrl: NavController,
+    private accountProvider: AccountProvider,
     private policyProvider: PolicyProvider,
     private session: Session) {}
+
+  getAccount(): void {
+    this.accountProvider.getAccountInfo().subscribe(
+      (account) => {
+        this.account = account;
+
+        let contact = account.primary_contact;
+        this.display_name = contact.first_name + " " + contact.last_name;
+        this.display_email = contact.email;
+
+        let address = account.billing_address;
+        this.display_address = address.street + ", " + address.city + ", " + address.state_province + ", " + address.postal_code
+      }
+    )
+  }
 
   getPolicies(): void {
     this.policyProvider.getPolicies().subscribe(
@@ -74,6 +95,7 @@ export class AccountPage implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAccount();
     this.getPolicies();
   }
 
