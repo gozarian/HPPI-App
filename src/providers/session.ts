@@ -71,7 +71,8 @@ export class Session {
   }
 
   public getStoredCredentials(): any {
-    return Observable.fromPromise(this.storage.get(CREDENTIALS_KEY));
+    return Observable.fromPromise(this.storage.get(CREDENTIALS_KEY))
+    .filter((obj) => { return obj ? true : false; });
   }
 
 }
