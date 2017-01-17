@@ -23,6 +23,25 @@ export class HpApi {
       .catch(this.handleError);
   }
 
+  // Account
+  public getAccount(email: string, password: string): Observable<Response> {
+    return this.post('Accounts/GetAccountInfo/', email, password)
+      .map(this.validateResponse)
+      .catch(this.handleError);
+  }
+
+  public resetAccountPassword(email: string, password: string): Observable<Response> {
+    return this.post('Accounts/ResetPassword/', email, password)
+      .map(this.validateResponse)
+      .catch(this.handleError);
+  }
+
+  public updateAccountPassword(email: string, password: string, newPassword): Observable<Response> {
+    return this.post('Accounts/UpdatePassword/', email, password, {newPassword:newPassword})
+      .map(this.validateResponse)
+      .catch(this.handleError);
+  }
+
   // Policies
   public getPolicies(email: string, password: string): Observable<Response> {
     return this.post('Pets/GetPetsByAccount/', email, password)

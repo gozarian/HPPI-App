@@ -27,14 +27,14 @@ export class ReimbursementPage {
     zip: '98117'
   };
 
-  model = new Address(
-    '',
-    '',
-    '',
-    '',
-    '',
-    ''
-  );
+  model = <Address>({
+    name: '',
+    street: '',
+    city: '',
+    state_province: '',
+    postal_code: '',
+    country: ''
+  });
 
   accounts = [
     {
@@ -58,7 +58,7 @@ export class ReimbursementPage {
     let alert = this.alertCtrl.create({
       title: 'Confirm new address',
       cssClass: 'hp-alerts',
-      message: 'Save new address?<p>' + this.model.street + '</p><p>' + this.model.unit + '</p><p>' + this.model.city + ' ' + this.model.state + ', ' + this.model.zip + '</p>',
+      message: 'Save new address?<p>' + this.model.street + '</p><p>' + this.model.city + ' ' + this.model.state_province + ', ' + this.model.postal_code + '</p>',
       buttons: [
         {
           text: 'Cancel',
@@ -75,10 +75,9 @@ export class ReimbursementPage {
             this.submitted = true;
             this.addressForm = false;
             this.testUser.street = this.model.street;
-            this.testUser.unit = this.model.unit;
             this.testUser.city = this.model.city;
-            this.testUser.state = this.model.state;
-            this.testUser.zip = this.model.zip;
+            this.testUser.state = this.model.state_province;
+            this.testUser.zip = this.model.postal_code;
           }
         }
       ]

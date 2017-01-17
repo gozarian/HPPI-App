@@ -9,14 +9,18 @@ import { PolicyPage } from '../policy/policy';
 import { FAQPage } from '../faq/faq';
 import { ContactPage } from '../contact/contact';
 import { SignInPage } from '../sign-in/sign-in';
+
 import { Session } from '../../providers/session';
-import { Policy } from '../../models/policy';
+import { AccountProvider } from '../../providers/account.provider';
 import { PolicyProvider } from '../../providers/policy.provider';
+
+import { Policy } from '../../models/policy';
+import { Account } from '../../models/account';
 
 @Component({
   selector: 'page-account',
   templateUrl: 'account.html',
-  providers: [PolicyProvider]
+  providers: [AccountProvider, PolicyProvider]
 })
 export class AccountPage implements OnInit {
 
