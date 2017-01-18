@@ -63,12 +63,8 @@
   @include hp-icons(url('../assets/icon/icon-modal-close.svg'));
 }
 
-.ion-icon-clipboard {
-  @include hp-icons;
-}
-
-.ion-icon-clipboard-plus {
-  @include hp-icons;
+.ion-icon-paw-board {
+  @include hp-icons(url('../assets/icon/icon-paw-board.png'));
 }
 
 .ion-icon-delete-photo {
