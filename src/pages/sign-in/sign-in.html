@@ -23,7 +23,7 @@
           <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
         </ion-item>
 
-        <p class="error" ng-show="errorMessage">{{ errorMessage }}</p>
+        <p class="login-notify error slide-in" *ngIf="errorMessage">{{ errorMessage }}</p>
       </ion-list>
 
       <button ion-button (click)="login()">Sign In</button>

@@ -34,5 +34,4 @@ export class SignInPage {
   resetPassword() {
     this.navCtrl.push(ResetPasswordPage);
   }
-
 }

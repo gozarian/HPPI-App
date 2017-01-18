@@ -65,10 +65,6 @@ page-sign-in {
       }
     }
 
-    .error {
-      margin: 0;
-    }
-
     .button {
       display: block;
       margin-top: $base-line-height;
@@ -90,6 +86,34 @@ page-sign-in {
     }
   }
 
+
+
+  // Login Error
+  // --------------------------------------------------
+
+  .login-notify {
+    margin-top: $base-line-height;
+    font-size: type-scale(-2);
+    font-weight: weight(bold);
+
+    &.error {
+      display: flex;
+      justify-content: center;
+      color: color($colors, warning, base);
+
+      &:before {
+        content: "";
+        display: inline-block;
+        height: 21px;
+        width: 21px;
+        margin-right: 5px;
+        background-image: url('../assets/icon/error-exclamation.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+      }
+    }
+  }
 
 
   // Learn More Section
@@ -116,4 +140,31 @@ page-sign-in {
       margin-top: 1rem;
     }
   }
+
+  .slide-in{
+    animation: slideInSmooth ease-in 1;
+    animation-fill-mode: forwards;
+    animation-duration: 200ms;
+  }
+
+
+  @-webkit-keyframes slideIn {
+    0% {
+      top: -50%;
+    }
+    100% {
+      top: 0;
+    }
+  }
+
+  @-webkit-keyframes slideInSmooth {
+    0% {
+      transform: translate3d(0,-50%,0);
+    }
+    100% {
+      transform: translate3d(0,0,0);
+    }
+  }
+
+
 }
