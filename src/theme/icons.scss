@@ -39,8 +39,8 @@
   @include hp-icons(url('../assets/icon/icon-support.png'));
 }
 
-.ion-icon-ball {
-  @include hp-icons;
+.ion-icon-tennis-ball {
+  @include hp-icons(url('../assets/icon/icon-tennis-ball.png'));
 }
 
 .ion-icon-card {

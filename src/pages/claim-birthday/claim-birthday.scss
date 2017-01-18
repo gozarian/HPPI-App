@@ -77,5 +77,15 @@ page-claim-birthday {
         color: color($colors, accent, base);
       }
     }
+
+    .bottom-next {
+
+      .label-ios {
+
+        .icon {
+          margin-right: 1rem;
+        }
+      }
+    }
   }
 }
