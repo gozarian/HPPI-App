@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavController, ViewController } from 'ionic-angular';
 import { PersonalInfoPage } from '../personal-info/personal-info';
 import { BillingPage } from '../billing/billing';
 import { PaymentPage } from '../payment/payment';
@@ -22,7 +22,7 @@ import { Account } from '../../models/account';
   templateUrl: 'account.html',
   providers: [AccountProvider, PolicyProvider]
 })
-export class AccountPage implements OnInit {
+export class AccountPage {
 
   account: Account;
   display_name:string;
@@ -67,9 +67,16 @@ export class AccountPage implements OnInit {
 
   constructor(
     public navCtrl: NavController,
+    public viewCtrl: ViewController,
     private accountProvider: AccountProvider,
     private policyProvider: PolicyProvider,
-    private session: Session) {}
+    private session: Session
+  ) {
+    viewCtrl.willEnter.subscribe(() => {
+      this.getAccount();
+      this.getPolicies();
+    })
+  }
 
   getAccount(): void {
     this.accountProvider.getAccountInfo().subscribe(
@@ -81,7 +88,7 @@ export class AccountPage implements OnInit {
         this.display_email = contact.email;
 
         let address = account.billing_address;
-        this.display_address = address.street + ", " + address.city + ", " + address.state_province + ", " + address.postal_code
+        this.display_address = address.street + "  " + address.city + ", " + address.state_province + ", " + address.postal_code
       }
     )
   }
@@ -92,11 +99,6 @@ export class AccountPage implements OnInit {
         this.policies = policies
       }
     );
-  }
-
-  ngOnInit(): void {
-    this.getAccount();
-    this.getPolicies();
   }
 
   openPolicy(policy) {

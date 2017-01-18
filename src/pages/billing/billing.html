@@ -15,11 +15,11 @@
       <ion-row wrap>
         <ion-col width-50>
           <h3>Policy Holder:</h3>
-          User with a long, long name
+          {{ display_name }}
         </ion-col>
         <ion-col width-50>
           <h3>Premium Total:</h3>
-          $10550.65 Monthly
+          {{ display_premium }} Monthly
         </ion-col>
         <div class="hr"></div>
       </ion-row>
@@ -47,12 +47,13 @@
         <ion-col>
           <h3>Billing Address:</h3>
           <div>
-            <span class="billing-address">6806 Westminister Ave NE,</span>
+            <span class="billing-address">{{ display_address_line1 }}</span>
           </div>
           <div>
-            <span class="billing-city">Elensburg</span>
-            <span class="billing-state">WA</span><span>,</span>
-            <span class="billing-zip">98115</span>
+            <span class="billing-address">{{ display_address_line2 }}</span>
+          </div>
+          <div>
+            <span class="billing-address">{{ display_address_line3 }}</span>
           </div>
         </ion-col>
       </ion-row>

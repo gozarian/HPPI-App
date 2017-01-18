@@ -12,22 +12,22 @@
 <ion-content>
   <section class="personal-info-header">
     <h3>Pet Parent</h3>
-    <p>{{ user.name }}</p>
+    <p>{{ display_name }}</p>
   </section>
   <div class="personal-info-details">
     <section>
       <h3>Phone Number:</h3>
-      <p>{{ user.phone }}</p>
+      <p>{{ display_phone }}</p>
     </section>
     <section>
       <h3>Email Address:</h3>
-      <p>{{ user.email }}</p>
+      <p>{{ display_email }}</p>
     </section>
     <section class="personal-info-address">
       <h3>Physical Address:</h3>
-      <p>{{ user.streetAddress }}</p>
-      <p *ngIf="user.aptUnit">{{ user.aptUnit }}</p>
-      <p>{{ user.city }} {{ user.state }}, {{ user.zip }}</p>
+      <p>{{ display_address_line1 }}</p>
+      <p>{{ display_address_line2 }}</p>
+      <p>{{ display_address_line3 }}</p>
     </section>
   </div>
   <section class="personal-info-notify">
