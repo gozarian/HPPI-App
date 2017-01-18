@@ -6,7 +6,7 @@ export interface Account {
   status: string;
   account_no: string;
   monthly_premium: string;
-  billing_day: string;
+  billing_day: number;
   past_due_ammount: string;
   payment_method: string;
   credit_card_last4: string;

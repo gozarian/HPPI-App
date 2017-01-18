@@ -16,9 +16,14 @@ export class BillingPage {
   account:Account;
   display_name = '';
   display_premium = '';
+  display_billing_day = '';
+  display_account_status = '';
+  display_amount_due = '';
   display_address_line1:string = '';
   display_address_line2:string = '';
   display_address_line3:string = '';
+  display_cc_num = '';
+  display_policy_warning = false;
 
   constructor(
     public navCtrl: NavController,
@@ -30,16 +35,27 @@ export class BillingPage {
     });
   }
 
+  display_days = [
+     '1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th','10th',
+    '11th','12th','13th','14th','15th','16th','17th','18th','19th','20th',
+    '21st','22nd','23rd','24th','25th','26th','27th','28th','29th','30th',
+    '31st'
+  ];
+
   getAccount(): void {
     this.accountProvider.getAccountInfo().subscribe(
       (account) => {
         this.account = account;
+        this.display_policy_warning = account.status === "Suspended";
         this.display_premium = account.monthly_premium;
+        this.display_account_status = account.status;
+        this.display_billing_day = this.display_days[account.billing_day];
+        this.display_amount_due = account.past_due_ammount;
+        this.display_cc_num = '****' + account.credit_card_last4;
 
         let contact = account.primary_contact;
         this.display_name = contact.first_name + " " + contact.last_name;
-        // this.display_email = contact.email;
-        //
+
         let address = account.billing_address;
         this.display_address_line1 = address.street;
         this.display_address_line2 = address.city + ", " + address.state_province;

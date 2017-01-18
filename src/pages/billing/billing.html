@@ -10,7 +10,7 @@
 </ion-header>
 <ion-content>
   <div class="content-wrapper">
-    <p class="policy-warning">Your last payment failed and was not received.</p>
+    <p *ngIf="display_policy_warning" class="policy-warning">Your last payment failed and was not received.</p>
     <ion-grid class="policy-details">
       <ion-row wrap>
         <ion-col width-50>
@@ -26,13 +26,13 @@
       <ion-row class="policy-status">
         <ion-col width-50>
           <h3>Billing Date:</h3>
-          <span class="weight-regular">31st Monthly</span>
+          <span class="weight-regular">{{ display_billing_day }} Monthly</span>
         </ion-col>
         <ion-col width-50>
           <h3>Status:</h3>
-          <span>Suspended</span>
+          <span>{{ display_account_status }}</span>
           <h3 class="policy-amount-due">Amount Due:</h3>
-          <span>$84.47</span>
+          <span>{{ display_amount_due }}</span>
         </ion-col>
       </ion-row>
       <ion-row class="policy-payment">
@@ -40,7 +40,7 @@
           <h3>Payment Method:</h3>
         </ion-col>
         <ion-col class="policy-card">
-          <h3><span>Card</span>: <span>****</span><span>8675</span></h3>
+          <h3><span>Card</span>: <span>{{ display_cc_num }}</span></h3>
         </ion-col>
       </ion-row>
       <ion-row class="policy-address">
@@ -58,8 +58,8 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <div class="submit-card-information">
-      <button ion-button>Retry Card</button>
+    <div *ngIf="display_policy_warning" class="submit-card-information">
+      <button ion-button (click)="retryPayment()">Retry Card</button>
     </div>
   </div>
   <ion-list>

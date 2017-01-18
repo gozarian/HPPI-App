@@ -31,6 +31,7 @@ export class AccountPage {
 
   policies: Policy[];
 
+  billing_information_index = 1;
   information = [
     { title: 'Personal Info',
       component: PersonalInfoPage,
@@ -38,7 +39,7 @@ export class AccountPage {
     },
     { title: 'Policy and Billing Info',
       component: BillingPage,
-      notification: true
+      notification: false
     },
     { title: 'Update Billing Info',
       component: PaymentPage,
@@ -82,7 +83,7 @@ export class AccountPage {
     this.accountProvider.getAccountInfo().subscribe(
       (account) => {
         this.account = account;
-
+        this.information[this.billing_information_index].notification = account.status === "Suspended";
         let contact = account.primary_contact;
         this.display_name = contact.first_name + " " + contact.last_name;
         this.display_email = contact.email;
