@@ -64,6 +64,10 @@ export class BillingPage {
     )
   }
 
+  retryPayment() {
+    this.navCtrl.push(PaymentPage);
+  }
+
   toPayment() {
     this.navCtrl.push(PaymentPage);
   }
