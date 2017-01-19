@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { Session } from '../../providers/session';
 import { HomePage } from '../home/home';
 import { ResetPasswordPage } from '../reset-password/reset-password';
+
+import { Session } from '../../providers/session';
 
 @Component({
   selector: 'page-sign-in',
@@ -14,7 +15,10 @@ export class SignInPage {
   password = '';
   errorMessage = '';
 
-  constructor(private navCtrl: NavController, private session: Session) {
+  constructor(
+    private navCtrl: NavController,
+    private session: Session
+  ) {
 
   }
 

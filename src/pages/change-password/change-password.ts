@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
-import { Session } from '../../providers/session'
 import { AccountProvider } from '../../providers/account.provider'
 
 @Component({
@@ -15,7 +14,10 @@ export class ChangePasswordPage {
   confirmPassword = '';
   saveEnabled = false;
 
-  constructor(public navCtrl: NavController, private accountProvider:AccountProvider) {
+  constructor(
+    public navCtrl: NavController,
+    private accountProvider:AccountProvider
+  ) {
 
   }
 
@@ -28,6 +30,12 @@ export class ChangePasswordPage {
   }
 
   public updatePassword() {
-    this.accountProvider.updatePassword(this.newPassword);
+    return this.accountProvider.updatePassword(this.newPassword).subscribe(
+      (success) => {
+        if (success) {
+          this.navCtrl.pop();
+        }
+      }
+    );
   }
 }

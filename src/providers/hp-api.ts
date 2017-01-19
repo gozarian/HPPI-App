@@ -30,14 +30,44 @@ export class HpApi {
       .catch(this.handleError);
   }
 
-  public resetAccountPassword(email: string, password: string): Observable<Response> {
-    return this.post('Accounts/ResetPassword/', email, password)
+  public resetAccountPassword(email: string): Observable<Response> {
+    return this.post('Accounts/ResetPassword/', email, null)
       .map(this.validateResponse)
       .catch(this.handleError);
   }
 
   public updateAccountPassword(email: string, password: string, newPassword): Observable<Response> {
     return this.post('Accounts/UpdatePassword/', email, password, {newPassword:newPassword})
+      .map(this.validateResponse)
+      .catch(this.handleError);
+  }
+
+  public updateBillingInfo(email: string, password: string,
+    cc_num: string,
+    cc_month: string,
+    cc_year: string,
+    cc_cvv: string,
+    billing_name: string,
+    billing_street: string,
+    billing_unit_apt: string,
+    billing_city: string,
+    billing_state: string,
+    billing_postal_code: string
+  ) {
+
+    let params = {
+      CreditCardNumber: cc_num,
+      CreditExpireDate: cc_month + cc_year,
+      CreditCVVNumber: cc_cvv,
+      Name: billing_name,
+      Street: billing_street + " " + billing_unit_apt,
+      City: billing_city,
+      State: billing_state,
+      PostalCode: billing_postal_code,
+      Country: "USA",
+    };
+
+    return this.post('Accounts/UpdateBilling/', email, password, params)
       .map(this.validateResponse)
       .catch(this.handleError);
   }

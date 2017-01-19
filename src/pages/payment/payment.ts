@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
+import { AccountProvider } from '../../providers/account.provider';
 
 @Component({
   selector: 'page-payment',
-  templateUrl: 'payment.html'
+  templateUrl: 'payment.html',
+  providers: [AccountProvider]
 })
 export class PaymentPage {
 
@@ -34,13 +36,52 @@ export class PaymentPage {
     {"name":"Wyoming","alpha-2":"WY"}
   ];
 
-  constructor(public navCtrl: NavController) {
-  }
+  cc_num = '';
+  cc_month = '';
+  cc_year = '';
+  cc_cvv = '';
+
+  billing_name = '';
+  billing_street = '';
+  billing_unit_apt = '';
+  billing_city = '';
+  billing_state = '';
+  billing_postal_code = '';
+
+  constructor(
+    public navCtrl: NavController,
+    private accountProvider:AccountProvider
+  ) {}
 
   monthChange(value){
     this.showMonth = value;
   }
   yearChange(value){
     this.showYear = value;
+  }
+
+  savePaymentInfo() {
+    this.accountProvider.updatePaymentInfo(
+      this.cc_num,
+      this.cc_month,
+      this.cc_year,
+      this.cc_cvv,
+      this.billing_name,
+      this.billing_street,
+      this.billing_unit_apt,
+      this.billing_city,
+      this.billing_state,
+      this.billing_postal_code,
+    )
+    .subscribe(
+      (success) => {
+        if (success) {
+          this.navCtrl.pop();
+        }
+        else {
+          // TODO: Handle Error
+        }
+      }
+    );
   }
 }

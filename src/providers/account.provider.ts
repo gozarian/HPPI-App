@@ -28,26 +28,65 @@ export class AccountProvider {
     .map(mapAccount);
   }
 
-  public resetPassword(): Observable<boolean> {
+  public resetPassword(email): Observable<boolean> {
 
-    return this.session.getStoredCredentials()
-    .flatMap(
-      (credentials) => {
-        return this.hpApi.resetAccountPassword(credentials.email, credentials.password);
-      }
-    )
+    return this.hpApi.resetAccountPassword(email)
     .map(mapSuccess);
   }
 
   public updatePassword(newPassword:string): Observable<boolean> {
 
+    let email = '';
+
     return this.session.getStoredCredentials()
     .flatMap(
       (credentials) => {
+        email = credentials.email;
         return this.hpApi.updateAccountPassword(credentials.email, credentials.password, newPassword);
       }
     )
-    .map(mapSuccess);
+    .map(mapSuccess)
+    .map(
+      (success) => {
+        if (success) {
+          this.session.setStoredCredentials(email, newPassword);
+        }
+        return success
+      }
+    );
+  }
+
+  public updatePaymentInfo(
+    cc_num: string,
+    cc_month: string,
+    cc_year: string,
+    cc_cvv: string,
+    billing_name: string,
+    billing_street: string,
+    billing_unit_apt: string,
+    billing_city: string,
+    billing_state: string,
+    billing_postal_code: string
+  ) {
+    return this.session.getStoredCredentials()
+    .flatMap(
+      (credentials) => {
+        return this.hpApi.updateBillingInfo(
+          credentials.email, credentials.password,
+          cc_num,
+          cc_month,
+          cc_year,
+          cc_cvv,
+          billing_name,
+          billing_street,
+          billing_unit_apt,
+          billing_city,
+          billing_state,
+          billing_postal_code,
+        )
+      }
+    )
+    .map(mapSuccess)
   }
 }
 

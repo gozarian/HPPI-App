@@ -13,19 +13,19 @@
   <ion-grid>
     <ion-row class="ccNumber">
       <ion-col>
-        <ion-input type="number" placeholder="Card #"></ion-input>
+        <ion-input type="number" placeholder="Card #" [(ngModel)]="cc_num"></ion-input>
       </ion-col>
     </ion-row>
     <ion-row class="ccDetails">
       <ion-col>
         <span class="payment-label">Exp</span>
-        <ion-input type="number" placeholder="mm"></ion-input>
+        <ion-input type="number" placeholder="mm" [(ngModel)]="cc_month"></ion-input>
         <span class="ccExpSlash">/</span>
-        <ion-input type="number" placeholder="yyyy"></ion-input>
+        <ion-input type="number" placeholder="yyyy" [(ngModel)]="cc_year"></ion-input>
       </ion-col>
       <ion-col text-right>
         <span class="payment-label">CVV</span>
-        <ion-input class="ccCVV" type="number"></ion-input>
+        <ion-input class="ccCVV" type="number" [(ngModel)]="cc_cvv"></ion-input>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -38,34 +38,34 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-input type="text" placeholder="Name"></ion-input>
+        <ion-input type="text" placeholder="Name" [(ngModel)]="billing_name"></ion-input>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-input type="text" placeholder="Street Address"></ion-input>
+        <ion-input type="text" placeholder="Street Address" [(ngModel)]="billing_street"></ion-input>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-input type="text" placeholder="Unit/Apt"></ion-input>
+        <ion-input type="text" placeholder="Unit/Apt" [(ngModel)]="billing_unit_apt"></ion-input>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-input type="text" placeholder="City"></ion-input>
+        <ion-input type="text" placeholder="City" [(ngModel)]="billing_city"></ion-input>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col class="select-state">
-        <ion-input type="text" placeholder="ST" maxlength="2"></ion-input>
+        <ion-input type="text" placeholder="ST" maxlength="2" [(ngModel)]="billing_state"></ion-input>
       </ion-col>
       <ion-col class="select-zip">
-        <ion-input type="number" placeholder="Zip Code"></ion-input>
+        <ion-input type="number" placeholder="Zip Code" [(ngModel)]="billing_postal_code"></ion-input>
       </ion-col>
     </ion-row>
   </ion-grid>
   <div class="submit-payment">
-    <button ion-button>Save</button>
+    <button ion-button (click)="savePaymentInfo()">Save</button>
   </div>
 </ion-content>

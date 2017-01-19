@@ -62,14 +62,14 @@ export class Session {
     return account;
   }
 
-  private setStoredCredentials(email: string, password: string) {
+  public setStoredCredentials(email: string, password: string) {
     this.storage.set(CREDENTIALS_KEY, { email: email, password: password });
   }
 
   private clearStoredCredentials() {
     this.storage.remove(CREDENTIALS_KEY);
   }
-
+  
   public getStoredCredentials(): any {
     return Observable.fromPromise(this.storage.get(CREDENTIALS_KEY))
     .filter((obj) => { return obj ? true : false; });
