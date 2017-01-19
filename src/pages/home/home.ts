@@ -9,13 +9,14 @@ import { ScoopMainPage } from '../scoop-main/scoop-main';
 import { ReferralPage } from '../referral/referral';
 import { PolicyPage } from '../policy/policy';
 import { Policy } from '../../models/policy';
+import { AccountProvider } from '../../providers/account.provider';
 import { PolicyProvider } from '../../providers/policy.provider';
 import { MessageProvider } from '../../providers/message.provider';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  providers: [PolicyProvider, MessageProvider]
+  providers: [AccountProvider, PolicyProvider, MessageProvider]
 })
 export class HomePage {
 
@@ -64,19 +65,19 @@ export class HomePage {
     }
   ];
 
-  user = {
-    name: "user"
-  };
+  display_name = '';
 
   constructor(
     public menuCtrl: MenuController,
     public navCtrl: NavController,
     public viewCtrl: ViewController,
     public modalCtrl: ModalController,
+    private accountProvider: AccountProvider,
     private policyProvider: PolicyProvider,
     private messageProvider: MessageProvider
   ) {
     viewCtrl.willEnter.subscribe(() => {
+      this.getAccount();
       this.getUnreadMessageCount();
       this.getPolicies();
     })
@@ -97,6 +98,14 @@ export class HomePage {
         this.pages[this.messagePageIndex].badge = counts.unread;
       }
     });
+  }
+
+  getAccount(): void {
+    this.accountProvider.getAccountInfo().subscribe(
+      (account) => {
+        this.display_name = account.primary_contact.first_name;
+      }
+    );
   }
 
   openMenu() {

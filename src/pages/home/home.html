@@ -51,7 +51,7 @@
       </ion-row>
       <ion-row class="nav-notifications">
         <ion-col>
-          <p class="home-notify success" (click)="openAccount()">Welcome {{ user.name }}!</p>
+          <p class="home-notify success" (click)="openAccount()">Welcome {{ display_name }}!</p>
         </ion-col>
       </ion-row>
       <ion-row *ngIf="accountError == true">
