@@ -51,7 +51,7 @@ export class AccountProvider {
         if (success) {
           this.session.setStoredCredentials(email, newPassword);
         }
-        return success
+        return success;
       }
     );
   }
@@ -63,7 +63,6 @@ export class AccountProvider {
     cc_cvv: string,
     billing_name: string,
     billing_street: string,
-    billing_unit_apt: string,
     billing_city: string,
     billing_state: string,
     billing_postal_code: string
@@ -79,14 +78,13 @@ export class AccountProvider {
           cc_cvv,
           billing_name,
           billing_street,
-          billing_unit_apt,
           billing_city,
           billing_state,
           billing_postal_code,
         )
       }
     )
-    .map(mapSuccess)
+    .map(mapSuccess);
   }
 }
 
@@ -130,7 +128,7 @@ function mapContact(item:any) : Contact {
     last_name: item.LastName,
     email: item.Email,
     primary_phone: item.PrimaryPhone,
-    secondary_phone: item.SecondaryPhone,
+    secondary_phone: item.SecondaryPhone
   });
 
   return contact;

@@ -49,7 +49,6 @@ export class HpApi {
     cc_cvv: string,
     billing_name: string,
     billing_street: string,
-    billing_unit_apt: string,
     billing_city: string,
     billing_state: string,
     billing_postal_code: string
@@ -57,10 +56,10 @@ export class HpApi {
 
     let params = {
       CreditCardNumber: cc_num,
-      CreditExpireDate: cc_month + cc_year,
+      CreditExpireDate: cc_month + "-" + cc_year,
       CreditCVVNumber: cc_cvv,
       Name: billing_name,
-      Street: billing_street + " " + billing_unit_apt,
+      Street: billing_street,
       City: billing_city,
       State: billing_state,
       PostalCode: billing_postal_code,

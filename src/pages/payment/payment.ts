@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, ViewController } from 'ionic-angular';
 import { AccountProvider } from '../../providers/account.provider';
 
 @Component({
@@ -43,15 +43,34 @@ export class PaymentPage {
 
   billing_name = '';
   billing_street = '';
-  billing_unit_apt = '';
   billing_city = '';
   billing_state = '';
   billing_postal_code = '';
 
   constructor(
     public navCtrl: NavController,
+    public viewCtrl: ViewController,
     private accountProvider:AccountProvider
-  ) {}
+  ) {
+    viewCtrl.willEnter.subscribe(() => {
+      this.getAccount();
+    })
+  }
+
+  getAccount(): void {
+    this.accountProvider.getAccountInfo().subscribe(
+      (account) => {
+        let contact = account.primary_contact;
+        this.billing_name = contact.first_name + " " + contact.last_name;
+
+        let address = account.billing_address;
+        this.billing_street = address.street;
+        this.billing_city = address.city;
+        this.billing_state = address.state_province;
+        this.billing_postal_code = address.postal_code;
+      }
+    )
+  }
 
   monthChange(value){
     this.showMonth = value;
@@ -68,7 +87,6 @@ export class PaymentPage {
       this.cc_cvv,
       this.billing_name,
       this.billing_street,
-      this.billing_unit_apt,
       this.billing_city,
       this.billing_state,
       this.billing_postal_code,

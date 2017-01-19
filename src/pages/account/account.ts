@@ -89,7 +89,7 @@ export class AccountPage {
         this.display_email = contact.email;
 
         let address = account.billing_address;
-        this.display_address = address.street + "  " + address.city + ", " + address.state_province + ", " + address.postal_code;
+        this.display_address = address.street + "  " + address.city + ", " + address.state_province + " " + address.postal_code;
       }
     )
   }
