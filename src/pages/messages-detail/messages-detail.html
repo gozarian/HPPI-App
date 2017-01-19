@@ -11,8 +11,7 @@
   <h2>{{ message.title }}</h2>
   <div class="message-text" [innerHtml]="message.content"></div>
   <button ion-button *ngIf="message.action" (click)="messageAction(message)">{{ message.cta_text }}</button>
+  <div class="message-footer">
+    <button ion-button (click)="deleteMessage(message)">Delete Message</button>
+  </div>
 </ion-content>
-
-<ion-footer class="primary-footer">
-  <button ion-button (click)="deleteMessage(message)">Delete Message</button>
-</ion-footer>

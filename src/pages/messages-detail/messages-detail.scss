@@ -36,9 +36,25 @@ page-messages-detail {
     }
 
     .message-text {
-      margin-top: $base-line-height;
+      margin: $base-line-height 0;
       font-size: type-scale(0);
       color: color($colors, greyscale, contrast);
+    }
+  }
+
+  .message-footer {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    button {
+      @include button;
+
+      &[outline] {
+        color: color($colors, accent, base);
+        background-color: transparent;
+        border: 2px solid color($colors, accent, base);
+      }
     }
   }
 }
