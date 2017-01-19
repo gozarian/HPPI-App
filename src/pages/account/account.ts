@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ViewController } from 'ionic-angular';
+import { NavController, ViewController, LoadingController } from 'ionic-angular';
 import { PersonalInfoPage } from '../personal-info/personal-info';
 import { BillingPage } from '../billing/billing';
 import { PaymentPage } from '../payment/payment';
@@ -24,6 +24,7 @@ import { Account } from '../../models/account';
 })
 export class AccountPage {
 
+  loading;
   account: Account;
   display_name:string;
   display_email:string;
@@ -69,6 +70,7 @@ export class AccountPage {
   constructor(
     public navCtrl: NavController,
     public viewCtrl: ViewController,
+    private loadingCtrl: LoadingController,
     private accountProvider: AccountProvider,
     private policyProvider: PolicyProvider,
     private session: Session
@@ -76,10 +78,23 @@ export class AccountPage {
     viewCtrl.willEnter.subscribe(() => {
       this.getAccount();
       this.getPolicies();
-    })
+    });
+  }
+
+  presentLoading() {
+    this.loading = this.loadingCtrl.create({
+      spinner: 'crescent'
+    });
+    this.loading.present();
+  }
+
+  closeLoading() {
+    if (this.loading == 'undefined') { return; };
+    this.loading.dismiss();
   }
 
   getAccount(): void {
+    this.presentLoading();
     this.accountProvider.getAccountInfo().subscribe(
       (account) => {
         this.account = account;
@@ -90,8 +105,9 @@ export class AccountPage {
 
         let address = account.billing_address;
         this.display_address = address.street + "  " + address.city + ", " + address.state_province + " " + address.postal_code;
+        this.closeLoading();
       }
-    )
+    );
   }
 
   getPolicies(): void {

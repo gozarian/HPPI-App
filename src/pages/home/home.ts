@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { MenuController, NavController, ModalController, Content, ViewController } from 'ionic-angular';
+import { MenuController, NavController, ModalController, Content, ViewController, LoadingController } from 'ionic-angular';
 import { NewFeaturesPage } from './new-features-modal';
 import { ClaimChoosePage } from '../claim-choose/claim-choose';
 import { MyClaimsPage } from '../my-claims/my-claims';
@@ -12,6 +12,7 @@ import { Policy } from '../../models/policy';
 import { AccountProvider } from '../../providers/account.provider';
 import { PolicyProvider } from '../../providers/policy.provider';
 import { MessageProvider } from '../../providers/message.provider';
+import { Account } from '../../models/account';
 
 @Component({
   selector: 'page-home',
@@ -27,6 +28,7 @@ export class HomePage {
     this.content.scrollToTop();
   }
 
+  loading;
   accountError: boolean = false;
 
   // For updating the unread message badge
@@ -73,6 +75,7 @@ export class HomePage {
     public viewCtrl: ViewController,
     public modalCtrl: ModalController,
     private accountProvider: AccountProvider,
+    public loadingCtrl: LoadingController,
     private policyProvider: PolicyProvider,
     private messageProvider: MessageProvider
   ) {
@@ -80,7 +83,29 @@ export class HomePage {
       this.getAccount();
       this.getUnreadMessageCount();
       this.getPolicies();
-    })
+    });
+  }
+
+  presentLoading() {
+    this.loading = this.loadingCtrl.create({
+      spinner: 'crescent'
+    });
+    this.loading.present();
+  }
+
+  closeLoading() {
+    if (this.loading == 'undefined') { return; };
+    this.loading.dismiss();
+  }
+
+  getAccount(): void {
+    this.presentLoading();
+    this.accountProvider.getAccountInfo().subscribe(
+      (account) => {
+        this.display_name = account.primary_contact.first_name;
+        this.closeLoading();
+      }
+    );
   }
 
   getPolicies(): void {

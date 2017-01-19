@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController, ViewController } from 'ionic-angular';
+import { NavController, ViewController, LoadingController } from 'ionic-angular';
 import { PaymentPage } from '../payment/payment';
 
 import { AccountProvider } from '../../providers/account.provider';
@@ -13,6 +13,7 @@ import { Account } from '../../models/account';
 })
 export class BillingPage {
 
+  loading;
   account:Account;
   display_name = '';
   display_premium = '';
@@ -28,6 +29,7 @@ export class BillingPage {
   constructor(
     public navCtrl: NavController,
     public viewCtrl: ViewController,
+    private loadingCtrl: LoadingController,
     private accountProvider: AccountProvider
   ) {
     viewCtrl.willEnter.subscribe(() => {
@@ -42,7 +44,20 @@ export class BillingPage {
     '31st'
   ];
 
+  presentLoading() {
+    this.loading = this.loadingCtrl.create({
+      spinner: 'crescent'
+    });
+    this.loading.present();
+  }
+
+  closeLoading() {
+    if (this.loading == 'undefined') { return; };
+    this.loading.dismiss();
+  }
+
   getAccount(): void {
+    this.presentLoading();
     this.accountProvider.getAccountInfo().subscribe(
       (account) => {
         this.account = account;
@@ -60,6 +75,7 @@ export class BillingPage {
         this.display_address_line1 = address.street;
         this.display_address_line2 = address.city + ", " + address.state_province;
         this.display_address_line3 = address.postal_code;
+        this.closeLoading();
       }
     )
   }
