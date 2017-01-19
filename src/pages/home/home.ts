@@ -125,14 +125,6 @@ export class HomePage {
     });
   }
 
-  getAccount(): void {
-    this.accountProvider.getAccountInfo().subscribe(
-      (account) => {
-        this.display_name = account.primary_contact.first_name;
-      }
-    );
-  }
-
   openMenu() {
     this.menuCtrl.open();
   }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController, ViewController } from 'ionic-angular';
+import { NavController, ViewController, LoadingController } from 'ionic-angular';
 import { AccountProvider } from '../../providers/account.provider';
 
 @Component({
@@ -10,6 +10,7 @@ import { AccountProvider } from '../../providers/account.provider';
 })
 export class PaymentPage {
 
+  loading;
   showMonth: boolean = false;
   showYear: boolean = false;
   card = {
@@ -50,6 +51,7 @@ export class PaymentPage {
   constructor(
     public navCtrl: NavController,
     public viewCtrl: ViewController,
+    public loadingCtrl: LoadingController,
     private accountProvider:AccountProvider
   ) {
     viewCtrl.willEnter.subscribe(() => {
@@ -57,7 +59,20 @@ export class PaymentPage {
     })
   }
 
+  presentLoading() {
+    this.loading = this.loadingCtrl.create({
+      spinner: 'crescent'
+    });
+    this.loading.present();
+  }
+
+  closeLoading() {
+    if (this.loading == 'undefined') { return; };
+    this.loading.dismiss();
+  }
+
   getAccount(): void {
+    this.presentLoading();
     this.accountProvider.getAccountInfo().subscribe(
       (account) => {
         let contact = account.primary_contact;
@@ -68,6 +83,7 @@ export class PaymentPage {
         this.billing_city = address.city;
         this.billing_state = address.state_province;
         this.billing_postal_code = address.postal_code;
+        this.closeLoading();
       }
     )
   }
