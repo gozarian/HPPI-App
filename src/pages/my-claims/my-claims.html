@@ -17,7 +17,7 @@
       <section class="claim-pet-details">
         <h2>Claim # {{ claim.claim_number }}</h2>
         <p>For: {{ policies[claim.pet_id].petName }}</p>
-        <p class="claim-status" [class.warning]="claim.status == 'warning'">{{ claim.statusMessage }}</p>
+        <p class="claim-status" [class.warning]="claim.status == 'Your Action Needed'">{{ claim.status }}</p>
       </section>
       <ion-note item-right>{{ claim.date_submitted }}</ion-note>
     </button>

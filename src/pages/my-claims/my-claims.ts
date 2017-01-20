@@ -50,7 +50,9 @@ export class MyClaimsPage {
   }
 
   openClaim(claim) {
-    this.navCtrl.push(MyClaimsDetailPage, claim);
+    if (claim.status === 'Your Action Needed') {
+      this.navCtrl.push(MyClaimsDetailPage, claim);
+    }
   }
 
 }

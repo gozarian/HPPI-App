@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { Observable } from 'rxjs/Rx';
 import { MenuController, NavController, ModalController, Content, ViewController, LoadingController } from 'ionic-angular';
 import { NewFeaturesPage } from './new-features-modal';
 import { ClaimChoosePage } from '../claim-choose/claim-choose';
@@ -81,9 +82,8 @@ export class HomePage {
     private messageProvider: MessageProvider
   ) {
     viewCtrl.willEnter.subscribe(() => {
-      this.getAccount();
+      this.getData();
       this.getUnreadMessageCount();
-      this.getPolicies();
       this.getLaunchCount();
     });
   }
@@ -110,20 +110,18 @@ export class HomePage {
     this.loading.dismiss();
   }
 
-  getAccount(): void {
+  getData(): void {
     this.presentLoading();
-    this.accountProvider.getAccountInfo().subscribe(
-      (account) => {
+    Observable.combineLatest(
+      this.accountProvider.getAccountInfo().retry(1),
+      this.policyProvider.getPolicies()
+    )
+    .subscribe(
+      (values) => {
+        let account = values[0];
         this.display_name = account.primary_contact.first_name;
-      }
-    );
-    this.closeLoading();
-  }
-
-  getPolicies(): void {
-    this.policyProvider.getPolicies().subscribe(
-      (policies) => {
-        this.policies = policies
+        this.policies = values[1];
+        this.closeLoading();
       }
     );
   }
