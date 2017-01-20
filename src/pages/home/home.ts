@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import { MenuController, NavController, ModalController, Content, ViewController, LoadingController } from 'ionic-angular';
 import { NewFeaturesPage } from './new-features-modal';
 import { ClaimChoosePage } from '../claim-choose/claim-choose';
@@ -16,7 +17,7 @@ import { MessageProvider } from '../../providers/message.provider';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  providers: [AccountProvider, PolicyProvider, MessageProvider]
+  providers: [Storage, AccountProvider, PolicyProvider, MessageProvider]
 })
 export class HomePage {
 
@@ -69,6 +70,7 @@ export class HomePage {
   display_name = '';
 
   constructor(
+    public storage: Storage,
     public menuCtrl: MenuController,
     public navCtrl: NavController,
     public viewCtrl: ViewController,
@@ -82,6 +84,17 @@ export class HomePage {
       this.getAccount();
       this.getUnreadMessageCount();
       this.getPolicies();
+      this.getLaunchCount();
+    });
+  }
+
+  getLaunchCount() {
+    this.storage.get('launchCount').then(applaunchCount => {
+      if (applaunchCount == 1) {
+        this.showNewFeatures();
+        applaunchCount++
+        this.storage.set('launchCount', applaunchCount);
+      }
     });
   }
 

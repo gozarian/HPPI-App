@@ -12,9 +12,10 @@ page-new-features {
   }
 
   .toolbar-title {
-    padding-top: $base-line-height;
+    padding-top: $base-line-height / 1.5;
     font-size: 3rem;
     font-weight: weight(bold);
+    line-height: 1;
     color: color($colors, base, contrast);
   }
 
@@ -42,11 +43,14 @@ page-new-features {
     .scroll-content {
       display: flex;
       justify-content: flex-end;
-      overflow-y: hidden;
     }
 
     .new-features-grid {
-      justify-content: flex-end;
+      justify-content: flex-start;
+
+      ion-row:first-child {
+        margin-top: 102px;
+      }
 
       ion-col {
         flex-flow: column;

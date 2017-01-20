@@ -57,6 +57,7 @@ export class MyApp implements OnInit {
   constructor(
     platform: Platform,
     public menu: MenuController,
+    public storage: Storage,
     private policyProvider: PolicyProvider,
     session: Session
   ) {
@@ -76,6 +77,15 @@ export class MyApp implements OnInit {
     });
   }
 
+  getLaunchCount() {
+    this.storage.get('launchCount').then(applaunchCount => {
+      if (!applaunchCount) {
+        let applaunchCount = 1;
+        this.storage.set('launchCount', applaunchCount);
+      }
+    });
+  }
+
   getPolicies(): void {
     this.policyProvider.getPolicies().subscribe(
       (policies) => {
@@ -86,6 +96,7 @@ export class MyApp implements OnInit {
 
   ngOnInit(): void {
     this.getPolicies();
+    this.getLaunchCount();
   }
 
   openPage(page) {

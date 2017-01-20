@@ -62,9 +62,13 @@ page-messages-inbox {
         position: absolute;
         top: 5px;
         right: 14px;
+        max-width: 80px;
         margin-right: 0;
         font-size: type-scale(-2);
         color: color($colors, greyscale, contrast);
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
       }
     }
 
@@ -83,6 +87,7 @@ page-messages-inbox {
       }
 
       h2 {
+        max-width: 90%;
         margin-bottom: 1rem;
         font-size: type-scale(0);
         font-weight: weight(bold);
