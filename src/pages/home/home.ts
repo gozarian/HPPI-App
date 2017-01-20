@@ -12,7 +12,6 @@ import { Policy } from '../../models/policy';
 import { AccountProvider } from '../../providers/account.provider';
 import { PolicyProvider } from '../../providers/policy.provider';
 import { MessageProvider } from '../../providers/message.provider';
-import { Account } from '../../models/account';
 
 @Component({
   selector: 'page-home',
@@ -103,9 +102,9 @@ export class HomePage {
     this.accountProvider.getAccountInfo().subscribe(
       (account) => {
         this.display_name = account.primary_contact.first_name;
-        this.closeLoading();
       }
     );
+    this.closeLoading();
   }
 
   getPolicies(): void {

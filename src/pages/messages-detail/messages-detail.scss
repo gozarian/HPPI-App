@@ -21,6 +21,7 @@ page-messages-detail {
     }
 
     h2 {
+      max-width: 90%;
       font-size: type-scale(2);
       font-weight: weight(bold);
       color: color($colors, greyscale, base);
