@@ -68,6 +68,8 @@ import { MessageProvider } from '../providers/message.provider'
     IonicModule.forRoot(MyApp, {
       backButtonText: '',
       mode: 'ios',
+      scrollAssist: false,
+      autoFocusAssist: false,
       platforms: {
         ios: {
           statusbarPadding: true

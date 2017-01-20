@@ -10,7 +10,7 @@
     <button ion-item *ngFor="let message of messages" (click)="openMessage(message)">
       <div class="notify" [class.unread]="message.unread == true"></div>
       <section class="message-details">
-        <h2>{{ message.title }}</h2>
+        <h2>{{ message.title ? message.title : 'Untitled' }}</h2>
         <p *ngIf="message.content"><span>{{ message.content | slice:0:50 }}</span><span *ngIf="message.content.length > 50">...</span></p>
       </section>
       <ion-note item-right>{{ message.time_ago }}</ion-note>

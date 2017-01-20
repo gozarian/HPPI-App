@@ -120,7 +120,7 @@ page-sign-in {
   // --------------------------------------------------
 
   ion-content {
-    bottom: 0;
+    // bottom: 0;
   }
 
   .scroll-content {
@@ -140,6 +140,11 @@ page-sign-in {
       margin-top: 1rem;
     }
   }
+
+
+
+  // Slide in animations
+  // --------------------------------------------------
 
   .slide-in{
     animation: slideInSmooth ease-in 1;
