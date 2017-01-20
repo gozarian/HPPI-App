@@ -31,7 +31,7 @@ export class PolicyProvider {
     return items.map(
       (item) => {
 
-        let poilcy = <Policy>({
+        let policy = <Policy>({
           policyNumber: item.PetPolicyNo,
           startDate: item.EnrollmentStartDate,
           reimbursement: item.Reimbursement,
@@ -44,7 +44,7 @@ export class PolicyProvider {
           petDate: item.DateJoinedFamily,
         });
 
-        return poilcy;
+        return policy;
       }
     );
   }

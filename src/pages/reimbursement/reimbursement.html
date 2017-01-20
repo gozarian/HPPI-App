@@ -25,9 +25,10 @@
       <div class="mail-check-wrapper">
         <h2>Any reimbursements will be mailed to:</h2>
 
-        <p>{{ testUser.street }},</p>
-        <p *ngIf="testUser.unit">{{ testUser.unit }}</p>
-        <p>{{ testUser.city }} {{ testUser.state }}, {{ testUser.zip }}</p>
+        <p>{{ display_address_line1 }}</p>
+        <p>{{ display_address_line2 }}</p>
+        <p>{{ display_address_line3 }}</p>
+
         <p class="mail-check-notify">If you need to update your physical address please do so in your online Customer Center.</p>
         <button ion-button
           (click)="updateAddress()"

@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
 
-import { NavController, NavParams, AlertController, PickerController } from 'ionic-angular';
-import { Address } from '../../models/address';
+import { NavController, NavParams, ViewController, AlertController, PickerController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { DepositPage } from '../deposit/deposit';
+
+import { AccountProvider } from '../../providers/account.provider';
+
+import { Address } from '../../models/address';
+import { Account } from '../../models/account';
 
 @Component({
   selector: 'page-reimbursement',
@@ -45,9 +49,39 @@ export class ReimbursementPage {
     }
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private pickerCtrl: PickerController) {
+  display_address_line1 = '';
+  display_address_line2 = '';
+  display_address_line3 = '';
 
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public viewCtrl: ViewController,
+    private accountProvider: AccountProvider,
+    private alertCtrl: AlertController,
+    private pickerCtrl: PickerController
+  ) {
+    viewCtrl.willEnter.subscribe(() => {
+      this.getAccount();
+    });
     this.reimbursement = "deposit";
+  }
+
+  getAccount(): void {
+    this.accountProvider.getAccountInfo().subscribe(
+      (account) => {
+
+//        let contact = account.primary_contact;
+        // this.display_name = contact.first_name + " " + contact.last_name;
+        // this.display_email = contact.email;
+        // this.display_phone = contact.primary_phone;
+
+        let address = account.billing_address;
+        this.display_address_line1 = address.street;
+        this.display_address_line2 = address.city + ", " + address.state_province;
+        this.display_address_line3 = address.postal_code;
+      }
+    );
   }
 
   updateAddress() {

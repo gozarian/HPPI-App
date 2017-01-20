@@ -1,36 +1,48 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 
-import { NavController } from 'ionic-angular';
+import { NavController, ViewController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { MyClaimsDetailPage } from '../my-claims-detail/my-claims-detail';
 
+import { ClaimProvider } from '../../providers/claim.provider';
+import { PolicyProvider } from '../../providers/policy.provider';
+import { Claim } from '../../models/claim';
+import { Policy } from '../../models/policy';
+
 @Component({
   selector: 'page-my-claims',
-  templateUrl: 'my-claims.html'
+  templateUrl: 'my-claims.html',
+  providers:[ClaimProvider, PolicyProvider]
 })
 export class MyClaimsPage {
 
-  claims = [
-    {
-      petName: 'Jackson',
-      petImage: 'assets/test-imgs/test-pet-1.png',
-      number: 11123,
-      date: '3/16/15',
-      status: 'progress',
-      statusMessage: 'In Progress'
-    },
-    {
-      petName: 'Jackson',
-      petImage: 'assets/test-imgs/test-pet-1.png',
-      number: 10113,
-      date: '1/19/15',
-      status: 'warning',
-      statusMessage: 'Your Action Needed'
-    }
-  ];
+  claims:Claim[] = [];
+  policies:{ [id: string] : Policy; } = {};
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public navCtrl: NavController,
+    public viewCtrl: ViewController,
+    private policyProvider:PolicyProvider,
+    private claimProvider:ClaimProvider
+  ) {
+    viewCtrl.willEnter.subscribe(() => {
+      this.getClaims();
+    });
+  }
 
+  getClaims() {
+    Observable.combineLatest(
+      this.policyProvider.getPolicies(),
+      this.claimProvider.getClaims()
+    )
+    .subscribe(
+      (values) => {
+      for (var policy of values[0]) {
+        this.policies[policy.petId] = policy;
+      }
+      this.claims = values[1];
+    });
   }
 
   goHome() {

@@ -11,15 +11,15 @@
       <figure class="claim-pet-avatar">
         <div
           class="img-wrapper"
-          [style.background-image]="'url(' + claim.petImage + ')'">
+          [style.background-image]="'url(' + policies[claim.pet_id].petImage + ')'">
         </div>
       </figure>
       <section class="claim-pet-details">
-        <h2>Claim # {{ claim.number }}</h2>
-        <p>For: {{ claim.petName }}</p>
+        <h2>Claim # {{ claim.claim_number }}</h2>
+        <p>For: {{ policies[claim.pet_id].petName }}</p>
         <p class="claim-status" [class.warning]="claim.status == 'warning'">{{ claim.statusMessage }}</p>
       </section>
-      <ion-note item-right>{{ claim.date }}</ion-note>
+      <ion-note item-right>{{ claim.date_submitted }}</ion-note>
     </button>
   </ion-list>
   <h3 class="no-claims" *ngIf="claims.length == 0">You don't have any claims.</h3>
