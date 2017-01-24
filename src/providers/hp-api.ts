@@ -71,6 +71,42 @@ export class HpApi {
       .catch(this.handleError);
   }
 
+  public updateReimbursementAchInfo(email: string, password: string,
+    bankAccountType:string,
+    routingNumber:string,
+    accountNumber:string
+  ) {
+
+    let params = {
+      BankAccountType: bankAccountType,
+      RoutingNumber: routingNumber,
+      AccountNumber: accountNumber
+    };
+
+    return this.post('Accounts/SetReimbursementToACH/', email, password, params)
+      .map(this.validateResponse)
+      .catch(this.handleError);
+  }
+
+  public updateReimbursementCheckInfo(email: string, password: string,
+    street:string,
+    city:string,
+    state:string,
+    postal_code:string
+  ) {
+
+    let params = {
+      Street: street,
+      City: city,
+      State: state,
+      PostalCode: postal_code
+    };
+
+    return this.post('Accounts/SetReimbursementToCheck/', email, password, params)
+      .map(this.validateResponse)
+      .catch(this.handleError);
+  }
+
   // Policies
   public getPolicies(email: string, password: string): Observable<Response> {
     return this.post('Pets/GetPetsByAccount/', email, password)
@@ -156,6 +192,7 @@ export class HpApi {
   private objectToParams(object): string {
     return Object.keys(object).map((value) => {
         var objectValue = this.isPrimitive(object[value]) ? object[value] : JSON.stringify(object[value]);
+        objectValue = encodeURIComponent(objectValue);
         return `${value}=${objectValue}`;
     }).join('&');
   }

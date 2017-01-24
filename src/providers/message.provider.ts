@@ -72,7 +72,7 @@ export class MessageProvider {
     return items.map(
       (item) => {
         let action = actionForType(item.MessageType, item.MessageSubType);
-
+        
         let message = <Message>({
           id:item.id,
           account_id: item.AccountId,

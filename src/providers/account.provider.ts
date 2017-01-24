@@ -25,7 +25,8 @@ export class AccountProvider {
         return this.hpApi.getAccount(credentials.email, credentials.password);
       }
     )
-    .map(mapAccount);
+    .map(mapAccount)
+    .retry(2);
   }
 
   public resetPassword(email): Observable<boolean> {
@@ -81,6 +82,47 @@ export class AccountProvider {
           billing_city,
           billing_state,
           billing_postal_code,
+        )
+      }
+    )
+    .map(mapSuccess);
+  }
+
+  public updateReimbursementAchInfo(
+    bankAccountType:string,
+    routingNumber:string,
+    accountNumber:string
+  ) {
+    return this.session.getStoredCredentials()
+    .flatMap(
+      (credentials) => {
+        let accountType = bankAccountType === 'Savings' ? 'SAVINGS' : 'CHECKING';
+        return this.hpApi.updateReimbursementAchInfo(
+          credentials.email, credentials.password,
+          accountType,
+          routingNumber,
+          accountNumber
+        )
+      }
+    )
+    .map(mapSuccess);
+  }
+
+  public updateReimbursementCheckInfo(
+    street:string,
+    city:string,
+    state:string,
+    postal_code:string
+  ) {
+    return this.session.getStoredCredentials()
+    .flatMap(
+      (credentials) => {
+        return this.hpApi.updateReimbursementCheckInfo(
+          credentials.email, credentials.password,
+          street,
+          city,
+          state,
+          postal_code
         )
       }
     )

@@ -22,25 +22,15 @@ export class ReimbursementPage {
 
   directDepositInfo: boolean = true;
 
-  testUser = {
-    name: 'Brian Jorgensen',
-    street: '6806 Westminister Ave NE',
-    unit: '',
-    city: 'Elensburg',
-    state: 'WA',
-    zip: '98117'
-  };
-
   model = <Address>({
-    name: '',
     street: '',
     city: '',
     state_province: '',
     postal_code: '',
-    country: ''
+    country: 'USA'
   });
 
-  accounts = [
+  accountTypes = [
     {
       text: 'Checking'
     },
@@ -64,17 +54,13 @@ export class ReimbursementPage {
     viewCtrl.willEnter.subscribe(() => {
       this.getAccount();
     });
-    this.reimbursement = "deposit";
   }
 
   getAccount(): void {
     this.accountProvider.getAccountInfo().subscribe(
       (account) => {
 
-//        let contact = account.primary_contact;
-        // this.display_name = contact.first_name + " " + contact.last_name;
-        // this.display_email = contact.email;
-        // this.display_phone = contact.primary_phone;
+        this.reimbursement = "deposit";
 
         let address = account.billing_address;
         this.display_address_line1 = address.street;
@@ -108,10 +94,12 @@ export class ReimbursementPage {
             console.log('Save clicked');
             this.submitted = true;
             this.addressForm = false;
-            this.testUser.street = this.model.street;
-            this.testUser.city = this.model.city;
-            this.testUser.state = this.model.state_province;
-            this.testUser.zip = this.model.postal_code;
+            this.accountProvider.updateReimbursementCheckInfo(
+              this.model.street,
+              this.model.city,
+              this.model.state_province,
+              this.model.postal_code
+            );
           }
         }
       ]
@@ -137,7 +125,7 @@ export class ReimbursementPage {
     let column = {
       name: 'accountTypes',
       columnWidth: '100%',
-      options: this.accounts
+      options: this.accountTypes
     };
     picker.addColumn(column);
     picker.present();

@@ -53,6 +53,9 @@ export class MyClaimsPage {
     if (claim.status === 'Your Action Needed') {
       this.navCtrl.push(MyClaimsDetailPage, claim);
     }
+    else {
+      // TODO: Show EOB
+      this.navCtrl.push(MyClaimsDetailPage, claim);
+    }
   }
-
 }
