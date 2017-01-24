@@ -52,6 +52,6 @@ export class MessagesInboxPage {
   }
 
   openMessage(message) {
-    this.navCtrl.push(MessagesDetailPage, message);
+    this.navCtrl.push(MessagesDetailPage, {message:message});
   }
 }

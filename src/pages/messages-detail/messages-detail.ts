@@ -14,6 +14,7 @@ import { MyClaimsPage } from '../my-claims/my-claims';
 export class MessagesDetailPage implements OnInit {
 
   message:Message;
+  show_action_button = false;
 
   constructor(
     public navCtrl: NavController,
@@ -21,15 +22,11 @@ export class MessagesDetailPage implements OnInit {
     private messageProvider: MessageProvider
   ) {
 
-    this.message = <Message>({
-      id:navParams.get('id'),
-      account_id:navParams.get('account_id'),
-      title:navParams.get('title'),
-      content:navParams.get('content'),
-      unread:navParams.get('unread'),
-      time_ago:navParams.get('time_ago'),
-      date_created:navParams.get('date_created'),
-    });
+    this.message = <Message>(navParams.get('message'));
+
+    if (this.message.action != MessageAction.none) {
+      this.show_action_button = true;
+    }
   }
 
   ngOnInit(): void {
