@@ -38,7 +38,11 @@ export class ClaimChoosePage implements OnInit {
     this.presentLoading();
     this.policyProvider.getPolicies().subscribe(
       (policies) => {
-        this.policies = policies
+        this.policies = policies.filter(
+          (policy) => {
+            return policy.allow_claim;
+          }
+        );
         this.closeLoading();
       }
     );

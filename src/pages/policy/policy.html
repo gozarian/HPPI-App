@@ -3,7 +3,7 @@
   [class.back-home-header]="previousPage.name == 'HomePage'">
   <ion-navbar>
     <ion-title>
-      {{ policy.petName }}
+      {{ policy.pet_name }}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -14,31 +14,31 @@
         <figure>
           <div
             class="img-wrapper"
-            [style.background-image]="'url(' + policy.petImage + ')'">
+            [style.background-image]="'url(' + policy.pet_image + ')'">
           </div>
         </figure>
         <h3
-          *ngIf="policy.petType == 'Dog'"
+          *ngIf="policy.pet_type == 'Dog'"
           style="background-image: url('assets/misc/dog_banner.png')">
-          {{ policy.petName }}
+          {{ policy.pet_name }}
         </h3>
         <h3
-          *ngIf="policy.petType == 'Cat'"
+          *ngIf="policy.pet_type == 'Cat'"
           style="background-image: url('assets/misc/cat_banner.png')">
-          {{ policy.petName }}
+          {{ policy.pet_name }}
         </h3>
       </section>
       <ion-list no-lines class="pet-policy-details">
         <ion-item>
           <p>
             <span class="policy-label">Pet Policy #:</span>
-            <span class="policy-value">{{ policy.policyNumber }}</span>
+            <span class="policy-value">{{ policy.policy_number }}</span>
           </p>
         </ion-item>
         <ion-item>
           <p>
             <span class="policy-label">Pet Protected Since:</span>
-            <span class="policy-value">{{ policy.startDate }}</span>
+            <span class="policy-value">{{ policy.start_date }}</span>
           </p>
         </ion-item>
         <ion-item>

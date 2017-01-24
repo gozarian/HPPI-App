@@ -55,7 +55,7 @@ export class MyClaimsPage {
     .subscribe(
       (values) => {
       for (var policy of values[0]) {
-        this.policies[policy.petId] = policy;
+        this.policies[policy.pet_id] = policy;
       }
       this.claims = values[1];
       if (this.claims.length == 0) {

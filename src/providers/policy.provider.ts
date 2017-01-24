@@ -33,16 +33,20 @@ export class PolicyProvider {
         (item) => {
 
           let policy = <Policy>({
-            policyNumber: item.PetPolicyNo,
-            startDate: item.EnrollmentStartDate,
+            policy_number: item.PetPolicyNo,
+            start_date: item.EnrollmentStartDate,
             reimbursement: item.Reimbursement,
             deductible: item.Deductible,
+            remaining_deductible: item.CurrentYearRemainingDeductible,
             premium: item.MonthlyPremium,
-            petId: item.PetID,
-            petName: item.Name,
-            petImage: item.PetImageURL,
-            petType: item.Type,
-            petDate: item.DateJoinedFamily,
+            pet_id: item.PetID,
+            pet_name: item.Name,
+            pet_image: item.PetImageURL,
+            pet_type: item.Type,
+            pet_joined_family_date: item.DateJoinedFamily,
+            status:item.Status,
+            allow_claim:item.AllowClaim,
+            missing_medical_records:item.PetMissingMedicalRecords,
           });
 
           return policy;

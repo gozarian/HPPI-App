@@ -1,12 +1,16 @@
 export class Policy {
-  policyNumber: string;
-  startDate: string;
+  policy_number: string;
+  start_date: string;
   reimbursement: string;
   deductible: string;
+  remaining_deductible: string;
   premium: string;
-  petId: string;
-  petName: string;
-  petImage: string;
-  petType: string;
-  petDate: string;
+  pet_id: string;
+  pet_name: string;
+  pet_image: string;
+  pet_type: string;
+  pet_joined_family_date: string;
+  status: string;
+  allow_claim: boolean;
+  missing_medical_records: boolean;
 }

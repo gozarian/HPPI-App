@@ -20,17 +20,17 @@
                 <div
                   class="img-wrapper"
                   [class.single-pet]="policies.length < 2"
-                  [style.background-image]="'url(' + policy.petImage + ')'">
+                  [style.background-image]="'url(' + policy.pet_image + ')'">
                 </div>
                 <figcaption
-                  *ngIf="policy.petType == 'Dog'"
+                  *ngIf="policy.pet_type == 'Dog'"
                   style="background-image: url('assets/misc/dog_banner.png')">
-                  {{ policy.petName }}
+                  {{ policy.pet_name }}
                 </figcaption>
                 <figcaption
-                  *ngIf="policy.petType == 'Cat'"
+                  *ngIf="policy.pet_type == 'Cat'"
                   style="background-image: url('assets/misc/cat_banner.png')">
-                  {{ policy.petName }}
+                  {{ policy.pet_name }}
                 </figcaption>
               </figure>
             </button>

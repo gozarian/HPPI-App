@@ -11,12 +11,12 @@
       <figure class="claim-pet-avatar">
         <div
           class="img-wrapper"
-          [style.background-image]="'url(' + policies[claim.pet_id].petImage + ')'">
+          [style.background-image]="'url(' + policies[claim.pet_id].pet_image + ')'">
         </div>
       </figure>
       <section class="claim-pet-details">
         <h2>Claim # {{ claim.claim_number }}</h2>
-        <p>For: {{ policies[claim.pet_id].petName }}</p>
+        <p>For: {{ policies[claim.pet_id].pet_name }}</p>
         <p class="claim-status" [class.warning]="claim.status == 'Your Action Needed'">{{ claim.status }}</p>
       </section>
       <ion-note item-right>{{ claim.date_submitted }}</ion-note>
