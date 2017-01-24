@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { NavController, LoadingController } from 'ionic-angular';
-import { ClaimBirthdayPage } from '../claim-birthday/claim-birthday'
+import { ClaimBirthdayPage } from '../claim-birthday/claim-birthday';
+import { ClaimPhotoPage } from '../claim-photo/claim-photo';
 import { Policy } from '../../models/policy';
 import { PolicyProvider } from '../../providers/policy.provider';
 
@@ -53,6 +54,11 @@ export class ClaimChoosePage implements OnInit {
   }
 
   choosePet(policy) {
-    this.navCtrl.push(ClaimBirthdayPage, policy);
+    if (policy.pet_joined_family_date == null) {
+      this.navCtrl.push(ClaimBirthdayPage, policy);
+    }
+    else {
+      this.navCtrl.push(ClaimPhotoPage, policy);
+    }
   }
 }
