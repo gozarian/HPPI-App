@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 import { ClaimPhotoPage } from '../claim-photo/claim-photo'
 
 @Component({
@@ -14,10 +14,19 @@ export class ClaimBirthdayPage {
 
   constructor(
     public navCtrl: NavController,
+    public alertCtrl: AlertController,
     public navParams: NavParams,
     public viewCtrl: ViewController) {
 
     this.chosenPet = navParams.data;
+  }
+
+  noDateWarning() {
+    let alert = this.alertCtrl.create({
+      title: 'No Date Chosen',
+      buttons: ['Dismiss']
+    });
+    alert.present();
   }
 
   ionViewWillEnter() {
@@ -25,6 +34,11 @@ export class ClaimBirthdayPage {
   }
 
   addPhoto(pet) {
-    this.navCtrl.push(ClaimPhotoPage, pet);
+    if (this.myDate == undefined) {
+      this.noDateWarning();
+      return;
+    } else {
+      this.navCtrl.push(ClaimPhotoPage, pet);
+    }
   }
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController, ViewController, LoadingController } from 'ionic-angular';
+import { NavController, ViewController, LoadingController, ToastController } from 'ionic-angular';
 import { AccountProvider } from '../../providers/account.provider';
 
 @Component({
@@ -52,6 +52,7 @@ export class PaymentPage {
     public navCtrl: NavController,
     public viewCtrl: ViewController,
     public loadingCtrl: LoadingController,
+    public toastCtrl: ToastController,
     private accountProvider:AccountProvider
   ) {
     viewCtrl.willEnter.subscribe(() => {
@@ -69,6 +70,22 @@ export class PaymentPage {
   closeLoading() {
     if (this.loading == 'undefined') { return; };
     this.loading.dismiss();
+  }
+
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'We are sorry there was a problem completing your request.\nPlease try again',
+      duration: 3000,
+      cssClass: 'hp-toasts',
+      showCloseButton: true,
+      position: 'top'
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
   }
 
   getAccount(): void {
@@ -96,6 +113,7 @@ export class PaymentPage {
   }
 
   savePaymentInfo() {
+    this.presentLoading();
     this.accountProvider.updatePaymentInfo(
       this.cc_num,
       this.cc_month,
@@ -111,8 +129,11 @@ export class PaymentPage {
       (success) => {
         if (success) {
           this.navCtrl.pop();
+          this.closeLoading();
         }
         else {
+          this.closeLoading();
+          this.presentToast();
           // TODO: Handle Error
         }
       }

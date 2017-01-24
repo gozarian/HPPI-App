@@ -114,7 +114,8 @@ ion-input {
   }
 }
 
-.hp-picker {
+// Toast Styles
+.hp-toasts {
 
 }
 
@@ -149,6 +150,37 @@ ion-spinner {
   height: 60px;
   width: 60px;
 }
+
+
+
+// Slide in animations
+// --------------------------------------------------
+
+.slide-in{
+  animation: slideInSmooth ease-in 1;
+  animation-fill-mode: forwards;
+  animation-duration: 200ms;
+}
+
+
+@-webkit-keyframes slideIn {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+@-webkit-keyframes slideInSmooth {
+  0% {
+    transform: translate3d(0,-50%,0);
+  }
+  100% {
+    transform: translate3d(0,0,0);
+  }
+}
+
 
 
 // Temporary Toolbar Styles (for Development only)

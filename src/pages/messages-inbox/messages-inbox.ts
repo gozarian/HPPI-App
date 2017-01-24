@@ -15,6 +15,7 @@ export class MessagesInboxPage {
 
   loading;
   messages: Message[] = [];
+  noMessages: boolean = false;
 
   constructor(
     public navCtrl: NavController,
@@ -42,9 +43,14 @@ export class MessagesInboxPage {
   getMessages(): void {
     this.presentLoading();
     this.messageProvider.getMessages().subscribe(
-      messages => this.messages = messages
+      (messages) => {
+        this.messages = messages;
+        if (this.messages.length == 0) {
+          this.noMessages = true;
+        }
+        this.closeLoading();
+      }
     );
-    this.closeLoading();
   }
 
   goHome() {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 import { ClaimBirthdayPage } from '../claim-birthday/claim-birthday'
 import { Policy } from '../../models/policy';
 import { PolicyProvider } from '../../providers/policy.provider';
@@ -12,18 +12,34 @@ import { PolicyProvider } from '../../providers/policy.provider';
 })
 export class ClaimChoosePage implements OnInit {
 
+  loading;
   policies: Policy[];
   chosenPet: boolean = false;
 
   constructor(
     public navCtrl: NavController,
+    private loadingCtrl: LoadingController,
     private policyProvider: PolicyProvider
   ) {}
 
+  presentLoading() {
+    this.loading = this.loadingCtrl.create({
+      spinner: 'crescent'
+    });
+    this.loading.present();
+  }
+
+  closeLoading() {
+    if (this.loading == 'undefined') { return; };
+    this.loading.dismiss();
+  }
+
   getPolicies(): void {
+    this.presentLoading();
     this.policyProvider.getPolicies().subscribe(
       (policies) => {
         this.policies = policies
+        this.closeLoading();
       }
     );
   }

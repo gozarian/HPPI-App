@@ -22,5 +22,5 @@
       <ion-note item-right>{{ claim.date_submitted }}</ion-note>
     </button>
   </ion-list>
-  <h3 class="no-claims" *ngIf="claims.length == 0">You don't have any claims.</h3>
+  <h3 class="no-claims" *ngIf="noClaims">You don't have any claims.</h3>
 </ion-content>

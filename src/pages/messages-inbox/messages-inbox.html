@@ -16,5 +16,5 @@
       <ion-note item-right>{{ message.time_ago }}</ion-note>
     </button>
   </ion-list>
-  <h3 class="no-messages" *ngIf="messages.length == 0">You don't have any messages.</h3>
+  <h3 class="no-messages" *ngIf="noMessages">You don't have any messages.</h3>
 </ion-content>
