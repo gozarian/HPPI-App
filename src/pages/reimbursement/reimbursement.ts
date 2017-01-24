@@ -7,7 +7,6 @@ import { DepositPage } from '../deposit/deposit';
 import { AccountProvider } from '../../providers/account.provider';
 
 import { Address } from '../../models/address';
-import { Account } from '../../models/account';
 
 @Component({
   selector: 'page-reimbursement',
