@@ -34,7 +34,6 @@ export class ChangePasswordPage implements OnInit {
   }
 
   onSubmit() {
-    // console.log(this.password.value, this.password.valid);
     this.updatePassword();
   }
 
