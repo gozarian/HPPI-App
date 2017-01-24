@@ -45,11 +45,14 @@ page-messages-detail {
 
   .message-footer {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     text-align: center;
 
     button {
       @include button;
+      max-width: 200px;
 
       &[outline] {
         color: color($colors, accent, base);
