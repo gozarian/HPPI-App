@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Camera } from 'ionic-native';
+import { MicrOcr, MicrData } from 'ionic-native';
 
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { Deposit } from '../../models/deposit';
@@ -10,7 +10,6 @@ import { ReimbursementPage } from '../reimbursement/reimbursement';
   templateUrl: 'deposit.html'
 })
 export class DepositPage {
-  public photos: Array<string> = [];
   public checkDetails: boolean = false;
   submitted = false;
   depositForm: boolean = false;
@@ -34,20 +33,12 @@ export class DepositPage {
     this.viewCtrl.setBackButtonText('Reimbursement');
   }
 
-  addPhoto() {
-    Camera.getPicture({
-      destinationType: Camera.DestinationType.FILE_URI,
-      sourceType: Camera.PictureSourceType.CAMERA,
-      correctOrientation: true
-    }).then((imageData) => {
-     this.photos.push(imageData);
+  startCapture() {
+    MicrOcr.startLiveCapture().subscribe((captureData: MicrData) => {
+      console.log(captureData);
     }, (err) => {
-
+      console.log('err');
     });
-  }
-
-  deletePhoto(index: number) {
-    this.photos.splice(index, 1);
   }
 
   saveDepositForm() {
