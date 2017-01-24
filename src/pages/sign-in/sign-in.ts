@@ -50,6 +50,8 @@ export class SignInPage {
   }
 
   resetPassword() {
+    this.presentLoading();
+    this.closeLoading();
     this.navCtrl.push(ResetPasswordPage);
   }
 
