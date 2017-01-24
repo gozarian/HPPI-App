@@ -64,7 +64,7 @@ export class BillingPage {
         this.display_policy_warning = account.status === "Suspended";
         this.display_premium = account.monthly_premium;
         this.display_account_status = account.status;
-        this.display_billing_day = this.display_days[account.billing_day];
+        this.display_billing_day = this.display_days[account.billing_day - 1];
         this.display_amount_due = account.past_due_ammount;
         this.display_cc_num = '****' + account.credit_card_last4;
 
