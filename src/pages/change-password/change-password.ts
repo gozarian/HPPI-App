@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { NavController, LoadingController, ToastController } from 'ionic-angular';
+import { NavController, LoadingController, ToastController, NavParams } from 'ionic-angular';
+import { InAppBrowser } from 'ionic-native';
 import { matchPassword } from './match-password';
+import { HomePage } from '../home/home';
 import { AccountProvider } from '../../providers/account.provider'
 
 @Component({
@@ -15,15 +17,20 @@ export class ChangePasswordPage implements OnInit {
   password: FormGroup;
   loading;
   saveEnabled = false;
+  tempPassword = false;
 
   constructor(
     public navCtrl: NavController,
     public toastCtrl: ToastController,
+    public navParams: NavParams,
     private loadingCtrl: LoadingController,
     private fb: FormBuilder,
     private accountProvider:AccountProvider
   ) {
 
+    if (navParams.data === true) {
+      this.tempPassword = navParams.data;
+    }
   }
 
   ngOnInit() {
@@ -34,7 +41,6 @@ export class ChangePasswordPage implements OnInit {
   }
 
   onSubmit() {
-    // console.log(this.password.value, this.password.valid);
     this.updatePassword();
   }
 
@@ -74,9 +80,17 @@ export class ChangePasswordPage implements OnInit {
         this.closeLoading();
         if (success) {
           this.presentToast('Your password has been changed.')
-          this.navCtrl.pop();
+          if (this.tempPassword) {
+            this.navCtrl.setRoot(HomePage);
+          } else {
+            this.navCtrl.pop();
+          }
         }
       }
     );
+  }
+
+  launch(url) {
+    new InAppBrowser(url, '_system');
   }
 }
