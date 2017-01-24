@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
+import { InAppBrowser } from 'ionic-native';
 
 import { HomePage } from '../home/home';
 import { ResetPasswordPage } from '../reset-password/reset-password';
@@ -50,5 +51,9 @@ export class SignInPage {
 
   resetPassword() {
     this.navCtrl.push(ResetPasswordPage);
+  }
+
+  launch(url) {
+    new InAppBrowser(url, '_system');
   }
 }
