@@ -42,11 +42,11 @@ export class AccountPage {
       component: BillingPage,
       notification: false
     },
-    { title: 'Update Billing Info',
+    { title: 'Edit Payment Method',
       component: PaymentPage,
       notification: false
     },
-    { title: 'Change Reimbursement Info',
+    { title: 'Edit Reimbursement Info',
       component: ReimbursementPage,
       notification: false
     },
