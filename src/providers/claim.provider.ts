@@ -28,33 +28,36 @@ export class ClaimProvider {
 
   private mapClaims(response: Response): Claim[] {
     let items = response.json().Items;
-    return items.map(
-      (item) => {
+    if (items) {
+      return items.map(
+        (item) => {
 
-        let claim = <Claim>({
-          id:item.ClaimID,
-          account_id:item.AccountID,
-          status:item.Status,
-          date_of_incident:item.DateOfIncident,
-          date_of_service:item.DateOfService,
-          last_updated:item.LastUpdated,
-          pet_id:item.PetID,
-          eob_url:item.EOBURL,
-          claim_number:item.ClaimNumber,
-          primary_treatment:item.PrimaryTreatment,
-          vet_hostpital:item.VetHospital,
-          invoice_amount:item.InvoiceAmount,
-          invoice_number:item.InvoiceNumber,
-          amount_covered:item.AmountCovered,
-          total_reimbursement:item.TotalReimbursement,
-          missing_medical_records:item.MissingMedicalRecords,
-          missing_claim_data:item.MissingClaimData,
-          received_claim_data:item.ReceivedClaimData,
-          date_submitted:item.DateSubmitted,
-        });
+          let claim = <Claim>({
+            id:item.ClaimID,
+            account_id:item.AccountID,
+            status:item.Status,
+            date_of_incident:item.DateOfIncident,
+            date_of_service:item.DateOfService,
+            last_updated:item.LastUpdated,
+            pet_id:item.PetID,
+            eob_url:item.EOBURL,
+            claim_number:item.ClaimNumber,
+            primary_treatment:item.PrimaryTreatment,
+            vet_hostpital:item.VetHospital,
+            invoice_amount:item.InvoiceAmount,
+            invoice_number:item.InvoiceNumber,
+            amount_covered:item.AmountCovered,
+            total_reimbursement:item.TotalReimbursement,
+            missing_medical_records:item.MissingMedicalRecords,
+            missing_claim_data:item.MissingClaimData,
+            received_claim_data:item.ReceivedClaimData,
+            date_submitted:item.DateSubmitted,
+          });
 
-        return claim;
-      }
-    );
+          return claim;
+        }
+      );
+    }
+    return [];
   }
 }

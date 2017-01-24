@@ -69,28 +69,32 @@ export class MessageProvider {
 
   private mapMessages(response: Response): Message[] {
     let items = response.json().Items;
-    return items.map(
-      (item) => {
-        let action = actionForType(item.MessageType, item.MessageSubType);
-        
-        let message = <Message>({
-          id:item.id,
-          account_id: item.AccountId,
-          title: item.title,
-          content: item.body,
-          unread: item.unread,
-          time_ago: item.time_ago,
-          date_created: item.CreatedDate,
-          cta_text: item.CTAText
-        });
+    if (items) {
+      return items.map(
+        (item) => {
+          let action = actionForType(item.MessageType, item.MessageSubType);
 
-        if (action != MessageAction.none) {
-          message.action = action;
+          let message = <Message>({
+            id:item.id,
+            account_id: item.AccountId,
+            title: item.title,
+            content: item.body,
+            unread: item.unread,
+            time_ago: item.time_ago,
+            date_created: item.CreatedDate,
+            cta_text: item.CTAText
+          });
+
+          if (action != MessageAction.none) {
+            message.action = action;
+          }
+
+          return message;
         }
+      );
+    }
 
-        return message;
-      }
-    );
+    return [];
   }
 }
 

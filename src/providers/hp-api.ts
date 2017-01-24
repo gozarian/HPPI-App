@@ -167,14 +167,19 @@ export class HpApi {
 
     if (json) {
 
-      if (json.ErrorCode !== 0) {
+      if (json.ErrorCode == 0) {
+        return response;
+      }
+      else if (json.ErrorCode == 2 && json.ErrorDescription === 'NoItemsFound') {
+        return response;
+      }
+      else {
         throw Error(json.ErrorDescription);
       }
 
     } else {
       throw Error('Invalid server response');
     }
-    return response;
   }
 
   private handleError(error: Error) {

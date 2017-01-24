@@ -28,24 +28,28 @@ export class PolicyProvider {
 
   private mapPolicys(response: Response): Policy[] {
     let items = response.json().Items;
-    return items.map(
-      (item) => {
+    if (items) {
+      return items.map(
+        (item) => {
 
-        let policy = <Policy>({
-          policyNumber: item.PetPolicyNo,
-          startDate: item.EnrollmentStartDate,
-          reimbursement: item.Reimbursement,
-          deductible: item.Deductible,
-          premium: item.MonthlyPremium,
-          petId: item.PetID,
-          petName: item.Name,
-          petImage: item.PetImageURL,
-          petType: item.Type,
-          petDate: item.DateJoinedFamily,
-        });
+          let policy = <Policy>({
+            policyNumber: item.PetPolicyNo,
+            startDate: item.EnrollmentStartDate,
+            reimbursement: item.Reimbursement,
+            deductible: item.Deductible,
+            premium: item.MonthlyPremium,
+            petId: item.PetID,
+            petName: item.Name,
+            petImage: item.PetImageURL,
+            petType: item.Type,
+            petDate: item.DateJoinedFamily,
+          });
 
-        return policy;
-      }
-    );
+          return policy;
+        }
+      );
+    }
+
+    return [];
   }
 }
