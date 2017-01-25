@@ -43,17 +43,19 @@ export class SignInPage {
   login() {
     this.presentLoading();
     this.session.new(this.email, this.password).subscribe(() => {
+
       this.accountProvider.getAccountInfo().retry(1).subscribe(
         (account) => {
           this.tempPassword = account.password_reset;
+          this.closeLoading();
+
+          if (this.tempPassword) {
+            this.navCtrl.push(ChangePasswordPage, this.tempPassword);
+          } else {
+            this.navCtrl.setRoot(HomePage);
+          }
         }
-      ),
-      this.closeLoading();
-      if (this.tempPassword) {
-        this.navCtrl.push(ChangePasswordPage, this.tempPassword);
-      } else {
-        this.navCtrl.setRoot(HomePage);
-      }
+      );
     },
     error => {
       this.closeLoading();

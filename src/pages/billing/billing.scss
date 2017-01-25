@@ -89,6 +89,10 @@ page-billing {
 
         span {
           color: #CF423F;
+
+          &.active {
+            color: color($colors, greyscale, base);
+          }
         }
       }
     }

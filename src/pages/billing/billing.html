@@ -27,9 +27,9 @@
         </ion-col>
         <ion-col width-50>
           <h3>Status:</h3>
-          <span>{{ display_account_status }}</span>
+          <span [class.active]="display_account_status == 'Active'">{{ display_account_status }}</span>
           <h3 class="policy-amount-due">Amount Due:</h3>
-          <span>{{ display_amount_due }}</span>
+          <span [class.active]="display_amount_due == '$0.00'">{{ display_amount_due }}</span>
         </ion-col>
       </ion-row>
       <ion-row class="policy-payment">
