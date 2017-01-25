@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Camera } from 'ionic-native';
 
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, LoadingController, ToastController, NavParams, ViewController } from 'ionic-angular';
 import { Deposit } from '../../models/deposit';
 import { ReimbursementPage } from '../reimbursement/reimbursement';
 
@@ -12,6 +12,7 @@ import { ReimbursementPage } from '../reimbursement/reimbursement';
 export class DepositPage {
   public photos: Array<string> = [];
   public checkDetails: boolean = false;
+  loading;
   submitted = false;
   depositForm: boolean = false;
 
@@ -25,13 +26,48 @@ export class DepositPage {
 
   onSubmit() { this.submitted = true; }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+  constructor(
+    public navCtrl: NavController,
+    public loadingCtrl: LoadingController,
+    public navParams: NavParams,
+    public toastCtrl: ToastController,
+    public viewCtrl: ViewController
+  ) {
 
     this.directDeposit = navParams.data;
   }
 
   ionViewWillEnter() {
     this.viewCtrl.setBackButtonText('Reimbursement');
+  }
+
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      cssClass: 'hp-toasts',
+      showCloseButton: true,
+      position: 'top'
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    console.log('start the toast');
+    toast.present();
+  }
+
+  presentLoading() {
+    this.loading = this.loadingCtrl.create({
+      spinner: 'crescent'
+    });
+    this.loading.present();
+  }
+
+  closeLoading() {
+    if (this.loading == 'undefined') { return; };
+    this.loading.dismiss();
   }
 
   addPhoto() {
@@ -51,7 +87,10 @@ export class DepositPage {
   }
 
   saveDepositForm() {
+    this.presentLoading();
     this.directDeposit.accountData = this.model;
+    this.closeLoading();
+    this.presentToast('Thank you for updating your reimbursement information.')
     this.navCtrl.push(ReimbursementPage, this.directDeposit);
   }
 }

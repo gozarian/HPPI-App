@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController, NavParams, ViewController, AlertController, PickerController } from 'ionic-angular';
+import { NavController, LoadingController, ToastController, NavParams, ViewController, AlertController, PickerController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { DepositPage } from '../deposit/deposit';
 
@@ -13,6 +13,7 @@ import { Address } from '../../models/address';
   templateUrl: 'reimbursement.html'
 })
 export class ReimbursementPage {
+  loading;
   reimbursement: string;
   addressForm: boolean = false;
   submitted = false;
@@ -46,6 +47,8 @@ export class ReimbursementPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
+    public loadingCtrl: LoadingController,
+    public toastCtrl: ToastController,
     private accountProvider: AccountProvider,
     private alertCtrl: AlertController,
     private pickerCtrl: PickerController
@@ -55,7 +58,37 @@ export class ReimbursementPage {
     });
   }
 
+  presentLoading() {
+    this.loading = this.loadingCtrl.create({
+      spinner: 'crescent'
+    });
+    this.loading.present();
+  }
+
+  closeLoading() {
+    if (this.loading == 'undefined') { return; };
+    this.loading.dismiss();
+  }
+
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      cssClass: 'hp-toasts',
+      showCloseButton: true,
+      position: 'top'
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    console.log('start the toast');
+    toast.present();
+  }
+
   getAccount(): void {
+    this.presentLoading();
     this.accountProvider.getAccountInfo().subscribe(
       (account) => {
 
@@ -65,6 +98,7 @@ export class ReimbursementPage {
         this.display_address_line1 = address.street;
         this.display_address_line2 = address.city + ", " + address.state_province;
         this.display_address_line3 = address.postal_code;
+        this.closeLoading();
       }
     );
   }
@@ -91,6 +125,7 @@ export class ReimbursementPage {
           text: 'Save',
           handler: () => {
             console.log('Save clicked');
+            this.presentLoading();
             this.submitted = true;
             this.addressForm = false;
             this.accountProvider.updateReimbursementCheckInfo(
@@ -99,6 +134,8 @@ export class ReimbursementPage {
               this.model.state_province,
               this.model.postal_code
             );
+            this.closeLoading();
+            this.presentToast('Thank you for updating your reimbursement information.')
           }
         }
       ]
