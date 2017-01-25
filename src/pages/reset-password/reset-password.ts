@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { NavController, LoadingController, ToastController } from 'ionic-angular';
 import { InAppBrowser } from 'ionic-native';
@@ -7,22 +8,33 @@ import { AccountProvider } from '../../providers/account.provider';
 @Component({
   selector: 'page-reset-password',
   templateUrl: 'reset-password.html',
-  providers:[AccountProvider]
+  providers: [AccountProvider]
 })
-export class ResetPasswordPage {
+export class ResetPasswordPage implements OnInit {
 
+  resetPasswordInput: FormGroup;
   loading;
   email='';
   errorMessage = '';
-
 
   constructor(
     public navCtrl: NavController,
     public toastCtrl: ToastController,
     private loadingCtrl: LoadingController,
+    private fb: FormBuilder,
     private accountProvider: AccountProvider
   ) {
 
+  }
+
+  ngOnInit() {
+    this.resetPasswordInput = this.fb.group({
+      resetEmail: ['', [Validators.required]]
+    });
+  }
+
+  onSubmit() {
+    this.resetPassword();
   }
 
   presentLoading() {

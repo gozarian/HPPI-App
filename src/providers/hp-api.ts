@@ -187,7 +187,7 @@ export class HpApi {
 
     if (message == 'PermissionDeniedUser') {
       message = "Invalid username or password";
-    } else if (message == 'AccountNotFound') {
+    } else if (message == 'AccountNotFound' || message == 'MultipleAccountsFound') {
       message = "We did not recognize that email address";
     } else {
       message = "Server error";
