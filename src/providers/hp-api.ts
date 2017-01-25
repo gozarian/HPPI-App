@@ -11,10 +11,13 @@ import { Environment } from '../providers/environment';
 @Injectable()
 export class HpApi {
   private headers: Headers;
+  private headersJson: Headers;
 
   constructor(private http: Http, private environment: Environment) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    this.headersJson = new Headers();
+    this.headersJson.append('Content-Type', 'application/json');
   }
 
   public login(email: string, password: string): Observable<Response> {
@@ -55,18 +58,21 @@ export class HpApi {
   ) {
 
     let params = {
-      CreditCardNumber: cc_num,
-      CreditExpireDate: cc_month + "-" + cc_year,
-      CreditCVVNumber: cc_cvv,
-      Name: billing_name,
-      Street: billing_street,
-      City: billing_city,
-      State: billing_state,
-      PostalCode: billing_postal_code,
-      Country: "USA",
+      BillingInfo: {
+        CreditCardNumber: cc_num,
+        CreditExpireDate: cc_month + "-" + cc_year,
+        CreditCVVNumber: cc_cvv,
+        Name: billing_name,
+        Street: billing_street,
+        City: billing_city,
+        State: billing_state,
+        PostalCode: billing_postal_code,
+        Country: "USA",
+      },
+      updateMailingAlso: "false"
     };
 
-    return this.post('Accounts/UpdateBilling/', email, password, params)
+    return this.postJson('Accounts/UpdateBilling/', email, password, params)
       .map(this.validateResponse)
       .catch(this.handleError);
   }
@@ -160,6 +166,21 @@ export class HpApi {
     let url = `${ this.environment.apiBaseUrl() }${ action }`;
 
     return this.http.post(url, body, { headers: this.headers }).share();
+  }
+
+  private postJson(action, email, password, parameters = {}): Observable<Response> {
+    let auth = {
+      EmailAddress: email,
+      Password: password,
+      AppName: this.environment.apiAppName(),
+      AppKey: this.environment.apiAppKey()
+    };
+
+    let mergedParams = Object.assign(parameters, auth);
+    let body = JSON.stringify(mergedParams);
+    let url = `${ this.environment.apiBaseUrl() }${ action }`;
+
+    return this.http.post(url, body, { headers: this.headersJson }).share();
   }
 
   private validateResponse(response: Response): Response {
