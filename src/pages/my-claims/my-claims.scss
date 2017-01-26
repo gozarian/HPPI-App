@@ -87,6 +87,10 @@ page-my-claims {
         font-size: type-scale(0);
         font-weight: weight(bold);
         color: color($colors, greyscale, base);
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        width: 65%;
       }
 
       p {
