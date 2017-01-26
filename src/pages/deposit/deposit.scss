@@ -16,16 +16,7 @@ page-deposit {
   // Warning
   // --------------------------------------------------
 
-  .policy-warning {
-    margin: 0;
-    padding: 3px;
-    font-size: type-scale(-3);
-    font-weight: weight(semibold);
-    color: #B20000;
-    text-align: center;
-    background-color: color($colors, warning, contrast);
-  }
-
+  // In src/theme/base.scss
 
 
   // Scan Check

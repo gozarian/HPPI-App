@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { NavController, ViewController, LoadingController, ToastController } from 'ionic-angular';
 import { AccountProvider } from '../../providers/account.provider';
@@ -8,56 +9,40 @@ import { AccountProvider } from '../../providers/account.provider';
   templateUrl: 'payment.html',
   providers: [AccountProvider]
 })
-export class PaymentPage {
+export class PaymentPage implements OnInit {
 
   loading;
-  showMonth: boolean = false;
-  showYear: boolean = false;
-  card = {
-    month: '',
-    year: '',
-    state: ''
-  };
-  stateOptions = {
-    title: 'Select Month'
-  };
-
-  states = [
-    {"name":"Alabama","alpha-2":"AL"},
-    {"name":"Alaska","alpha-2":"AK"},
-    {"name":"Illinois","alpha-2":"IL"},
-    {"name":"Indiana","alpha-2":"IN"},
-    {"name":"Iowa","alpha-2":"IA"},
-    {"name":"Montana","alpha-2":"MT"},
-    {"name":"Rhode Island","alpha-2":"RI"},
-    {"name":"Virginia","alpha-2":"VA"},
-    {"name":"Washington","alpha-2":"WA"},
-    {"name":"West Virginia","alpha-2":"WV"},
-    {"name":"Wisconsin","alpha-2":"WI"},
-    {"name":"Wyoming","alpha-2":"WY"}
-  ];
-
-  cc_num = '';
-  cc_month = '';
-  cc_year = '';
-  cc_cvv = '';
-
-  billing_name = '';
-  billing_street = '';
-  billing_city = '';
-  billing_state = '';
-  billing_postal_code = '';
+  paymentForm: FormGroup;
 
   constructor(
     public navCtrl: NavController,
     public viewCtrl: ViewController,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
+    private fb: FormBuilder,
     private accountProvider:AccountProvider
   ) {
     viewCtrl.willEnter.subscribe(() => {
       this.getAccount();
     })
+  }
+
+  ngOnInit() {
+    this.paymentForm = this.fb.group({
+      cc_num: ['', [Validators.required, Validators.minLength(12), Validators.maxLength(20)]],
+      cc_month: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(2)]],
+      cc_year: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
+      cc_cvv: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(4)]],
+      billing_name: ['', [Validators.required]],
+      billing_street: ['', [Validators.required]],
+      billing_city: ['', [Validators.required]],
+      billing_state: ['', [Validators.required, Validators.maxLength(2)]],
+      billing_postal_code: ['', [Validators.required]]
+    });
+  }
+
+  onSubmit() {
+    this.savePaymentInfo();
   }
 
   presentLoading() {
@@ -72,9 +57,9 @@ export class PaymentPage {
     this.loading.dismiss();
   }
 
-  presentToast() {
+  presentToast(msg) {
     let toast = this.toastCtrl.create({
-      message: 'We are sorry there was a problem completing your request.\nPlease try again',
+      message: msg,
       duration: 3000,
       cssClass: 'hp-toasts',
       showCloseButton: true,
@@ -93,47 +78,42 @@ export class PaymentPage {
     this.accountProvider.getAccountInfo().subscribe(
       (account) => {
         let contact = account.primary_contact;
-        this.billing_name = contact.first_name + " " + contact.last_name;
+        this.paymentForm.get('billing_name').setValue(contact.first_name + " " + contact.last_name);
 
         let address = account.billing_address;
-        this.billing_street = address.street;
-        this.billing_city = address.city;
-        this.billing_state = address.state_province;
-        this.billing_postal_code = address.postal_code;
+        this.paymentForm.get('billing_street').setValue(address.street);
+        this.paymentForm.get('billing_city').setValue(address.city);
+        this.paymentForm.get('billing_state').setValue(address.state_province);
+        this.paymentForm.get('billing_postal_code').setValue(address.postal_code);
         this.closeLoading();
       }
     )
   }
 
-  monthChange(value){
-    this.showMonth = value;
-  }
-  yearChange(value){
-    this.showYear = value;
-  }
-
   savePaymentInfo() {
     this.presentLoading();
+
     this.accountProvider.updatePaymentInfo(
-      this.cc_num,
-      this.cc_month,
-      this.cc_year,
-      this.cc_cvv,
-      this.billing_name,
-      this.billing_street,
-      this.billing_city,
-      this.billing_state,
-      this.billing_postal_code,
+      this.paymentForm.value.cc_num,
+      this.paymentForm.value.cc_month,
+      this.paymentForm.value.cc_year,
+      this.paymentForm.value.cc_cvv,
+      this.paymentForm.value.billing_name,
+      this.paymentForm.value.billing_street,
+      this.paymentForm.value.billing_city,
+      this.paymentForm.value.billing_state,
+      this.paymentForm.value.billing_postal_code
     )
     .subscribe(
       (success) => {
         if (success) {
           this.navCtrl.pop();
           this.closeLoading();
+          this.presentToast('Thank you for updating your payment information.')
         }
         else {
           this.closeLoading();
-          this.presentToast();
+          this.presentToast('We are sorry there was a problem completing your request. Please try again.');
           // TODO: Handle Error
         }
       }
