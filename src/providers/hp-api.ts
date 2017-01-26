@@ -19,8 +19,8 @@ export class HpApi {
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
     this.headersJson = new Headers();
     this.headersJson.append('Content-Type', 'application/json');
-    this.headersImage = new Headers();
-    this.headersImage.append('Content-Type', 'image/jpeg');
+    // this.headersImage = new Headers();
+    // this.headersImage.append('Content-Type', 'image/jpeg');
   }
 
   public login(email: string, password: string): Observable<Response> {
