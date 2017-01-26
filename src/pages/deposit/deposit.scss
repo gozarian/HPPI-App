@@ -198,9 +198,16 @@ page-deposit {
         background-image: url('../assets/misc/green-check.svg');
       }
     }
-    .ng-invalid:not(form)  {
+
+    .ng-dirty.ng-invalid:not(form), .ng-dirty.no-match {
       &:after {
         background-image: url('../assets/misc/red-x.svg');
+      }
+    }
+
+    .confirm-pristine.ng-dirty {
+      &:after {
+        background-image: none;
       }
     }
 

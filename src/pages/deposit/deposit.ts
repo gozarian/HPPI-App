@@ -1,20 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera } from 'ionic-native';
 
 import { NavController, LoadingController, ToastController, NavParams, ViewController } from 'ionic-angular';
 import { Deposit } from '../../models/deposit';
 import { ReimbursementPage } from '../reimbursement/reimbursement';
+import { matchAccounts } from './match-accounts';
 
 @Component({
   selector: 'page-deposit',
   templateUrl: 'deposit.html'
 })
-export class DepositPage {
+export class DepositPage implements OnInit {
   public photos: Array<string> = [];
   public checkDetails: boolean = false;
+  depositForm: FormGroup;
   loading;
-  submitted = false;
-  depositForm: boolean = false;
 
   directDeposit;
 
@@ -24,17 +25,28 @@ export class DepositPage {
     ''
   );
 
-  onSubmit() { this.submitted = true; }
-
   constructor(
     public navCtrl: NavController,
     public loadingCtrl: LoadingController,
     public navParams: NavParams,
     public toastCtrl: ToastController,
-    public viewCtrl: ViewController
+    public viewCtrl: ViewController,
+    private fb: FormBuilder
   ) {
 
     this.directDeposit = navParams.data;
+  }
+
+  ngOnInit() {
+    this.depositForm = this.fb.group({
+      routingNumber: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
+      accountNumber: ['', [Validators.required]],
+      confirmAccountNumber: ['', [Validators.required]]
+    }, { validator: matchAccounts });
+  }
+
+  onSubmit() {
+    this.saveDepositForm();
   }
 
   ionViewWillEnter() {
