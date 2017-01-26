@@ -1,4 +1,4 @@
-  page-my-claims-detail {
+page-my-claims-detail {
 
   // Header
   // --------------------------------------------------
@@ -15,21 +15,5 @@
   // --------------------------------------------------
 
   .claim-detail {
-    padding: 0 $base-line-height $base-line-height;
-
-    .status {
-      margin-top: $base-line-height;
-      font-size: type-scale(0);
-      color: color($colors, greyscale, contrast);
-    }
-  }
-
-  ion-note {
-    font-size: type-scale(-2);
-    color: color($colors, greyscale, base);
-
-    span {
-      font-weight: weight(bold);
-    }
   }
 }

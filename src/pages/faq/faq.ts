@@ -12,7 +12,12 @@ export class FAQPage implements OnInit {
   loading;
   faqUrl: SafeResourceUrl;
 
-  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, private sanitizer: DomSanitizer, private environment: Environment) {
+  constructor(
+    public navCtrl: NavController,
+    public loadingCtrl: LoadingController,
+    private sanitizer: DomSanitizer,
+    private environment: Environment
+  ) {
     this.faqUrl = sanitizer.bypassSecurityTrustResourceUrl(environment.faqsUrl());
   }
 

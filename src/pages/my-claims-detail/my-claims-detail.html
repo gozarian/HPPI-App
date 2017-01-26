@@ -1,7 +1,7 @@
 <ion-header class="primary-header">
   <ion-navbar>
     <ion-title>
-      Claim #{{ claim.number }}
+      Claim #{{ claim.claim_number }}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -12,14 +12,14 @@
     <figure>
       <div
         class="img-wrapper"
-        [style.background-image]="'url(' + claim.petImage + ')'">
+        [style.background-image]="'url(' + policy.pet_image + ')'">
       </div>
     </figure>
-    <h3>Claim for {{ claim.petName }}</h3>
+    <h3>Claim for {{ policy.pet_name }}</h3>
   </section>
 
   <div class="claim-detail">
-    <ion-note><span>Date:</span> {{ claim.date }}</ion-note>
-    <div class="status" [innerHtml]="claim.status"></div>
+    <iframe [src]="eobUrl"></iframe>
   </div>
+
 </ion-content>

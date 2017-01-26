@@ -24,6 +24,7 @@ export class PaymentPage implements OnInit {
   ) {
     viewCtrl.willEnter.subscribe(() => {
       this.getAccount();
+      this.viewCtrl.setBackButtonText('Cancel');
     })
   }
 

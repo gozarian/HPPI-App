@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -8,23 +9,19 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class MyClaimsDetailPage {
 
-  claim = {
-    date: Date(),
-    number: '',
-    petName: '',
-    petImage: '',
-    status: ''
-  };
+  claim;
+  policy;
+  eobUrl: SafeResourceUrl;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private sanitizer: DomSanitizer
+  ) {
 
-    this.claim = {
-      petName: navParams.get('petName'),
-      petImage: navParams.get('petImage'),
-      number: navParams.get('number'),
-      date: navParams.get('date'),
-      status: navParams.get('statusMessage')
-    }
+    this.claim = navParams.data.petClaim;
+    this.policy = navParams.data.petPolicy;
+    this.eobUrl = sanitizer.bypassSecurityTrustResourceUrl(this.claim.eob_url);
   }
 
 }
