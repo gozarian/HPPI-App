@@ -1,5 +1,11 @@
 page-personal-info {
 
+  .scroll-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
   h3 {
     font-weight: weight(bold);
     font-size: type-scale(-1);
@@ -60,6 +66,7 @@ page-personal-info {
   // --------------------------------------------------
 
   .personal-info-notify {
+    bottom: 0;
     padding: 1rem;
     background-color: color($colors, base, base);
 
