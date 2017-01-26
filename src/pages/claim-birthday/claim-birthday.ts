@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
-import { ClaimPhotoPage } from '../claim-photo/claim-photo'
+import { ClaimPhotoPage } from '../claim-photo/claim-photo';
+import { Policy } from '../../models/policy';
 
 @Component({
   selector: 'page-claim-birthday',
@@ -10,7 +11,8 @@ import { ClaimPhotoPage } from '../claim-photo/claim-photo'
 export class ClaimBirthdayPage {
   public myDate;
 
-  chosenPet;
+  policy;
+  prev_page_name = "";
 
   constructor(
     public navCtrl: NavController,
@@ -18,7 +20,8 @@ export class ClaimBirthdayPage {
     public navParams: NavParams,
     public viewCtrl: ViewController) {
 
-    this.chosenPet = navParams.data;
+    this.policy = <Policy>(navParams.get('policy'));
+    this.prev_page_name = navParams.get('prev_page_name');
   }
 
   noDateWarning() {
@@ -30,15 +33,15 @@ export class ClaimBirthdayPage {
   }
 
   ionViewWillEnter() {
-    this.viewCtrl.setBackButtonText('Choose Pet');
+    this.viewCtrl.setBackButtonText(this.prev_page_name);
   }
 
-  addPhoto(pet) {
+  addPhoto(policy) {
     if (this.myDate == undefined) {
       this.noDateWarning();
       return;
     } else {
-      this.navCtrl.push(ClaimPhotoPage, pet);
+      this.navCtrl.push(ClaimPhotoPage, {policy:policy, prev_page_name:'Choose Date'});
     }
   }
 }

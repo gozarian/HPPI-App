@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, AlertController, ToastController, LoadingController } from 'ionic-angular';
 import { ClaimSummaryPage } from '../claim-summary/claim-summary';
 import { HomePage } from '../home/home';
+import { Policy } from '../../models/policy';
 
 @Component({
   selector: 'page-claim-verify',
@@ -11,7 +12,8 @@ import { HomePage } from '../home/home';
 export class ClaimVerifyPage {
 
   loading;
-  chosenPet;
+  policy;
+  prev_page_name = '';
 
   constructor(
     public navCtrl: NavController,
@@ -21,7 +23,8 @@ export class ClaimVerifyPage {
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController) {
 
-    this.chosenPet = navParams.data;
+    this.policy = <Policy>(navParams.get('policy'));
+    this.prev_page_name = navParams.get('prev_page_name');
   }
 
   presentLoading() {

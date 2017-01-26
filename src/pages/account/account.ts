@@ -119,7 +119,7 @@ export class AccountPage {
   }
 
   openPolicy(policy) {
-    this.navCtrl.push(PolicyPage, policy);
+    this.navCtrl.push(PolicyPage, {policy:policy});
   }
 
   itemSelected(item) {

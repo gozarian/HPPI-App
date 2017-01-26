@@ -10,14 +10,14 @@
     <figure>
       <div
         class="img-wrapper"
-        [style.background-image]="'url(' + chosenPet.petImage + ')'">
+        [style.background-image]="'url(' + policy.pet_image + ')'">
       </div>
     </figure>
-    <h3>Claim for {{ chosenPet.petName }}</h3>
+    <h3>Claim for {{ policy.pet_name }}</h3>
   </section>
   <ion-list class="choose-date">
     <ion-item class="date-item">
-      <ion-label clear color="primary">When did {{ chosenPet.petName }} join your family?</ion-label>
+      <ion-label clear color="primary">When did {{ policy.pet_name }} join your family?</ion-label>
       <ion-datetime
         displayFormat="MMMM D YYYY"
         pickerFormat="DD MMMM YYYY"
@@ -25,7 +25,7 @@
       </ion-datetime>
     </ion-item>
     <ion-item no-lines class="bottom-next">
-      <button ion-item (click)="addPhoto(chosenPet)">
+      <button ion-item (click)="addPhoto(policy)">
         <ion-icon class="ion-icon-tennis-ball"></ion-icon>
         Next
       </button>

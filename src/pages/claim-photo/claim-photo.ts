@@ -3,7 +3,7 @@ import { Camera } from 'ionic-native';
 
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { ClaimVerifyPage } from '../claim-verify/claim-verify';
-// import { Camera } from 'ionic-native';
+import { Policy } from '../../models/policy';
 
 @Component({
   selector: 'page-claim-photo',
@@ -12,22 +12,24 @@ import { ClaimVerifyPage } from '../claim-verify/claim-verify';
 export class ClaimPhotoPage {
   public photos: Array<string> = [];
 
-  chosenPet;
+  policy;
+  prev_page_name = "";
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController) {
 
-    this.chosenPet = navParams.data;
+    this.policy = <Policy>(navParams.get('policy'));
+    this.prev_page_name = navParams.get('prev_page_name');
   }
 
   ionViewWillEnter() {
-    this.viewCtrl.setBackButtonText('Choose Date');
+    this.viewCtrl.setBackButtonText(this.prev_page_name);
   }
 
-  submitClaim(pet) {
-    this.navCtrl.push(ClaimVerifyPage, pet);
+  submitClaim(policy) {
+    this.navCtrl.push(ClaimVerifyPage, {policy:policy, photos:this.photos, prev_page_name:'Uploads'});
   }
 
   addPhoto() {

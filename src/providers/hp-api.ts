@@ -12,12 +12,15 @@ import { Environment } from '../providers/environment';
 export class HpApi {
   private headers: Headers;
   private headersJson: Headers;
+  // private headersImage: Headers;
 
   constructor(private http: Http, private environment: Environment) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
     this.headersJson = new Headers();
     this.headersJson.append('Content-Type', 'application/json');
+    this.headersImage = new Headers();
+    this.headersImage.append('Content-Type', 'image/jpeg');
   }
 
   public login(email: string, password: string): Observable<Response> {
@@ -127,6 +130,12 @@ export class HpApi {
       .catch(this.handleError);
   }
 
+  // public uploadImage(email: string, password:string, imageType:string, imageData:string) {
+  //   return this.postImage('Upload/Send/', email, password, imageType, imageData)
+  //   .map(this.validateResponse)
+  //   .catch(this.handleError);
+  // }
+
   // Messages
   public getMessageCounts(email: string, password: string): Observable<Response> {
     return this.post('Messages/MessagesCountsByAccount/', email, password)
@@ -152,7 +161,6 @@ export class HpApi {
       .catch(this.handleError);
   }
 
-
   private post(action, email, password, parameters = {}): Observable<Response> {
     let auth = {
       EmailAddress: email,
@@ -167,6 +175,21 @@ export class HpApi {
 
     return this.http.post(url, body, { headers: this.headers }).share();
   }
+
+  // private postImage(action, email, password, imageType, imageData): Observable<Response> {
+  //   let auth = {
+  //     EmailAddress: email,
+  //     Password: password,
+  //     AppName: this.environment.apiAppName(),
+  //     AppKey: this.environment.apiAppKey()
+  //   };
+  //
+  //   let mergedParams = Object.assign({ImageType:imageType}, auth);
+  //   let body = this.objectToParams(mergedParams);
+  //   let url = `${ this.environment.apiBaseUrl() }${ action }`;
+  //
+  //   return this.http.post(url, body, { headers: this.headers }).share();
+  // }
 
   private postJson(action, email, password, parameters = {}): Observable<Response> {
     let auth = {

@@ -10,10 +10,10 @@
     <figure>
       <div
         class="img-wrapper"
-        [style.background-image]="'url(' + chosenPet.petImage + ')'">
+        [style.background-image]="'url(' + policy.pet_image + ')'">
       </div>
     </figure>
-    <h3>Claim for {{ chosenPet.petName }}</h3>
+    <h3>Claim for {{ policy.pet_name }}</h3>
   </section>
   <div class="select-photos-wrapper">
     <div class="select-photos">
@@ -41,7 +41,7 @@
       </button>
     </div>
     <ion-item no-lines class="bottom-next">
-      <button ion-item (click)="submitClaim(chosenPet)">
+      <button ion-item (click)="submitClaim(policy)">
         <ion-icon class="ion-icon-paw-board"></ion-icon>
         Submit Claim
       </button>

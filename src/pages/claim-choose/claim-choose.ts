@@ -55,10 +55,10 @@ export class ClaimChoosePage implements OnInit {
 
   choosePet(policy) {
     if (policy.pet_joined_family_date == null) {
-      this.navCtrl.push(ClaimBirthdayPage, policy);
+      this.navCtrl.push(ClaimBirthdayPage, {policy:policy, prev_page_name:'Choose Pet'});
     }
     else {
-      this.navCtrl.push(ClaimPhotoPage, policy);
+      this.navCtrl.push(ClaimPhotoPage, {policy:policy, prev_page_name:'Choose Pet'});
     }
   }
 }
