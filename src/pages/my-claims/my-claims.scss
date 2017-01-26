@@ -33,6 +33,11 @@ page-my-claims {
 
   .list-ios {
 
+    a {
+      display: block;
+      text-decoration: none;
+    }
+
     .item-block {
 
       .item-inner {

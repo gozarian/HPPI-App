@@ -70,17 +70,13 @@ export class MyClaimsPage {
     this.navCtrl.setRoot(HomePage);
   }
 
-  launchEob(claim) {
-    new InAppBrowser(claim.eob_url, '_system');
-  }
-
   openClaim(claim) {
     if (claim.status === 'Your Action Needed') {
       this.navCtrl.push(MyClaimsDetailPage, claim);
     }
     else {
       // TODO: Show EOB
-      this.launchEob(claim);
+      new InAppBrowser(claim.eob_url, '_system');
     }
   }
 }
