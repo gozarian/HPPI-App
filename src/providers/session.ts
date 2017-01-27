@@ -13,9 +13,10 @@ const CREDENTIALS_KEY = 'credentials';
 export class Session {
   account = null;
 
-  constructor(private storage: Storage, private api: HpApi) {
-
-  }
+  constructor(
+    private storage: Storage,
+    private hpApi: HpApi
+  ) {}
 
   public restore(): Observable<boolean> {
     return this.getStoredCredentials()
@@ -33,16 +34,22 @@ export class Session {
   }
 
   public new(email: string, password: string): Observable<Account> {
-    let login = this.api.login(email, password)
-    .map(this.mapAccount);
 
-    login.subscribe((account: Account) => {
-      this.account = account;
-      this.setStoredCredentials(email, password);
-    },
-    error => {
-      this.clearStoredCredentials();
-    });
+    let login = this.hpApi.getAccount(email, password)
+    .map(this.mapAccount)
+    .map(
+      (account: Account) => {
+        this.account = account;
+        this.setStoredCredentials(email, password);
+        return account;
+      }
+    )
+    .catch(
+      (error, caught) => {
+        this.clearStoredCredentials();
+        return Observable.throw(error);
+      }
+    );
 
     return login;
   }
@@ -69,7 +76,7 @@ export class Session {
   private clearStoredCredentials() {
     this.storage.remove(CREDENTIALS_KEY);
   }
-  
+
   public getStoredCredentials(): any {
     return Observable.fromPromise(this.storage.get(CREDENTIALS_KEY))
     .filter((obj) => { return obj ? true : false; });

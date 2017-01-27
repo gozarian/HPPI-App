@@ -23,12 +23,6 @@ export class HpApi {
     // this.headersImage.append('Content-Type', 'image/jpeg');
   }
 
-  public login(email: string, password: string): Observable<Response> {
-    return this.post('Accounts/GetAccountInfo/', email, password)
-      .map(this.validateResponse)
-      .catch(this.handleError);
-  }
-
   // Account
   public getAccount(email: string, password: string): Observable<Response> {
     return this.post('Accounts/GetAccountInfo/', email, password)

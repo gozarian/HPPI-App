@@ -111,14 +111,6 @@ export class HomePage {
     this.loading.dismiss();
   }
 
-  enablePushNotifications() {
-    // UAirship.setUserNotificationsEnabled(true, function (enabled) {
-    //   if (enabled) {
-    //     console.log("User notifications are enabled! Fire away!");
-    //   }
-    // })
-  }
-
   getData(): void {
     this.presentLoading();
     Observable.combineLatest(
@@ -132,7 +124,6 @@ export class HomePage {
         this.policies = values[1];
 
         this.closeLoading();
-        this.enablePushNotifications();
       }
     );
   }

@@ -22,6 +22,7 @@ export class AccountProvider {
     return this.session.getStoredCredentials()
     .flatMap(
       (credentials) => {
+        debugger;
         return this.hpApi.getAccount(credentials.email, credentials.password);
       }
     )
@@ -145,7 +146,9 @@ function mapAccount(response: Response): Account {
     password_reset: item.PasswordReset ? true : false,
     billing_address: mapAddress(item.BillingAddress),
     primary_contact: mapContact(item.PetParentInfo),
-    secondary_contact: mapContact(item.PetParent2Info)
+    secondary_contact: mapContact(item.PetParent2Info),
+    ach_enabled: item.EnableACH,
+    claim_reimbursement_method: item.ClaimReimbursementMethod
   });
 
   return account;
