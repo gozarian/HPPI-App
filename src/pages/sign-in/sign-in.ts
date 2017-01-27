@@ -42,10 +42,15 @@ export class SignInPage {
 
   login() {
     this.presentLoading();
-    this.session.new(this.email, this.password).subscribe(
+    this.session.new(this.email, this.password)
+    .finally(
+      () => {
+        this.closeLoading();
+      }
+    )
+    .subscribe(
       (account) => {
           this.tempPassword = account.password_reset;
-          this.closeLoading();
 
           if (this.tempPassword) {
             this.navCtrl.push(ChangePasswordPage, this.tempPassword);
@@ -54,10 +59,9 @@ export class SignInPage {
           }
       },
       error => {
-        this.closeLoading();
         this.errorMessage = error.message;
       }
-    );
+    )
   }
 
   resetPassword() {
