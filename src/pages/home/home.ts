@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Observable } from 'rxjs/Rx';
 import { MenuController, NavController, ModalController, Content, ViewController, LoadingController } from 'ionic-angular';
+
 import { NewFeaturesPage } from './new-features-modal';
 import { ClaimChoosePage } from '../claim-choose/claim-choose';
 import { MyClaimsPage } from '../my-claims/my-claims';
@@ -110,6 +111,14 @@ export class HomePage {
     this.loading.dismiss();
   }
 
+  enablePushNotifications() {
+    // UAirship.setUserNotificationsEnabled(true, function (enabled) {
+    //   if (enabled) {
+    //     console.log("User notifications are enabled! Fire away!");
+    //   }
+    // })
+  }
+
   getData(): void {
     this.presentLoading();
     Observable.combineLatest(
@@ -121,7 +130,9 @@ export class HomePage {
         let account = values[0];
         this.display_name = account.primary_contact.first_name;
         this.policies = values[1];
+
         this.closeLoading();
+        this.enablePushNotifications();
       }
     );
   }
