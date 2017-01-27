@@ -11,29 +11,31 @@
 </ion-header>
 
 <ion-content>
-  <section class="claim-thank-you claim-header">
-    <h3>Thank you for submitting!</h3>
-  </section>
+  <div>
+    <section class="claim-thank-you claim-header">
+      <h3>Thank you for submitting!</h3>
+    </section>
 
-  <section class="medical-records-warning">
-    <h2 ion-text color="danger">Attention!</h2>
-    <p>Our records indicate that we need {{ chosenPet.petName }}'s medical records to begin processing this claim. Please ask your veterinary hospital to send us a copy of {{ chosenPet.petName }}'s complete medical history with doctor's exam notes and any laboratory results.</p>
-    <div class="submit-address">
-      <p>They can submit records by email to:</p>
-      <a href="mailto:claims@healthypawspetinsurance.com">claims@healthypawspetinsurance.com</a>
-      <p>or Fax to 1-888-228-4129</p>
-    </div>
-  </section>
+    <section *ngIf="chosenPet.missing_medical_records" class="medical-records-warning">
+      <h2 ion-text color="danger">Attention!</h2>
+      <p>Our records indicate that we need {{ chosenPet.petName }}'s medical records to begin processing this claim. Please ask your veterinary hospital to send us a copy of {{ chosenPet.petName }}'s complete medical history with doctor's exam notes and any laboratory results.</p>
+      <div class="submit-address">
+        <p>They can submit records by email to:</p>
+        <a href="mailto:claims@healthypawspetinsurance.com">claims@healthypawspetinsurance.com</a>
+        <p>or Fax to 1-888-228-4129</p>
+      </div>
+    </section>
 
-  <section class="claim-confirmation">
-    <p>Once we review your claim documentation, we will send you a confirmation email. If you do not receive a confirmation within 48 hourse of submitting your claim, please feel free to contact us at <a href="tel:18004534054">1-800-452-4054</a>.</p>
-  </section>
+    <section *ngIf="!chosenPet.missing_medial_records" class="claim-confirmation">
+      <p>Once we review your claim documentation, we will send you a confirmation email. If you do not receive a confirmation within 48 hourse of submitting your claim, please feel free to contact us at <a href="tel:18004534054">1-800-452-4054</a>.</p>
+    </section>
 
-  <section class="claim-reimbursement claim-header">
-    <h3>Current Reimbursement Type:</h3>
-    <p>{{ user.reimbursementType }}</p>
-    <button ion-button (click)="toReimbursement()">Change Reimbursement Type</button>
-  </section>
+    <section class="claim-reimbursement claim-header">
+      <h3>Current Reimbursement Type:</h3>
+      <p>{{ user.reimbursementType }}</p>
+      <button ion-button (click)="toReimbursement()">Change Reimbursement Type</button>
+    </section>
+  </div>
 
   <ion-item text-center no-lines class="claim-confirmation-home">
     <button ion-button clear (click)="goHome()">Home</button>

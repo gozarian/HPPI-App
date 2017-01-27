@@ -21,7 +21,6 @@ export class PolicyPage {
 
     this.policy = <Policy>(navParams.get('policy'));
     this.previousPage = this.navCtrl.last();
-    console.log(this.policy);
   }
 
   newClaim() {

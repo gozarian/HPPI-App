@@ -67,7 +67,9 @@ page-claim-summary {
     }
 
     .submit-address {
+      margin-bottom: 1rem;
       font-weight: weight(bold);
+      line-height: 16px;
 
       a {
         font-size: type-scale(-2);
@@ -85,6 +87,7 @@ page-claim-summary {
 
   .claim-confirmation {
     padding: 1rem $base-line-height / 1.5;
+    margin-bottom: $base-line-height / 1.5;
 
     a {
       font-weight: weight(bold);
