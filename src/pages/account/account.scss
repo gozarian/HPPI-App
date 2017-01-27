@@ -108,7 +108,7 @@ page-account {
     background-color: color($colors, base, base);
 
     button {
-      @include button;
+      @include button($lrpadding: 64px);
       margin-top: $base-line-height;
       margin-bottom: $base-line-height;
     }

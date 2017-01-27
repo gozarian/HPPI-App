@@ -1,6 +1,7 @@
 @mixin button($color: color($colors, accent, base), $lrpadding: 52px) {
-  padding-top: $base-line-height / 2;
-  padding-bottom: $base-line-height / 2;
+  height: 4rem;
+  padding-top: $base-line-height / 2.4;
+  padding-bottom: $base-line-height / 2.8;
   padding-left: $lrpadding;
   padding-right: $lrpadding;
   font-weight: weight(bold);
@@ -8,6 +9,11 @@
   color: color($colors, base, contrast);
   background-color: $color;
   border-radius: 4px;
+
+  &[disabled] {
+    opacity: 1;
+    color: transparentize(color($colors, base, contrast), 0.7);
+  }
 }
 
 @mixin link($color: color($colors, primary, base)) {

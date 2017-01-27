@@ -26,6 +26,7 @@ export class AccountPage {
 
   loading;
   account: Account;
+  errorMessage = '';
   display_name:string;
   display_email:string;
   display_address:string;
@@ -95,7 +96,13 @@ export class AccountPage {
 
   getAccount(): void {
     this.presentLoading();
-    this.accountProvider.getAccountInfo().subscribe(
+    this.accountProvider.getAccountInfo()
+    .finally(
+      () => {
+        this.closeLoading();
+      }
+    )
+    .subscribe(
       (account) => {
         this.account = account;
         this.information[this.billing_information_index].notification = account.status === "Suspended";
@@ -105,7 +112,10 @@ export class AccountPage {
 
         let address = account.billing_address;
         this.display_address = address.street + "  " + address.city + ", " + address.state_province + " " + address.postal_code;
-        this.closeLoading();
+      },
+      error => {
+        this.errorMessage = error.message;
+        console.log(this.errorMessage);
       }
     );
   }

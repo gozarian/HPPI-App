@@ -147,7 +147,7 @@ page-billing {
     background-color: color($colors, base, base);
 
     button {
-      @include button;
+      @include button($lrpadding: 55px);
     }
   }
 

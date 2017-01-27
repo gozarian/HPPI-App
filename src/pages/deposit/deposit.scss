@@ -203,16 +203,11 @@ page-deposit {
     }
 
     button {
+      @include button($lrpadding: 51px);
       display: block;
       margin: $base-line-height auto;
-      padding-left: $base-line-height * 2;
-      padding-right: $base-line-height * 2;
-      font-weight: weight(bold);
-      color: color($colors, base, contrast);
-      background-color: color($colors, accent, base);
 
       &[disabled] {
-        opacity: 1;
         color: transparentize(color($colors, base, contrast), 0.7);
       }
     }

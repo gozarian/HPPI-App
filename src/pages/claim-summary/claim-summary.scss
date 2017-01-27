@@ -120,11 +120,9 @@ page-claim-summary {
     }
 
     button {
+      @include button($lrpadding: 16px);
       display: block;
       margin: 0 auto;
-      font-weight: weight(bold);
-      color: color($colors, base, contrast);
-      background-color: color($colors, accent, base);
     }
   }
 

@@ -89,8 +89,12 @@ export class MessagesDetailPage implements OnInit {
   deleteMessage(message:Message) {
     this.presentLoading();
     this.messageProvider.deleteMessage(message)
+    .finally(
+      () => {
+        this.closeLoading();
+      }
+    )
     .subscribe(() => {
-      this.closeLoading();
       this.navCtrl.pop();
     })
   }

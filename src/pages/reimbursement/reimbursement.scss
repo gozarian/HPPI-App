@@ -111,11 +111,9 @@ page-reimbursement {
     }
 
     button {
+      @include button($lrpadding: 22px);
       display: block;
       margin: $base-line-height auto 0;
-      font-weight: weight(bold);
-      color: color($colors, base, contrast);
-      background-color: color($colors, accent, base);
 
       &.button-disabled {
         opacity: 0.5;
