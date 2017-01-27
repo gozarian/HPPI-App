@@ -196,6 +196,12 @@ page-deposit {
       }
     }
 
+    .account-num.ng-valid {
+      &:after {
+        background-image: none;
+      }
+    }
+
     .confirm-pristine.ng-dirty {
       &:after {
         background-image: none;

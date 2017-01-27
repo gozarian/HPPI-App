@@ -57,8 +57,7 @@
               placeholder="Account #"
               formControlName="accountNumber"
               name="account"
-              [class.confirm-pristine]="depositForm.get('confirmAccountNumber').pristine"
-              [class.no-match]="depositForm.get('accountNumber').dirty && depositForm.hasError('nomatch')"
+              class="account-num"
               required></ion-input>
           </ion-col>
         </ion-row>
