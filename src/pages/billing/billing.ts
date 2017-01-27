@@ -58,7 +58,13 @@ export class BillingPage {
 
   getAccount(): void {
     this.presentLoading();
-    this.accountProvider.getAccountInfo().subscribe(
+    this.accountProvider.getAccountInfo()
+    .finally(
+      () => {
+        this.closeLoading();
+      }
+    )
+    .subscribe(
       (account) => {
         this.account = account;
         this.display_policy_warning = account.status === "Suspended";
@@ -75,7 +81,6 @@ export class BillingPage {
         this.display_address_line1 = address.street;
         this.display_address_line2 = address.city + ", " + address.state_province;
         this.display_address_line3 = address.postal_code;
-        this.closeLoading();
       }
     )
   }

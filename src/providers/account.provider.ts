@@ -22,7 +22,6 @@ export class AccountProvider {
     return this.session.getStoredCredentials()
     .flatMap(
       (credentials) => {
-        debugger;
         return this.hpApi.getAccount(credentials.email, credentials.password);
       }
     )

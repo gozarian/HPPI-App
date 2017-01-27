@@ -75,9 +75,14 @@ export class ChangePasswordPage implements OnInit {
 
   public updatePassword() {
     this.presentLoading();
-    return this.accountProvider.updatePassword(this.password.value.newPassword).subscribe(
-      (success) => {
+    return this.accountProvider.updatePassword(this.password.value.newPassword)
+    .finally(
+      () => {
         this.closeLoading();
+      }
+    )
+    .subscribe(
+      (success) => {
         if (success) {
           this.presentToast('Your password has been changed.')
           if (this.tempPassword) {

@@ -117,13 +117,16 @@ export class HomePage {
       this.accountProvider.getAccountInfo().retry(1),
       this.policyProvider.getPolicies()
     )
+    .finally(
+      () => {
+        this.closeLoading();
+      }
+    )
     .subscribe(
       (values) => {
         let account = values[0];
         this.display_name = account.primary_contact.first_name;
         this.policies = values[1];
-
-        this.closeLoading();
       }
     );
   }

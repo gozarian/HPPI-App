@@ -53,6 +53,11 @@ export class MyClaimsPage {
       this.policyProvider.getPolicies(),
       this.claimProvider.getClaims()
     )
+    .finally(
+      () => {
+        this.closeLoading();
+      }
+    )
     .subscribe(
       (values) => {
       for (var policy of values[0]) {
@@ -62,7 +67,6 @@ export class MyClaimsPage {
       if (this.claims.length == 0) {
         this.noClaims = true;
       }
-      this.closeLoading();
     });
   }
 

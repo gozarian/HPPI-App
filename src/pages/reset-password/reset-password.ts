@@ -73,16 +73,20 @@ export class ResetPasswordPage implements OnInit {
   resetPassword() {
     this.errorMessage = '';
     this.presentLoading();
-    this.accountProvider.resetPassword(this.email).subscribe(
-      (success) => {
+    this.accountProvider.resetPassword(this.email)
+    .finally(
+      () => {
         this.closeLoading();
+      }
+    )
+    .subscribe(
+      (success) => {
         if (success) {
           this.presentToast('A temporary password has been sent to your email.')
           this.navCtrl.pop();
         }
       },
       error => {
-        this.closeLoading();
         this.errorMessage = error.message;
       }
     );

@@ -115,7 +115,6 @@ export class AccountPage {
       },
       error => {
         this.errorMessage = error.message;
-        console.log(this.errorMessage);
       }
     );
   }

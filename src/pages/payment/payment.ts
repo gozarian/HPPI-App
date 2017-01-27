@@ -76,7 +76,13 @@ export class PaymentPage implements OnInit {
 
   getAccount(): void {
     this.presentLoading();
-    this.accountProvider.getAccountInfo().subscribe(
+    this.accountProvider.getAccountInfo()
+    .finally(
+      () => {
+        this.closeLoading();
+      }
+    )
+    .subscribe(
       (account) => {
         let contact = account.primary_contact;
         this.paymentForm.get('billing_name').setValue(contact.first_name + " " + contact.last_name);
@@ -86,7 +92,6 @@ export class PaymentPage implements OnInit {
         this.paymentForm.get('billing_city').setValue(address.city);
         this.paymentForm.get('billing_state').setValue(address.state_province);
         this.paymentForm.get('billing_postal_code').setValue(address.postal_code);
-        this.closeLoading();
       }
     )
   }

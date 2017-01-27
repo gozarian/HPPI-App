@@ -63,7 +63,7 @@
     </div>
     <ion-list no-lines class="policy-new-claim">
       <ion-item no-lines class="bottom-next">
-        <button ion-item (click)="newClaim()">
+        <button ion-item (click)="newClaim()" [disabled]="!policy.allow_claim">
           <ion-icon class="ion-icon-new-claim"></ion-icon>
           File a New Claim
         </button>

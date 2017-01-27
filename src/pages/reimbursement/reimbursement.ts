@@ -89,7 +89,13 @@ export class ReimbursementPage {
 
   getAccount(): void {
     this.presentLoading();
-    this.accountProvider.getAccountInfo().subscribe(
+    this.accountProvider.getAccountInfo()
+    .finally(
+      () => {
+        this.closeLoading();
+      }
+    )
+    .subscribe(
       (account) => {
 
         this.reimbursement = "deposit";

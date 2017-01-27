@@ -42,13 +42,18 @@ export class MessagesInboxPage {
 
   getMessages(): void {
     this.presentLoading();
-    this.messageProvider.getMessages().subscribe(
+    this.messageProvider.getMessages()
+    .finally(
+      () => {
+        this.closeLoading();
+      }
+    )
+    .subscribe(
       (messages) => {
         this.messages = messages;
         if (this.messages.length == 0) {
           this.noMessages = true;
         }
-        this.closeLoading();
       }
     );
   }
