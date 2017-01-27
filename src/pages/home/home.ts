@@ -161,7 +161,7 @@ export class HomePage {
   }
 
   openPolicy(policy) {
-    this.navCtrl.push(PolicyPage, policy);
+    this.navCtrl.push(PolicyPage, {policy:policy});
   }
 
   showNewFeatures() {
