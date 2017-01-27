@@ -28,18 +28,6 @@ export class SignInPage {
   ) {
   }
 
-  presentLoading() {
-    this.loading = this.loadingCtrl.create({
-      spinner: 'crescent'
-    });
-    this.loading.present();
-  }
-
-  closeLoading() {
-    if (this.loading == 'undefined') { return; };
-    this.loading.dismiss();
-  }
-
   login() {
     this.presentLoading();
     this.session.new(this.email, this.password)
@@ -65,9 +53,22 @@ export class SignInPage {
   }
 
   resetPassword() {
-    this.presentLoading();
-    this.closeLoading();
     this.navCtrl.push(ResetPasswordPage);
+  }
+
+  // Loading Indicator
+  presentLoading() {
+    this.loading = this.loadingCtrl.create({
+      spinner: 'crescent'
+    });
+    this.loading.present();
+  }
+
+  closeLoading() {
+    if (this.loading == 'undefined') {
+      return;
+    };
+    this.loading.dismiss();
   }
 
   launch(url) {
