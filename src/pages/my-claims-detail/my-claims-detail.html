@@ -19,21 +19,23 @@
   </section>
 
   <div class="claim-detail">
-    <section class="medical-records-warning">
-      <ion-list *ngIf="claim.missing_claim_data.length > 0" class="hp-list">
-        <h2 ion-text color="danger">Your Action Needed!</h2>
-        <p>We need the following information before we can continue processing your claim:</p>
-        <button ion-item *ngFor="let missing of claim.missing_claim_data">
-          <p>{{ missing }}</p>
-        </button>
-      </ion-list>
+    <section *ngIf="claim.missing_claim_data.length > 0" class="medical-records-warning">
+      <h2 ion-text color="danger">Your Action Needed!</h2>
+      <p>We need the following information before we can continue processing your claim:</p>
+      <ul>
+        <li ion-item *ngFor="let missing of claim.missing_claim_data">
+          {{ missing }}
+        </li>
+      </ul>
 
-      <ion-list *ngIf="claim.received_claim_data.length > 0" class="hp-list">
+      <div *ngIf="claim.received_claim_data.length > 0">
         <p>We have already received:</p>
-        <button ion-item *ngFor="let received of claim.received_claim_data">
-          <p>{{ received }}</p>
-        </button>
-      </ion-list>
+        <ul>
+          <li ion-item *ngFor="let received of claim.received_claim_data">
+            {{ received }}
+          </li>
+        </ul>
+      </div>
 
       <div class="submit-address">
         <p>You can submit records by email to:</p>

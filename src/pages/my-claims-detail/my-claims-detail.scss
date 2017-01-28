@@ -11,9 +11,61 @@ page-my-claims-detail {
     }
   }
 
+  .medical-records-warning {
+
+    ul {
+      padding-left: 0;
+
+      .item-ios {
+        font-size: type-scale(0);
+        color: color($colors, greyscale, base);
+        list-style-type: disc;
+
+        .item-inner {
+          border-bottom-width: 0;
+        }
+
+      }
+    }
+  }
+
   // Claim Details
   // --------------------------------------------------
 
   .claim-detail {
+    padding: 1rem $base-line-height / 1.5;
+    font-size: type-scale(0);
+
+    p {
+      color: color($colors, greyscale, base);
+    }
+
+    a {
+      font-weight: weight(bold);
+      text-decoration: none;
+      color: color($colors, accent, contrast);
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: type-scale(2);
+      font-weight: weight(bold);
+      color: color($colors, warning, base);
+    }
+
+    .submit-address {
+      margin-bottom: 1rem;
+      font-weight: weight(bold);
+
+      a {
+        font-size: type-scale(-2);
+        text-decoration: none;
+        color: color($colors, accent, contrast);
+      }
+
+      p {
+        margin: 0;
+      }
+    }
   }
 }
