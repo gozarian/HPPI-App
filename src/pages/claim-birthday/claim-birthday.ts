@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 import { ClaimPhotoPage } from '../claim-photo/claim-photo';
@@ -10,6 +10,7 @@ import { Policy } from '../../models/policy';
 })
 export class ClaimBirthdayPage {
   public myDate;
+  @ViewChild('datePicker') datePicker;
 
   policy;
   prev_page_name = "";
@@ -34,6 +35,8 @@ export class ClaimBirthdayPage {
 
   ionViewWillEnter() {
     this.viewCtrl.setBackButtonText(this.prev_page_name);
+    this.datePicker.open();
+    console.log(this.myDate);
   }
 
   addPhoto(policy) {

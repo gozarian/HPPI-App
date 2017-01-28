@@ -19,6 +19,7 @@
     <ion-item class="date-item">
       <ion-label clear color="primary">When did {{ policy.pet_name }} join your family?</ion-label>
       <ion-datetime
+        #datePicker
         displayFormat="MMMM D YYYY"
         pickerFormat="DD MMMM YYYY"
         [(ngModel)]="myDate">
