@@ -49,8 +49,9 @@ export class ClaimProvider {
             amount_covered:item.AmountCovered,
             total_reimbursement:item.TotalReimbursement,
             missing_medical_records:item.MissingMedicalRecords,
-            missing_claim_data:item.MissingClaimData,
-            received_claim_data:item.ReceivedClaimData,
+            // TODO: Remove test data here (should be empty array if item data is null)
+            missing_claim_data:["Test Missing Data 1", "Test Missing Data 2", "Test Missing Data 3"], // item.MissingClaimData ? item.MissingClaimData : [],
+            received_claim_data:["Test Received Data 1", "Test Received Data 2", "Test Received Data 3"], // item.ReceivedClaimData ? item.ReceivedClaimData : [],
             date_submitted:item.DateSubmitted,
           });
 

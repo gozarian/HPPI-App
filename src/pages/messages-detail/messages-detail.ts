@@ -27,7 +27,7 @@ export class MessagesDetailPage implements OnInit {
 
     this.message = <Message>(navParams.get('message'));
 
-    if (this.message.action != MessageAction.none) {
+    if (this.message.action) {
       this.show_action_button = true;
     }
   }

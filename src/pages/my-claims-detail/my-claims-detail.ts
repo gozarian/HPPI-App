@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 
 import { NavController, NavParams } from 'ionic-angular';
+import { Claim } from '../../models/claim';
+import { Policy } from '../../models/policy';
 
 @Component({
   selector: 'page-my-claims-detail',
@@ -8,16 +10,15 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class MyClaimsDetailPage {
 
-  claim;
-  policy;
+  claim:Claim;
+  policy:Policy;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams
   ) {
 
-    this.claim = navParams.data.petClaim;
-    this.policy = navParams.data.petPolicy;
+    this.claim = <Claim>(navParams.get('claim'));
+    this.policy = <Policy>(navParams.get('policy'));
   }
-
 }

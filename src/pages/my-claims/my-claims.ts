@@ -75,11 +75,12 @@ export class MyClaimsPage {
   }
 
   openClaim(claim) {
-    if (claim.status === 'Your Action Needed') {
-      this.navCtrl.push(MyClaimsDetailPage, claim);
+    // TODO: Remove second condition here (just needed for testing and layout work)
+    if (claim.status === 'Your Action Needed' || claim.received_claim_data.length > 0) {
+      this.navCtrl.push(MyClaimsDetailPage, {claim:claim, policy:this.policies[claim.pet_id]});
     }
     else {
-      // TODO: Show EOB
+      // Show EOB
       new InAppBrowser(claim.eob_url, '_system');
     }
   }

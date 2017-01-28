@@ -19,6 +19,33 @@
   </section>
 
   <div class="claim-detail">
+    <section class="medical-records-warning">
+      <ion-list *ngIf="claim.missing_claim_data.length > 0" class="hp-list">
+        <h2 ion-text color="danger">Your Action Needed!</h2>
+        <p>We need the following information before we can continue processing your claim:</p>
+        <button ion-item *ngFor="let missing of claim.missing_claim_data">
+          <p>{{ missing }}</p>
+        </button>
+      </ion-list>
+
+      <ion-list *ngIf="claim.received_claim_data.length > 0" class="hp-list">
+        <p>We have already received:</p>
+        <button ion-item *ngFor="let received of claim.received_claim_data">
+          <p>{{ received }}</p>
+        </button>
+      </ion-list>
+
+      <div class="submit-address">
+        <p>You can submit records by email to:</p>
+        <a href="mailto:claims@healthypawspetinsurance.com">claims@healthypawspetinsurance.com</a>
+        <p>or Fax to 1-888-228-4129</p>
+      </div>
+    </section>
+
+    <section class="claim-confirmation">
+      <p>For questions, please contact Healthy Paws at <a href="tel:18558988991">1-855-898-8991</a>.</p>
+    </section>
+
   </div>
 
 </ion-content>
