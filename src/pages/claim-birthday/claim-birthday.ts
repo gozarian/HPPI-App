@@ -39,7 +39,6 @@ export class ClaimBirthdayPage {
   ionViewWillEnter() {
     this.viewCtrl.setBackButtonText(this.prev_page_name);
     this.datePicker.open();
-    console.log(this.myDate);
   }
 
   updatePolicy() {

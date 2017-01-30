@@ -130,6 +130,18 @@ ion-input {
 }
 
 
+
+// Picker Styles
+// --------------------------------------------------
+.picker-ios {
+
+  ion-backdrop {
+    opacity: 0 !important;
+  }
+}
+
+
+
 // Ionic 2 Modal Full Screen on Tablets
 // --------------------------------------------------
 @media (min-width: 680px) {
