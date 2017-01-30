@@ -24,6 +24,7 @@
       <p>We need the following information before we can continue processing your claim:</p>
       <ul>
         <li ion-item *ngFor="let missing of claim.missing_claim_data">
+          <ion-icon item-left name="alert" role="img" class="icon icon-ios ion-ios-alert item-icon" aria-label="alert"></ion-icon>
           {{ missing }}
         </li>
       </ul>
@@ -32,6 +33,7 @@
         <p>We have already received:</p>
         <ul>
           <li ion-item *ngFor="let received of claim.received_claim_data">
+          <ion-icon item-left name="checkmark-circle" role="img" class="ion icon-ios ion-ios-checkmark-circle item-icon" aria-label="checkmark-circle"></ion-icon>
             {{ received }}
           </li>
         </ul>

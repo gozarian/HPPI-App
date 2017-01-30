@@ -36,6 +36,14 @@ page-my-claims-detail {
     padding: 1rem $base-line-height / 1.5;
     font-size: type-scale(0);
 
+    .icon-ios[name="alert"] {
+      color: color($colors, warning, base);
+    }
+
+    .icon-ios[name="checkmark-circle"] {
+      color: color($colors, primary, base);
+    }
+
     p {
       color: color($colors, greyscale, base);
     }
