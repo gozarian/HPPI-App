@@ -115,7 +115,7 @@ export class HomePage {
     this.presentLoading();
     Observable.combineLatest(
       this.accountProvider.getAccountInfo().retry(1),
-      this.policyProvider.getPolicies()
+      this.policyProvider.getPolicies().retry(1)
     )
     .finally(
       () => {
@@ -132,7 +132,7 @@ export class HomePage {
   }
 
   getUnreadMessageCount(): void {
-    this.messageProvider.getMessageCounts()
+    this.messageProvider.getMessageCounts().retry(1)
     .subscribe((counts) => {
       if (counts.unread > 0) {
         this.pages[this.messagePageIndex].badge = counts.unread;

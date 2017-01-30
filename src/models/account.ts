@@ -14,6 +14,6 @@ export interface Account {
   billing_address: Address;
   primary_contact: Contact;
   secondary_contact: Contact;
-  ach_enabled: boolean;
+  ach_available: boolean;
   claim_reimbursement_method: string;
 }

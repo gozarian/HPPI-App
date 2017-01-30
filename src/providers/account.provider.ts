@@ -146,7 +146,7 @@ function mapAccount(response: Response): Account {
     billing_address: mapAddress(item.BillingAddress),
     primary_contact: mapContact(item.PetParentInfo),
     secondary_contact: mapContact(item.PetParent2Info),
-    ach_enabled: item.EnableACH,
+    ach_available: item.EnableACH,
     claim_reimbursement_method: item.ClaimReimbursementMethod
   });
 

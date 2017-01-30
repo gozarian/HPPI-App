@@ -32,6 +32,9 @@ export class ClaimProvider {
       return items.map(
         (item) => {
 
+          let missing_claim_data:string[] = item.MissingClaimData ? item.MissingClaimData : [];
+          let received_claim_data:string[] = item.ReceivedClaimData ? item.ReceivedClaimData : [];
+
           let claim = <Claim>({
             id:item.ClaimID,
             account_id:item.AccountID,
@@ -49,9 +52,8 @@ export class ClaimProvider {
             amount_covered:item.AmountCovered,
             total_reimbursement:item.TotalReimbursement,
             missing_medical_records:item.MissingMedicalRecords,
-            // TODO: Remove test data here (should be empty array if item data is null)
-            missing_claim_data:["Test Missing Data 1", "Test Missing Data 2", "Test Missing Data 3"], // item.MissingClaimData ? item.MissingClaimData : [],
-            received_claim_data:["Test Received Data 1", "Test Received Data 2", "Test Received Data 3"], // item.ReceivedClaimData ? item.ReceivedClaimData : [],
+            missing_claim_data:missing_claim_data,
+            received_claim_data:received_claim_data,
             date_submitted:item.DateSubmitted,
           });
 

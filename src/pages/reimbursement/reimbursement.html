@@ -8,7 +8,7 @@
 
 <ion-content>
   <div class="reimbursement-wrapper">
-    <section class="reimbursement-select">
+    <section *ngIf="account && account.ach_avilable" class="reimbursement-select">
       <h2>Select your reimbursement type.</h2>
       <ion-list radio-group [(ngModel)]="reimbursement">
         <ion-item>

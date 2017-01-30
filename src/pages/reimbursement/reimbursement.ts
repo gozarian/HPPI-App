@@ -7,6 +7,7 @@ import { DepositPage } from '../deposit/deposit';
 import { AccountProvider } from '../../providers/account.provider';
 
 import { Address } from '../../models/address';
+import { Account } from '../../models/account';
 
 @Component({
   selector: 'page-reimbursement',
@@ -14,7 +15,10 @@ import { Address } from '../../models/address';
 })
 export class ReimbursementPage {
   loading;
-  reimbursement: string;
+
+  account:Account;
+  reimbursement = 'check';
+
   addressForm: boolean = false;
   submitted = false;
   accountSelected = false;
@@ -98,13 +102,15 @@ export class ReimbursementPage {
     .subscribe(
       (account) => {
 
-        this.reimbursement = "deposit";
+        this.account = account;
+        if (account.ach_available && account.claim_reimbursement_method != null) {
+          this.reimbursement = account.claim_reimbursement_method;
+        }
 
         let address = account.billing_address;
         this.display_address_line1 = address.street;
         this.display_address_line2 = address.city + ", " + address.state_province;
         this.display_address_line3 = address.postal_code;
-        this.closeLoading();
       }
     );
   }

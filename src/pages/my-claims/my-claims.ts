@@ -50,8 +50,8 @@ export class MyClaimsPage {
   getClaims() {
     this.presentLoading();
     Observable.combineLatest(
-      this.policyProvider.getPolicies(),
-      this.claimProvider.getClaims()
+      this.policyProvider.getPolicies().retry(1),
+      this.claimProvider.getClaims().retry(1)
     )
     .finally(
       () => {
