@@ -26,6 +26,16 @@ export class ClaimProvider {
     .map(this.mapClaims);
   }
 
+  public  submitClaim(policy_id:string, image_urls:string[]) : Observable<boolean> {
+    return this.session.getStoredCredentials()
+    .flatMap(
+      (credentials) => {
+        return this.hpApi.submitClaim(credentials.email, credentials.password, policy_id, image_urls);
+      }
+    )
+    .map(this.hpApi.mapSuccess)
+  }
+  
   private mapClaims(response: Response): Claim[] {
     let items = response.json().Items;
     if (items) {

@@ -144,6 +144,18 @@ export class HpApi {
       .catch(this.handleError);
   }
 
+  public submitClaim(email: string, password: string,
+    policy_id:string,
+    image_urls:string[]
+  ): Observable<Response> {
+    return this.post('Claims/SubmitClaim/', email, password, {
+      PetID:policy_id,
+      ImagesURLs:image_urls
+    })
+    .map(this.validateResponse)
+    .catch(this.handleError);
+  }
+
   // public uploadImage(email: string, password:string, imageType:string, imageData:string) {
   //   return this.postImage('Upload/Send/', email, password, imageType, imageData)
   //   .map(this.validateResponse)
@@ -273,4 +285,8 @@ export class HpApi {
     return arg == null || (type != "object" && type != "function");
   }
 
+  public mapSuccess(response: Response): boolean {
+    let errorCode = response.json().ErrorCode;
+    return errorCode == 0;
+  }
 }

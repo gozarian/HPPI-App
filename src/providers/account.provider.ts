@@ -31,7 +31,7 @@ export class AccountProvider {
   public resetPassword(email): Observable<boolean> {
 
     return this.hpApi.resetAccountPassword(email)
-    .map(mapSuccess);
+    .map(this.hpApi.mapSuccess);
   }
 
   public updatePassword(newPassword:string): Observable<boolean> {
@@ -45,7 +45,7 @@ export class AccountProvider {
         return this.hpApi.updateAccountPassword(credentials.email, credentials.password, newPassword);
       }
     )
-    .map(mapSuccess)
+    .map(this.hpApi.mapSuccess)
     .map(
       (success) => {
         if (success) {
@@ -75,7 +75,7 @@ export class AccountProvider {
         return this.hpApi.retryAccountPayment(credentials.email, credentials.password);
       }
     )
-    .map(mapSuccess);
+    .map(this.hpApi.mapSuccess);
   }
 
   public updatePaymentInfo(
@@ -106,7 +106,7 @@ export class AccountProvider {
         )
       }
     )
-    .map(mapSuccess);
+    .map(this.hpApi.mapSuccess);
   }
 
   public updateReimbursementAchInfo(
@@ -126,7 +126,7 @@ export class AccountProvider {
         )
       }
     )
-    .map(mapSuccess);
+    .map(this.hpApi.mapSuccess);
   }
 
   public updateReimbursementCheckInfo(
@@ -147,7 +147,7 @@ export class AccountProvider {
         )
       }
     )
-    .map(mapSuccess);
+    .map(this.hpApi.mapSuccess);
   }
 }
 
@@ -202,9 +202,4 @@ function mapContact(item:any) : Contact {
 function mapAlerts(item:any) : string[] {
   let alerts = item.Alerts ? item.Alerts : [];
   return alerts;
-}
-
-function mapSuccess(response: Response): boolean {
-  let errorCode = response.json().ErrorCode;
-  return errorCode == 0;
 }

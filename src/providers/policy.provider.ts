@@ -37,7 +37,7 @@ export class PolicyProvider {
         return this.hpApi.updatePolicyDatePetJoined(credentials.email, credentials.password, policy_id, date_pet_joined_family);
       }
     )
-    .map(mapSuccess);
+    .map(this.hpApi.mapSuccess);
   }
 
   private mapPolicys(response: Response): Policy[] {
@@ -70,9 +70,4 @@ export class PolicyProvider {
 
     return [];
   }
-}
-
-function mapSuccess(response: Response): boolean {
-  let errorCode = response.json().ErrorCode;
-  return errorCode == 0;
 }
