@@ -25,13 +25,13 @@ export class HomePage {
 
   @ViewChild(Content) content: Content;
   policies: Policy[];
+  alert:string = '';
 
   scrollToTop() {
     this.content.scrollToTop();
   }
 
   loading;
-  accountError: boolean = false;
 
   // For updating the unread message badge
   messagePageIndex = 2;
@@ -114,7 +114,8 @@ export class HomePage {
     Observable.combineLatest(
       this.accountProvider.getAccountInfo(),
       this.policyProvider.getPolicies(),
-      this.messageProvider.getMessageCounts().retry(1)
+      this.messageProvider.getMessageCounts().retry(1),
+      this.accountProvider.getAlerts()
     )
     .finally(
       () => {
@@ -126,6 +127,11 @@ export class HomePage {
         let account = values[0];
         this.policies = values[1];
         let messageCounts = values[2];
+        let alerts = values[3];
+
+        if (alerts.length > 0) {
+          this.alert = alerts[0];
+        }
 
         this.display_name = account.primary_contact.first_name;
 

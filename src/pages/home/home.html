@@ -49,14 +49,14 @@
           </button>
         </ion-col>
       </ion-row>
-      <ion-row class="nav-notifications">
+      <ion-row *ngIf="!alert" class="nav-notifications">
         <ion-col>
           <p class="home-notify success" (click)="openAccount()">Welcome {{ display_name }}!</p>
         </ion-col>
       </ion-row>
-      <ion-row *ngIf="accountError == true">
+      <ion-row *ngIf="alert">
         <ion-col>
-          <p class="home-notify error">Your account has been suspended</p>
+          <p class="home-notify error">{{ alert }}</p>
         </ion-col>
       </ion-row>
     </ion-grid>

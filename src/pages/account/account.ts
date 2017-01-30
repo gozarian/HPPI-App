@@ -30,7 +30,7 @@ export class AccountPage {
 
   account: Account;
   policies: Policy[];
-  alerts:string[] = [];
+  alert:string = '';
 
   errorMessage = '';
   display_name:string;
@@ -113,7 +113,11 @@ export class AccountPage {
       (values) => {
         this.account = values[0];
         this.policies = values[1];
-        this.alerts = values[2];
+        let alerts = values[2];
+
+        if (alerts.length > 0) {
+          this.alert = alerts[0];
+        }
 
         this.information[this.billing_information_index].notification = this.account.status === "Suspended";
         let contact = this.account.primary_contact;
