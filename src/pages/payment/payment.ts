@@ -98,7 +98,6 @@ export class PaymentPage implements OnInit {
 
   savePaymentInfo() {
     this.presentLoading();
-
     this.accountProvider.updatePaymentInfo(
       this.paymentForm.value.cc_num,
       this.paymentForm.value.cc_month,
@@ -110,15 +109,18 @@ export class PaymentPage implements OnInit {
       this.paymentForm.value.billing_state,
       this.paymentForm.value.billing_postal_code
     )
+    .finally(
+      () => {
+        this.closeLoading();
+      }
+    )
     .subscribe(
       (success) => {
         if (success) {
           this.navCtrl.pop();
-          this.closeLoading();
           this.presentToast('Thank you for updating your payment information.')
         }
         else {
-          this.closeLoading();
           this.presentToast('We are sorry there was a problem completing your request. Please try again.');
           // TODO: Handle Error
         }

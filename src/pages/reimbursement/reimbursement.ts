@@ -104,7 +104,13 @@ export class ReimbursementPage {
 
         this.account = account;
         if (account.ach_available && account.claim_reimbursement_method != null) {
-          this.reimbursement = account.claim_reimbursement_method;
+          // TODO: Not sure what values will actually be returned for claim_reimbursement_method
+          if (account.claim_reimbursement_method === 'Check') {
+            this.reimbursement = 'check';
+          }
+          else if (account.claim_reimbursement_method === 'Deposit') {
+            this.reimbursement = 'deposit';
+          }
         }
 
         let address = account.billing_address;

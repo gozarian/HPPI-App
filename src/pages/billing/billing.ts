@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController, ViewController, LoadingController } from 'ionic-angular';
+import { NavController, ViewController, LoadingController, ToastController } from 'ionic-angular';
 import { PaymentPage } from '../payment/payment';
 
 import { AccountProvider } from '../../providers/account.provider';
@@ -30,6 +30,7 @@ export class BillingPage {
     public navCtrl: NavController,
     public viewCtrl: ViewController,
     private loadingCtrl: LoadingController,
+    public toastCtrl: ToastController,
     private accountProvider: AccountProvider
   ) {
     viewCtrl.willEnter.subscribe(() => {
@@ -54,6 +55,22 @@ export class BillingPage {
   closeLoading() {
     if (this.loading == 'undefined') { return; };
     this.loading.dismiss();
+  }
+
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      cssClass: 'hp-toasts',
+      showCloseButton: true,
+      position: 'top'
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
   }
 
   getAccount(): void {
@@ -86,7 +103,25 @@ export class BillingPage {
   }
 
   retryPayment() {
-    this.navCtrl.push(PaymentPage);
+    this.presentLoading();
+    this.accountProvider.retryAccountPayment()
+    .finally(
+      () => {
+        this.closeLoading();
+      }
+    )
+    .subscribe(
+      (success) => {
+        if (success) {
+          this.navCtrl.pop();
+          this.presentToast('Your policy is active and we look forward to protecting your pets for years to come!')
+        }
+        else {
+          this.presentToast('We are sorry there was a problem completing your request. Please try again.');
+          // TODO: Handle Error
+        }
+      }
+    );
   }
 
   toPayment() {

@@ -76,7 +76,7 @@ export class MyClaimsPage {
 
   openClaim(claim) {
     // TODO: Remove second condition here (just needed for testing and layout work)
-    if (claim.status === 'Your Action Needed' || claim.received_claim_data.length > 0) {
+    if (claim.status === 'Your Action Needed' || claim.missing_claim_data.length > 0) {
       this.navCtrl.push(MyClaimsDetailPage, {claim:claim, policy:this.policies[claim.pet_id]});
     }
     else {

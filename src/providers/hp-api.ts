@@ -42,6 +42,12 @@ export class HpApi {
       .catch(this.handleError);
   }
 
+  public retryAccountPayment(email: string, password: string): Observable<Response> {
+    return this.post('Accounts/RetryBilling/', email, null)
+      .map(this.validateResponse)
+      .catch(this.handleError);
+  }
+
   public updateBillingInfo(email: string, password: string,
     cc_num: string,
     cc_month: string,

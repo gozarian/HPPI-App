@@ -22,11 +22,10 @@ export class AccountProvider {
     return this.session.getStoredCredentials()
     .flatMap(
       (credentials) => {
-        return this.hpApi.getAccount(credentials.email, credentials.password);
+        return this.hpApi.getAccount(credentials.email, credentials.password).retry(1);
       }
     )
-    .map(mapAccount)
-    .retry(2);
+    .map(mapAccount);
   }
 
   public resetPassword(email): Observable<boolean> {
@@ -55,6 +54,17 @@ export class AccountProvider {
         return success;
       }
     );
+  }
+
+  public retryAccountPayment(): Observable<boolean> {
+
+    return this.session.getStoredCredentials()
+    .flatMap(
+      (credentials) => {
+        return this.hpApi.retryAccountPayment(credentials.email, credentials.password);
+      }
+    )
+    .map(mapSuccess);
   }
 
   public updatePaymentInfo(
