@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NavController, ViewController, LoadingController } from 'ionic-angular';
+import { InAppBrowser } from 'ionic-native';
 import { AccountProvider } from '../../providers/account.provider';
 
 import { Account } from '../../models/account';
@@ -68,5 +69,9 @@ export class PersonalInfoPage {
         this.closeLoading();
       }
     );
+  }
+
+  launch(url) {
+    new InAppBrowser(url, '_system');
   }
 }
