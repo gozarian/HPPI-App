@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController, LoadingController } from 'ionic-angular';
+import { Observable } from 'rxjs/Rx';
+
 import { PersonalInfoPage } from '../personal-info/personal-info';
 import { BillingPage } from '../billing/billing';
 import { PaymentPage } from '../payment/payment';
@@ -25,13 +27,15 @@ import { Account } from '../../models/account';
 export class AccountPage {
 
   loading;
+
   account: Account;
+  policies: Policy[];
+  alerts:string[] = [];
+
   errorMessage = '';
   display_name:string;
   display_email:string;
   display_address:string;
-
-  policies: Policy[];
 
   billing_information_index = 1;
   information = [
@@ -77,8 +81,7 @@ export class AccountPage {
     private session: Session
   ) {
     viewCtrl.willEnter.subscribe(() => {
-      this.getAccount();
-      this.getPolicies();
+      this.loadData();
     });
   }
 
@@ -94,35 +97,34 @@ export class AccountPage {
     this.loading.dismiss();
   }
 
-  getAccount(): void {
+  loadData(): void {
     this.presentLoading();
-    this.accountProvider.getAccountInfo()
+    Observable.combineLatest(
+      this.accountProvider.getAccountInfo().retry(1),
+      this.policyProvider.getPolicies().retry(1),
+      this.accountProvider.getAlerts().retry(1)
+    )
     .finally(
       () => {
         this.closeLoading();
       }
     )
     .subscribe(
-      (account) => {
-        this.account = account;
-        this.information[this.billing_information_index].notification = account.status === "Suspended";
-        let contact = account.primary_contact;
+      (values) => {
+        this.account = values[0];
+        this.policies = values[1];
+        this.alerts = values[2];
+
+        this.information[this.billing_information_index].notification = this.account.status === "Suspended";
+        let contact = this.account.primary_contact;
         this.display_name = contact.first_name + " " + contact.last_name;
         this.display_email = contact.email;
 
-        let address = account.billing_address;
+        let address = this.account.billing_address;
         this.display_address = address.street + "  " + address.city + ", " + address.state_province + " " + address.postal_code;
       },
       error => {
         this.errorMessage = error.message;
-      }
-    );
-  }
-
-  getPolicies(): void {
-    this.policyProvider.getPolicies().subscribe(
-      (policies) => {
-        this.policies = policies;
       }
     );
   }

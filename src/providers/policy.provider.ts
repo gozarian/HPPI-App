@@ -20,7 +20,7 @@ export class PolicyProvider {
     return this.session.getStoredCredentials()
     .flatMap(
       (credentials) => {
-        return this.hpApi.getPolicies(credentials.email, credentials.password);
+        return this.hpApi.getPolicies(credentials.email, credentials.password).retry(1);
       }
     )
     .map(this.mapPolicys);

@@ -56,6 +56,17 @@ export class AccountProvider {
     );
   }
 
+  public getAlerts(): Observable<string[]> {
+
+    return this.session.getStoredCredentials()
+    .flatMap(
+      (credentials) => {
+        return this.hpApi.getAccountAlerts(credentials.email, credentials.password).retry(1);
+      }
+    )
+    .map(mapAlerts)
+  }
+
   public retryAccountPayment(): Observable<boolean> {
 
     return this.session.getStoredCredentials()
@@ -186,6 +197,11 @@ function mapContact(item:any) : Contact {
   });
 
   return contact;
+}
+
+function mapAlerts(item:any) : string[] {
+  let alerts = item.Alerts ? item.Alerts : [];
+  return alerts;
 }
 
 function mapSuccess(response: Response): boolean {

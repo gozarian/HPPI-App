@@ -83,9 +83,7 @@ export class HomePage {
     private messageProvider: MessageProvider
   ) {
     viewCtrl.willEnter.subscribe(() => {
-      this.getData();
-      this.getUnreadMessageCount();
-      this.getLaunchCount();
+      this.loadData();
     });
   }
 
@@ -111,11 +109,12 @@ export class HomePage {
     this.loading.dismiss();
   }
 
-  getData(): void {
+  loadData(): void {
     this.presentLoading();
     Observable.combineLatest(
-      this.accountProvider.getAccountInfo().retry(1),
-      this.policyProvider.getPolicies().retry(1)
+      this.accountProvider.getAccountInfo(),
+      this.policyProvider.getPolicies(),
+      this.messageProvider.getMessageCounts().retry(1)
     )
     .finally(
       () => {
@@ -125,19 +124,18 @@ export class HomePage {
     .subscribe(
       (values) => {
         let account = values[0];
-        this.display_name = account.primary_contact.first_name;
         this.policies = values[1];
+        let messageCounts = values[2];
+
+        this.display_name = account.primary_contact.first_name;
+
+        if (messageCounts.unread > 0) {
+          this.pages[this.messagePageIndex].badge = messageCounts.unread;
+        }
+
+        this.getLaunchCount();
       }
     );
-  }
-
-  getUnreadMessageCount(): void {
-    this.messageProvider.getMessageCounts().retry(1)
-    .subscribe((counts) => {
-      if (counts.unread > 0) {
-        this.pages[this.messagePageIndex].badge = counts.unread;
-      }
-    });
   }
 
   openMenu() {

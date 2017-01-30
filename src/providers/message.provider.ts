@@ -20,7 +20,7 @@ export class MessageProvider {
     return this.session.getStoredCredentials()
     .flatMap(
       (credentials) => {
-        return this.hpApi.getMessages(credentials.email, credentials.password);
+        return this.hpApi.getMessages(credentials.email, credentials.password).retry(1);
       }
     )
     .map(this.mapMessages);
@@ -31,7 +31,7 @@ export class MessageProvider {
     return this.session.getStoredCredentials()
     .flatMap(
       (credentials) => {
-        return this.hpApi.getMessageCounts(credentials.email, credentials.password);
+        return this.hpApi.getMessageCounts(credentials.email, credentials.password).retry(1);
       }
     )
     .map(this.mapMessageCounts);

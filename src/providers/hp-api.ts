@@ -175,6 +175,12 @@ export class HpApi {
       .catch(this.handleError);
   }
 
+  public getAccountAlerts(email: string, password: string) : Observable<Response> {
+    return this.post('Accounts/GetAlerts/', email, password)
+      .map(this.validateResponse)
+      .catch(this.handleError);
+  }
+
   private post(action, email, password, parameters = {}): Observable<Response> {
     let auth = {
       EmailAddress: email,
