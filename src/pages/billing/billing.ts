@@ -117,8 +117,7 @@ export class BillingPage {
           this.presentToast('Your policy is active and we look forward to protecting your pets for years to come!')
         }
         else {
-          this.presentToast('We are sorry there was a problem completing your request. Please try again.');
-          // TODO: Handle Error
+          this.presentToast('We are sorry there was a problem completing your request.\nPlease try again or update your billing information to change cards.');
         }
       }
     );

@@ -123,6 +123,20 @@ export class HpApi {
       .catch(this.handleError);
   }
 
+  public updatePolicyDatePetJoined(email: string, password: string,
+    policy_id: string,
+    date_pet_joined_family: string // Format is: MM/dd/yyyy
+  ): Observable<Response> {
+    return this.post('Pets/UpdatePet/', email, password,
+      {
+        PetID:policy_id,
+        DateJoinedFamily:date_pet_joined_family
+      }
+    )
+    .map(this.validateResponse)
+    .catch(this.handleError);
+  }
+
   // Claims
   public getClaims(email: string, password: string): Observable<Response> {
     return this.post('Claims/GetClaimsByAccount/', email, password)

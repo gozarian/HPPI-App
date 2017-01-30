@@ -3,24 +3,27 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 import { ClaimPhotoPage } from '../claim-photo/claim-photo';
 import { Policy } from '../../models/policy';
+import { PolicyProvider } from '../../providers/policy.provider';
 
 @Component({
   selector: 'page-claim-birthday',
-  templateUrl: 'claim-birthday.html'
+  templateUrl: 'claim-birthday.html',
+  providers: [PolicyProvider]
 })
 export class ClaimBirthdayPage {
   public myDate;
   @ViewChild('datePicker') datePicker;
 
-  policy;
+  policy:Policy;
   prev_page_name = "";
 
   constructor(
     public navCtrl: NavController,
     public alertCtrl: AlertController,
     public navParams: NavParams,
-    public viewCtrl: ViewController) {
-
+    public viewCtrl: ViewController,
+    private policyProvider:PolicyProvider
+  ) {
     this.policy = <Policy>(navParams.get('policy'));
     this.prev_page_name = navParams.get('prev_page_name');
   }
@@ -39,12 +42,22 @@ export class ClaimBirthdayPage {
     console.log(this.myDate);
   }
 
-  addPhoto(policy) {
+  updatePolicy() {
     if (this.myDate == undefined) {
       this.noDateWarning();
       return;
     } else {
-      this.navCtrl.push(ClaimPhotoPage, {policy:policy, prev_page_name:'Choose Date'});
+      this.policyProvider.updatePolicyDatePetJoined(this.policy.pet_id, this.myDate)
+      .subscribe(
+        (success) => {
+          if (success) {
+            this.policy.pet_joined_family_date = this.myDate;
+            this.navCtrl.push(ClaimPhotoPage, {policy:this.policy, prev_page_name:'Choose Date'});
+          }
+          else {
+            // TODO: Show error
+          }
+      });
     }
   }
 }

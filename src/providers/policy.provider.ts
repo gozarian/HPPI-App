@@ -26,6 +26,20 @@ export class PolicyProvider {
     .map(this.mapPolicys);
   }
 
+  public updatePolicyDatePetJoined(
+    policy_id:string,
+    date_pet_joined_family:string
+  ): Observable<boolean> {
+
+    return this.session.getStoredCredentials()
+    .flatMap(
+      (credentials) => {
+        return this.hpApi.updatePolicyDatePetJoined(credentials.email, credentials.password, policy_id, date_pet_joined_family);
+      }
+    )
+    .map(mapSuccess);
+  }
+
   private mapPolicys(response: Response): Policy[] {
     let items = response.json().Items;
     if (items) {
@@ -56,4 +70,9 @@ export class PolicyProvider {
 
     return [];
   }
+}
+
+function mapSuccess(response: Response): boolean {
+  let errorCode = response.json().ErrorCode;
+  return errorCode == 0;
 }
