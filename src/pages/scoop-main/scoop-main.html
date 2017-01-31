@@ -6,5 +6,9 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <iframe [src]="scoopUrl"></iframe>
+  <iframe #scoopFrame [src]="scoopUrl"></iframe>
+  <div class="iframe-nav">
+    <ion-icon (click)="navBack()" name="arrow-back"></ion-icon>
+    <ion-icon (click)="navForward()" name="arrow-forward"></ion-icon>
+  </div>
 </ion-content>

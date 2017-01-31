@@ -175,6 +175,27 @@ ion-spinner {
 
 
 
+// iframe navigation
+// --------------------------------------------------
+
+.iframe-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none; // hidden while functionality is being implemented
+  // display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: color($colors, base, contrast);
+
+  ion-icon {
+    color: #1D7CFD;
+    font-size: 2em;
+  }
+}
+
+
 // Slide in animations
 // --------------------------------------------------
 
