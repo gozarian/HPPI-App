@@ -140,6 +140,10 @@ export class HomePage {
         }
 
         this.getLaunchCount();
+      },
+      (error) => {
+        // TODO: Show Toast w/error.message
+        
       }
     );
   }

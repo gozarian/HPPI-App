@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { Platform, Nav } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
+import { Platform, Nav, ModalController } from 'ionic-angular';
+import { StatusBar, Splashscreen, Network } from 'ionic-native';
 import { HomePage } from '../pages/home/home';
 import { Session } from '../providers/session';
 import { HpApi } from '../providers/hp-api';
@@ -10,8 +10,7 @@ import { SignInPage, SplashPage } from '../pages/pages';
 import { AccountProvider } from '../providers/account.provider';
 import { PolicyProvider } from '../providers/policy.provider';
 import { MessageProvider } from '../providers/message.provider';
-
-import { Policy } from '../models/policy';
+import { OfflinePage } from '../pages/offline/offline';
 
 @Component({
   templateUrl: 'app.html',
@@ -26,15 +25,15 @@ import { Policy } from '../models/policy';
   ]
 })
 export class MyApp implements OnInit {
+
   public rootPage: any = SplashPage;
   @ViewChild(Nav) nav: Nav;
-  policies: Policy[];
 
   constructor(
     platform: Platform,
     public storage: Storage,
-    private policyProvider: PolicyProvider,
-    session: Session
+    session: Session,
+    public modalCtrl: ModalController
   ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -42,13 +41,14 @@ export class MyApp implements OnInit {
       StatusBar.styleDefault();
       Splashscreen.hide();
 
-      session.restore().subscribe(() => {
-        this.rootPage = HomePage;
-      },
-      () => {
-        this.rootPage = SignInPage;
-      })
-
+      session.restore().subscribe(
+        () => {
+          this.rootPage = HomePage;
+        },
+        () => {
+          this.rootPage = SignInPage;
+        }
+      )
     });
   }
 
@@ -61,16 +61,32 @@ export class MyApp implements OnInit {
     });
   }
 
-  getPolicies(): void {
-    this.policyProvider.getPolicies().subscribe(
-      (policies) => {
-        this.policies = policies
-      }
-    );
+  modal = null;
+
+  showOfflineModal() {
+    if (this.modal == null) {
+      this.modal = this.modalCtrl.create(OfflinePage);
+      this.modal.present();
+    }
+  }
+
+  hideOfflineModal() {
+    if (this.modal) {
+      this.modal.dismiss();
+      this.modal = null;
+    }
   }
 
   ngOnInit(): void {
-    this.getPolicies();
     this.getLaunchCount();
+
+    Network.onConnect().subscribe(
+      () => {
+      this.hideOfflineModal();
+    });
+    Network.onDisconnect().subscribe(
+      () => {
+      this.showOfflineModal();
+    });
   }
 }

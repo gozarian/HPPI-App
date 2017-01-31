@@ -121,9 +121,12 @@ export class PaymentPage implements OnInit {
           this.presentToast('Thank you for updating your payment information.')
         }
         else {
-          this.presentToast('We are sorry there was a problem completing your request. Please try again.');
           // TODO: Handle Error
+          this.presentToast('We are sorry there was a problem completing your request. Please try again.');
         }
+      },
+      (error) => {
+        this.presentToast('Server error. Please try again.');
       }
     );
   }

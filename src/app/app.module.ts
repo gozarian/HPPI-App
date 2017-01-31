@@ -20,6 +20,7 @@ import { MessagesInboxPage } from '../pages/messages-inbox/messages-inbox';
 import { MyClaimsPage } from '../pages/my-claims/my-claims';
 import { MyClaimsDetailPage } from '../pages/my-claims-detail/my-claims-detail';
 import { NewFeaturesPage } from '../pages/home/new-features-modal';
+import { OfflinePage } from '../pages/offline/offline';
 import { PaymentPage } from '../pages/payment/payment';
 import { PersonalInfoPage } from '../pages/personal-info/personal-info';
 import { PolicyPage } from '../pages/policy/policy';
@@ -55,6 +56,7 @@ import { MessageProvider } from '../providers/message.provider'
     MyClaimsPage,
     MyClaimsDetailPage,
     NewFeaturesPage,
+    OfflinePage,
     PaymentPage,
     PersonalInfoPage,
     PolicyPage,
@@ -101,6 +103,7 @@ import { MessageProvider } from '../providers/message.provider'
     MyClaimsPage,
     MyClaimsDetailPage,
     NewFeaturesPage,
+    OfflinePage,
     PaymentPage,
     PersonalInfoPage,
     PolicyPage,

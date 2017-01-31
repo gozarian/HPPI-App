@@ -13,6 +13,7 @@ export {FAQPage} from './faq/faq';
 export {MessagesDetailPage} from './messages-detail/messages-detail';
 export {MessagesInboxPage} from './messages-inbox/messages-inbox';
 export {MyClaimsPage} from './my-claims/my-claims';
+export {OfflinePage} from './offline/offline';
 export {PaymentPage} from './payment/payment';
 export {PersonalInfoPage} from './personal-info/personal-info';
 export {PolicyPage} from './policy/policy';
