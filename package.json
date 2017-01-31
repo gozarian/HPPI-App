@@ -38,7 +38,10 @@
     "cordova-plugin-splashscreen",
     "ionic-plugin-keyboard",
     "cordova-plugin-camera",
+    "cordova-plugin-compat",
     "cordova-plugin-inappbrowser"
+    "cordova-plugin-file-transfer",
+    "cordova-plugin-file"
   ],
   "cordovaPlatforms": [
     "ios",

@@ -4,15 +4,18 @@ import { NavController, NavParams, ViewController, AlertController, ToastControl
 import { ClaimSummaryPage } from '../claim-summary/claim-summary';
 import { HomePage } from '../home/home';
 import { Policy } from '../../models/policy';
+import { ClaimProvider } from '../../providers/claim.provider';
 
 @Component({
   selector: 'page-claim-verify',
-  templateUrl: 'claim-verify.html'
+  templateUrl: 'claim-verify.html',
+  providers: [ClaimProvider]
 })
 export class ClaimVerifyPage {
 
   loading;
   policy;
+  images;
   prev_page_name = '';
 
   constructor(
@@ -21,9 +24,11 @@ export class ClaimVerifyPage {
     public viewCtrl: ViewController,
     public toastCtrl: ToastController,
     private loadingCtrl: LoadingController,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    private claimProvider: ClaimProvider) {
 
     this.policy = <Policy>(navParams.get('policy'));
+    this.images = <string[]>(navParams.get('photos'));
     this.prev_page_name = navParams.get('prev_page_name');
   }
 
@@ -83,11 +88,15 @@ export class ClaimVerifyPage {
     this.viewCtrl.setBackButtonText('Uploads');
   }
 
-  agree(pet) {
+  agree() {
     this.presentLoading();
-    // Submit to claim goes here
-    this.closeLoading();
-    this.navCtrl.push(ClaimSummaryPage, pet);
+    this.claimProvider.submitClaim(this.policy.policy_number, this.images)
+    .finally(() => {
+      this.closeLoading();
+    })
+    .subscribe(() => {
+      this.navCtrl.push(ClaimSummaryPage, this.policy);
+    });
   }
 
 }

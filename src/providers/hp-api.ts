@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Transfer, FileUploadResult } from 'ionic-native';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
@@ -145,22 +146,41 @@ export class HpApi {
   }
 
   public submitClaim(email: string, password: string,
-    policy_id:string,
-    image_urls:string[]
+    policyNumber:string,
+    imagePaths:string[]
   ): Observable<Response> {
-    return this.post('Claims/SubmitClaim/', email, password, {
-      PetID:policy_id,
-      ImagesURLs:image_urls
+
+    let imageUploads:Observable<string>[] = [];
+
+    for (var path of imagePaths) {
+      imageUploads.push(
+        this.uploadImage(email, password, policyNumber, 'Claim', path)
+        .map(this.mapImageResults)
+      );
+    }
+
+    return Observable.combineLatest(imageUploads)
+    .flatMap((imageUrls:string[]): Observable<Response> => {
+      return this.postJson('Claims/SubmitClaim/', email, password, {
+        PetID: policyNumber,
+        ImagesURLs: imageUrls
+      });
     })
     .map(this.validateResponse)
     .catch(this.handleError);
   }
 
-  // public uploadImage(email: string, password:string, imageType:string, imageData:string) {
-  //   return this.postImage('Upload/Send/', email, password, imageType, imageData)
-  //   .map(this.validateResponse)
-  //   .catch(this.handleError);
-  // }
+  private mapImageResults(result: FileUploadResult): string {
+    let responseText = result.response;
+
+    return responseText;
+  }
+
+  public uploadImage(email: string, password:string, policyNumber:string, imageType:string, imagePath:string): Observable<FileUploadResult> {
+    return this.postImage('Upload/Send/', email, password, policyNumber, imageType, imagePath)
+    .map(this.validateUploadResponse)
+    .catch(this.handleError);
+  }
 
   // Messages
   public getMessageCounts(email: string, password: string): Observable<Response> {
@@ -208,20 +228,27 @@ export class HpApi {
     return this.http.post(url, body, { headers: this.headers }).share();
   }
 
-  // private postImage(action, email, password, imageType, imageData): Observable<Response> {
-  //   let auth = {
-  //     EmailAddress: email,
-  //     Password: password,
-  //     AppName: this.environment.apiAppName(),
-  //     AppKey: this.environment.apiAppKey()
-  //   };
-  //
-  //   let mergedParams = Object.assign({ImageType:imageType}, auth);
-  //   let body = this.objectToParams(mergedParams);
-  //   let url = `${ this.environment.apiBaseUrl() }${ action }`;
-  //
-  //   return this.http.post(url, body, { headers: this.headers }).share();
-  // }
+  private postImage(action:string, email:string, password:string, policyNumber:string, imageType:string, imagePath:string): Observable<FileUploadResult> {
+    let auth = {
+      EmailAddress: email,
+      Password: password,
+      AppName: this.environment.apiAppName(),
+      AppKey: this.environment.apiAppKey()
+    };
+
+    let mergedParams = Object.assign({
+      PetPolicyNo: policyNumber,
+      ImageType: imageType,
+      fileKey: 'ImageFile',
+      fileName: 'claimImage.jpg',
+      headers: this.headers
+    }, auth);
+
+    let url = `${ this.environment.apiBaseUrl() }${ action }`;
+    let fileTransfer = new Transfer();
+
+    return Observable.fromPromise(fileTransfer.upload(imagePath, url, mergedParams)).share();
+  }
 
   private postJson(action, email, password, parameters = {}): Observable<Response> {
     let auth = {
@@ -236,6 +263,10 @@ export class HpApi {
     let url = `${ this.environment.apiBaseUrl() }${ action }`;
 
     return this.http.post(url, body, { headers: this.headersJson }).share();
+  }
+
+  private validateUploadResponse(response: FileUploadResult): FileUploadResult {
+    return response;
   }
 
   private validateResponse(response: Response): Response {
