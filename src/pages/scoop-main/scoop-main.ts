@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { NavController, LoadingController } from 'ionic-angular';
 import { Environment } from '../../providers/environment';
-import { InAppBrowser } from 'ionic-native';
 
 @Component({
   selector: 'page-scoop-main',
@@ -22,7 +21,7 @@ export class ScoopMainPage implements OnInit {
   }
 
   ngOnInit() {
-    this.launch('http://hptest.info/blog/?nativeAppView=true');
+    this.presentLoading();
   }
 
   presentLoading() {
@@ -32,9 +31,4 @@ export class ScoopMainPage implements OnInit {
     });
     this.loading.present();
   }
-
-  launch(url) {
-    new InAppBrowser(url, '_blank');
-  }
-
 }
