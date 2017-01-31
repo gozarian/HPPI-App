@@ -1,3 +1,63 @@
 page-offline {
 
+  // Modal Title and Close Button
+  // --------------------------------------------------
+
+  .toolbar-ios {
+
+    ion-title {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+
+  .toolbar-title {
+    padding-top: $base-line-height / 1.5;
+    font-size: 3rem;
+    font-weight: weight(bold);
+    line-height: 1;
+    color: color($colors, base, contrast);
+  }
+
+  .toolbar-background {
+    background: transparent;
+    border-bottom-width: 0;
+  }
+
+  .bar-buttons-ios {
+    padding-right: $base-line-height / 2;
+  }
+
+  .bar-button-ios[icon-only] {
+    padding-top: 1rem;
+  }
+
+
+
+  // Offline Modal Content
+  // --------------------------------------------------
+
+  .content {
+    background: $modal-background-color;
+
+    .scroll-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      ion-icon {
+        color: color($colors, base, contrast);
+        font-size: 7em;
+      }
+
+      .ion-icon-notify {
+        position: relative;
+        top: -60px;
+        right: -35px;
+        height: 50px;
+        width: 50px;
+      }
+    }
+  }
 }

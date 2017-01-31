@@ -36,4 +36,5 @@ export class ScoopMainPage implements OnInit {
   launch(url) {
     new InAppBrowser(url, '_blank');
   }
+
 }

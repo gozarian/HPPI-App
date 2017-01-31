@@ -1,5 +1,17 @@
 <ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Offline
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon class="ion-icon-modal-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+  <ion-icon name="ios-wifi"></ion-icon>
+  <div class="ion-icon-notify"></div>
 </ion-content>
