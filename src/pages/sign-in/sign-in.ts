@@ -9,6 +9,8 @@ import { ChangePasswordPage } from '../change-password/change-password';
 import { Session } from '../../providers/session';
 import { AccountProvider } from '../../providers/account.provider';
 
+/// <reference types="../../node_modules/@types/urbanairship-cordova/indes.d.ts" />
+
 @Component({
   selector: 'page-sign-in',
   templateUrl: 'sign-in.html'
@@ -43,6 +45,7 @@ export class SignInPage {
           if (this.tempPassword) {
             this.navCtrl.push(ChangePasswordPage, this.tempPassword);
           } else {
+            this.setupUrbanAirship();
             this.navCtrl.setRoot(HomePage);
           }
       },
@@ -50,6 +53,17 @@ export class SignInPage {
         this.errorMessage = error.message;
       }
     )
+  }
+
+  setupUrbanAirship() {
+    if (UAirship) {
+      UAirship.getChannelID(function (channelID) {
+         console.log("Channel: " + channelID)
+      });
+      UAirship.setUserNotificationsEnabled(true, () => {
+
+      });
+    }
   }
 
   resetPassword() {

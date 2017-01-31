@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, ViewController } from 'ionic-angular';
 
 /*
-  Generated class for the Splash page.
+  Generated class for the Offline page.
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
