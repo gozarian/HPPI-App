@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NavController, ViewController, LoadingController, ToastController } from 'ionic-angular';
+import { Observable } from 'rxjs/Rx';
 import { PaymentPage } from '../payment/payment';
 
 import { AccountProvider } from '../../providers/account.provider';
@@ -14,6 +15,7 @@ import { Account } from '../../models/account';
 export class BillingPage {
 
   loading;
+  alert:string = '';
   account:Account;
   display_name = '';
   display_premium = '';
@@ -75,26 +77,35 @@ export class BillingPage {
 
   getAccount(): void {
     this.presentLoading();
-    this.accountProvider.getAccountInfo()
+    Observable.combineLatest(
+      this.accountProvider.getAccountInfo().retry(1),
+      this.accountProvider.getAlerts().retry(1)
+    )
     .finally(
       () => {
         this.closeLoading();
       }
     )
     .subscribe(
-      (account) => {
-        this.account = account;
-        this.display_policy_warning = account.status === "Suspended";
-        this.display_premium = account.monthly_premium;
-        this.display_account_status = account.status;
-        this.display_billing_day = this.display_days[account.billing_day - 1];
-        this.display_amount_due = account.past_due_ammount;
-        this.display_cc_num = '****' + account.credit_card_last4;
+      (values) => {
+        this.account = values[0];
+        let alerts = values[1];
 
-        let contact = account.primary_contact;
+        if (alerts.length > 0) {
+          this.alert = alerts[0];
+        }
+
+        this.display_policy_warning = values[0].status === "Suspended";
+        this.display_premium = values[0].monthly_premium;
+        this.display_account_status = values[0].status;
+        this.display_billing_day = this.display_days[values[0].billing_day - 1];
+        this.display_amount_due = values[0].past_due_ammount;
+        this.display_cc_num = '****' + values[0].credit_card_last4;
+
+        let contact = values[0].primary_contact;
         this.display_name = contact.first_name + " " + contact.last_name;
 
-        let address = account.billing_address;
+        let address = values[0].billing_address;
         this.display_address_line1 = address.street;
         this.display_address_line2 = address.city + ", " + address.state_province;
         this.display_address_line3 = address.postal_code;

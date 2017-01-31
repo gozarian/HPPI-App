@@ -7,7 +7,7 @@
 </ion-header>
 <ion-content>
   <div class="content-wrapper">
-    <p *ngIf="display_policy_warning" class="policy-warning">Your last payment failed and was not received.</p>
+    <p *ngIf="alert" class="policy-warning">{{ alert }}</p>
     <ion-grid class="policy-details">
       <ion-row wrap>
         <ion-col width-50>

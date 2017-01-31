@@ -40,35 +40,29 @@ export class AccountPage {
   billing_information_index = 1;
   information = [
     { title: 'Personal Info',
-      component: PersonalInfoPage,
-      notification: false
+      component: PersonalInfoPage
     },
     { title: 'Policy and Billing Info',
       component: BillingPage,
-      notification: false
+      notification: this.alert ? true : false
     },
     { title: 'Edit Payment Method',
-      component: PaymentPage,
-      notification: false
+      component: PaymentPage
     },
     { title: 'Edit Reimbursement Info',
-      component: ReimbursementPage,
-      notification: false
+      component: ReimbursementPage
     },
     { title: 'Change Password',
-      component: ChangePasswordPage,
-      notification: false
+      component: ChangePasswordPage
     }
   ];
 
   support = [
     { title: 'Help & FAQ\s',
-      component: FAQPage,
-      notification: false
+      component: FAQPage
     },
     { title: 'Contact Healthy Paws',
-      component: ContactPage,
-      notification: false
+      component: ContactPage
     }
   ];
 
@@ -119,7 +113,6 @@ export class AccountPage {
           this.alert = alerts[0];
         }
 
-        this.information[this.billing_information_index].notification = this.account.status === "Suspended";
         let contact = this.account.primary_contact;
         this.display_name = contact.first_name + " " + contact.last_name;
         this.display_email = contact.email;
