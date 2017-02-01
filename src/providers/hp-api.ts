@@ -145,8 +145,11 @@ export class HpApi {
       .catch(this.handleError);
   }
 
-  public submitClaim(email: string, password: string,
+  public submitClaim(
+    email: string,
+    password: string,
     policyNumber:string,
+    petId:string,
     imagePaths:string[]
   ): Observable<Response> {
 
@@ -162,7 +165,7 @@ export class HpApi {
     return Observable.combineLatest(imageUploads)
     .flatMap((imageUrls:string[]): Observable<Response> => {
       return this.postJson('Claims/SubmitClaim/', email, password, {
-        PetID: policyNumber,
+        PetID: petId,
         ImagesURLs: imageUrls
       });
     })
@@ -230,7 +233,7 @@ export class HpApi {
 
   private postImage(action:string, email:string, password:string, policyNumber:string, imageType:string, imagePath:string): Observable<FileUploadResult> {
     let auth = {
-      EmailAddress: email,
+      Email: email,
       Password: password,
       AppName: this.environment.apiAppName(),
       AppKey: this.environment.apiAppKey()
@@ -238,16 +241,20 @@ export class HpApi {
 
     let mergedParams = Object.assign({
       PetPolicyNo: policyNumber,
-      ImageType: imageType,
+      ImageType: imageType
+    }, auth);
+
+    let options = {
+      params: mergedParams,
       fileKey: 'ImageFile',
       fileName: 'claimImage.jpg',
-      headers: this.headers
-    }, auth);
+      mimeType: "image/jpeg"
+    };
 
     let url = `${ this.environment.apiBaseUrl() }${ action }`;
     let fileTransfer = new Transfer();
 
-    return Observable.fromPromise(fileTransfer.upload(imagePath, url, mergedParams)).share();
+    return Observable.fromPromise(fileTransfer.upload(imagePath, url, options)).share();
   }
 
   private postJson(action, email, password, parameters = {}): Observable<Response> {

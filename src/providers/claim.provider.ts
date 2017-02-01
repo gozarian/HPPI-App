@@ -26,11 +26,11 @@ export class ClaimProvider {
     .map(this.mapClaims);
   }
 
-  public submitClaim(policyNumber:string, imagePaths:string[]) : Observable<boolean> {
+  public submitClaim(policyNumber:string, petId:string, imagePaths:string[]) : Observable<boolean> {
     return this.session.getStoredCredentials()
     .flatMap(
       (credentials) => {
-        return this.hpApi.submitClaim(credentials.email, credentials.password, policyNumber, imagePaths);
+        return this.hpApi.submitClaim(credentials.email, credentials.password, policyNumber, petId, imagePaths);
       }
     )
     .map(this.hpApi.mapSuccess)

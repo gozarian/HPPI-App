@@ -90,7 +90,7 @@ export class ClaimVerifyPage {
 
   agree() {
     this.presentLoading();
-    this.claimProvider.submitClaim(this.policy.policy_number, this.images)
+    this.claimProvider.submitClaim(this.policy.policy_number, this.policy.pet_id, this.images)
     .finally(() => {
       this.closeLoading();
     })
