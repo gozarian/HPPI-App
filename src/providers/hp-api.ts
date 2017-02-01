@@ -128,13 +128,19 @@ export class HpApi {
     pet_id: string,
     pet_image: string // Format is: MM/dd/yyyy
   ): Observable<Response> {
-    return this.postJson('Pets/UpdatePhoto/', email, password,
-      {
-        PetID:pet_id,
-        PetImageURL:pet_image
-      }
-    )
-    .map(this.validateResponse)
+
+    return this.uploadImage(email, password, pet_id, 'PetPhoto', pet_image)
+    .map(this.mapImageResults)
+    .flatMap(
+      (image_url): Observable<Response> => {
+      return this.postJson('Pets/UpdatePhoto/', email, password,
+        {
+          PetID:pet_id,
+          PetImageURL:image_url
+        }
+      )
+      .map(this.validateResponse)
+    })
     .catch(this.handleError);
   }
 
