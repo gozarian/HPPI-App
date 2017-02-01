@@ -124,13 +124,27 @@ export class HpApi {
       .catch(this.handleError);
   }
 
+  public updatePolicyPetImage(email: string, password: string,
+    pet_id: string,
+    pet_image: string // Format is: MM/dd/yyyy
+  ): Observable<Response> {
+    return this.postJson('Pets/UpdatePhoto/', email, password,
+      {
+        PetID:pet_id,
+        PetImageURL:pet_image
+      }
+    )
+    .map(this.validateResponse)
+    .catch(this.handleError);
+  }
+
   public updatePolicyDatePetJoined(email: string, password: string,
-    policy_id: string,
+    pet_id: string,
     date_pet_joined_family: string // Format is: MM/dd/yyyy
   ): Observable<Response> {
     return this.post('Pets/UpdatePet/', email, password,
       {
-        PetID:policy_id,
+        PetID:pet_id,
         DateJoinedFamily:date_pet_joined_family
       }
     )

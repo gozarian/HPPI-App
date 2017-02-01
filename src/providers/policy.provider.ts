@@ -26,15 +26,29 @@ export class PolicyProvider {
     .map(this.mapPolicys);
   }
 
+  public updatePetImage(
+    pet_id:string,
+    imageData:string
+  ): Observable<boolean> {
+
+    return this.session.getStoredCredentials()
+    .flatMap(
+      (credentials) => {
+        return this.hpApi.updatePolicyPetImage(credentials.email, credentials.password, pet_id, imageData);
+      }
+    )
+    .map(this.hpApi.mapSuccess);
+  }
+
   public updatePolicyDatePetJoined(
-    policy_id:string,
+    pet_id:string,
     date_pet_joined_family:string
   ): Observable<boolean> {
 
     return this.session.getStoredCredentials()
     .flatMap(
       (credentials) => {
-        return this.hpApi.updatePolicyDatePetJoined(credentials.email, credentials.password, policy_id, date_pet_joined_family);
+        return this.hpApi.updatePolicyDatePetJoined(credentials.email, credentials.password, pet_id, date_pet_joined_family);
       }
     )
     .map(this.hpApi.mapSuccess);

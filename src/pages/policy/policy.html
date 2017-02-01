@@ -11,7 +11,7 @@
   <div class="content-wrapper">
     <div>
       <section class="policy-header">
-        <figure>
+        <figure (click)="changePetImage()">
           <div
             class="img-wrapper"
             [style.background-image]="'url(' + policy.pet_image + ')'">
