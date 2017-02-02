@@ -32,7 +32,29 @@ export class ClaimPhotoPage {
   }
 
   submitClaim(policy) {
-    this.navCtrl.push(ClaimVerifyPage, {policy:policy, photos:this.photos, prev_page_name:'Uploads'});
+    if (this.photos.length < 1) {
+      this.showMissingPhotosAlert();
+    }
+    else {
+      this.navCtrl.push(ClaimVerifyPage, {policy:policy, photos:this.photos, prev_page_name:'Uploads'});
+    }
+  }
+
+  showMissingPhotosAlert() {
+    var alert = this.alertCtrl.create({
+      title: 'Missing Invoice Pages',
+      message: "Please add a photo of each page of the invoice you received from your veterinary hostpital before submitting your claim.",
+      buttons: [
+          {
+            text: 'OK',
+            handler: () => {
+              alert.dismiss()
+            }
+          }
+      ]
+    });
+
+    alert.present();
   }
 
   addPhoto() {
@@ -56,14 +78,13 @@ export class ClaimPhotoPage {
   }
 
   showPhotoInstructions() {
-
     // Check user decision to hide instructions and return
     this.storage.get('hidePhotoInstructions').then(hide => {
       if (hide) {
         this.showCamera();
       }
       else {
-        var prompt = this.alertCtrl.create({
+        var alert = this.alertCtrl.create({
           title: 'New Claim',
           message: "Snap a photo of each page of the invoice you received from your veterinary hostpital. Place the invoice in a well-lit area and align the edges of the page with your screen.",
           buttons: [
@@ -72,7 +93,7 @@ export class ClaimPhotoPage {
                 handler: () => {
                   // Store user decision to hide instructions
                   this.storage.set('hidePhotoInstructions', true);
-                  prompt.dismiss().then(()=> {
+                  alert.dismiss().then(()=> {
                     this.showCamera()
                   })
                 }
@@ -80,7 +101,7 @@ export class ClaimPhotoPage {
               {
                 text: 'OK',
                 handler: () => {
-                  prompt.dismiss().then(()=> {
+                  alert.dismiss().then(()=> {
                     this.showCamera()
                   })
                 }
@@ -88,7 +109,7 @@ export class ClaimPhotoPage {
           ]
         });
 
-        prompt.present();
+        alert.present();
       }
     });
   }
